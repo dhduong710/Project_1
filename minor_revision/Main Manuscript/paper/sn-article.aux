@@ -1,0 +1,210 @@
+\relax 
+\bibstyle{sn-mathphys-num}
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{nickel2015review,ji2021survey,hogan2021knowledge}
+\citation{himmelstein2017systematic}
+\citation{chandak2023building}
+\citation{zheng2021pharmkg}
+\citation{drkg2020}
+\citation{brown2017standard}
+\citation{bodenreider2004unified}
+\citation{pinero2020disgenet}
+\citation{uniprot2018uniprot}
+\citation{amberger2019omim}
+\citation{wishart2018drugbank}
+\citation{kuhn2014stitch}
+\citation{szklarczyk2021string}
+\Newlabel{1}{1}
+\Newlabel{2}{2}
+\Newlabel{3}{3}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:introduction}{{1}{1}{Introduction}{section.1}{}}
+\citation{nickel2015review,ji2021survey,wang2017knowledge}
+\citation{bordes2013translating}
+\citation{yang2014embedding}
+\citation{trouillon2016complex}
+\citation{sunrotate}
+\citation{schlichtkrull2018modeling}
+\citation{vashishthcomposition}
+\citation{sheikh2021knowledge}
+\citation{yang2017differentiable,meilicke2019anytime,cheng2023neural}
+\citation{devlin2019bert,gu2021domain,luo2022biogpt,wang2022simkgc,wei2026kicgptv2,zhang2024making,liu2024finetuning,wang2024kc}
+\citation{xiao2025drkgc}
+\citation{hulora}
+\citation{zadeh1965fuzzy}
+\citation{prade1980fuzzy,hajek2001metamathematics,straccia2006fuzzy,lukasiewicz2008managing}
+\citation{bordes2013translating}
+\citation{yang2014embedding}
+\citation{trouillon2016complex}
+\citation{sunrotate}
+\citation{schlichtkrull2018modeling}
+\citation{vashishthcomposition}
+\citation{sheikh2021knowledge}
+\citation{yang2017differentiable,meilicke2019anytime,cheng2023neural}
+\citation{himmelstein2017systematic,sadegh2020exploring,ashburn2004drug,pushpakom2019drug}
+\citation{devlin2019bert,gu2021domain,luo2022biogpt,wang2022simkgc,wei2026kicgptv2,zhang2024making,liu2024finetuning,wang2024kc}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{3}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{2}{3}{Related Work}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Structure-based biomedical KGC}{3}{subsection.2.1}\protected@file@percent }
+\citation{xiao2025drkgc}
+\citation{hulora}
+\citation{xiao2024fuselinker}
+\citation{lewis2020retrieval}
+\citation{pan2024unifying}
+\citation{zadeh1965fuzzy}
+\citation{prade1980fuzzy,hajek2001metamathematics,straccia2006fuzzy,lukasiewicz2008managing}
+\citation{lan2020complexfkg}
+\citation{pham2022picturefuzzyclinical,khan2026novel}
+\citation{xiao2025drkgc}
+\citation{schlichtkrull2018modeling}
+\citation{trouillon2016complex}
+\citation{yang2014embedding}
+\citation{sheikh2021knowledge}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Text and graph-augmented LLMs}{4}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Soft evidence for graph-LLM completion}{4}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Methods}{4}{section.3}\protected@file@percent }
+\newlabel{sec:methods}{{3}{4}{Methods}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}DrKGC{}-style graph-LLM backbone}{4}{subsection.3.1}\protected@file@percent }
+\newlabel{eq:candidate_list}{{1}{5}{\drkgc {}-style graph-LLM backbone}{equation.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Overview of the SoftFuse-KGC{} framework}{5}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Soft support candidate reranking}{5}{subsection.3.3}\protected@file@percent }
+\newlabel{eq:evidence_support}{{2}{5}{Soft support candidate reranking}{equation.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {SoftFuse-KGC{} framework for evidence-calibrated biomedical graph-augmented LLM completion.} \textbf  {A. Biomedical backbone preparation} builds the BKG, graph-compatible drug ranker, graph embeddings, path rules, and question templates. \textbf  {B. Candidate and evidence retrieval} converts a therapeutic query into a top-20 candidate list and source evidence subgraph. \textbf  {C. SoftFuse-KGC{} evidence calibration} includes C1 soft support reranking, which combines a rank prior, decomposed positive support, shortcut penalties, and contradiction signals, and C2 confidence-aware fuzzy retrieval, which selects compact evidence using candidate bands, candidate and query incidence, shortcut, conflict, and density cues. \textbf  {D. Graph-enhanced candidate-constrained generation} passes the calibrated candidates and selected graph through the graph adapter and LoRA-tuned LLM to predict one drug}}{6}{figure.1}\protected@file@percent }
+\newlabel{fig:framework}{{1}{6}{\textbf {\softfuse {} framework for evidence-calibrated biomedical graph-augmented LLM completion.} \textbf {A. Biomedical backbone preparation} builds the BKG, graph-compatible drug ranker, graph embeddings, path rules, and question templates. \textbf {B. Candidate and evidence retrieval} converts a therapeutic query into a top-20 candidate list and source evidence subgraph. \textbf {C. \softfuse {} evidence calibration} includes C1 soft support reranking, which combines a rank prior, decomposed positive support, shortcut penalties, and contradiction signals, and C2 confidence-aware fuzzy retrieval, which selects compact evidence using candidate bands, candidate and query incidence, shortcut, conflict, and density cues. \textbf {D. Graph-enhanced candidate-constrained generation} passes the calibrated candidates and selected graph through the graph adapter and LoRA-tuned LLM to predict one drug}{figure.1}{}}
+\newlabel{eq:path_support}{{3}{6}{Soft support candidate reranking}{equation.3}{}}
+\newlabel{eq:schema_support}{{4}{6}{Soft support candidate reranking}{equation.4}{}}
+\newlabel{eq:density_support}{{5}{6}{Soft support candidate reranking}{equation.5}{}}
+\newlabel{eq:shortcut_penalty}{{6}{7}{Soft support candidate reranking}{equation.6}{}}
+\newlabel{eq:conflict_penalty}{{7}{7}{Soft support candidate reranking}{equation.7}{}}
+\newlabel{eq:soft_general}{{8}{7}{Soft support candidate reranking}{equation.8}{}}
+\newlabel{eq:tie_break}{{9}{7}{Soft support candidate reranking}{equation.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Confidence-aware fuzzy retrieval}{7}{subsection.3.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces \textbf  {Soft support calibration favors graded reranking over a hard filter.} Panel (a) compares the raw DrKGC{}-style source, hard ontology filtering, a contrastive support variant, and the selected soft support b050 setting on PrimeKG validation candidate metrics. Panel (b) reports the top-five direct-link rate. The selected setting preserves Gold@20, improves rank quality, and reduces shortcut exposure, illustrating why the final score combines positive support $E_i(q)$ with shortcut and contradiction penalties instead of applying a binary keep-or-discard rule}}{8}{figure.2}\protected@file@percent }
+\newlabel{fig:soft}{{2}{8}{\textbf {Soft support calibration favors graded reranking over a hard filter.} Panel (a) compares the raw \drkgc {}-style source, hard ontology filtering, a contrastive support variant, and the selected soft support b050 setting on PrimeKG validation candidate metrics. Panel (b) reports the top-five direct-link rate. The selected setting preserves Gold@20, improves rank quality, and reduces shortcut exposure, illustrating why the final score combines positive support $E_i(q)$ with shortcut and contradiction penalties instead of applying a binary keep-or-discard rule}{figure.2}{}}
+\newlabel{eq:band}{{10}{8}{Confidence-aware fuzzy retrieval}{equation.10}{}}
+\newlabel{eq:edge_score}{{11}{8}{Confidence-aware fuzzy retrieval}{equation.11}{}}
+\newlabel{eq:edge_touch}{{12}{8}{Confidence-aware fuzzy retrieval}{equation.12}{}}
+\newlabel{eq:edge_density}{{13}{8}{Confidence-aware fuzzy retrieval}{equation.13}{}}
+\newlabel{eq:fuzzy_select}{{14}{8}{Confidence-aware fuzzy retrieval}{equation.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces \textbf  {Confidence-aware fuzzy retrieval selects the compact evidence package used after soft support.} The diagnostic plot compares the soft-support source graph with fuzzy retrieval variants in terms of average subgraph size, direct-shortcut exposure, and candidate coverage. Because fuzzy retrieval preserves the soft-support candidate order, the selected variant is chosen for graph efficiency and evidence cleanliness while maintaining Gold@20, MRR@20, and candidate coverage}}{9}{figure.3}\protected@file@percent }
+\newlabel{fig:fuzzy}{{3}{9}{\textbf {Confidence-aware fuzzy retrieval selects the compact evidence package used after soft support.} The diagnostic plot compares the soft-support source graph with fuzzy retrieval variants in terms of average subgraph size, direct-shortcut exposure, and candidate coverage. Because fuzzy retrieval preserves the soft-support candidate order, the selected variant is chosen for graph efficiency and evidence cleanliness while maintaining Gold@20, MRR@20, and candidate coverage}{figure.3}{}}
+\newlabel{eq:fuzzy_candidate}{{15}{9}{Confidence-aware fuzzy retrieval}{equation.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Graph-adapter-enhanced generation}{9}{subsection.3.5}\protected@file@percent }
+\citation{hulora}
+\citation{chandak2023building}
+\citation{zheng2021pharmkg}
+\citation{himmelstein2017systematic}
+\citation{drkg2020}
+\citation{wishart2018drugbank}
+\citation{brown2017standard}
+\citation{bodenreider2004unified}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \textbf  {Summary of the five biomedical evaluation datasets.} Train, validation, and test values count target-relation triples. Candidates are the size of the restricted drug or compound universe. Graph edges, entities, and relations describe the prepared training/evidence graph after validation and test target edges were excluded.}}{10}{table.1}\protected@file@percent }
+\newlabel{tab:dataset_summary}{{1}{10}{\textbf {Summary of the five biomedical evaluation datasets.} Train, validation, and test values count target-relation triples. Candidates are the size of the restricted drug or compound universe. Graph edges, entities, and relations describe the prepared training/evidence graph after validation and test target edges were excluded}{table.1}{}}
+\newlabel{eq:adapter}{{16}{10}{Graph-adapter-enhanced generation}{equation.16}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experimental Results}{10}{section.4}\protected@file@percent }
+\newlabel{sec:results}{{4}{10}{Experimental Results}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Datasets and task setting}{10}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:study_datasets}{{4.1}{10}{Datasets and task setting}{subsection.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Evaluation metrics}{11}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:evaluation_protocol}{{4.2}{11}{Evaluation metrics}{subsection.4.2}{}}
+\newlabel{eq:rr}{{17}{11}{Evaluation metrics}{equation.17}{}}
+\newlabel{eq:mrr}{{18}{11}{Evaluation metrics}{equation.18}{}}
+\newlabel{eq:hits}{{19}{11}{Evaluation metrics}{equation.19}{}}
+\newlabel{eq:gold}{{20}{11}{Evaluation metrics}{equation.20}{}}
+\newlabel{eq:e2e_rank}{{21}{11}{Evaluation metrics}{equation.21}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \textbf  {Fixed top-20 candidate-ranking comparison across five biomedical datasets.} All values are test metrics under the same absent-gold rank-21 rule. Metrics marked with ($\uparrow $) are better when larger. Bold marks the best value for each dataset and metric. SoftFuse-KGC{} is the main graph-compatible row and should be interpreted as an evidence-calibrated DrKGC{}-style source, not as a universal replacement for the strongest structure-only candidate generator.}}{12}{table.2}\protected@file@percent }
+\newlabel{tab:candidate_baselines}{{2}{12}{\textbf {Fixed top-20 candidate-ranking comparison across five biomedical datasets.} All values are test metrics under the same absent-gold rank-21 rule. Metrics marked with ($\uparrow $) are better when larger. Bold marks the best value for each dataset and metric. \softfuse {} is the main graph-compatible row and should be interpreted as an evidence-calibrated \drkgc {}-style source, not as a universal replacement for the strongest structure-only candidate generator}{table.2}{}}
+\newlabel{eq:e2e_rr}{{22}{12}{Evaluation metrics}{equation.22}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Candidate stage comparison with structure baselines}{12}{subsection.4.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \textbf  {End-to-end module comparison for the graph-LLM pipeline.} Gold@20, candidate MRR@20, and E2E MRR@20 are higher-is-better metrics ($\uparrow $), whereas average graph size is lower-is-better ($\downarrow $). E2E MRR@20 uses Llama 3.2 3B candidate-constrained generation with the adjusted-rank rule defined in Section~\ref {sec:evaluation_protocol}. Bold marks the best row for each dataset and metric where the comparison is meaningful.}}{13}{table.3}\protected@file@percent }
+\newlabel{tab:module_results}{{3}{13}{\textbf {End-to-end module comparison for the graph-LLM pipeline.} Gold@20, candidate MRR@20, and E2E MRR@20 are higher-is-better metrics ($\uparrow $), whereas average graph size is lower-is-better ($\downarrow $). E2E MRR@20 uses Llama 3.2 3B candidate-constrained generation with the adjusted-rank rule defined in Section~\ref {sec:evaluation_protocol}. Bold marks the best row for each dataset and metric where the comparison is meaningful}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}End-to-end graph-LLM pipeline comparison}{13}{subsection.4.4}\protected@file@percent }
+\citation{sweetenham1993pacet}
+\citation{bagley1972lymphosarcoma}
+\citation{mclaughlin1994fnd}
+\citation{fisher1993chop}
+\citation{bayer1992bleomycin}
+\citation{fraenkel20212021}
+\citation{jick1965dexamethasone}
+\citation{blyth1994rheumatoidknee}
+\citation{boers2022gloria}
+\citation{buttgereit2008capra1}
+\citation{fraenkel20212021,weinblatt1994methotrexate,van2007efficacy}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces \textbf  {PrimeKG diagnostic cases of candidate promotion and evidence compression.} Base and Soft denote gold-drug ranks before and after soft-support reranking; Removed is the number of triples discarded by fuzzy retrieval. These cases audit rank and evidence changes rather than provide treatment recommendations.}}{14}{table.4}\protected@file@percent }
+\newlabel{tab:case_rank}{{4}{14}{\textbf {PrimeKG diagnostic cases of candidate promotion and evidence compression.} Base and Soft denote gold-drug ranks before and after soft-support reranking; Removed is the number of triples discarded by fuzzy retrieval. These cases audit rank and evidence changes rather than provide treatment recommendations}{table.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Case studies}{14}{subsection.4.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces \textbf  {Case-study evidence graphs for lymphosarcoma / Vincristine and rheumatoid arthritis / Methotrexate.} Circles denote drugs, squares denote diseases, and triangles denote genes or proteins. Thick solid edges show evidence selected by fuzzy retrieval, whereas dashed edges show additional local context. Black outlines identify the query disease and gold drug, making rank changes and retained evidence auditable}}{15}{figure.4}\protected@file@percent }
+\newlabel{fig:case}{{4}{15}{\textbf {Case-study evidence graphs for lymphosarcoma / Vincristine and rheumatoid arthritis / Methotrexate.} Circles denote drugs, squares denote diseases, and triangles denote genes or proteins. Thick solid edges show evidence selected by fuzzy retrieval, whereas dashed edges show additional local context. Black outlines identify the query disease and gold drug, making rank changes and retained evidence auditable}{figure.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \textbf  {Internal graph evidence and external plausibility evidence for case-study candidates.} Candidate drugs come from the corresponding SoftFuse-KGC{} ranked lists, and internal evidence is extracted from the fuzzy-retrieved graph. The external evidence column provides a literature citation and PubMed identifier for candidate--disease plausibility or related clinical context. These references support plausibility checking and auditability, not prospective clinical validation, graph-edge provenance, or treatment recommendations.}}{15}{table.5}\protected@file@percent }
+\newlabel{tab:case_evidence}{{5}{15}{\textbf {Internal graph evidence and external plausibility evidence for case-study candidates.} Candidate drugs come from the corresponding \softfuse {} ranked lists, and internal evidence is extracted from the fuzzy-retrieved graph. The external evidence column provides a literature citation and PubMed identifier for candidate--disease plausibility or related clinical context. These references support plausibility checking and auditability, not prospective clinical validation, graph-edge provenance, or treatment recommendations}{table.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{16}{section.5}\protected@file@percent }
+\newlabel{sec:discussion}{{5}{16}{Discussion}{section.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{17}{section.6}\protected@file@percent }
+\newlabel{sec:conclusion}{{6}{17}{Conclusion}{section.6}{}}
+\@writefile{toc}{\contentsline {subparagraph}{Supplementary Information}{17}{section*.2}\protected@file@percent }
+\bibdata{sn-bibliography}
+\bibcite{nickel2015review}{{1}{2015}{{Nickel et~al.}}{{}}}
+\bibcite{ji2021survey}{{2}{2021}{{Ji et~al.}}{{}}}
+\bibcite{hogan2021knowledge}{{3}{2021}{{Hogan et~al.}}{{}}}
+\bibcite{himmelstein2017systematic}{{4}{2017}{{Himmelstein et~al.}}{{}}}
+\bibcite{chandak2023building}{{5}{2023}{{Chandak et~al.}}{{}}}
+\bibcite{zheng2021pharmkg}{{6}{2021}{{Zheng et~al.}}{{}}}
+\bibcite{drkg2020}{{7}{2020}{{Ioannidis et~al.}}{{}}}
+\bibcite{brown2017standard}{{8}{2017}{{Brown and Patel}}{{}}}
+\bibcite{bodenreider2004unified}{{9}{2004}{{Bodenreider}}{{}}}
+\bibcite{pinero2020disgenet}{{10}{2020}{{Pi{\~n}ero et~al.}}{{}}}
+\bibcite{uniprot2018uniprot}{{11}{2017}{{{The UniProt Consortium}}}{{}}}
+\bibcite{amberger2019omim}{{12}{2019}{{Amberger et~al.}}{{}}}
+\bibcite{wishart2018drugbank}{{13}{2018}{{Wishart et~al.}}{{}}}
+\bibcite{kuhn2014stitch}{{14}{2014}{{Kuhn et~al.}}{{}}}
+\bibcite{szklarczyk2021string}{{15}{2021}{{Szklarczyk et~al.}}{{}}}
+\bibcite{wang2017knowledge}{{16}{2017}{{Wang et~al.}}{{}}}
+\bibcite{bordes2013translating}{{17}{2013}{{Bordes et~al.}}{{}}}
+\bibcite{yang2014embedding}{{18}{2015}{{Yang et~al.}}{{}}}
+\bibcite{trouillon2016complex}{{19}{2016}{{Trouillon et~al.}}{{}}}
+\bibcite{sunrotate}{{20}{2019}{{Sun et~al.}}{{}}}
+\bibcite{schlichtkrull2018modeling}{{21}{2018}{{Schlichtkrull et~al.}}{{}}}
+\bibcite{vashishthcomposition}{{22}{2020}{{Vashishth et~al.}}{{}}}
+\bibcite{sheikh2021knowledge}{{23}{2020}{{Sheikh et~al.}}{{}}}
+\bibcite{yang2017differentiable}{{24}{2017}{{Yang et~al.}}{{}}}
+\bibcite{meilicke2019anytime}{{25}{2019}{{Meilicke et~al.}}{{}}}
+\bibcite{cheng2023neural}{{26}{2023}{{Cheng et~al.}}{{}}}
+\bibcite{devlin2019bert}{{27}{2019}{{Devlin et~al.}}{{}}}
+\bibcite{gu2021domain}{{28}{2021}{{Gu et~al.}}{{}}}
+\bibcite{luo2022biogpt}{{29}{2022}{{Luo et~al.}}{{}}}
+\bibcite{wang2022simkgc}{{30}{2022}{{Wang et~al.}}{{}}}
+\bibcite{wei2026kicgptv2}{{31}{2026}{{Wei et~al.}}{{}}}
+\bibcite{zhang2024making}{{32}{2024}{{Zhang et~al.}}{{}}}
+\bibcite{liu2024finetuning}{{33}{2024}{{Liu et~al.}}{{}}}
+\bibcite{wang2024kc}{{34}{2024}{{Wang et~al.}}{{}}}
+\bibcite{xiao2025drkgc}{{35}{2025}{{Xiao et~al.}}{{}}}
+\bibcite{hulora}{{36}{2022}{{Hu et~al.}}{{}}}
+\bibcite{zadeh1965fuzzy}{{37}{1965}{{Zadeh}}{{}}}
+\bibcite{prade1980fuzzy}{{38}{1980}{{Dubois and Prade}}{{}}}
+\bibcite{hajek2001metamathematics}{{39}{1998}{{H{\'a}jek}}{{}}}
+\bibcite{straccia2006fuzzy}{{40}{2006}{{Straccia}}{{}}}
+\bibcite{lukasiewicz2008managing}{{41}{2008}{{Lukasiewicz and Straccia}}{{}}}
+\bibcite{sadegh2020exploring}{{42}{2020}{{Sadegh et~al.}}{{}}}
+\bibcite{ashburn2004drug}{{43}{2004}{{Ashburn and Thor}}{{}}}
+\bibcite{pushpakom2019drug}{{44}{2019}{{Pushpakom et~al.}}{{}}}
+\bibcite{xiao2024fuselinker}{{45}{2024}{{Xiao et~al.}}{{}}}
+\bibcite{lewis2020retrieval}{{46}{2020}{{Lewis et~al.}}{{}}}
+\bibcite{pan2024unifying}{{47}{2024}{{Pan et~al.}}{{}}}
+\bibcite{lan2020complexfkg}{{48}{2020}{{Lan et~al.}}{{}}}
+\bibcite{pham2022picturefuzzyclinical}{{49}{2022}{{Pham et~al.}}{{}}}
+\bibcite{khan2026novel}{{50}{2026}{{Khan et~al.}}{{}}}
+\bibcite{sweetenham1993pacet}{{51}{1993}{{Sweetenham et~al.}}{{}}}
+\bibcite{bagley1972lymphosarcoma}{{52}{1972}{{Bagley~Jr et~al.}}{{}}}
+\bibcite{mclaughlin1994fnd}{{53}{1994}{{McLaughlin et~al.}}{{}}}
+\bibcite{fisher1993chop}{{54}{1993}{{Fisher et~al.}}{{}}}
+\bibcite{bayer1992bleomycin}{{55}{1992}{{Bayer et~al.}}{{}}}
+\bibcite{fraenkel20212021}{{56}{2021}{{Fraenkel et~al.}}{{}}}
+\bibcite{jick1965dexamethasone}{{57}{1965}{{Jick et~al.}}{{}}}
+\bibcite{blyth1994rheumatoidknee}{{58}{1994}{{Blyth et~al.}}{{}}}
+\bibcite{boers2022gloria}{{59}{2022}{{Boers et~al.}}{{}}}
+\bibcite{buttgereit2008capra1}{{60}{2008}{{Buttgereit et~al.}}{{}}}
+\bibcite{weinblatt1994methotrexate}{{61}{1994}{{Weinblatt et~al.}}{{}}}
+\bibcite{van2007efficacy}{{62}{2007}{{van Dongen et~al.}}{{}}}
+\gdef \@abspage@last{23}
