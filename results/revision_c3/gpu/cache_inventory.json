@@ -1,0 +1,31 @@
+{
+  "datasets": [
+    {
+      "dataset": "primekg",
+      "unique_cached_predictions": 9444,
+      "cache_file": "results/revision_c3/gpu/cache/primekg_f24b652e024ddebd.jsonl"
+    },
+    {
+      "dataset": "pharmkg",
+      "unique_cached_predictions": 6300,
+      "cache_file": "results/revision_c3/gpu/cache/pharmkg_814b747bf5dc623a.jsonl"
+    },
+    {
+      "dataset": "hetionet",
+      "unique_cached_predictions": 959,
+      "cache_file": "results/revision_c3/gpu/cache/hetionet_bd5f6a3c3ca25cb8.jsonl"
+    },
+    {
+      "dataset": "drkg",
+      "unique_cached_predictions": 7206,
+      "cache_file": "results/revision_c3/gpu/cache/drkg_db5c45e1d7790b95.jsonl"
+    },
+    {
+      "dataset": "repodb",
+      "unique_cached_predictions": 6455,
+      "cache_file": "results/revision_c3/gpu/cache/repodb_959b2a3c6716857f.jsonl"
+    }
+  ],
+  "total_unique_cached_predictions": 30364,
+  "note": "Distinct model/input cache records; not independent test samples."
+}

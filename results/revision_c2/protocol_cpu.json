@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "datasets": [
+    "primekg",
+    "pharmkg",
+    "hetionet",
+    "drkg",
+    "repodb"
+  ],
+  "seed": 20261105,
+  "folds": 5,
+  "steps": 250,
+  "bootstrap": 2000,
+  "repeats": 5,
+  "l2_grid": [
+    0.001,
+    0.01,
+    0.1,
+    1.0
+  ],
+  "native_beta": [
+    0.0,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    1.0,
+    2.0
+  ],
+  "native_gamma": [
+    0.0,
+    0.1,
+    0.2,
+    0.5
+  ],
+  "native_mu": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    0.8,
+    0.9,
+    0.95,
+    1.0
+  ],
+  "fractions": [
+    0.1,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "jitter_sigma": [
+    0.05,
+    0.1,
+    0.25,
+    0.5
+  ],
+  "candidate_features": [
+    "rank_prior",
+    "source_contact",
+    "source_degree_log",
+    "shared_neighbor_log",
+    "negative_direct_contact"
+  ],
+  "edge_features": [
+    "rank_band",
+    "candidate_incidence",
+    "query_incidence",
+    "negative_direct_contact",
+    "degree_log"
+  ],
+  "edge_default": [
+    1.0,
+    0.35,
+    0.05,
+    0.8,
+    0.05
+  ],
+  "learned_objective": "pairwise logistic, nonnegative coefficients on signed features, L2",
+  "selection": "query-group CV on existing validation only; never test-score selection",
+  "transfer": "LODO: no target dataset validation labels in fit or hyperparameter selection",
+  "scope": "Retrospective calibration study on already-used benchmarks, not a new prospective holdout",
+  "code_sha256": {
+    "common.py": "3ee78ad2a2ce8572a65875cc13464c840787e9bbbccde8333401be0ad32419de",
+    "run_cpu.py": "823e5b2bb4c10f8aed8637ee94faa99258608de885ec43ca1c81a953151b4a11"
+  },
+  "environment": {
+    "python": "3.12.13",
+    "numpy": "2.4.4",
+    "git_head": "5dd8f23ee60513471ea9e8b9cc4ea5ff5ff0f8be"
+  }
+}

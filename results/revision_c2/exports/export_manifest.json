@@ -1,0 +1,23 @@
+{
+  "cpu_status": "complete",
+  "e2e_status": "complete",
+  "e2e_directory": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c2/e2e",
+  "files": [
+    "REPORT.md",
+    "candidate_mrr.svg",
+    "comment2_results.xlsx",
+    "e2e_paired_contrasts.csv",
+    "edge_calibration_selection.csv",
+    "edge_validation_trials.csv",
+    "export_manifest.json",
+    "label_efficiency.svg",
+    "label_efficiency_summary.csv",
+    "learning_vs_equal.csv",
+    "report.html",
+    "sensitivity_summary.csv",
+    "table_candidate_main.csv",
+    "table_candidate_main.tex",
+    "table_e2e.tex",
+    "transfer_matrix.csv"
+  ]
+}

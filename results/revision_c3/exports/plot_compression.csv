@@ -1,0 +1,6 @@
+dataset,retained,removed_unique,duplicates
+primekg,32.34,5.753999999999998,21.838
+pharmkg,55.0,45.0,0.0
+hetionet,44.0,36.0,0.0
+drkg,55.0,45.0,0.0
+repodb,55.0,45.0,0.0

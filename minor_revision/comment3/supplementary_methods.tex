@@ -1,0 +1,132 @@
+\subsection{Information retention and alternative subgraph selectors}
+
+We assess evidence compression at three separate levels: retained graph
+structure, the representations supplied by the frozen graph encoder, and
+generated answers. All comparisons fix the candidate identities and their
+ordering to the original fuzzy input. For repoDB this is the original
+raw/display-control ordering. Candidate ranking metrics are therefore invariant
+by construction and are not used as evidence of information retention.
+
+\paragraph{Source graphs and matched budgets.}
+We distinguish the multiset of retrieved edge occurrences from the set of unique
+directed, relation-labeled triples. Two uncompressed references retain either
+the full multiset or only unique triples. The original fuzzy graph is read
+directly from its archived artifact. For each query, all compressed alternatives
+select exactly the number of unique triples in that artifact from the same
+unique source-edge set. The empty-graph diagnostic removes local message
+passing while retaining frozen global entity embeddings. These uncompressed
+and empty references are not treated as matched-budget competitors.
+
+\paragraph{Alternative selection strategies.}
+The alternatives include uniform random sampling without replacement;
+random ordering followed by candidate/query coverage; top-$B$ native-score
+selection without coverage; native-score selection with a strict coverage-then-fill
+pass; endpoint-degree top-$B$; query-centered breadth-first ordering;
+query-personalized PageRank; terminal-personalized PageRank; shortest-path
+preservation; and relation-stratified selection. Native scores are recovered
+from archived features/scores, with exact triple and candidate alignment checks.
+The strict native-score coverage control is not claimed to reproduce every
+dataset-specific reservation pass of the original implementation.
+
+PageRank uses an unweighted undirected source graph, damping 0.85, and either
+the query alone or the query and present candidates as uniformly weighted
+teleportation nodes. Dangling mass returns to the teleportation distribution.
+Iteration stops at an L1 change below $10^{-10}$ or after 200 iterations.
+Edges are ranked by the sum of endpoint scores. The shortest-path selector
+considers candidates in their fixed order, adds one shortest path of length at
+most three if the complete path fits the remaining budget, and fills remaining
+slots by native score. Relation-stratified selection cycles over relation IDs,
+ranking edges within each stratum by native score. Stable source-index
+tie-breaking is used unless the explicitly seeded random ordering applies.
+No selector accesses the held-out gold label.
+
+Five random seeds are evaluated at the native budget. Additional strict-budget
+curves use 20\%, 35\%, 55\%, 75\%, and 90\% of unique source edges, with three
+seeds for random selection. The main CPU study contains 62 variants per
+dataset/split across all five datasets and both validation and test. A separate
+60-row native-implementation audit calls the original selector functions,
+reproduces the archived edge sets at their native budgets, and varies only the
+requested budget. It preserves and reports any budget excess caused by the
+original reservation passes rather than silently imposing a new policy.
+
+\paragraph{Structural retention definitions.}
+Candidate coverage measures incidence to at least one retained edge and is
+reported both absolutely and relative to source-covered candidates, including
+top-, middle-, and tail-rank bands. Query coverage, unique-node retention,
+relation-type retention, and direct query--candidate exposure are reported
+separately. For $k\in\{2,3\}$, let $C_{\leq k}(G_q)$ be candidates reachable from
+the query within $k$ edges in the source graph and let $P_k(G_q)$ be its
+edge-labeled simple path witnesses of exactly $k$ edges ending at a candidate.
+We compute
+\[
+ R_{\mathrm{reach},k}(q)=
+ \frac{|C_{\leq k}(S_q)|}{|C_{\leq k}(G_q)|},\qquad
+ R_{\mathrm{path},k}(q)=
+ \frac{|\{p\in P_k(G_q):E(p)\subseteq E(S_q)\}|}{|P_k(G_q)|}.
+\]
+The walks are traversable in either direction; exact edge identities, relation
+labels, and traversal signs are retained. Consequently these quantities measure
+structural connectivity, not necessarily directed biochemical pathways. Typed
+pattern retention measures whether each source relation/sign sequence of
+length two or three still has at least one witness. A separate audit measures
+retention of unique incoming edges within two predecessor steps of the query
+and candidates, matching the two message-passing layers of the actual directed
+encoder more closely.
+
+Relation-frequency and node-incidence mass distributions are compared using
+base-2 Jensen--Shannon divergence. Rare-relation edge recall uses relations with
+source frequency at or below the per-query median. Explicit Gene annotations
+from DRKG/repoDB namespaces and unambiguous Hetionet metadata support an
+additional gene-intermediate path diagnostic; types are not inferred from
+gene-like names in PrimeKG or PharmKG. Gold-incident and gold-reachability
+statistics are computed only after selection and only when the gold is in the
+fixed candidate set and the relevant source denominator is nonzero.
+
+Any retention with a zero source denominator is undefined, omitted from the
+mean, and accompanied by its eligible sample count. The reported means are
+averages of per-query-row ratios, not ratios of pooled path counts. Quantiles,
+complete-loss fractions, source-query-presence strata, and gold-coverage strata
+supplement the aggregate results. Twenty illustrative cases are selected
+post hoc by fixed low/median/high structural-retention strata; they are not chosen
+for favorable generated answers or asserted biological mechanisms.
+
+\paragraph{Frozen-model evaluation and numerical audit.}
+The GPU study evaluates all 22 native-budget variants and six additional
+strict-budget variants (native-score coverage, terminal PageRank, and random
+seed zero at 35\% and 75\%) on the complete test split. The same frozen
+checkpoint, prompt, candidate order, and deterministic decoding settings apply
+to every selector within each dataset. We measure cosine similarity and
+relative L2 change of query/candidate adapter outputs against both source
+references. Generated-answer exact accuracy, invalid-output rate, top-candidate
+copying, normalized output agreement, and the explicitly standardized
+promote-to-front adjusted MRR are reported separately.
+
+A numerical audit found nine nonfinite FP16 encoder outputs for PrimeKG source
+graphs. FP32 encoder outputs were finite in all 4,200 source/fuzzy test-graph
+cases audited, but some projected values exceeded the FP16 exponent range.
+The final protocol therefore loads graph-encoder checkpoint weights in FP32
+and LLM weights in BF16, checks finiteness before and after projection casting,
+and performs neither clipping nor sample exclusion. Earlier FP16 prediction
+caches are not reused. This precision change is applied uniformly across all
+methods and is disclosed when comparing to historical results.
+
+The existing encoder falls back to global/global embeddings for graphs with at
+most ten edge occurrences; we explicitly report this condition at small
+budgets. An encoder benchmark uses up to 32 distinct query groups, three
+repetitions, warm-up calls, and CUDA synchronization. It includes graph
+construction, encoding, projection, and output transfer, but excludes LLM
+generation and must not be interpreted as end-to-end latency.
+CPU selection-call timings start after source-context construction and score
+loading; shared adjacency/path enumeration is excluded and ordering caches can
+be reused. These descriptive timings are not a total-runtime comparison of
+selection algorithms.
+
+\paragraph{Uncertainty and scope.}
+Paired query-cluster bootstrap intervals use 2,000 resamples so that rows sharing
+the same query remain together. Random-selector means additionally receive
+joint query-cluster/seed bootstrap intervals; seed standard deviations are
+reported separately. These are exploratory intervals without multiplicity
+adjustment. All methods, ratios, and seeds are declared before inference; no
+test-winning configuration is promoted to a new default. Retention is measured
+relative to retrieved source subgraphs and does not establish preservation of
+all KG facts, expert-validated mechanisms, or clinical utility.

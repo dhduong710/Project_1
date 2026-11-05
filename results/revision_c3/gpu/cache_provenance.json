@@ -1,0 +1,47 @@
+[
+  {
+    "dataset": "primekg",
+    "model_fingerprint": "f24b652e024ddebd93d17dd933828c8b5bd74b3933eb37430965a99165a2cecd",
+    "upstream_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c2/e2e/cache/primekg_f24b652e024ddebd.jsonl",
+    "upstream_cache_sha256": null,
+    "imported_predictions": 0,
+    "new_generations_this_invocation": 0,
+    "gpu_name": "NVIDIA GeForce RTX 4090"
+  },
+  {
+    "dataset": "pharmkg",
+    "model_fingerprint": "814b747bf5dc623ad1f272a333a02839979ce1609907a5476d154cb55bad5ead",
+    "upstream_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c2/e2e/cache/pharmkg_814b747bf5dc623a.jsonl",
+    "upstream_cache_sha256": null,
+    "imported_predictions": 0,
+    "new_generations_this_invocation": 0,
+    "gpu_name": "NVIDIA GeForce RTX 4090"
+  },
+  {
+    "dataset": "hetionet",
+    "model_fingerprint": "bd5f6a3c3ca25cb855587e7cb9db5beb1ff4724511778fb036900fe9cbca3e3c",
+    "upstream_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c2/e2e/cache/hetionet_bd5f6a3c3ca25cb8.jsonl",
+    "upstream_cache_sha256": null,
+    "imported_predictions": 0,
+    "new_generations_this_invocation": 0,
+    "gpu_name": "NVIDIA GeForce RTX 4090"
+  },
+  {
+    "dataset": "drkg",
+    "model_fingerprint": "db5c45e1d7790b95eca266eef0587d0250db02514fec1bf92dfd8f2587a29991",
+    "upstream_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c2/e2e/cache/drkg_db5c45e1d7790b95.jsonl",
+    "upstream_cache_sha256": null,
+    "imported_predictions": 0,
+    "new_generations_this_invocation": 0,
+    "gpu_name": "NVIDIA GeForce RTX 4090"
+  },
+  {
+    "dataset": "repodb",
+    "model_fingerprint": "959b2a3c6716857fa0f3ef281822afe20f1cb1933b54e576765f4cf9de6b6ccf",
+    "upstream_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c2/e2e/cache/repodb_959b2a3c6716857f.jsonl",
+    "upstream_cache_sha256": null,
+    "imported_predictions": 0,
+    "new_generations_this_invocation": 2136,
+    "gpu_name": "NVIDIA GeForce RTX 4090"
+  }
+]

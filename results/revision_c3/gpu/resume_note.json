@@ -1,0 +1,9 @@
+{
+  "first_session": 30531,
+  "exit_code": 143,
+  "last_completed_variant_seen": "repodb/random_coverage_s0",
+  "resumed_with_identical_command": true,
+  "protocol_and_cache_unchanged": true,
+  "timing_note": "gpu_complete.seconds covers the final successful invocation only; cache_provenance new_generations_this_invocation is not the total cache size.",
+  "cause": "Termination signal observed; cause not established from application logs."
+}

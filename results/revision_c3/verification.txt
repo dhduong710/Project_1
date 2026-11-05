@@ -1,0 +1,1 @@
+PASS: frozen code/inputs; 620 CPU summaries and 260400 row/variant records; strict budgets; 140 full GPU summaries; predictions/rescoring/aggregates; finite representation metrics; XLSX.

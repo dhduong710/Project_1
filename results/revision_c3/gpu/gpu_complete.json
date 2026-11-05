@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "datasets": [
+    "primekg",
+    "pharmkg",
+    "hetionet",
+    "drkg",
+    "repodb"
+  ],
+  "metric_rows": 140,
+  "variants_per_dataset": 28,
+  "all_test_rows": true,
+  "seconds": 311.99
+}

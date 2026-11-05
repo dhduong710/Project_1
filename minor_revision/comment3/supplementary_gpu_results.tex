@@ -1,0 +1,88 @@
+% Full-test figures must be checked against gpu_complete.json before submission.
+\subsection{Frozen-model representation and generated-answer results}
+
+The completed GPU study comprises 28 variants on each of five datasets,
+yielding 140 summaries and 58,800 row--variant evaluations of the same 2,100
+test rows. Every comparison uses the same dataset-specific checkpoint and
+fixed candidate order. The precision policy is FP32 for graph encoding and
+BF16 for the LLM throughout; no old FP16 predictions are substituted.
+
+\begin{table}[t]
+\centering\small
+\caption{Exact generated-answer accuracy (\%) under the standardized matching
+rule. Random rows average all five seeds. Source raw/unique and empty local
+graph are diagnostic references with different budgets; the other rows use
+matched unique-edge budgets. These are new frozen-model diagnostics, not replacements for
+historical tables computed with other precision or scoring rules.}
+\label{tab:c3-accuracy}
+\resizebox{\textwidth}{!}{\input{../../results/revision_c3/exports/table_accuracy_compact.tex}}
+\end{table}
+
+\begin{table}[t]
+\centering\small
+\caption{Original fuzzy versus the uncompressed source: encoder output changes
+and normalized generated-answer agreement. Candidate metrics average the 20
+candidate embeddings within each row, then average rows. A cosine near one
+does not exclude a change in vector magnitude; relative L2 is reported
+separately.}
+\label{tab:c3-encoder}
+\resizebox{\textwidth}{!}{\input{../../results/revision_c3/exports/table_encoder_compact.tex}}
+\end{table}
+
+\paragraph{Structural loss and output invariance are distinct.}
+On Hetionet, original fuzzy retrieval preserves the candidate encoder outputs
+(mean cosine 1.0000, relative L2 0.0000) and all generated answers relative to
+the source graph. Nevertheless, query outputs change (mean cosine 0.9209,
+relative L2 0.3259), and all eligible length-three path witnesses are lost.
+Thus even exact candidate-output agreement cannot be interpreted as whole-graph
+information preservation. Directed message passing, global embeddings, and
+which nodes are injected into the prompt all affect how a structural change
+propagates to generation.
+
+DRKG likewise has 100\% generated-answer agreement for fuzzy versus source,
+although mean query and candidate cosines are 0.9312 and 0.9867; their relative
+L2 changes are 0.3834 and 0.0526. On PrimeKG and PharmKG, answer agreement is only 78.8\% and
+80.0\%, respectively. Their candidate cosines are 0.9453 and 0.9991, while
+query cosines are lower at 0.8828 and 0.8718. These results show why candidate
+similarity alone is insufficient to characterize information supplied to the
+LLM.
+
+On repoDB, fuzzy/source answer agreement is 80.8\%, with query/candidate
+cosines of 0.9814/0.9806. Fuzzy generates 2/500 exact answers, compared with
+1/500 for source raw, 11/500 for native-score top-$k$, and 9/500 for the
+empty-local-graph reference. The latter retains frozen global embeddings;
+it is not a knowledge-free model. These counterexamples are reported without
+selecting a new method using test outcomes.
+
+\paragraph{Downstream differences do not establish a universal winner.}
+The exact-accuracy comparison does not show consistent superiority of fuzzy
+over all alternative selectors. Several differences correspond to only one
+correct answer in a 500-row test set. For example, fuzzy produces 0/500,
+1/500, 3/100, and 7/500 correct answers on PrimeKG, PharmKG, Hetionet, and
+DRKG, respectively. The joint query/seed and paired query bootstrap tables
+are supplied alongside these point estimates; lack of a detected difference
+is not a demonstration of equivalence. These low counts limit conclusions
+about small downstream improvements.
+
+Adjusted MRR is intentionally kept separate from exact accuracy. It assigns
+credit based on the pre-existing candidate order after a predicted candidate
+is promoted to the front, with zero credit when the gold is absent from the
+candidate set. It can remain positive when no generated answer is correct.
+Under the strict normalized matching rule, 59.0\% of PharmKG fuzzy outputs
+do not match a listed candidate. This is an output-format/matching diagnostic,
+not evidence that those outputs are valid biological alternatives. The full
+workbook includes invalid-output and top-candidate-copy rates for every variant.
+
+\paragraph{Numerical and computational scope.}
+The FP16 audit failure is localized to nine PrimeKG source-graph cases among
+the 4,200 source/fuzzy cases checked; the paired FP32 audit contains no
+nonfinite outputs. The maximum finite FP32 projection magnitude is
+130,444.35, exceeding the FP16 maximum of 65,504, motivating the BF16 LLM
+input policy as well as FP32 graph computation. Final inference checks
+finiteness before and after casting. All test rows remain included.
+
+The accompanying benchmark reports graph-encoder call timing and resident
+plus peak allocated CUDA memory, with the LLM already resident but generation
+excluded. It does not establish an end-to-end LLM speedup. The full predictions,
+input hashes, model fingerprints, seed results, and completion markers are
+retained for audit and reproducibility.

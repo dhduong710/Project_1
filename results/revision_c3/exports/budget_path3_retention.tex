@@ -1,0 +1,36 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage{pgfplots}\usepgfplotslibrary{groupplots}\pgfplotsset{compat=1.18}
+\begin{document}\begin{tikzpicture}
+
+\begin{groupplot}[group style={group size=3 by 2,horizontal sep=1.4cm,vertical sep=1.5cm},width=5.5cm,height=4.5cm,xmin=.15,xmax=.95,ymin=0,ymax=1.05,grid=major,unbounded coords=jump,xlabel={Unique-edge budget ratio},ylabel={Retention},tick label style={font=\scriptsize},label style={font=\scriptsize},title style={font=\small},legend style={font=\tiny,at={(.02,.02)},anchor=south west}]
+\nextgroupplot[title={primekg}]
+\addplot+[color=blue,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_primekg_native_coverage.csv};
+\addplot+[color=gray,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_primekg_random.csv};
+\addplot+[color=orange,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_primekg_ppr_terminals.csv};
+\addplot+[color=teal,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_primekg_shortest_paths.csv};
+\nextgroupplot[title={pharmkg}]
+\addplot+[color=blue,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_pharmkg_native_coverage.csv};
+\addplot+[color=gray,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_pharmkg_random.csv};
+\addplot+[color=orange,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_pharmkg_ppr_terminals.csv};
+\addplot+[color=teal,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_pharmkg_shortest_paths.csv};
+\nextgroupplot[title={hetionet}]
+\addplot+[color=blue,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_hetionet_native_coverage.csv};
+\addplot+[color=gray,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_hetionet_random.csv};
+\addplot+[color=orange,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_hetionet_ppr_terminals.csv};
+\addplot+[color=teal,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_hetionet_shortest_paths.csv};
+\nextgroupplot[title={drkg}]
+\addplot+[color=blue,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_drkg_native_coverage.csv};
+\addplot+[color=gray,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_drkg_random.csv};
+\addplot+[color=orange,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_drkg_ppr_terminals.csv};
+\addplot+[color=teal,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_drkg_shortest_paths.csv};
+\nextgroupplot[title={repodb}]
+\addplot+[color=blue,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_repodb_native_coverage.csv};
+\addplot+[color=gray,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_repodb_random.csv};
+\addplot+[color=orange,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_repodb_ppr_terminals.csv};
+\addplot+[color=teal,mark=*,mark size=1.2pt,error bars/.cd,y dir=both,y explicit] table[x=x,y=y,y error=error,col sep=comma]{plot_path3_retention_repodb_shortest_paths.csv};
+\nextgroupplot[hide axis,xmin=0,xmax=1,ymin=0,ymax=1,legend style={font=\small,at={(.5,.5)},anchor=center}]
+\addlegendimage{color=blue,mark=*,line width=.6pt}\addlegendentry{Native coverage}
+\addlegendimage{color=gray,mark=*,line width=.6pt}\addlegendentry{Random}
+\addlegendimage{color=orange,mark=*,line width=.6pt}\addlegendentry{PPR terminals}
+\addlegendimage{color=teal,mark=*,line width=.6pt}\addlegendentry{Shortest paths}
+\end{groupplot}\end{tikzpicture}\end{document}

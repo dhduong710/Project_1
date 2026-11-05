@@ -1,0 +1,62 @@
+[
+  {
+    "dataset": "primekg",
+    "split": "valid",
+    "rows": 500,
+    "native_edge_set_replay_rate": 1.0
+  },
+  {
+    "dataset": "primekg",
+    "split": "test",
+    "rows": 500,
+    "native_edge_set_replay_rate": 1.0
+  },
+  {
+    "dataset": "pharmkg",
+    "split": "valid",
+    "rows": 500,
+    "native_edge_set_replay_rate": 1.0
+  },
+  {
+    "dataset": "pharmkg",
+    "split": "test",
+    "rows": 500,
+    "native_edge_set_replay_rate": 1.0
+  },
+  {
+    "dataset": "hetionet",
+    "split": "valid",
+    "rows": 100,
+    "native_edge_set_replay_rate": 1.0
+  },
+  {
+    "dataset": "hetionet",
+    "split": "test",
+    "rows": 100,
+    "native_edge_set_replay_rate": 1.0
+  },
+  {
+    "dataset": "drkg",
+    "split": "valid",
+    "rows": 500,
+    "native_edge_set_replay_rate": 1.0
+  },
+  {
+    "dataset": "drkg",
+    "split": "test",
+    "rows": 500,
+    "native_edge_set_replay_rate": 1.0
+  },
+  {
+    "dataset": "repodb",
+    "split": "valid",
+    "rows": 500,
+    "native_edge_set_replay_rate": 1.0
+  },
+  {
+    "dataset": "repodb",
+    "split": "test",
+    "rows": 500,
+    "native_edge_set_replay_rate": 1.0
+  }
+]

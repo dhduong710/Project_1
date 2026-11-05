@@ -40,3 +40,31 @@ dataset/setting_f_repodb/09_e2e_soft_support_ready/**/*.json
 dataset/setting_f_repodb/10_fuzzy_retrieval/**/*.json
 
 dataset/setting_f_repodb/11_e2e_fuzzy_retrieval_ready/rgcn/train.json
+
+# Reproducible revision C2 intermediates; summary tables/docs remain visible.
+results/revision_c2/orders/
+results/revision_c2/candidate_per_query.csv
+results/revision_c2/**/cache/
+results/revision_c2/**/predictions/
+results/revision_c2/e2e_smoke*/
+results/revision_c2/*.log
+results/revision_c2/*.pid
+results/revision_c2/gpu_log_path.txt
+results/revision_c2/.run.lock
+
+# Comment 3: keep summaries/reproducibility sources; omit bulky resumable intermediates.
+results/revision_c3/per_query/
+results/revision_c3/**/per_query/
+results/revision_c3/**/cache/
+results/revision_c3/**/predictions/
+results/revision_c3/smoke*/
+results/revision_c3/gpu_smoke*/
+results/revision_c3/gpu_failed*/
+results/revision_c3/*.log
+results/revision_c3/*.pid
+results/revision_c3/.run.lock
+results/revision_c3/exports/*.aux
+results/revision_c3/exports/*.log
+minor_revision/comment3/*.aux
+minor_revision/comment3/*.log
+minor_revision/comment3/*.out

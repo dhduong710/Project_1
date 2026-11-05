@@ -1,0 +1,3931 @@
+[
+  {
+    "dataset": "primekg",
+    "row": 20,
+    "selection_stratum": "lowest",
+    "query_id": 10391,
+    "query_name": "trichinosis",
+    "gold_name": "Prednisone",
+    "gold_used_for_selection": false,
+    "source_occurrences": 60,
+    "source_unique": 42,
+    "budget": 33,
+    "original_metrics": {
+      "source_unique_edges": 42,
+      "selected_unique_edges": 33,
+      "unique_edge_retention": 0.7857142857142857,
+      "node_retention": 0.9444444444444444,
+      "candidate_coverage_absolute": 0.8,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 1.0,
+      "relation_jsd": 0.0024317728160527918,
+      "degree_mass_jsd": 0.030730693284044822,
+      "typed_pattern_retention": 0.0,
+      "source_typed_patterns": 2,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.7631578947368421,
+      "source_incoming2_edges": 38,
+      "source_candidates_without_incoming": 0.75,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 0.6,
+      "source_reach2": 5,
+      "path3_retention": 0.0,
+      "source_paths3": 22,
+      "reach3_retention": 0.1875,
+      "source_reach3": 16,
+      "direct_edge_retention": 0.3,
+      "direct_edge_share": 0.09090909090909091,
+      "rare_relation_edge_retention": 1.0,
+      "source_edge_occurrences": 60,
+      "selected_edge_occurrences": 33,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.30000000000000004,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 1,
+      "gold_reach3_retention": 0,
+      "gold_incident_retention": 1.0
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 42,
+      "selected_unique_edges": 33,
+      "unique_edge_retention": 0.7857142857142857,
+      "node_retention": 0.9166666666666666,
+      "candidate_coverage_absolute": 0.8,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 1.0,
+      "relation_jsd": 0.007347443394072813,
+      "degree_mass_jsd": 0.0313356116806424,
+      "typed_pattern_retention": 0.5,
+      "source_typed_patterns": 2,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.8157894736842105,
+      "source_incoming2_edges": 38,
+      "source_candidates_without_incoming": 0.75,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 1.0,
+      "source_reach2": 5,
+      "path3_retention": 0.5,
+      "source_paths3": 22,
+      "reach3_retention": 1.0,
+      "source_reach3": 16,
+      "direct_edge_retention": 0.5,
+      "direct_edge_share": 0.15151515151515152,
+      "rare_relation_edge_retention": 1.0,
+      "source_edge_occurrences": 60,
+      "selected_edge_occurrences": 33,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.30000000000000004,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 1,
+      "gold_reach3_retention": 1,
+      "gold_incident_retention": 1.0
+    },
+    "retained_examples": [],
+    "lost_examples": [
+      {
+        "candidate_id": 8732,
+        "candidate_name": "Triamcinolone",
+        "length": 3,
+        "walk_nodes": [
+          "trichinosis",
+          "Methylprednisolone",
+          "autoimmune disease",
+          "Triamcinolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Methylprednisolone",
+            "relation": "indication",
+            "tail": "trichinosis"
+          },
+          {
+            "head": "Triamcinolone",
+            "relation": "indication",
+            "tail": "autoimmune disease"
+          },
+          {
+            "head": "autoimmune disease",
+            "relation": "indication",
+            "tail": "Methylprednisolone"
+          }
+        ]
+      },
+      {
+        "candidate_id": 8732,
+        "candidate_name": "Triamcinolone",
+        "length": 3,
+        "walk_nodes": [
+          "trichinosis",
+          "Methylprednisolone",
+          "autoimmune disease",
+          "Triamcinolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Triamcinolone",
+            "relation": "indication",
+            "tail": "autoimmune disease"
+          },
+          {
+            "head": "autoimmune disease",
+            "relation": "indication",
+            "tail": "Methylprednisolone"
+          },
+          {
+            "head": "trichinosis",
+            "relation": "indication",
+            "tail": "Methylprednisolone"
+          }
+        ]
+      },
+      {
+        "candidate_id": 6826,
+        "candidate_name": "Prednisolone",
+        "length": 3,
+        "walk_nodes": [
+          "trichinosis",
+          "Methylprednisolone",
+          "autoimmune disease",
+          "Prednisolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Methylprednisolone",
+            "relation": "indication",
+            "tail": "trichinosis"
+          },
+          {
+            "head": "autoimmune disease",
+            "relation": "indication",
+            "tail": "Methylprednisolone"
+          },
+          {
+            "head": "Prednisolone",
+            "relation": "indication",
+            "tail": "autoimmune disease"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "primekg",
+    "row": 30,
+    "selection_stratum": "second_lowest",
+    "query_id": 639,
+    "query_name": "Addison disease",
+    "gold_name": "Dexamethasone",
+    "gold_used_for_selection": false,
+    "source_occurrences": 57,
+    "source_unique": 41,
+    "budget": 31,
+    "original_metrics": {
+      "source_unique_edges": 41,
+      "selected_unique_edges": 31,
+      "unique_edge_retention": 0.7560975609756098,
+      "node_retention": 0.9090909090909091,
+      "candidate_coverage_absolute": 0.75,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 1.0,
+      "relation_jsd": 0.0034502415129520087,
+      "degree_mass_jsd": 0.03277897577933727,
+      "typed_pattern_retention": 0.6666666666666666,
+      "source_typed_patterns": 6,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.7435897435897436,
+      "source_incoming2_edges": 39,
+      "source_candidates_without_incoming": 0.6,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 1.0,
+      "source_paths2": 4,
+      "reach2_retention": 0.75,
+      "source_reach2": 8,
+      "path3_retention": 0.0,
+      "source_paths3": 12,
+      "reach3_retention": 0.42857142857142855,
+      "source_reach3": 14,
+      "direct_edge_retention": 0.5,
+      "direct_edge_share": 0.22580645161290322,
+      "rare_relation_edge_retention": 1.0,
+      "source_edge_occurrences": 57,
+      "selected_edge_occurrences": 31,
+      "occurrence_edge_retention": 0.543859649122807,
+      "source_duplicate_fraction": 0.2807017543859649,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 1,
+      "gold_reach3_retention": 1,
+      "gold_incident_retention": 1.0
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 41,
+      "selected_unique_edges": 31,
+      "unique_edge_retention": 0.7560975609756098,
+      "node_retention": 0.8787878787878788,
+      "candidate_coverage_absolute": 0.75,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.75,
+      "relation_jsd": 0.013006354567260101,
+      "degree_mass_jsd": 0.04228336537762007,
+      "typed_pattern_retention": 0.8333333333333334,
+      "source_typed_patterns": 6,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.7692307692307693,
+      "source_incoming2_edges": 39,
+      "source_candidates_without_incoming": 0.6,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 1.0,
+      "source_paths2": 4,
+      "reach2_retention": 1.0,
+      "source_reach2": 8,
+      "path3_retention": 0.5,
+      "source_paths3": 12,
+      "reach3_retention": 1.0,
+      "source_reach3": 14,
+      "direct_edge_retention": 0.6428571428571429,
+      "direct_edge_share": 0.2903225806451613,
+      "rare_relation_edge_retention": 0.6666666666666666,
+      "source_edge_occurrences": 57,
+      "selected_edge_occurrences": 31,
+      "occurrence_edge_retention": 0.543859649122807,
+      "source_duplicate_fraction": 0.2807017543859649,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 1,
+      "gold_reach3_retention": 1,
+      "gold_incident_retention": 1.0
+    },
+    "retained_examples": [],
+    "lost_examples": [
+      {
+        "candidate_id": 3121,
+        "candidate_name": "Fusidic acid",
+        "length": 3,
+        "walk_nodes": [
+          "Addison disease",
+          "Methylprednisolone",
+          "seborrheic dermatitis",
+          "Fusidic acid"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Methylprednisolone",
+            "relation": "indication",
+            "tail": "Addison disease"
+          },
+          {
+            "head": "Fusidic acid",
+            "relation": "indication",
+            "tail": "seborrheic dermatitis"
+          },
+          {
+            "head": "seborrheic dermatitis",
+            "relation": "indication",
+            "tail": "Methylprednisolone"
+          }
+        ]
+      },
+      {
+        "candidate_id": 3121,
+        "candidate_name": "Fusidic acid",
+        "length": 3,
+        "walk_nodes": [
+          "Addison disease",
+          "Methylprednisolone",
+          "seborrheic dermatitis",
+          "Fusidic acid"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Fusidic acid",
+            "relation": "indication",
+            "tail": "seborrheic dermatitis"
+          },
+          {
+            "head": "seborrheic dermatitis",
+            "relation": "indication",
+            "tail": "Methylprednisolone"
+          },
+          {
+            "head": "Addison disease",
+            "relation": "indication",
+            "tail": "Methylprednisolone"
+          }
+        ]
+      },
+      {
+        "candidate_id": 6828,
+        "candidate_name": "Prednisone",
+        "length": 3,
+        "walk_nodes": [
+          "Addison disease",
+          "Methylprednisolone",
+          "humoral hypercalcemia of malignancy",
+          "Prednisone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Methylprednisolone",
+            "relation": "indication",
+            "tail": "Addison disease"
+          },
+          {
+            "head": "Prednisone",
+            "relation": "indication",
+            "tail": "humoral hypercalcemia of malignancy"
+          },
+          {
+            "head": "humoral hypercalcemia of malignancy",
+            "relation": "indication",
+            "tail": "Methylprednisolone"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "primekg",
+    "row": 262,
+    "selection_stratum": "median",
+    "query_id": 9904,
+    "query_name": "malaria",
+    "gold_name": "Lumefantrine",
+    "gold_used_for_selection": false,
+    "source_occurrences": 59,
+    "source_unique": 37,
+    "budget": 32,
+    "original_metrics": {
+      "source_unique_edges": 37,
+      "selected_unique_edges": 32,
+      "unique_edge_retention": 0.8648648648648649,
+      "node_retention": 0.9473684210526315,
+      "candidate_coverage_absolute": 0.95,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 1.0,
+      "relation_jsd": 0.0004607243929401119,
+      "degree_mass_jsd": 0.029742048014820163,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 3,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.7777777777777778,
+      "source_incoming2_edges": 18,
+      "source_candidates_without_incoming": 1.0,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 1.0,
+      "source_paths2": 1,
+      "reach2_retention": 1.0,
+      "source_reach2": 1,
+      "path3_retention": 0.8333333333333334,
+      "source_paths3": 18,
+      "reach3_retention": 0.8421052631578947,
+      "source_reach3": 19,
+      "direct_edge_retention": null,
+      "direct_edge_share": 0.0,
+      "rare_relation_edge_retention": 0.8181818181818182,
+      "source_edge_occurrences": 59,
+      "selected_edge_occurrences": 32,
+      "occurrence_edge_retention": 0.5423728813559322,
+      "source_duplicate_fraction": 0.3728813559322034,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 37,
+      "selected_unique_edges": 32,
+      "unique_edge_retention": 0.8648648648648649,
+      "node_retention": 0.868421052631579,
+      "candidate_coverage_absolute": 0.9,
+      "candidate_coverage_retained": 0.9473684210526315,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 1.0,
+      "relation_jsd": 0.0004607243929401119,
+      "degree_mass_jsd": 0.057657033576219006,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 3,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.8333333333333334,
+      "source_incoming2_edges": 18,
+      "source_candidates_without_incoming": 1.0,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 0.8888888888888888,
+      "path2_retention": 1.0,
+      "source_paths2": 1,
+      "reach2_retention": 1.0,
+      "source_reach2": 1,
+      "path3_retention": 0.9444444444444444,
+      "source_paths3": 18,
+      "reach3_retention": 0.9473684210526315,
+      "source_reach3": 19,
+      "direct_edge_retention": null,
+      "direct_edge_share": 0.0,
+      "rare_relation_edge_retention": 0.8181818181818182,
+      "source_edge_occurrences": 59,
+      "selected_edge_occurrences": 32,
+      "occurrence_edge_retention": 0.5423728813559322,
+      "source_duplicate_fraction": 0.3728813559322034,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [
+      {
+        "candidate_id": 2042,
+        "candidate_name": "Cortisone acetate",
+        "length": 3,
+        "walk_nodes": [
+          "malaria",
+          "Chloroquine",
+          "rheumatoid arthritis",
+          "Cortisone acetate"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "rheumatoid arthritis",
+            "relation": "indication",
+            "tail": "Chloroquine"
+          },
+          {
+            "head": "Chloroquine",
+            "relation": "indication",
+            "tail": "malaria"
+          },
+          {
+            "head": "Cortisone acetate",
+            "relation": "indication",
+            "tail": "rheumatoid arthritis"
+          }
+        ]
+      },
+      {
+        "candidate_id": 5426,
+        "candidate_name": "Methylprednisolone",
+        "length": 3,
+        "walk_nodes": [
+          "malaria",
+          "Chloroquine",
+          "rheumatoid arthritis",
+          "Methylprednisolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "rheumatoid arthritis",
+            "relation": "indication",
+            "tail": "Chloroquine"
+          },
+          {
+            "head": "Chloroquine",
+            "relation": "indication",
+            "tail": "malaria"
+          },
+          {
+            "head": "Methylprednisolone",
+            "relation": "indication",
+            "tail": "rheumatoid arthritis"
+          }
+        ]
+      },
+      {
+        "candidate_id": 3824,
+        "candidate_name": "Hydrocortisone",
+        "length": 3,
+        "walk_nodes": [
+          "malaria",
+          "Chloroquine",
+          "rheumatoid arthritis",
+          "Hydrocortisone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "rheumatoid arthritis",
+            "relation": "indication",
+            "tail": "Chloroquine"
+          },
+          {
+            "head": "Chloroquine",
+            "relation": "indication",
+            "tail": "malaria"
+          },
+          {
+            "head": "Hydrocortisone",
+            "relation": "indication",
+            "tail": "rheumatoid arthritis"
+          }
+        ]
+      }
+    ],
+    "lost_examples": [
+      {
+        "candidate_id": 3121,
+        "candidate_name": "Fusidic acid",
+        "length": 3,
+        "walk_nodes": [
+          "malaria",
+          "Sulfisoxazole",
+          "urinary tract infection (disease)",
+          "Fusidic acid"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Fusidic acid",
+            "relation": "indication",
+            "tail": "urinary tract infection (disease)"
+          },
+          {
+            "head": "urinary tract infection (disease)",
+            "relation": "indication",
+            "tail": "Sulfisoxazole"
+          },
+          {
+            "head": "Sulfisoxazole",
+            "relation": "indication",
+            "tail": "malaria"
+          }
+        ]
+      },
+      {
+        "candidate_id": 6847,
+        "candidate_name": "Propranolol",
+        "length": 3,
+        "walk_nodes": [
+          "malaria",
+          "NOS2",
+          "hypertensive disorder",
+          "Propranolol"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "NOS2",
+            "relation": "associated_with",
+            "tail": "malaria"
+          },
+          {
+            "head": "Propranolol",
+            "relation": "indication",
+            "tail": "hypertensive disorder"
+          },
+          {
+            "head": "hypertensive disorder",
+            "relation": "associated_with",
+            "tail": "NOS2"
+          }
+        ]
+      },
+      {
+        "candidate_id": 2374,
+        "candidate_name": "Desonide",
+        "length": 3,
+        "walk_nodes": [
+          "malaria",
+          "CRP",
+          "Crohn disease",
+          "Desonide"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Desonide",
+            "relation": "indication",
+            "tail": "Crohn disease"
+          },
+          {
+            "head": "Crohn disease",
+            "relation": "associated_with",
+            "tail": "CRP"
+          },
+          {
+            "head": "CRP",
+            "relation": "associated_with",
+            "tail": "malaria"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "primekg",
+    "row": 498,
+    "selection_stratum": "highest",
+    "query_id": 9329,
+    "query_name": "atopic conjunctivitis",
+    "gold_name": "Antazoline",
+    "gold_used_for_selection": false,
+    "source_occurrences": 52,
+    "source_unique": 35,
+    "budget": 29,
+    "original_metrics": {
+      "source_unique_edges": 35,
+      "selected_unique_edges": 29,
+      "unique_edge_retention": 0.8285714285714286,
+      "node_retention": 0.8928571428571429,
+      "candidate_coverage_absolute": 0.65,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 1.0,
+      "relation_jsd": 0.0,
+      "degree_mass_jsd": 0.03056707543461274,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 2,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.8333333333333334,
+      "source_incoming2_edges": 30,
+      "source_candidates_without_incoming": 0.7,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 1.0,
+      "source_reach2": 6,
+      "path3_retention": 1.0,
+      "source_paths3": 11,
+      "reach3_retention": 1.0,
+      "source_reach3": 13,
+      "direct_edge_retention": 0.75,
+      "direct_edge_share": 0.3103448275862069,
+      "rare_relation_edge_retention": 0.8285714285714286,
+      "source_edge_occurrences": 52,
+      "selected_edge_occurrences": 29,
+      "occurrence_edge_retention": 0.5576923076923077,
+      "source_duplicate_fraction": 0.32692307692307687,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 35,
+      "selected_unique_edges": 29,
+      "unique_edge_retention": 0.8285714285714286,
+      "node_retention": 0.8928571428571429,
+      "candidate_coverage_absolute": 0.65,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 1.0,
+      "relation_jsd": 0.0,
+      "degree_mass_jsd": 0.03056707543461274,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 2,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.8333333333333334,
+      "source_incoming2_edges": 30,
+      "source_candidates_without_incoming": 0.7,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 1.0,
+      "source_reach2": 6,
+      "path3_retention": 1.0,
+      "source_paths3": 11,
+      "reach3_retention": 1.0,
+      "source_reach3": 13,
+      "direct_edge_retention": 0.75,
+      "direct_edge_share": 0.3103448275862069,
+      "rare_relation_edge_retention": 0.8285714285714286,
+      "source_edge_occurrences": 52,
+      "selected_edge_occurrences": 29,
+      "occurrence_edge_retention": 0.5576923076923077,
+      "source_duplicate_fraction": 0.32692307692307687,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [
+      {
+        "candidate_id": 8732,
+        "candidate_name": "Triamcinolone",
+        "length": 3,
+        "walk_nodes": [
+          "atopic conjunctivitis",
+          "Phenyltoloxamine",
+          "allergic rhinitis",
+          "Triamcinolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "allergic rhinitis",
+            "relation": "indication",
+            "tail": "Phenyltoloxamine"
+          },
+          {
+            "head": "Phenyltoloxamine",
+            "relation": "indication",
+            "tail": "atopic conjunctivitis"
+          },
+          {
+            "head": "Triamcinolone",
+            "relation": "indication",
+            "tail": "allergic rhinitis"
+          }
+        ]
+      },
+      {
+        "candidate_id": 5426,
+        "candidate_name": "Methylprednisolone",
+        "length": 3,
+        "walk_nodes": [
+          "atopic conjunctivitis",
+          "Phenyltoloxamine",
+          "allergic rhinitis",
+          "Methylprednisolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Methylprednisolone",
+            "relation": "indication",
+            "tail": "allergic rhinitis"
+          },
+          {
+            "head": "allergic rhinitis",
+            "relation": "indication",
+            "tail": "Phenyltoloxamine"
+          },
+          {
+            "head": "Phenyltoloxamine",
+            "relation": "indication",
+            "tail": "atopic conjunctivitis"
+          }
+        ]
+      },
+      {
+        "candidate_id": 8666,
+        "candidate_name": "Tetracycline",
+        "length": 3,
+        "walk_nodes": [
+          "atopic conjunctivitis",
+          "Fusidic acid",
+          "bronchitis",
+          "Tetracycline"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Fusidic acid",
+            "relation": "indication",
+            "tail": "atopic conjunctivitis"
+          },
+          {
+            "head": "bronchitis",
+            "relation": "indication",
+            "tail": "Fusidic acid"
+          },
+          {
+            "head": "Tetracycline",
+            "relation": "indication",
+            "tail": "bronchitis"
+          }
+        ]
+      }
+    ],
+    "lost_examples": []
+  },
+  {
+    "dataset": "pharmkg",
+    "row": 7,
+    "selection_stratum": "lowest",
+    "query_id": 206,
+    "query_name": "agoraphobia",
+    "gold_name": "alprazolam",
+    "gold_used_for_selection": false,
+    "source_occurrences": 100,
+    "source_unique": 100,
+    "budget": 55,
+    "original_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.6633663366336634,
+      "candidate_coverage_absolute": 1.0,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 0,
+      "query_coverage_retained": 0,
+      "relation_retention": 0.5454545454545454,
+      "relation_jsd": 0.14076820412278454,
+      "degree_mass_jsd": 0.17502544719363777,
+      "typed_pattern_retention": 0.0,
+      "source_typed_patterns": 12,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.54,
+      "source_incoming2_edges": 50,
+      "source_candidates_without_incoming": 0.75,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 0.0,
+      "source_paths2": 13,
+      "reach2_retention": 0.0,
+      "source_reach2": 14,
+      "path3_retention": 0.0,
+      "source_paths3": 6,
+      "reach3_retention": 0.0,
+      "source_reach3": 20,
+      "direct_edge_retention": 0.0,
+      "direct_edge_share": 0.0,
+      "rare_relation_edge_retention": 0.5833333333333334,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.5544554455445545,
+      "candidate_coverage_absolute": 1.0,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 1.0,
+      "relation_jsd": 0.09711229116497258,
+      "degree_mass_jsd": 0.15184894517600914,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 12,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.46,
+      "source_incoming2_edges": 50,
+      "source_candidates_without_incoming": 0.75,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 1.0,
+      "source_paths2": 13,
+      "reach2_retention": 1.0,
+      "source_reach2": 14,
+      "path3_retention": 1.0,
+      "source_paths3": 6,
+      "reach3_retention": 1.0,
+      "source_reach3": 20,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.01818181818181818,
+      "rare_relation_edge_retention": 1.0,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [],
+    "lost_examples": [
+      {
+        "candidate_id": 3439,
+        "candidate_name": "iron",
+        "length": 3,
+        "walk_nodes": [
+          "agoraphobia",
+          "ketamine",
+          "cd4",
+          "iron"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "iron",
+            "relation": "B",
+            "tail": "cd4"
+          },
+          {
+            "head": "ketamine",
+            "relation": "A",
+            "tail": "cd4"
+          },
+          {
+            "head": "ketamine",
+            "relation": "Sa",
+            "tail": "agoraphobia"
+          }
+        ]
+      },
+      {
+        "candidate_id": 5367,
+        "candidate_name": "prednisone",
+        "length": 3,
+        "walk_nodes": [
+          "agoraphobia",
+          "caffeine",
+          "metal metabolism inborn errors",
+          "prednisone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "caffeine",
+            "relation": "T",
+            "tail": "agoraphobia"
+          },
+          {
+            "head": "prednisone",
+            "relation": "C",
+            "tail": "metal metabolism inborn errors"
+          },
+          {
+            "head": "caffeine",
+            "relation": "T",
+            "tail": "metal metabolism inborn errors"
+          }
+        ]
+      },
+      {
+        "candidate_id": 4137,
+        "candidate_name": "methotrexate",
+        "length": 3,
+        "walk_nodes": [
+          "agoraphobia",
+          "sertraline",
+          "nr3c1",
+          "methotrexate"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "methotrexate",
+            "relation": "A",
+            "tail": "nr3c1"
+          },
+          {
+            "head": "sertraline",
+            "relation": "A",
+            "tail": "nr3c1"
+          },
+          {
+            "head": "sertraline",
+            "relation": "T",
+            "tail": "agoraphobia"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "pharmkg",
+    "row": 9,
+    "selection_stratum": "second_lowest",
+    "query_id": 290,
+    "query_name": "alkalosis",
+    "gold_name": "chlorothiazide",
+    "gold_used_for_selection": false,
+    "source_occurrences": 100,
+    "source_unique": 100,
+    "budget": 55,
+    "original_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.6534653465346535,
+      "candidate_coverage_absolute": 1.0,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 0,
+      "query_coverage_retained": 0,
+      "relation_retention": 0.5833333333333334,
+      "relation_jsd": 0.13327662747132038,
+      "degree_mass_jsd": 0.1662864212854917,
+      "typed_pattern_retention": 0.0,
+      "source_typed_patterns": 10,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.5,
+      "source_incoming2_edges": 56,
+      "source_candidates_without_incoming": 0.55,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 0.0,
+      "source_paths2": 14,
+      "reach2_retention": 0.0,
+      "source_reach2": 17,
+      "path3_retention": 0.0,
+      "source_paths3": 3,
+      "reach3_retention": 0.0,
+      "source_reach3": 20,
+      "direct_edge_retention": 0.0,
+      "direct_edge_share": 0.0,
+      "rare_relation_edge_retention": 0.5454545454545454,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.5544554455445545,
+      "candidate_coverage_absolute": 1.0,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.9166666666666666,
+      "relation_jsd": 0.06359660909947908,
+      "degree_mass_jsd": 0.14765393014083625,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 10,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.5357142857142857,
+      "source_incoming2_edges": 56,
+      "source_candidates_without_incoming": 0.55,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 1.0,
+      "source_paths2": 14,
+      "reach2_retention": 1.0,
+      "source_reach2": 17,
+      "path3_retention": 1.0,
+      "source_paths3": 3,
+      "reach3_retention": 1.0,
+      "source_reach3": 20,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.05454545454545454,
+      "rare_relation_edge_retention": 0.8181818181818182,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [],
+    "lost_examples": [
+      {
+        "candidate_id": 7113,
+        "candidate_name": "vitamin e",
+        "length": 3,
+        "walk_nodes": [
+          "alkalosis",
+          "pth",
+          "ccl2",
+          "vitamin e"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "pth",
+            "relation": "P",
+            "tail": "alkalosis"
+          },
+          {
+            "head": "vitamin e",
+            "relation": "B",
+            "tail": "ccl2"
+          },
+          {
+            "head": "ccl2",
+            "relation": "E",
+            "tail": "pth"
+          }
+        ]
+      },
+      {
+        "candidate_id": 4137,
+        "candidate_name": "methotrexate",
+        "length": 3,
+        "walk_nodes": [
+          "alkalosis",
+          "nitric oxide",
+          "nr3c1",
+          "methotrexate"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "nitric oxide",
+            "relation": "T",
+            "tail": "alkalosis"
+          },
+          {
+            "head": "methotrexate",
+            "relation": "A",
+            "tail": "nr3c1"
+          },
+          {
+            "head": "nitric oxide",
+            "relation": "E",
+            "tail": "nr3c1"
+          }
+        ]
+      },
+      {
+        "candidate_id": 2767,
+        "candidate_name": "glutathione",
+        "length": 3,
+        "walk_nodes": [
+          "alkalosis",
+          "adenosine",
+          "gja1",
+          "glutathione"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "glutathione",
+            "relation": "B",
+            "tail": "gja1"
+          },
+          {
+            "head": "adenosine",
+            "relation": "E",
+            "tail": "gja1"
+          },
+          {
+            "head": "adenosine",
+            "relation": "Sa",
+            "tail": "alkalosis"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "pharmkg",
+    "row": 312,
+    "selection_stratum": "median",
+    "query_id": 4347,
+    "query_name": "muscular dystrophies",
+    "gold_name": "allopurinol",
+    "gold_used_for_selection": false,
+    "source_occurrences": 100,
+    "source_unique": 100,
+    "budget": 55,
+    "original_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.66,
+      "candidate_coverage_absolute": 1.0,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.6666666666666666,
+      "relation_jsd": 0.08911011941960394,
+      "degree_mass_jsd": 0.14763600767721535,
+      "typed_pattern_retention": 0.0,
+      "source_typed_patterns": 10,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.5636363636363636,
+      "source_incoming2_edges": 55,
+      "source_candidates_without_incoming": 0.7,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 0.0,
+      "source_paths2": 17,
+      "reach2_retention": 0.05555555555555555,
+      "source_reach2": 18,
+      "path3_retention": 0.0,
+      "source_paths3": 2,
+      "reach3_retention": 0.05,
+      "source_reach3": 20,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.01818181818181818,
+      "rare_relation_edge_retention": 0.5,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.56,
+      "candidate_coverage_absolute": 1.0,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.9166666666666666,
+      "relation_jsd": 0.08380260159671946,
+      "degree_mass_jsd": 0.14888052792815581,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 10,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.5272727272727272,
+      "source_incoming2_edges": 55,
+      "source_candidates_without_incoming": 0.7,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 1.0,
+      "source_paths2": 17,
+      "reach2_retention": 1.0,
+      "source_reach2": 18,
+      "path3_retention": 1.0,
+      "source_paths3": 2,
+      "reach3_retention": 1.0,
+      "source_reach3": 20,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.01818181818181818,
+      "rare_relation_edge_retention": 0.7857142857142857,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [],
+    "lost_examples": [
+      {
+        "candidate_id": 7113,
+        "candidate_name": "vitamin e",
+        "length": 3,
+        "walk_nodes": [
+          "muscular dystrophies",
+          "creatine",
+          "ccl2",
+          "vitamin e"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "vitamin e",
+            "relation": "B",
+            "tail": "ccl2"
+          },
+          {
+            "head": "creatine",
+            "relation": "B",
+            "tail": "ccl2"
+          },
+          {
+            "head": "creatine",
+            "relation": "T",
+            "tail": "muscular dystrophies"
+          }
+        ]
+      },
+      {
+        "candidate_id": 4137,
+        "candidate_name": "methotrexate",
+        "length": 3,
+        "walk_nodes": [
+          "muscular dystrophies",
+          "oxandrolone",
+          "nr3c1",
+          "methotrexate"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "oxandrolone",
+            "relation": "T",
+            "tail": "muscular dystrophies"
+          },
+          {
+            "head": "methotrexate",
+            "relation": "A",
+            "tail": "nr3c1"
+          },
+          {
+            "head": "oxandrolone",
+            "relation": "B",
+            "tail": "nr3c1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "pharmkg",
+    "row": 475,
+    "selection_stratum": "highest",
+    "query_id": 6953,
+    "query_name": "tumor lysis syndrome",
+    "gold_name": "calcitriol",
+    "gold_used_for_selection": false,
+    "source_occurrences": 100,
+    "source_unique": 100,
+    "budget": 55,
+    "original_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.6326530612244898,
+      "candidate_coverage_absolute": 1.0,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.6363636363636364,
+      "relation_jsd": 0.07543378481623329,
+      "degree_mass_jsd": 0.13869508025075244,
+      "typed_pattern_retention": 0.0,
+      "source_typed_patterns": 9,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.5245901639344263,
+      "source_incoming2_edges": 61,
+      "source_candidates_without_incoming": 0.9,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 0.0,
+      "source_paths2": 14,
+      "reach2_retention": 0.2631578947368421,
+      "source_reach2": 19,
+      "path3_retention": 0.0,
+      "source_paths3": 3,
+      "reach3_retention": 0.25,
+      "source_reach3": 20,
+      "direct_edge_retention": 0.7142857142857143,
+      "direct_edge_share": 0.09090909090909091,
+      "rare_relation_edge_retention": 0.7058823529411765,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.5714285714285714,
+      "candidate_coverage_absolute": 1.0,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.9090909090909091,
+      "relation_jsd": 0.06637060054549258,
+      "degree_mass_jsd": 0.140333134497605,
+      "typed_pattern_retention": 0.7777777777777778,
+      "source_typed_patterns": 9,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 0.0,
+      "incoming2_retention": 0.5573770491803278,
+      "source_incoming2_edges": 61,
+      "source_candidates_without_incoming": 0.9,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 0.9285714285714286,
+      "source_paths2": 14,
+      "reach2_retention": 1.0,
+      "source_reach2": 19,
+      "path3_retention": 0.3333333333333333,
+      "source_paths3": 3,
+      "reach3_retention": 1.0,
+      "source_reach3": 20,
+      "direct_edge_retention": 0.8571428571428571,
+      "direct_edge_share": 0.10909090909090909,
+      "rare_relation_edge_retention": 0.9411764705882353,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [],
+    "lost_examples": [
+      {
+        "candidate_id": 1969,
+        "candidate_name": "dopamine",
+        "length": 3,
+        "walk_nodes": [
+          "tumor lysis syndrome",
+          "docetaxel",
+          "esr2",
+          "dopamine"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "dopamine",
+            "relation": "A",
+            "tail": "esr2"
+          },
+          {
+            "head": "esr2",
+            "relation": "I",
+            "tail": "docetaxel"
+          },
+          {
+            "head": "docetaxel",
+            "relation": "T",
+            "tail": "tumor lysis syndrome"
+          }
+        ]
+      },
+      {
+        "candidate_id": 6619,
+        "candidate_name": "testosterone",
+        "length": 3,
+        "walk_nodes": [
+          "tumor lysis syndrome",
+          "nilotinib",
+          "dexamethasone",
+          "testosterone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "testosterone",
+            "relation": "CC",
+            "tail": "dexamethasone"
+          },
+          {
+            "head": "nilotinib",
+            "relation": "T",
+            "tail": "tumor lysis syndrome"
+          },
+          {
+            "head": "dexamethasone",
+            "relation": "CC",
+            "tail": "nilotinib"
+          }
+        ]
+      },
+      {
+        "candidate_id": 4124,
+        "candidate_name": "metformin",
+        "length": 3,
+        "walk_nodes": [
+          "tumor lysis syndrome",
+          "nilotinib",
+          "dexamethasone",
+          "metformin"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "metformin",
+            "relation": "CC",
+            "tail": "dexamethasone"
+          },
+          {
+            "head": "nilotinib",
+            "relation": "T",
+            "tail": "tumor lysis syndrome"
+          },
+          {
+            "head": "dexamethasone",
+            "relation": "CC",
+            "tail": "nilotinib"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "hetionet",
+    "row": 0,
+    "selection_stratum": "lowest",
+    "query_id": 14784,
+    "query_name": "breast cancer",
+    "gold_name": "Goserelin",
+    "gold_used_for_selection": false,
+    "source_occurrences": 80,
+    "source_unique": 80,
+    "budget": 44,
+    "original_metrics": {
+      "source_unique_edges": 80,
+      "selected_unique_edges": 44,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.6111111111111112,
+      "candidate_coverage_absolute": 0.5,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.8,
+      "relation_jsd": 0.0340917440646831,
+      "degree_mass_jsd": 0.13133485912481113,
+      "typed_pattern_retention": 0.3333333333333333,
+      "source_typed_patterns": 3,
+      "gene_path_retention": 1.0,
+      "source_gene_paths": 1,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.3333333333333333,
+      "source_incoming2_edges": 6,
+      "source_candidates_without_incoming": 1.0,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 1.0,
+      "source_paths2": 1,
+      "reach2_retention": 0.5,
+      "source_reach2": 6,
+      "path3_retention": 0.0,
+      "source_paths3": 11,
+      "reach3_retention": 0.3,
+      "source_reach3": 10,
+      "direct_edge_retention": 0.3333333333333333,
+      "direct_edge_share": 0.045454545454545456,
+      "rare_relation_edge_retention": 0.3333333333333333,
+      "source_edge_occurrences": 80,
+      "selected_edge_occurrences": 44,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 80,
+      "selected_unique_edges": 44,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.5694444444444444,
+      "candidate_coverage_absolute": 0.5,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.8,
+      "relation_jsd": 0.05684926355904237,
+      "degree_mass_jsd": 0.14194034919503337,
+      "typed_pattern_retention": 0.6666666666666666,
+      "source_typed_patterns": 3,
+      "gene_path_retention": 0.0,
+      "source_gene_paths": 1,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 1.0,
+      "source_incoming2_edges": 6,
+      "source_candidates_without_incoming": 1.0,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 0.0,
+      "source_paths2": 1,
+      "reach2_retention": 1.0,
+      "source_reach2": 6,
+      "path3_retention": 0.8181818181818182,
+      "source_paths3": 11,
+      "reach3_retention": 1.0,
+      "source_reach3": 10,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.13636363636363635,
+      "rare_relation_edge_retention": 0.6666666666666666,
+      "source_edge_occurrences": 80,
+      "selected_edge_occurrences": 44,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [],
+    "lost_examples": [
+      {
+        "candidate_id": 14024,
+        "candidate_name": "Doxorubicin",
+        "length": 3,
+        "walk_nodes": [
+          "breast cancer",
+          "Dexamethasone",
+          "ABCB11",
+          "Doxorubicin"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Dexamethasone",
+            "relation": "CpD",
+            "tail": "breast cancer"
+          },
+          {
+            "head": "Doxorubicin",
+            "relation": "CbG",
+            "tail": "ABCB11"
+          },
+          {
+            "head": "Dexamethasone",
+            "relation": "CbG",
+            "tail": "ABCB11"
+          }
+        ]
+      },
+      {
+        "candidate_id": 14024,
+        "candidate_name": "Doxorubicin",
+        "length": 3,
+        "walk_nodes": [
+          "breast cancer",
+          "Dexamethasone",
+          "CYP2B6",
+          "Doxorubicin"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Dexamethasone",
+            "relation": "CpD",
+            "tail": "breast cancer"
+          },
+          {
+            "head": "Doxorubicin",
+            "relation": "CbG",
+            "tail": "CYP2B6"
+          },
+          {
+            "head": "Dexamethasone",
+            "relation": "CbG",
+            "tail": "CYP2B6"
+          }
+        ]
+      },
+      {
+        "candidate_id": 13893,
+        "candidate_name": "Prednisolone",
+        "length": 3,
+        "walk_nodes": [
+          "breast cancer",
+          "Betamethasone",
+          "CYP3A4",
+          "Prednisolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Betamethasone",
+            "relation": "CpD",
+            "tail": "breast cancer"
+          },
+          {
+            "head": "Prednisolone",
+            "relation": "CbG",
+            "tail": "CYP3A4"
+          },
+          {
+            "head": "Betamethasone",
+            "relation": "CbG",
+            "tail": "CYP3A4"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "hetionet",
+    "row": 1,
+    "selection_stratum": "second_lowest",
+    "query_id": 14842,
+    "query_name": "rheumatoid arthritis",
+    "gold_name": "Cyclosporine",
+    "gold_used_for_selection": false,
+    "source_occurrences": 80,
+    "source_unique": 80,
+    "budget": 44,
+    "original_metrics": {
+      "source_unique_edges": 80,
+      "selected_unique_edges": 44,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.5774647887323944,
+      "candidate_coverage_absolute": 0.4,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.75,
+      "relation_jsd": 0.07333217938186916,
+      "degree_mass_jsd": 0.14863204342283529,
+      "typed_pattern_retention": 0.0,
+      "source_typed_patterns": 1,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.0,
+      "source_incoming2_edges": 4,
+      "source_candidates_without_incoming": 1.0,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 0.0,
+      "source_reach2": 4,
+      "path3_retention": 0.0,
+      "source_paths3": 27,
+      "reach3_retention": 0.0,
+      "source_reach3": 7,
+      "direct_edge_retention": 0.0,
+      "direct_edge_share": 0.0,
+      "rare_relation_edge_retention": 0.3333333333333333,
+      "source_edge_occurrences": 80,
+      "selected_edge_occurrences": 44,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 80,
+      "selected_unique_edges": 44,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.5211267605633803,
+      "candidate_coverage_absolute": 0.4,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 1.0,
+      "relation_jsd": 0.07099390891030158,
+      "degree_mass_jsd": 0.1612769401845676,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 1,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 1.0,
+      "source_incoming2_edges": 4,
+      "source_candidates_without_incoming": 1.0,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 1.0,
+      "source_reach2": 4,
+      "path3_retention": 0.8148148148148148,
+      "source_paths3": 27,
+      "reach3_retention": 1.0,
+      "source_reach3": 7,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.09090909090909091,
+      "rare_relation_edge_retention": 1.0,
+      "source_edge_occurrences": 80,
+      "selected_edge_occurrences": 44,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [],
+    "lost_examples": [
+      {
+        "candidate_id": 13987,
+        "candidate_name": "Methylprednisolone",
+        "length": 3,
+        "walk_nodes": [
+          "rheumatoid arthritis",
+          "Prednisolone",
+          "CYP3A4",
+          "Methylprednisolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Prednisolone",
+            "relation": "CtD",
+            "tail": "rheumatoid arthritis"
+          },
+          {
+            "head": "Methylprednisolone",
+            "relation": "CbG",
+            "tail": "CYP3A4"
+          },
+          {
+            "head": "Prednisolone",
+            "relation": "CbG",
+            "tail": "CYP3A4"
+          }
+        ]
+      },
+      {
+        "candidate_id": 13987,
+        "candidate_name": "Methylprednisolone",
+        "length": 3,
+        "walk_nodes": [
+          "rheumatoid arthritis",
+          "Prednisolone",
+          "ABCB1",
+          "Methylprednisolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Prednisolone",
+            "relation": "CtD",
+            "tail": "rheumatoid arthritis"
+          },
+          {
+            "head": "Methylprednisolone",
+            "relation": "CbG",
+            "tail": "ABCB1"
+          },
+          {
+            "head": "Prednisolone",
+            "relation": "CbG",
+            "tail": "ABCB1"
+          }
+        ]
+      },
+      {
+        "candidate_id": 13987,
+        "candidate_name": "Methylprednisolone",
+        "length": 3,
+        "walk_nodes": [
+          "rheumatoid arthritis",
+          "Triamcinolone",
+          "CYP3A4",
+          "Methylprednisolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Triamcinolone",
+            "relation": "CtD",
+            "tail": "rheumatoid arthritis"
+          },
+          {
+            "head": "Methylprednisolone",
+            "relation": "CbG",
+            "tail": "CYP3A4"
+          },
+          {
+            "head": "Triamcinolone",
+            "relation": "CbG",
+            "tail": "CYP3A4"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "hetionet",
+    "row": 52,
+    "selection_stratum": "median",
+    "query_id": 14815,
+    "query_name": "atopic dermatitis",
+    "gold_name": "Mometasone",
+    "gold_used_for_selection": false,
+    "source_occurrences": 80,
+    "source_unique": 80,
+    "budget": 44,
+    "original_metrics": {
+      "source_unique_edges": 80,
+      "selected_unique_edges": 44,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.6285714285714286,
+      "candidate_coverage_absolute": 0.4,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 1.0,
+      "relation_jsd": 0.013601863937046122,
+      "degree_mass_jsd": 0.12834828944208668,
+      "typed_pattern_retention": 0.0,
+      "source_typed_patterns": 1,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.16666666666666666,
+      "source_incoming2_edges": 6,
+      "source_candidates_without_incoming": 1.0,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 0.16666666666666666,
+      "source_reach2": 6,
+      "path3_retention": 0.0,
+      "source_paths3": 35,
+      "reach3_retention": 0.125,
+      "source_reach3": 8,
+      "direct_edge_retention": 0.16666666666666666,
+      "direct_edge_share": 0.022727272727272728,
+      "rare_relation_edge_retention": 0.375,
+      "source_edge_occurrences": 80,
+      "selected_edge_occurrences": 44,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 80,
+      "selected_unique_edges": 44,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.5857142857142857,
+      "candidate_coverage_absolute": 0.4,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 1.0,
+      "relation_jsd": 0.010584155522858695,
+      "degree_mass_jsd": 0.1338901539617865,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 1,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 1.0,
+      "source_incoming2_edges": 6,
+      "source_candidates_without_incoming": 1.0,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 1.0,
+      "source_reach2": 6,
+      "path3_retention": 0.2571428571428571,
+      "source_paths3": 35,
+      "reach3_retention": 1.0,
+      "source_reach3": 8,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.13636363636363635,
+      "rare_relation_edge_retention": 1.0,
+      "source_edge_occurrences": 80,
+      "selected_edge_occurrences": 44,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [],
+    "lost_examples": [
+      {
+        "candidate_id": 13987,
+        "candidate_name": "Methylprednisolone",
+        "length": 3,
+        "walk_nodes": [
+          "atopic dermatitis",
+          "Prednisone",
+          "NR3C1",
+          "Methylprednisolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Prednisone",
+            "relation": "CtD",
+            "tail": "atopic dermatitis"
+          },
+          {
+            "head": "Methylprednisolone",
+            "relation": "CbG",
+            "tail": "NR3C1"
+          },
+          {
+            "head": "Prednisone",
+            "relation": "CbG",
+            "tail": "NR3C1"
+          }
+        ]
+      },
+      {
+        "candidate_id": 13987,
+        "candidate_name": "Methylprednisolone",
+        "length": 3,
+        "walk_nodes": [
+          "atopic dermatitis",
+          "Prednisone",
+          "CYP3A4",
+          "Methylprednisolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Prednisone",
+            "relation": "CtD",
+            "tail": "atopic dermatitis"
+          },
+          {
+            "head": "Methylprednisolone",
+            "relation": "CbG",
+            "tail": "CYP3A4"
+          },
+          {
+            "head": "Prednisone",
+            "relation": "CbG",
+            "tail": "CYP3A4"
+          }
+        ]
+      },
+      {
+        "candidate_id": 13987,
+        "candidate_name": "Methylprednisolone",
+        "length": 3,
+        "walk_nodes": [
+          "atopic dermatitis",
+          "Prednisone",
+          "ABCB1",
+          "Methylprednisolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Prednisone",
+            "relation": "CtD",
+            "tail": "atopic dermatitis"
+          },
+          {
+            "head": "Methylprednisolone",
+            "relation": "CbG",
+            "tail": "ABCB1"
+          },
+          {
+            "head": "Prednisone",
+            "relation": "CbG",
+            "tail": "ABCB1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "hetionet",
+    "row": 99,
+    "selection_stratum": "highest",
+    "query_id": 14804,
+    "query_name": "hematologic cancer",
+    "gold_name": "Thiotepa",
+    "gold_used_for_selection": false,
+    "source_occurrences": 80,
+    "source_unique": 80,
+    "budget": 44,
+    "original_metrics": {
+      "source_unique_edges": 80,
+      "selected_unique_edges": 44,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.625,
+      "candidate_coverage_absolute": 0.55,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.8,
+      "relation_jsd": 0.009762216796489882,
+      "degree_mass_jsd": 0.1274810107318472,
+      "typed_pattern_retention": 0.0,
+      "source_typed_patterns": 2,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.5,
+      "source_incoming2_edges": 8,
+      "source_candidates_without_incoming": 1.0,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 0.5,
+      "source_reach2": 8,
+      "path3_retention": 0.0,
+      "source_paths3": 23,
+      "reach3_retention": 0.36363636363636365,
+      "source_reach3": 11,
+      "direct_edge_retention": 0.5,
+      "direct_edge_share": 0.09090909090909091,
+      "rare_relation_edge_retention": 0.6,
+      "source_edge_occurrences": 80,
+      "selected_edge_occurrences": 44,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 80,
+      "selected_unique_edges": 44,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.5972222222222222,
+      "candidate_coverage_absolute": 0.55,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 1.0,
+      "relation_jsd": 0.014212305987040536,
+      "degree_mass_jsd": 0.13300396183486707,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 2,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 1.0,
+      "source_incoming2_edges": 8,
+      "source_candidates_without_incoming": 1.0,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 1.0,
+      "source_reach2": 8,
+      "path3_retention": 0.30434782608695654,
+      "source_paths3": 23,
+      "reach3_retention": 1.0,
+      "source_reach3": 11,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.18181818181818182,
+      "rare_relation_edge_retention": 1.0,
+      "source_edge_occurrences": 80,
+      "selected_edge_occurrences": 44,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [],
+    "lost_examples": [
+      {
+        "candidate_id": 13987,
+        "candidate_name": "Methylprednisolone",
+        "length": 3,
+        "walk_nodes": [
+          "hematologic cancer",
+          "Prednisolone",
+          "CYP3A4",
+          "Methylprednisolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Prednisolone",
+            "relation": "CtD",
+            "tail": "hematologic cancer"
+          },
+          {
+            "head": "Methylprednisolone",
+            "relation": "CbG",
+            "tail": "CYP3A4"
+          },
+          {
+            "head": "Prednisolone",
+            "relation": "CbG",
+            "tail": "CYP3A4"
+          }
+        ]
+      },
+      {
+        "candidate_id": 13987,
+        "candidate_name": "Methylprednisolone",
+        "length": 3,
+        "walk_nodes": [
+          "hematologic cancer",
+          "Prednisolone",
+          "ABCB1",
+          "Methylprednisolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Prednisolone",
+            "relation": "CtD",
+            "tail": "hematologic cancer"
+          },
+          {
+            "head": "Methylprednisolone",
+            "relation": "CbG",
+            "tail": "ABCB1"
+          },
+          {
+            "head": "Prednisolone",
+            "relation": "CbG",
+            "tail": "ABCB1"
+          }
+        ]
+      },
+      {
+        "candidate_id": 13987,
+        "candidate_name": "Methylprednisolone",
+        "length": 3,
+        "walk_nodes": [
+          "hematologic cancer",
+          "Dexamethasone",
+          "NR3C1",
+          "Methylprednisolone"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Dexamethasone",
+            "relation": "CtD",
+            "tail": "hematologic cancer"
+          },
+          {
+            "head": "Methylprednisolone",
+            "relation": "CbG",
+            "tail": "NR3C1"
+          },
+          {
+            "head": "Dexamethasone",
+            "relation": "CbG",
+            "tail": "NR3C1"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "drkg",
+    "row": 26,
+    "selection_stratum": "lowest",
+    "query_id": 2060,
+    "query_name": "Disease::MESH:D008088",
+    "gold_name": "Compound::DB00199",
+    "gold_used_for_selection": false,
+    "source_occurrences": 100,
+    "source_unique": 100,
+    "budget": 55,
+    "original_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.6363636363636364,
+      "candidate_coverage_absolute": 0.5,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.5384615384615384,
+      "relation_jsd": 0.051002016296634395,
+      "degree_mass_jsd": 0.15417010482657398,
+      "typed_pattern_retention": 0.0,
+      "source_typed_patterns": 3,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.6428571428571429,
+      "source_incoming2_edges": 56,
+      "source_candidates_without_incoming": 0.7,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 0.6666666666666666,
+      "source_reach2": 3,
+      "path3_retention": 0.0,
+      "source_paths3": 7,
+      "reach3_retention": 0.2857142857142857,
+      "source_reach3": 7,
+      "direct_edge_retention": 0.6666666666666666,
+      "direct_edge_share": 0.03636363636363636,
+      "rare_relation_edge_retention": 0.25,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 1,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.6233766233766234,
+      "candidate_coverage_absolute": 0.5,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.38461538461538464,
+      "relation_jsd": 0.06143769307295134,
+      "degree_mass_jsd": 0.14892461900239667,
+      "typed_pattern_retention": 0.3333333333333333,
+      "source_typed_patterns": 3,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.5892857142857143,
+      "source_incoming2_edges": 56,
+      "source_candidates_without_incoming": 0.7,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 1.0,
+      "source_reach2": 3,
+      "path3_retention": 0.5714285714285714,
+      "source_paths3": 7,
+      "reach3_retention": 1.0,
+      "source_reach3": 7,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.05454545454545454,
+      "rare_relation_edge_retention": 0.08333333333333333,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 1,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [],
+    "lost_examples": [
+      {
+        "candidate_id": 421,
+        "candidate_name": "Compound::DB00635",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::MESH:D008088",
+          "Compound::DB00759",
+          "Gene::213",
+          "Compound::DB00635"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00759",
+            "relation": "DRUGBANK::treats::Compound:Disease",
+            "tail": "Disease::MESH:D008088"
+          },
+          {
+            "head": "Compound::DB00635",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::213"
+          },
+          {
+            "head": "Compound::DB00759",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::213"
+          }
+        ]
+      },
+      {
+        "candidate_id": 421,
+        "candidate_name": "Compound::DB00635",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::MESH:D008088",
+          "Compound::DB00759",
+          "Gene::1576",
+          "Compound::DB00635"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00759",
+            "relation": "DRUGBANK::treats::Compound:Disease",
+            "tail": "Disease::MESH:D008088"
+          },
+          {
+            "head": "Compound::DB00635",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1576"
+          },
+          {
+            "head": "Compound::DB00759",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1576"
+          }
+        ]
+      },
+      {
+        "candidate_id": 408,
+        "candidate_name": "Compound::DB00620",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::MESH:D008088",
+          "Compound::DB00759",
+          "Gene::1576",
+          "Compound::DB00620"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00759",
+            "relation": "DRUGBANK::treats::Compound:Disease",
+            "tail": "Disease::MESH:D008088"
+          },
+          {
+            "head": "Compound::DB00620",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1576"
+          },
+          {
+            "head": "Compound::DB00759",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1576"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "drkg",
+    "row": 57,
+    "selection_stratum": "second_lowest",
+    "query_id": 1897,
+    "query_name": "Disease::MESH:D005199",
+    "gold_name": "Compound::DB00297",
+    "gold_used_for_selection": false,
+    "source_occurrences": 100,
+    "source_unique": 100,
+    "budget": 55,
+    "original_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.6153846153846154,
+      "candidate_coverage_absolute": 0.45,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.5714285714285714,
+      "relation_jsd": 0.09961500300717142,
+      "degree_mass_jsd": 0.15124984585925505,
+      "typed_pattern_retention": 0.038461538461538464,
+      "source_typed_patterns": 26,
+      "gene_path_retention": 1.0,
+      "source_gene_paths": 1,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.5,
+      "source_incoming2_edges": 74,
+      "source_candidates_without_incoming": 0.7,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 1.0,
+      "source_paths2": 1,
+      "reach2_retention": 0.375,
+      "source_reach2": 8,
+      "path3_retention": 0.0,
+      "source_paths3": 101,
+      "reach3_retention": 0.3333333333333333,
+      "source_reach3": 9,
+      "direct_edge_retention": 0.2857142857142857,
+      "direct_edge_share": 0.03636363636363636,
+      "rare_relation_edge_retention": 0.16666666666666666,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 1,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.5769230769230769,
+      "candidate_coverage_absolute": 0.45,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.42857142857142855,
+      "relation_jsd": 0.1301820411902336,
+      "degree_mass_jsd": 0.15262002076617254,
+      "typed_pattern_retention": 0.46153846153846156,
+      "source_typed_patterns": 26,
+      "gene_path_retention": 1.0,
+      "source_gene_paths": 1,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.527027027027027,
+      "source_incoming2_edges": 74,
+      "source_candidates_without_incoming": 0.7,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 1.0,
+      "source_paths2": 1,
+      "reach2_retention": 1.0,
+      "source_reach2": 8,
+      "path3_retention": 0.36633663366336633,
+      "source_paths3": 101,
+      "reach3_retention": 1.0,
+      "source_reach3": 9,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.12727272727272726,
+      "rare_relation_edge_retention": 0.08333333333333333,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 1,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [],
+    "lost_examples": [
+      {
+        "candidate_id": 577,
+        "candidate_name": "Compound::DB00860",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::MESH:D005199",
+          "Compound::DB00635",
+          "Gene::2908",
+          "Compound::DB00860"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00635",
+            "relation": "DRUGBANK::treats::Compound:Disease",
+            "tail": "Disease::MESH:D005199"
+          },
+          {
+            "head": "Gene::2908",
+            "relation": "DGIDB::AGONIST::Gene:Compound",
+            "tail": "Compound::DB00860"
+          },
+          {
+            "head": "Compound::DB00635",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::2908"
+          }
+        ]
+      },
+      {
+        "candidate_id": 577,
+        "candidate_name": "Compound::DB00860",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::MESH:D005199",
+          "Compound::DB00635",
+          "Gene::7038",
+          "Compound::DB00860"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00635",
+            "relation": "DRUGBANK::treats::Compound:Disease",
+            "tail": "Disease::MESH:D005199"
+          },
+          {
+            "head": "Gene::7038",
+            "relation": "DGIDB::OTHER::Gene:Compound",
+            "tail": "Compound::DB00860"
+          },
+          {
+            "head": "Gene::7038",
+            "relation": "DGIDB::OTHER::Gene:Compound",
+            "tail": "Compound::DB00635"
+          }
+        ]
+      },
+      {
+        "candidate_id": 577,
+        "candidate_name": "Compound::DB00860",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::MESH:D005199",
+          "Compound::DB00635",
+          "Gene::2908",
+          "Compound::DB00860"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00635",
+            "relation": "DRUGBANK::treats::Compound:Disease",
+            "tail": "Disease::MESH:D005199"
+          },
+          {
+            "head": "Gene::2908",
+            "relation": "DGIDB::AGONIST::Gene:Compound",
+            "tail": "Compound::DB00860"
+          },
+          {
+            "head": "Gene::2908",
+            "relation": "DGIDB::AGONIST::Gene:Compound",
+            "tail": "Compound::DB00635"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "drkg",
+    "row": 169,
+    "selection_stratum": "median",
+    "query_id": 1765,
+    "query_name": "Disease::MESH:D002771",
+    "gold_name": "Compound::DB00618",
+    "gold_used_for_selection": false,
+    "source_occurrences": 100,
+    "source_unique": 100,
+    "budget": 55,
+    "original_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.6233766233766234,
+      "candidate_coverage_absolute": 0.5,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.5333333333333333,
+      "relation_jsd": 0.0739854065903107,
+      "degree_mass_jsd": 0.141868859023348,
+      "typed_pattern_retention": 0.5,
+      "source_typed_patterns": 2,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.6229508196721312,
+      "source_incoming2_edges": 61,
+      "source_candidates_without_incoming": 0.75,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 1.0,
+      "source_reach2": 3,
+      "path3_retention": 0.5,
+      "source_paths3": 2,
+      "reach3_retention": 1.0,
+      "source_reach3": 4,
+      "direct_edge_retention": 0.75,
+      "direct_edge_share": 0.05454545454545454,
+      "rare_relation_edge_retention": 0.3888888888888889,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.6233766233766234,
+      "candidate_coverage_absolute": 0.4,
+      "candidate_coverage_retained": 0.8,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.4,
+      "relation_jsd": 0.0929994354063296,
+      "degree_mass_jsd": 0.17590161946625604,
+      "typed_pattern_retention": 0.5,
+      "source_typed_patterns": 2,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.5409836065573771,
+      "source_incoming2_edges": 61,
+      "source_candidates_without_incoming": 0.75,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 0.3333333333333333,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 1.0,
+      "source_reach2": 3,
+      "path3_retention": 0.5,
+      "source_paths3": 2,
+      "reach3_retention": 1.0,
+      "source_reach3": 4,
+      "direct_edge_retention": 0.75,
+      "direct_edge_share": 0.05454545454545454,
+      "rare_relation_edge_retention": 0.2222222222222222,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [
+      {
+        "candidate_id": 421,
+        "candidate_name": "Compound::DB00635",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::MESH:D002771",
+          "Compound::DB00759",
+          "Gene::213",
+          "Compound::DB00635"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00759",
+            "relation": "GNBR::T::Compound:Disease",
+            "tail": "Disease::MESH:D002771"
+          },
+          {
+            "head": "Compound::DB00635",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::213"
+          },
+          {
+            "head": "Compound::DB00759",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::213"
+          }
+        ]
+      }
+    ],
+    "lost_examples": [
+      {
+        "candidate_id": 421,
+        "candidate_name": "Compound::DB00635",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::MESH:D002771",
+          "Compound::DB00759",
+          "Gene::213",
+          "Compound::DB00635"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00759",
+            "relation": "DRUGBANK::treats::Compound:Disease",
+            "tail": "Disease::MESH:D002771"
+          },
+          {
+            "head": "Compound::DB00635",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::213"
+          },
+          {
+            "head": "Compound::DB00759",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::213"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "drkg",
+    "row": 490,
+    "selection_stratum": "highest",
+    "query_id": 2251,
+    "query_name": "Disease::MESH:D011704",
+    "gold_name": "Compound::DB12615",
+    "gold_used_for_selection": false,
+    "source_occurrences": 100,
+    "source_unique": 100,
+    "budget": 55,
+    "original_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.6153846153846154,
+      "candidate_coverage_absolute": 0.5,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.5333333333333333,
+      "relation_jsd": 0.060049406766486194,
+      "degree_mass_jsd": 0.14560589134149873,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 2,
+      "gene_path_retention": 1.0,
+      "source_gene_paths": 1,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.6440677966101694,
+      "source_incoming2_edges": 59,
+      "source_candidates_without_incoming": 0.75,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 1.0,
+      "source_paths2": 1,
+      "reach2_retention": 1.0,
+      "source_reach2": 3,
+      "path3_retention": 1.0,
+      "source_paths3": 1,
+      "reach3_retention": 1.0,
+      "source_reach3": 4,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.03636363636363636,
+      "rare_relation_edge_retention": 0.3333333333333333,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.6153846153846154,
+      "candidate_coverage_absolute": 0.4,
+      "candidate_coverage_retained": 0.8,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.4666666666666667,
+      "relation_jsd": 0.06859513161939348,
+      "degree_mass_jsd": 0.17520955258241722,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 2,
+      "gene_path_retention": 1.0,
+      "source_gene_paths": 1,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.576271186440678,
+      "source_incoming2_edges": 59,
+      "source_candidates_without_incoming": 0.75,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 0.3333333333333333,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": 1.0,
+      "source_paths2": 1,
+      "reach2_retention": 1.0,
+      "source_reach2": 3,
+      "path3_retention": 1.0,
+      "source_paths3": 1,
+      "reach3_retention": 1.0,
+      "source_reach3": 4,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.03636363636363636,
+      "rare_relation_edge_retention": 0.26666666666666666,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [
+      {
+        "candidate_id": 421,
+        "candidate_name": "Compound::DB00635",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::MESH:D011704",
+          "Compound::DB00759",
+          "Gene::213",
+          "Compound::DB00635"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00759",
+            "relation": "GNBR::T::Compound:Disease",
+            "tail": "Disease::MESH:D011704"
+          },
+          {
+            "head": "Compound::DB00635",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::213"
+          },
+          {
+            "head": "Compound::DB00759",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::213"
+          }
+        ]
+      }
+    ],
+    "lost_examples": []
+  },
+  {
+    "dataset": "repodb",
+    "row": 0,
+    "selection_stratum": "lowest",
+    "query_id": 2227,
+    "query_name": "Disease::UMLS:C0038013",
+    "gold_name": "Compound::DB00005",
+    "gold_used_for_selection": false,
+    "source_occurrences": 100,
+    "source_unique": 100,
+    "budget": 55,
+    "original_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.5405405405405406,
+      "candidate_coverage_absolute": 0.45,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.8888888888888888,
+      "relation_jsd": 0.027884861731278715,
+      "degree_mass_jsd": 0.13446822158466176,
+      "typed_pattern_retention": 0.20833333333333334,
+      "source_typed_patterns": 24,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.5483870967741935,
+      "source_incoming2_edges": 62,
+      "source_candidates_without_incoming": 0.85,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 0.5,
+      "source_reach2": 8,
+      "path3_retention": 0.11764705882352941,
+      "source_paths3": 119,
+      "reach3_retention": 1.0,
+      "source_reach3": 9,
+      "direct_edge_retention": 0.5,
+      "direct_edge_share": 0.07272727272727272,
+      "rare_relation_edge_retention": 0.6,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.5,
+      "candidate_coverage_absolute": 0.45,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.8888888888888888,
+      "relation_jsd": 0.04103406542261978,
+      "degree_mass_jsd": 0.1399485735209181,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 24,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.5483870967741935,
+      "source_incoming2_edges": 62,
+      "source_candidates_without_incoming": 0.85,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 1.0,
+      "source_reach2": 8,
+      "path3_retention": 0.6554621848739496,
+      "source_paths3": 119,
+      "reach3_retention": 1.0,
+      "source_reach3": 9,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.14545454545454545,
+      "rare_relation_edge_retention": 0.6,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [
+      {
+        "candidate_id": 1125,
+        "candidate_name": "Compound::DB02703",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0038013",
+          "Compound::DB01234",
+          "Gene::1244",
+          "Compound::DB02703"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB01234",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0038013"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1244"
+          },
+          {
+            "head": "Compound::DB02703",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1244"
+          }
+        ]
+      },
+      {
+        "candidate_id": 1125,
+        "candidate_name": "Compound::DB02703",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0038013",
+          "Compound::DB01234",
+          "Gene::1244",
+          "Compound::DB02703"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB01234",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0038013"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1244"
+          },
+          {
+            "head": "Compound::DB02703",
+            "relation": "Hetionet::CbG::Compound:Gene",
+            "tail": "Gene::1244"
+          }
+        ]
+      },
+      {
+        "candidate_id": 654,
+        "candidate_name": "Compound::DB00860",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0038013",
+          "Compound::DB01234",
+          "Gene::301",
+          "Compound::DB00860"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB01234",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0038013"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::301"
+          },
+          {
+            "head": "Gene::301",
+            "relation": "DGIDB::OTHER::Gene:Compound",
+            "tail": "Compound::DB00860"
+          }
+        ]
+      }
+    ],
+    "lost_examples": [
+      {
+        "candidate_id": 970,
+        "candidate_name": "Compound::DB01234",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0038013",
+          "Compound::DB00860",
+          "Gene::301",
+          "Compound::DB01234"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00860",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0038013"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::301"
+          },
+          {
+            "head": "Gene::301",
+            "relation": "DGIDB::OTHER::Gene:Compound",
+            "tail": "Compound::DB00860"
+          }
+        ]
+      },
+      {
+        "candidate_id": 970,
+        "candidate_name": "Compound::DB01234",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0038013",
+          "Compound::DB00860",
+          "Gene::2908",
+          "Compound::DB01234"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00860",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0038013"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::2908"
+          },
+          {
+            "head": "Gene::2908",
+            "relation": "DGIDB::AGONIST::Gene:Compound",
+            "tail": "Compound::DB00860"
+          }
+        ]
+      },
+      {
+        "candidate_id": 970,
+        "candidate_name": "Compound::DB01234",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0038013",
+          "Compound::DB00860",
+          "Gene::2908",
+          "Compound::DB01234"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00860",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0038013"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::2908"
+          },
+          {
+            "head": "Gene::2908",
+            "relation": "DGIDB::OTHER::Gene:Compound",
+            "tail": "Compound::DB00860"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "repodb",
+    "row": 380,
+    "selection_stratum": "second_lowest",
+    "query_id": 1633,
+    "query_name": "Disease::UMLS:C0004096",
+    "gold_name": "Compound::DB01222",
+    "gold_used_for_selection": false,
+    "source_occurrences": 100,
+    "source_unique": 100,
+    "budget": 55,
+    "original_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.5405405405405406,
+      "candidate_coverage_absolute": 0.45,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.8888888888888888,
+      "relation_jsd": 0.027884861731278715,
+      "degree_mass_jsd": 0.13446822158466176,
+      "typed_pattern_retention": 0.20833333333333334,
+      "source_typed_patterns": 24,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.5483870967741935,
+      "source_incoming2_edges": 62,
+      "source_candidates_without_incoming": 0.85,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 0.5,
+      "source_reach2": 8,
+      "path3_retention": 0.11764705882352941,
+      "source_paths3": 119,
+      "reach3_retention": 1.0,
+      "source_reach3": 9,
+      "direct_edge_retention": 0.5,
+      "direct_edge_share": 0.07272727272727272,
+      "rare_relation_edge_retention": 0.6,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.5,
+      "candidate_coverage_absolute": 0.45,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.8888888888888888,
+      "relation_jsd": 0.04103406542261978,
+      "degree_mass_jsd": 0.13994857352091808,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 24,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.5483870967741935,
+      "source_incoming2_edges": 62,
+      "source_candidates_without_incoming": 0.85,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 1.0,
+      "source_reach2": 8,
+      "path3_retention": 0.6554621848739496,
+      "source_paths3": 119,
+      "reach3_retention": 1.0,
+      "source_reach3": 9,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.14545454545454545,
+      "rare_relation_edge_retention": 0.6,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [
+      {
+        "candidate_id": 1125,
+        "candidate_name": "Compound::DB02703",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0004096",
+          "Compound::DB01234",
+          "Gene::1244",
+          "Compound::DB02703"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB01234",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0004096"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1244"
+          },
+          {
+            "head": "Compound::DB02703",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1244"
+          }
+        ]
+      },
+      {
+        "candidate_id": 1125,
+        "candidate_name": "Compound::DB02703",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0004096",
+          "Compound::DB01234",
+          "Gene::1244",
+          "Compound::DB02703"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB01234",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0004096"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1244"
+          },
+          {
+            "head": "Compound::DB02703",
+            "relation": "Hetionet::CbG::Compound:Gene",
+            "tail": "Gene::1244"
+          }
+        ]
+      },
+      {
+        "candidate_id": 654,
+        "candidate_name": "Compound::DB00860",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0004096",
+          "Compound::DB01234",
+          "Gene::301",
+          "Compound::DB00860"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB01234",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0004096"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::301"
+          },
+          {
+            "head": "Gene::301",
+            "relation": "DGIDB::OTHER::Gene:Compound",
+            "tail": "Compound::DB00860"
+          }
+        ]
+      }
+    ],
+    "lost_examples": [
+      {
+        "candidate_id": 970,
+        "candidate_name": "Compound::DB01234",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0004096",
+          "Compound::DB00860",
+          "Gene::301",
+          "Compound::DB01234"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00860",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0004096"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::301"
+          },
+          {
+            "head": "Gene::301",
+            "relation": "DGIDB::OTHER::Gene:Compound",
+            "tail": "Compound::DB00860"
+          }
+        ]
+      },
+      {
+        "candidate_id": 970,
+        "candidate_name": "Compound::DB01234",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0004096",
+          "Compound::DB00860",
+          "Gene::2908",
+          "Compound::DB01234"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00860",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0004096"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::2908"
+          },
+          {
+            "head": "Gene::2908",
+            "relation": "DGIDB::AGONIST::Gene:Compound",
+            "tail": "Compound::DB00860"
+          }
+        ]
+      },
+      {
+        "candidate_id": 970,
+        "candidate_name": "Compound::DB01234",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0004096",
+          "Compound::DB00860",
+          "Gene::2908",
+          "Compound::DB01234"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00860",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0004096"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::2908"
+          },
+          {
+            "head": "Gene::2908",
+            "relation": "DGIDB::OTHER::Gene:Compound",
+            "tail": "Compound::DB00860"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "repodb",
+    "row": 221,
+    "selection_stratum": "median",
+    "query_id": 3081,
+    "query_name": "Disease::UMLS:C0549398",
+    "gold_name": "Compound::DB00798",
+    "gold_used_for_selection": false,
+    "source_occurrences": 100,
+    "source_unique": 100,
+    "budget": 55,
+    "original_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.5131578947368421,
+      "candidate_coverage_absolute": 0.3,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.8888888888888888,
+      "relation_jsd": 0.016492194152698786,
+      "degree_mass_jsd": 0.15064949161357022,
+      "typed_pattern_retention": 0.6,
+      "source_typed_patterns": 15,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.5636363636363636,
+      "source_incoming2_edges": 55,
+      "source_candidates_without_incoming": 0.8,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": null,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 0.5,
+      "source_reach2": 2,
+      "path3_retention": 0.6,
+      "source_paths3": 30,
+      "reach3_retention": 0.8333333333333334,
+      "source_reach3": 6,
+      "direct_edge_retention": 0.5,
+      "direct_edge_share": 0.01818181818181818,
+      "rare_relation_edge_retention": 0.5833333333333334,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.5,
+      "candidate_coverage_absolute": 0.3,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.8888888888888888,
+      "relation_jsd": 0.017418482543769695,
+      "degree_mass_jsd": 0.15211174757774368,
+      "typed_pattern_retention": 0.8666666666666667,
+      "source_typed_patterns": 15,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.5818181818181818,
+      "source_incoming2_edges": 55,
+      "source_candidates_without_incoming": 0.8,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": null,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 1.0,
+      "source_reach2": 2,
+      "path3_retention": 0.7666666666666667,
+      "source_paths3": 30,
+      "reach3_retention": 1.0,
+      "source_reach3": 6,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.03636363636363636,
+      "rare_relation_edge_retention": 0.6666666666666666,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [
+      {
+        "candidate_id": 970,
+        "candidate_name": "Compound::DB01234",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0549398",
+          "Compound::DB00860",
+          "Gene::301",
+          "Compound::DB01234"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00860",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0549398"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::301"
+          },
+          {
+            "head": "Gene::301",
+            "relation": "DGIDB::OTHER::Gene:Compound",
+            "tail": "Compound::DB00860"
+          }
+        ]
+      },
+      {
+        "candidate_id": 970,
+        "candidate_name": "Compound::DB01234",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0549398",
+          "Compound::DB00860",
+          "Gene::2908",
+          "Compound::DB01234"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00860",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0549398"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::2908"
+          },
+          {
+            "head": "Gene::2908",
+            "relation": "DGIDB::AGONIST::Gene:Compound",
+            "tail": "Compound::DB00860"
+          }
+        ]
+      },
+      {
+        "candidate_id": 970,
+        "candidate_name": "Compound::DB01234",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0549398",
+          "Compound::DB00860",
+          "Gene::2908",
+          "Compound::DB01234"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB00860",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0549398"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::2908"
+          },
+          {
+            "head": "Gene::2908",
+            "relation": "DGIDB::OTHER::Gene:Compound",
+            "tail": "Compound::DB00860"
+          }
+        ]
+      }
+    ],
+    "lost_examples": [
+      {
+        "candidate_id": 970,
+        "candidate_name": "Compound::DB01234",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0549398",
+          "Compound::DB02703",
+          "Gene::1565",
+          "Compound::DB01234"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB02703",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0549398"
+          },
+          {
+            "head": "Compound::DB02703",
+            "relation": "DRUGBANK::enzyme::Compound:Gene",
+            "tail": "Gene::1565"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1565"
+          }
+        ]
+      },
+      {
+        "candidate_id": 970,
+        "candidate_name": "Compound::DB01234",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0549398",
+          "Compound::DB02703",
+          "Gene::1244",
+          "Compound::DB01234"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB02703",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0549398"
+          },
+          {
+            "head": "Compound::DB02703",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1244"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1244"
+          }
+        ]
+      },
+      {
+        "candidate_id": 970,
+        "candidate_name": "Compound::DB01234",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C0549398",
+          "Compound::DB02703",
+          "Gene::1244",
+          "Compound::DB01234"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB02703",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C0549398"
+          },
+          {
+            "head": "Compound::DB02703",
+            "relation": "Hetionet::CbG::Compound:Gene",
+            "tail": "Gene::1244"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1244"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "dataset": "repodb",
+    "row": 268,
+    "selection_stratum": "highest",
+    "query_id": 3278,
+    "query_name": "Disease::UMLS:C1112209",
+    "gold_name": "Compound::DB00948",
+    "gold_used_for_selection": false,
+    "source_occurrences": 100,
+    "source_unique": 100,
+    "budget": 55,
+    "original_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.4935064935064935,
+      "candidate_coverage_absolute": 0.6,
+      "candidate_coverage_retained": 1.0,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.8888888888888888,
+      "relation_jsd": 0.04770629284005505,
+      "degree_mass_jsd": 0.1423520759065349,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 4,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.5,
+      "source_incoming2_edges": 62,
+      "source_candidates_without_incoming": 0.85,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 1.0,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 1.0,
+      "source_reach2": 7,
+      "path3_retention": 1.0,
+      "source_paths3": 5,
+      "reach3_retention": 1.0,
+      "source_reach3": 10,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.12727272727272726,
+      "rare_relation_edge_retention": 0.6,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "shortest_path_metrics": {
+      "source_unique_edges": 100,
+      "selected_unique_edges": 55,
+      "unique_edge_retention": 0.55,
+      "node_retention": 0.4935064935064935,
+      "candidate_coverage_absolute": 0.55,
+      "candidate_coverage_retained": 0.9166666666666666,
+      "query_present": 1,
+      "query_coverage_retained": 1,
+      "relation_retention": 0.8888888888888888,
+      "relation_jsd": 0.0415568385780036,
+      "degree_mass_jsd": 0.15089802635503508,
+      "typed_pattern_retention": 1.0,
+      "source_typed_patterns": 4,
+      "gene_path_retention": null,
+      "source_gene_paths": 0,
+      "node_type_annotation_rate": 1.0,
+      "incoming2_retention": 0.5,
+      "source_incoming2_edges": 62,
+      "source_candidates_without_incoming": 0.85,
+      "top5_coverage_retained": 1.0,
+      "mid5_coverage_retained": 0.6666666666666666,
+      "tail10_coverage_retained": 1.0,
+      "path2_retention": null,
+      "source_paths2": 0,
+      "reach2_retention": 1.0,
+      "source_reach2": 7,
+      "path3_retention": 1.0,
+      "source_paths3": 5,
+      "reach3_retention": 1.0,
+      "source_reach3": 10,
+      "direct_edge_retention": 1.0,
+      "direct_edge_share": 0.12727272727272726,
+      "rare_relation_edge_retention": 0.6,
+      "source_edge_occurrences": 100,
+      "selected_edge_occurrences": 55,
+      "occurrence_edge_retention": 0.55,
+      "source_duplicate_fraction": 0.0,
+      "encoder_global_fallback": 0,
+      "gold_in_candidates": 0,
+      "gold_reach3_retention": null,
+      "gold_incident_retention": null
+    },
+    "retained_examples": [
+      {
+        "candidate_id": 970,
+        "candidate_name": "Compound::DB01234",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C1112209",
+          "Compound::DB02703",
+          "Gene::1244",
+          "Compound::DB01234"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB02703",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C1112209"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1244"
+          },
+          {
+            "head": "Compound::DB02703",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1244"
+          }
+        ]
+      },
+      {
+        "candidate_id": 970,
+        "candidate_name": "Compound::DB01234",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C1112209",
+          "Compound::DB02703",
+          "Gene::1565",
+          "Compound::DB01234"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB02703",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C1112209"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1565"
+          },
+          {
+            "head": "Compound::DB02703",
+            "relation": "DRUGBANK::enzyme::Compound:Gene",
+            "tail": "Gene::1565"
+          }
+        ]
+      },
+      {
+        "candidate_id": 970,
+        "candidate_name": "Compound::DB01234",
+        "length": 3,
+        "walk_nodes": [
+          "Disease::UMLS:C1112209",
+          "Compound::DB02703",
+          "Gene::1244",
+          "Compound::DB01234"
+        ],
+        "original_directed_edges": [
+          {
+            "head": "Compound::DB02703",
+            "relation": "repoDB::approved_indication::Compound:Disease",
+            "tail": "Disease::UMLS:C1112209"
+          },
+          {
+            "head": "Compound::DB01234",
+            "relation": "bioarx::DrugHumGen:Compound:Gene",
+            "tail": "Gene::1244"
+          },
+          {
+            "head": "Compound::DB02703",
+            "relation": "Hetionet::CbG::Compound:Gene",
+            "tail": "Gene::1244"
+          }
+        ]
+      }
+    ],
+    "lost_examples": []
+  }
+]

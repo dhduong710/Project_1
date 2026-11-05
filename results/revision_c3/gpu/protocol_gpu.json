@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "datasets": [
+    "primekg",
+    "pharmkg",
+    "hetionet",
+    "drkg",
+    "repodb"
+  ],
+  "max_rows": 0,
+  "variants": [
+    {
+      "key": "source_raw",
+      "method": "source_raw",
+      "budget": "native",
+      "seed": 0
+    },
+    {
+      "key": "source_unique",
+      "method": "source_unique",
+      "budget": "native",
+      "seed": 0
+    },
+    {
+      "key": "original_fuzzy",
+      "method": "original_fuzzy",
+      "budget": "native",
+      "seed": 0
+    },
+    {
+      "key": "empty_graph",
+      "method": "empty_graph",
+      "budget": "native",
+      "seed": 0
+    },
+    {
+      "key": "native_topk",
+      "method": "native_topk",
+      "budget": "native",
+      "seed": 0
+    },
+    {
+      "key": "native_coverage",
+      "method": "native_coverage",
+      "budget": "native",
+      "seed": 0
+    },
+    {
+      "key": "degree_topk",
+      "method": "degree_topk",
+      "budget": "native",
+      "seed": 0
+    },
+    {
+      "key": "query_bfs",
+      "method": "query_bfs",
+      "budget": "native",
+      "seed": 0
+    },
+    {
+      "key": "ppr_query",
+      "method": "ppr_query",
+      "budget": "native",
+      "seed": 0
+    },
+    {
+      "key": "ppr_terminals",
+      "method": "ppr_terminals",
+      "budget": "native",
+      "seed": 0
+    },
+    {
+      "key": "shortest_paths",
+      "method": "shortest_paths",
+      "budget": "native",
+      "seed": 0
+    },
+    {
+      "key": "relation_diverse",
+      "method": "relation_diverse",
+      "budget": "native",
+      "seed": 0
+    },
+    {
+      "key": "random_s0",
+      "method": "random",
+      "budget": "native",
+      "seed": 0
+    },
+    {
+      "key": "random_s1",
+      "method": "random",
+      "budget": "native",
+      "seed": 1
+    },
+    {
+      "key": "random_s2",
+      "method": "random",
+      "budget": "native",
+      "seed": 2
+    },
+    {
+      "key": "random_s3",
+      "method": "random",
+      "budget": "native",
+      "seed": 3
+    },
+    {
+      "key": "random_s4",
+      "method": "random",
+      "budget": "native",
+      "seed": 4
+    },
+    {
+      "key": "random_coverage_s0",
+      "method": "random_coverage",
+      "budget": "native",
+      "seed": 0
+    },
+    {
+      "key": "random_coverage_s1",
+      "method": "random_coverage",
+      "budget": "native",
+      "seed": 1
+    },
+    {
+      "key": "random_coverage_s2",
+      "method": "random_coverage",
+      "budget": "native",
+      "seed": 2
+    },
+    {
+      "key": "random_coverage_s3",
+      "method": "random_coverage",
+      "budget": "native",
+      "seed": 3
+    },
+    {
+      "key": "random_coverage_s4",
+      "method": "random_coverage",
+      "budget": "native",
+      "seed": 4
+    },
+    {
+      "key": "native_coverage_r35_s0",
+      "method": "native_coverage",
+      "budget": 0.35,
+      "seed": 0
+    },
+    {
+      "key": "ppr_terminals_r35_s0",
+      "method": "ppr_terminals",
+      "budget": 0.35,
+      "seed": 0
+    },
+    {
+      "key": "random_r35_s0",
+      "method": "random",
+      "budget": 0.35,
+      "seed": 0
+    },
+    {
+      "key": "native_coverage_r75_s0",
+      "method": "native_coverage",
+      "budget": 0.75,
+      "seed": 0
+    },
+    {
+      "key": "ppr_terminals_r75_s0",
+      "method": "ppr_terminals",
+      "budget": 0.75,
+      "seed": 0
+    },
+    {
+      "key": "random_r75_s0",
+      "method": "random",
+      "budget": 0.75,
+      "seed": 0
+    }
+  ],
+  "bootstrap": 2000,
+  "cpu_protocol_sha256": "444d4fe7b68c94613f0b8c1dc18a35e17696fbd245676d68818c88e7387630e6",
+  "cpu_inputs_sha256": "ff81ac5508ae037558139350c9fc63bb6dc093023f2d26db644f9324d3976aab",
+  "runner_sha256": "f4632a52d50872da0fa3d8f83931d62c74499f08f00d80e4802e703cc595fb29",
+  "common_sha256": "01647b0b044102ad662547fd42e88a01ea9bb5a12785d3e7d8f13ac8bf490760",
+  "metrics": "exact answer primary; promote-to-front adjusted RR secondary; separate graph-encoder cosine/L2",
+  "reference": "original fuzzy order fixed; source_raw retains duplicates; source_unique removes duplicate triples only",
+  "selection": "all methods predefined; no validation/test winner selection",
+  "precision": "graph encoder original checkpoint FP32; LLM BF16; finite checks before/after input cast; no clipping",
+  "skip_benchmark": false
+}

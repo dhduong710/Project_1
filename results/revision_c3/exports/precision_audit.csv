@@ -1,0 +1,11 @@
+﻿dataset,dtype,test_rows,encoder_cases,nonfinite_cases,max_abs_finite_output
+primekg,float16,500,1000,9,26496.0
+primekg,float32,500,1000,0,130444.3515625
+pharmkg,float16,500,1000,0,3.5859375
+pharmkg,float32,500,1000,0,3.5861001014709473
+hetionet,float16,100,200,0,4.16796875
+hetionet,float32,100,200,0,4.1699042320251465
+drkg,float16,500,1000,0,19.671875
+drkg,float32,500,1000,0,19.67728614807129
+repodb,float16,500,1000,0,7.33984375
+repodb,float32,500,1000,0,7.339898109436035

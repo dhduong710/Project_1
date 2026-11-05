@@ -1,0 +1,19 @@
+% Proposed compact insertion in the experimental analysis section.
+% Assign final supplementary table/section references during integration.
+\paragraph{Information retention under edge selection.}
+We compare fuzzy retrieval with alternative subgraph selectors while fixing
+candidate order and matching the unique-edge budget for each query. Candidate
+incidence coverage, query--candidate reachability, and exact path-witness
+retention are assessed separately. Although fuzzy retrieval preserves all
+source-covered candidates on the five evaluated datasets, its retention of
+query--candidate reachability within three edges ranges from 0.4835 to 0.9546.
+It retains more reachability than uniform random selection on PharmKG, DRKG,
+and repoDB, whereas the PrimeKG and Hetionet estimates are similar to random.
+A shortest-path baseline retains nearly all source-reachable candidates at
+the same edge count, but sacrifices incidence coverage for other candidates.
+These findings indicate a coverage-oriented compression trade-off rather than
+lossless information preservation. Supplementary experiments provide
+five-seed comparisons, budget curves, explicit source denominators, a
+decomposition of duplicate versus unique-edge removal, and frozen-model
+representation and generated-answer diagnostics. Paths are structural
+witnesses and are not interpreted as validated biomedical mechanisms.

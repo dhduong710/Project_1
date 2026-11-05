@@ -1,0 +1,9 @@
+\documentclass[tikz,border=5pt]{standalone}
+\usepackage{pgfplots}\usepgfplotslibrary{groupplots}\pgfplotsset{compat=1.18}
+\begin{document}\begin{tikzpicture}
+
+\begin{axis}[ybar stacked,width=14cm,height=7cm,bar width=22pt,ymin=0,ylabel={Mean edge count per test row},symbolic x coords={primekg,pharmkg,hetionet,drkg,repodb},xtick=data,legend style={at={(.5,1.04)},anchor=south,legend columns=3},grid=major]
+\addplot table[x=dataset,y=retained,col sep=comma]{plot_compression.csv};\addlegendentry{Retained unique}
+\addplot table[x=dataset,y=removed_unique,col sep=comma]{plot_compression.csv};\addlegendentry{Removed unique}
+\addplot table[x=dataset,y=duplicates,col sep=comma]{plot_compression.csv};\addlegendentry{Duplicate occurrences}
+\end{axis}\end{tikzpicture}\end{document}

@@ -1,0 +1,125 @@
+% Completed-run insertion draft, 2026-11-05.
+% Source: results/revision_c2/{candidate_metrics.csv,e2e/e2e_metrics.csv,exports/}.
+% Integrate with supplementary_methods.tex; historical tables use different metrics.
+\subsection{Results of automatic calibration and coefficient transfer}
+
+All five datasets completed the calibration protocol and full-test evaluation.
+The study includes 1,120 native validation configurations, 20 directed
+source--target transfers, 100 calibration-label subset runs, and 200 coefficient
+perturbation runs. Frozen-checkpoint inference evaluates 60 dataset--edge-vector
+combinations on validation and 55 dataset--variant combinations on test.
+The same 2,100 validation rows and 2,100 test rows are reused across their
+respective variants; these are not independent new examples. Query-level caching
+avoids repeated generation for identical model inputs.
+
+\begin{table}[t]
+\centering
+\caption{Test candidate MRR@20. Original uses the native soft-support formula;
+the other columns use identical shared feature definitions. LODO excludes target
+validation labels from coefficient fitting and regularization selection.
+These comparisons retain exactly the same top-20 candidate membership.}
+\label{tab:c2-candidate-calibration}
+\begin{tabular}{lrrrr}
+\hline
+Dataset & Original & Shared equal & Shared learned & Shared LODO \\
+\hline
+PrimeKG  & 0.125326 & 0.125188 & 0.125326 & 0.126104 \\
+PharmKG  & 0.028159 & 0.031883 & 0.031876 & 0.031860 \\
+Hetionet & 0.095439 & 0.101269 & 0.115284 & 0.113579 \\
+DRKG     & 0.046556 & 0.061426 & 0.060496 & 0.058612 \\
+repoDB   & 0.048107 & 0.057366 & 0.064902 & 0.064902 \\
+\hline
+\end{tabular}
+\end{table}
+
+Candidate-level results show that a common calibration feature space can retain
+or improve the point estimates of the native soft-support formula. However,
+the equal-weight control already improves several datasets, so comparisons
+against the original formula combine feature changes with coefficient learning.
+Against the feature-matched equal-weight control, learned calibration changes
+MRR by 0.000138, $-0.000007$, 0.014015, $-0.000930$, and 0.007536 on PrimeKG,
+PharmKG, Hetionet, DRKG, and repoDB, respectively. The exploratory paired
+query-cluster 95\% bootstrap interval excludes zero only for repoDB among
+these five comparisons: [0.000402, 0.015176]. Thus, the results do not establish
+that learning uniformly outperforms a common fixed weighting.
+
+The source-only LODO coefficients produce MRR point estimates above the native
+formula on all five datasets, but they do not uniformly improve over shared
+equal weights. In particular, DRKG shared equal weights yield 0.061426 versus
+0.058612 for LODO. The LODO study concerns coefficient transfer within the
+existing benchmark pipelines and should not be interpreted as zero-shot
+completion or generalization to unseen diseases.
+
+Learning curves also differ by dataset. On PharmKG, mean test MRR changes from
+0.028975 at 10\% of calibration query groups to 0.031856 at 100\%, with standard
+deviations 0.004282 and 0.000020 across subset/CV seeds, respectively. PrimeKG is
+unchanged at 0.125326 over the tested fractions. Hetionet and repoDB do not show
+monotonic improvement as the calibration fraction increases. These seed-based
+standard deviations describe calibration variability, not confidence intervals
+for performance on independent test sets.
+
+\begin{table}[t]
+\centering
+\caption{Generated-answer exact accuracy (\%) in the candidate-order arm with
+the full source graph and a fixed checkpoint within each dataset. Accuracy is
+separate from candidate MRR and adjusted MRR.}
+\label{tab:c2-generated-accuracy}
+\begin{tabular}{lrrrrr}
+\hline
+Dataset & Test rows & Original & Shared equal & Shared learned & Shared LODO \\
+\hline
+PrimeKG  & 500 & 0.0 & 0.0 & 0.0 & 0.0 \\
+PharmKG  & 500 & 0.0 & 0.2 & 0.2 & 0.2 \\
+Hetionet & 100 & 3.0 & 1.0 & 1.0 & 2.0 \\
+DRKG     & 500 & 1.4 & 0.8 & 2.0 & 1.8 \\
+repoDB   & 500 & 0.2 & 0.8 & 0.0 & 0.0 \\
+\hline
+\end{tabular}
+\end{table}
+
+End-to-end outcomes are mixed (Table~\ref{tab:c2-generated-accuracy}).
+Higher candidate MRR does not ensure higher generated-answer accuracy. For
+example, repoDB learned calibration improves candidate MRR but yields no exact
+answers, compared with four correct answers among 500 rows for shared equal
+weights. The paired accuracy difference is $-0.8$ percentage points, with an
+exploratory 95\% interval of [$-1.702$, $-0.190$] percentage points. On DRKG,
+learned calibration yields 2.0\% exact accuracy versus 0.8\% for equal weights;
+the corresponding interval for the 1.2-point difference is [0.000, 2.469]
+percentage points. These findings limit claims about improvements in generation.
+
+\begin{table}[t]
+\centering
+\caption{Test adjusted MRR@20 in the graph-selection arm. Candidate order and
+the compressed-graph budget are fixed per query. Invalid outputs retain the
+explicit virtual-rank-one convention described in the protocol; these values
+must not be read as generated-answer accuracy.}
+\label{tab:c2-edge-calibration}
+\begin{tabular}{lrrrr}
+\hline
+Dataset & Original fuzzy & Shared fixed & Shared auto & Edge LODO \\
+\hline
+PrimeKG  & 0.074687 & 0.074687 & 0.074742 & 0.074687 \\
+PharmKG  & 0.020971 & 0.021290 & 0.021290 & 0.021290 \\
+Hetionet & 0.100087 & 0.100087 & 0.100087 & 0.100087 \\
+DRKG     & 0.046285 & 0.046285 & 0.046285 & 0.046285 \\
+repoDB   & 0.037776 & 0.037795 & 0.037795 & 0.038045 \\
+\hline
+\end{tabular}
+\end{table}
+
+For edge calibration, the numbers of vectors tied at the best validation
+accuracy and adjusted MRR are 6/12, 12/12, 12/12, 12/12, and 8/12 for PrimeKG,
+PharmKG, Hetionet, DRKG, and repoDB, respectively. The prespecified tie rule
+selects the earliest vector, rather than using test results to break ties.
+All four compressed-graph variants in Table~\ref{tab:c2-edge-calibration} have
+the same exact-answer accuracy within each dataset: 0.0\%, 0.2\%, 3.0\%, 1.4\%,
+and 0.4\%, respectively. Edge selection therefore changes some graph properties
+and adjusted ranks without establishing an exact-answer advantage. Equal metrics
+under the tested vectors do not identify a unique optimum or prove equivalence
+for other graphs, budgets, or checkpoints.
+
+All results above are retrospective analyses of existing benchmark splits.
+Bootstrap intervals are exploratory and are not adjusted for multiple
+comparisons. Full configuration traces, coefficients, query-level predictions,
+feature ablations, transfer matrices, sensitivity analyses, and paired
+comparisons are provided by the accompanying reproducibility scripts.

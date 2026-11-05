@@ -1,0 +1,11 @@
+[
+  {
+    "dataset": "primekg",
+    "model_fingerprint": "f24b652e024ddebd93d17dd933828c8b5bd74b3933eb37430965a99165a2cecd",
+    "upstream_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c2/e2e/cache/primekg_f24b652e024ddebd.jsonl",
+    "upstream_cache_sha256": null,
+    "imported_predictions": 0,
+    "new_generations_this_invocation": 0,
+    "gpu_name": "NVIDIA GeForce RTX 4090"
+  }
+]

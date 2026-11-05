@@ -1,0 +1,19 @@
+{
+  "cpu_protocol_sha256": "444d4fe7b68c94613f0b8c1dc18a35e17696fbd245676d68818c88e7387630e6",
+  "ratios": [
+    0.2,
+    0.35,
+    0.55,
+    0.75,
+    0.9
+  ],
+  "script_sha256": {
+    "primekg": "737b8f89e0f39b7e41aabdd43e45113f0adc6962f3d03909013ec49eadfd710b",
+    "pharmkg": "7c8af3a3d2592d269266d75f47a5f15170884370c79ca416f64895a8c1c5710d",
+    "hetionet": "031ffcf64247161d1d2cb679c867da70a6bbbb995311d85c4c6f95b80587992b",
+    "drkg": "4be316e3bacbb25655546b9e6f48e1cf33be7efb04bc70e5abc60c30b5df8498",
+    "repodb": "89307d10694759d4bce9057996fa535d36e6cb6cbc2d8d940755d5991b561577"
+  },
+  "runner_sha256": "b6d96cc57908f7f26a6713a08a3767e351bd341c6e49e4b665c993692bd3418f",
+  "policy": "native selector unchanged; override target keep only; record actual budget violations; no test selection"
+}

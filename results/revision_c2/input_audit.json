@@ -1,0 +1,152 @@
+[
+  {
+    "dataset": "primekg",
+    "split": "valid",
+    "rows": 500,
+    "unique_queries": 316,
+    "recoverable_gold_rows": 101,
+    "native_formula_same_order_rate": 1.0,
+    "native_formula_mrr": 0.09764372294372294,
+    "original_soft_mrr": 0.09764372294372294,
+    "feature_source": "dataset/setting_a/25_n2_support_features/valid_support_features.json",
+    "alignment": "candidate IDs and original ranks; repoDB positional outer rows, otherwise query/gold IDs"
+  },
+  {
+    "dataset": "primekg",
+    "split": "test",
+    "rows": 500,
+    "unique_queries": 319,
+    "recoverable_gold_rows": 120,
+    "native_formula_same_order_rate": 1.0,
+    "native_formula_mrr": 0.12532618492618494,
+    "original_soft_mrr": 0.12532618492618494,
+    "feature_source": "dataset/setting_a/26_n2_soft_support/test_top20_soft_support_main.json",
+    "alignment": "candidate IDs and original ranks; repoDB positional outer rows, otherwise query/gold IDs"
+  },
+  {
+    "dataset": "primekg",
+    "split": "overlap_audit",
+    "valid_test_shared_query_ids": 154,
+    "interpretation": "Task is transductive. Group CV prevents within-validation query overlap, not new-disease generalization."
+  },
+  {
+    "dataset": "pharmkg",
+    "split": "valid",
+    "rows": 500,
+    "unique_queries": 270,
+    "recoverable_gold_rows": 35,
+    "native_formula_same_order_rate": 1.0,
+    "native_formula_mrr": 0.02130758848994143,
+    "original_soft_mrr": 0.02130758848994143,
+    "feature_source": "dataset/setting_c_pharmkg/08_support_features/valid_support_features.json",
+    "alignment": "candidate IDs and original ranks; repoDB positional outer rows, otherwise query/gold IDs"
+  },
+  {
+    "dataset": "pharmkg",
+    "split": "test",
+    "rows": 500,
+    "unique_queries": 269,
+    "recoverable_gold_rows": 46,
+    "native_formula_same_order_rate": 1.0,
+    "native_formula_mrr": 0.028159018759018765,
+    "original_soft_mrr": 0.028159018759018765,
+    "feature_source": "dataset/setting_c_pharmkg/08_support_features/test_support_features.json",
+    "alignment": "candidate IDs and original ranks; repoDB positional outer rows, otherwise query/gold IDs"
+  },
+  {
+    "dataset": "pharmkg",
+    "split": "overlap_audit",
+    "valid_test_shared_query_ids": 160,
+    "interpretation": "Task is transductive. Group CV prevents within-validation query overlap, not new-disease generalization."
+  },
+  {
+    "dataset": "hetionet",
+    "split": "valid",
+    "rows": 100,
+    "unique_queries": 37,
+    "recoverable_gold_rows": 43,
+    "native_formula_same_order_rate": 1.0,
+    "native_formula_mrr": 0.10336868115544587,
+    "original_soft_mrr": 0.10336868115544587,
+    "feature_source": "dataset/setting_d_hetionet/07_support_features/valid_support_features.json",
+    "alignment": "candidate IDs and original ranks; repoDB positional outer rows, otherwise query/gold IDs"
+  },
+  {
+    "dataset": "hetionet",
+    "split": "test",
+    "rows": 100,
+    "unique_queries": 44,
+    "recoverable_gold_rows": 44,
+    "native_formula_same_order_rate": 1.0,
+    "native_formula_mrr": 0.09543863489451723,
+    "original_soft_mrr": 0.09543863489451723,
+    "feature_source": "dataset/setting_d_hetionet/07_support_features/test_support_features.json",
+    "alignment": "candidate IDs and original ranks; repoDB positional outer rows, otherwise query/gold IDs"
+  },
+  {
+    "dataset": "hetionet",
+    "split": "overlap_audit",
+    "valid_test_shared_query_ids": 30,
+    "interpretation": "Task is transductive. Group CV prevents within-validation query overlap, not new-disease generalization."
+  },
+  {
+    "dataset": "drkg",
+    "split": "valid",
+    "rows": 500,
+    "unique_queries": 313,
+    "recoverable_gold_rows": 109,
+    "native_formula_same_order_rate": 1.0,
+    "native_formula_mrr": 0.06519144033640938,
+    "original_soft_mrr": 0.06519144033640938,
+    "feature_source": "dataset/setting_e_drkg/07_support_features/rgcn/valid_support_features.json",
+    "alignment": "candidate IDs and original ranks; repoDB positional outer rows, otherwise query/gold IDs"
+  },
+  {
+    "dataset": "drkg",
+    "split": "test",
+    "rows": 500,
+    "unique_queries": 316,
+    "recoverable_gold_rows": 100,
+    "native_formula_same_order_rate": 1.0,
+    "native_formula_mrr": 0.04655564774063226,
+    "original_soft_mrr": 0.04655564774063226,
+    "feature_source": "dataset/setting_e_drkg/07_support_features/rgcn/test_support_features.json",
+    "alignment": "candidate IDs and original ranks; repoDB positional outer rows, otherwise query/gold IDs"
+  },
+  {
+    "dataset": "drkg",
+    "split": "overlap_audit",
+    "valid_test_shared_query_ids": 157,
+    "interpretation": "Task is transductive. Group CV prevents within-validation query overlap, not new-disease generalization."
+  },
+  {
+    "dataset": "repodb",
+    "split": "valid",
+    "rows": 500,
+    "unique_queries": 315,
+    "recoverable_gold_rows": 118,
+    "native_formula_same_order_rate": 1.0,
+    "native_formula_mrr": 0.05702382453288026,
+    "original_soft_mrr": 0.05702382453288026,
+    "feature_source": "dataset/setting_f_repodb/07_support_features/rgcn/valid_support_features.json",
+    "alignment": "candidate IDs and original ranks; repoDB positional outer rows, otherwise query/gold IDs"
+  },
+  {
+    "dataset": "repodb",
+    "split": "test",
+    "rows": 500,
+    "unique_queries": 294,
+    "recoverable_gold_rows": 107,
+    "native_formula_same_order_rate": 1.0,
+    "native_formula_mrr": 0.04810665547043256,
+    "original_soft_mrr": 0.04810665547043256,
+    "feature_source": "dataset/setting_f_repodb/07_support_features/rgcn/test_support_features.json",
+    "alignment": "candidate IDs and original ranks; repoDB positional outer rows, otherwise query/gold IDs"
+  },
+  {
+    "dataset": "repodb",
+    "split": "overlap_audit",
+    "valid_test_shared_query_ids": 146,
+    "interpretation": "Task is transductive. Group CV prevents within-validation query overlap, not new-disease generalization."
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "status": "complete",
+  "seconds": 62.38,
+  "datasets": [
+    "primekg",
+    "pharmkg",
+    "hetionet",
+    "drkg",
+    "repodb"
+  ],
+  "candidate_metric_rows": 150,
+  "graph_audit_rows": 260,
+  "warning": "Topology audits are not E2E results. Candidate experiment does not retrain the upstream ranker/LLM."
+}

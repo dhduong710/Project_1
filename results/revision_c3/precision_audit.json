@@ -1,0 +1,157 @@
+[
+  {
+    "dataset": "primekg",
+    "test_rows": 500,
+    "variants": [
+      "source_raw",
+      "original_fuzzy"
+    ],
+    "results": {
+      "float16": {
+        "nonfinite_cases": 9,
+        "max_abs_finite_output": 26496.0,
+        "cases": [
+          {
+            "row": 65,
+            "query_id": 9762,
+            "variant": "source_raw",
+            "edges": 63
+          },
+          {
+            "row": 99,
+            "query_id": 10437,
+            "variant": "source_raw",
+            "edges": 64
+          },
+          {
+            "row": 132,
+            "query_id": 9314,
+            "variant": "source_raw",
+            "edges": 84
+          },
+          {
+            "row": 220,
+            "query_id": 9685,
+            "variant": "source_raw",
+            "edges": 62
+          },
+          {
+            "row": 301,
+            "query_id": 10074,
+            "variant": "source_raw",
+            "edges": 83
+          },
+          {
+            "row": 442,
+            "query_id": 9620,
+            "variant": "source_raw",
+            "edges": 81
+          },
+          {
+            "row": 453,
+            "query_id": 10060,
+            "variant": "source_raw",
+            "edges": 65
+          },
+          {
+            "row": 490,
+            "query_id": 10074,
+            "variant": "source_raw",
+            "edges": 82
+          },
+          {
+            "row": 491,
+            "query_id": 3507,
+            "variant": "source_raw",
+            "edges": 64
+          }
+        ]
+      },
+      "float32": {
+        "nonfinite_cases": 0,
+        "max_abs_finite_output": 130444.3515625,
+        "cases": []
+      }
+    }
+  },
+  {
+    "dataset": "pharmkg",
+    "test_rows": 500,
+    "variants": [
+      "source_raw",
+      "original_fuzzy"
+    ],
+    "results": {
+      "float16": {
+        "nonfinite_cases": 0,
+        "max_abs_finite_output": 3.5859375,
+        "cases": []
+      },
+      "float32": {
+        "nonfinite_cases": 0,
+        "max_abs_finite_output": 3.5861001014709473,
+        "cases": []
+      }
+    }
+  },
+  {
+    "dataset": "hetionet",
+    "test_rows": 100,
+    "variants": [
+      "source_raw",
+      "original_fuzzy"
+    ],
+    "results": {
+      "float16": {
+        "nonfinite_cases": 0,
+        "max_abs_finite_output": 4.16796875,
+        "cases": []
+      },
+      "float32": {
+        "nonfinite_cases": 0,
+        "max_abs_finite_output": 4.1699042320251465,
+        "cases": []
+      }
+    }
+  },
+  {
+    "dataset": "drkg",
+    "test_rows": 500,
+    "variants": [
+      "source_raw",
+      "original_fuzzy"
+    ],
+    "results": {
+      "float16": {
+        "nonfinite_cases": 0,
+        "max_abs_finite_output": 19.671875,
+        "cases": []
+      },
+      "float32": {
+        "nonfinite_cases": 0,
+        "max_abs_finite_output": 19.67728614807129,
+        "cases": []
+      }
+    }
+  },
+  {
+    "dataset": "repodb",
+    "test_rows": 500,
+    "variants": [
+      "source_raw",
+      "original_fuzzy"
+    ],
+    "results": {
+      "float16": {
+        "nonfinite_cases": 0,
+        "max_abs_finite_output": 7.33984375,
+        "cases": []
+      },
+      "float32": {
+        "nonfinite_cases": 0,
+        "max_abs_finite_output": 7.339898109436035,
+        "cases": []
+      }
+    }
+  }
+]
