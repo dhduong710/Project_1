@@ -6,6 +6,7 @@
     \usepackage{times}
     \usepackage{microtype}
     \usepackage{xcolor}
+    \input{revision_highlight}
     \usepackage{graphicx}
     \usepackage{booktabs}
     \usepackage{array}
@@ -21,7 +22,7 @@
     \hypersetup{
       pdftitle={Supplementary Information for SoftFuse-KGC: Soft Support and Confidence-Aware Fuzzy Retrieval for Biomedical Knowledge Graph Completion},
       pdfauthor={Dang Hoang Duong, Le Van Thanh, Hai Van Pham},
-      pdfsubject={Online Resource 1 for Network Modeling Analysis in Health Informatics and Bioinformatics},
+      pdfsubject={Supplementary Material for SoftFuse-KGC},
       pdfkeywords={Biomedical knowledge graph; Knowledge graph completion; Drug repurposing; Soft evidence modeling; Fuzzy retrieval}
     }
 
@@ -48,7 +49,7 @@
 
     \begin{document}
     \begin{center}
-    {\Large\bfseries Supplementary Materal\par}
+    {\Large\bfseries \rev{Supplementary Material}\par}
     \vspace{0.8em}
 %    {\large\bfseries SoftFuse-KGC: Soft Support and Confidence-Aware Fuzzy Retrieval for Biomedical Knowledge Graph Completion\par}
 %    \vspace{0.8em}
@@ -146,7 +147,7 @@
 
     The candidate attributes were then summarized by frequency, value range, and gold-versus-non-gold separation. Attributes that were constant or nearly constant on the candidate set were not used as active ranking signals. Attributes that were too sparse but had a clear negative or diagnostic interpretation were retained only as small penalty channels. Attributes that appeared often enough and had an interpretable biomedical role were grouped into the general formula: \(T_i(q)\) for evidence contact, \(P_i(q)\) for mechanism-oriented support, \(A_i(q)\) for schema compatibility when informative, \(\Delta_i(q)\) for bounded local density, \(D_i(q)\) for direct shortcut or hub-like evidence, and \(X_i(q)\) for contradiction-like evidence.
 
-    Candidate-stage formulas were then probed as simple score variants before freezing the final coefficient family. The validation rule was to preserve \gold{}, improve or maintain \mrr{}, and reduce shortcut exposure. This procedure is why the final soft-support formula separates positive evidence from direct-link penalties instead of using a hard ontology filter or a raw count score. On PrimeKG, for example, the selected contact-based b050 row improved \mrr{} to \(0.1356\), had no worsened queries relative to the backbone, and reduced the top-five direct-link rate from \(0.2408\) to \(0.0072\). The count-like capped-evidence contrast dropped to \(\mathrm{MRR@20}=0.0925\) and restored a shortcut-heavy top-five direct-link rate of \(0.2452\).
+    Candidate-stage formulas were then probed as simple score variants before freezing the final coefficient family. The validation rule was to preserve \gold{}, improve or maintain \mrr{}, and reduce shortcut exposure. This procedure is why the final soft-support formula separates positive evidence from direct-link penalties instead of using a hard ontology filter or a raw count score. On PrimeKG, for example, the selected contact-based b050 row improved \mrr{} to \(\rev{0.0976}\), had no worsened queries relative to the backbone, and reduced the top-five direct-link rate from \(0.2408\) to \(0.0072\). The count-like capped-evidence contrast dropped to \(\mathrm{MRR@20}=\rev{0.0545}\) and restored a shortcut-heavy top-five direct-link rate of \(0.2452\).
 
     The candidate-density feature in \mainequation{5} is retained in the general formulation because it was part of this audited feature family, but it is inactive in the reported candidate reranking rows. In the validation audit, local density behaved as a hub-sensitive count signal at the candidate stage rather than as a reliable therapeutic-support signal. It is therefore assigned zero candidate-stage weight and retained later only as a small edge-level tie breaker in \mainequation{13}.
 
@@ -156,6 +157,8 @@
 
     For \mainequation{6}, \(\eta_D\) is the \(95\)th percentile of nonzero compound-to-disease direct degrees when direct-degree statistics are used. This high-percentile normalizer penalizes generic direct-disease hubs without letting a single extreme hub define the scale. Otherwise, the direct edge flag alone is used. For \mainequation{8}, \(N_q\) is the identity map when \(\mu=0\); when \(\mu>0\), the min--max rule above is applied over the 20 candidates for the same query.
     \clearpage
+    \begin{revisionblock}The coefficients below describe the original support formulation. Section~\ref{sec:s12-calibration} adds automatic native-formula selection, shared-feature learned calibration, and coefficient transfer without target calibration labels.\end{revisionblock}
+
     \subsection{Frozen Assigned Values}
 
     Table~\ref{tab:s1_soft_support} reports the frozen feature instantiations, weights, and normalizers.
@@ -504,7 +507,7 @@
     \widetilde{S}(c_i,q)&=\alpha_EE_i(q)-\alpha_DD_i(q)-\alpha_XX_i(q),\\
     \mathrm{b025}:&\quad E_i(q)-0.25D_i(q)-0.05X_i(q),\\
     \mathrm{b050}:&\quad E_i(q)-0.50D_i(q)-0.10X_i(q),\\
-    \mathrm{bcap}:&\quad \min(E^{\mathrm{count}}_i(q),2)-0.50D_i(q)-0.10X_i(q).
+    \mathrm{bcap}:&\quad \underbrace{\min(E^{\mathrm{count}}_i(q),2)/2}_{\text{\rev{normalized capped support}}}-0.50D_i(q)-0.10X_i(q).
     \end{aligned}
     \]
     The selected PrimeKG contact-support family is a special case of \mainequation{8} with \(\mu=0\). The final row uses b050. The b025 row tied b050 in validation, but b050 was retained because it applies the stronger shortcut penalty while preserving the same candidate ranking. The capped-evidence contrast underperformed because it reintroduced shortcut-heavy candidates.
@@ -526,10 +529,10 @@
     \toprule
     Row & \gold{} & \mrr{} & Hits@1 & \hitsten{} & Selection note \\
     \midrule
-    Backbone raw, validation & 0.202 & 0.0918 & 0.024 & 0.158 & Reference candidate order. \\
-    Ontology hard filter, validation & 0.014 & 0.0509 & 0.002 & 0.012 & Negative control; brittle under missing evidence. \\
-    Soft support b050, validation & 0.202 & 0.1356 & 0.056 & 0.182 & Selected soft-support row. \\
-    Capped-evidence contrast, validation & 0.202 & 0.0925 & 0.022 & 0.158 & Retained only as a contrast row. \\
+    Backbone raw, validation & 0.202 & \rev{0.0538} & 0.024 & 0.158 & Reference candidate order. \\
+    Ontology hard filter, validation & 0.014 & \rev{0.0039} & 0.002 & 0.012 & Negative control; brittle under missing evidence. \\
+    Soft support b050, validation & 0.202 & \rev{0.0976} & 0.056 & 0.182 & Selected soft-support row. \\
+    Capped-evidence contrast, validation & 0.202 & \rev{0.0545} & 0.022 & 0.158 & Retained only as a contrast row. \\
     Backbone raw, test & 0.240 & 0.0646 & 0.024 & 0.192 & Locked test reference. \\
     Soft support, test & 0.240 & 0.1253 & 0.072 & 0.222 & Candidate-stage gain. \\
     Fuzzy retrieval, test & 0.240 & 0.1253 & 0.072 & 0.222 & Candidate order preserved; graph \(59.93\rightarrow32.34\). \\
@@ -540,7 +543,7 @@
 
     \section{LLM Model Comparison}
 
-    The model comparisons use candidate-constrained evaluation: generated strings are normalized against the supplied candidate list, and invalid outputs receive zero reciprocal rank. Table~\ref{tab:s7_primekg_llm_compare} reports the PrimeKG generator comparison.
+    \begin{revisionblock}This section retains the original generator and decoding-configuration comparisons. Generated strings are matched against the supplied candidates. Invalid answers are not exact matches, but an adjusted-rank metric can still credit a present gold candidate; adjusted MRR should therefore not be read as generation accuracy. The current standardized module and intervention comparisons are reported in the main text and Sections S12--S13, separately from these earlier model-selection diagnostics.\end{revisionblock} Table~\ref{tab:s7_primekg_llm_compare} reports the PrimeKG generator comparison.
 
     \begin{table}[H]
     \caption{\textbf{PrimeKG LLM comparison on the fuzzy retrieval row.} All rows use the same candidate list and fuzzy evidence package. The configuration column reports max new tokens / repetition penalty / no-repeat n-gram size.}
@@ -678,7 +681,7 @@
     \end{table}
     \FloatBarrier
 
-    The sensitivity checks show that the PrimeKG result is not driven by one question wording. The robustness check separates two effects: the selected fuzzy graph is stable under light edge dropout, whereas support-score perturbation changes close candidate-score ties and reduces \mrr{}. This highlights a calibration limitation of the current support score.
+    The sensitivity checks show that the PrimeKG result is not driven by one question wording. \rev{The robustness check separates two effects: edge dropout leaves the fixed candidate ranking unchanged, whereas support-score perturbation changes close score ties and reduces candidate MRR. Fixed-order ranking invariance alone does not establish retained graph information; Section S13 measures this directly.} This highlights a calibration limitation of the current support score.
 
     \section{Fuzzy Encoder Probe}
 
@@ -692,15 +695,15 @@
     \toprule
     Row & \gold{} & \mrr{} & Hits@1 & Hits@3 & \hitsten{} & Probe note \\
     \midrule
-    Soft support & 0.202 & 0.1356 & 0.056 & 0.134 & 0.182 & Candidate-stage reference. \\
-    Fuzzy retrieval & 0.202 & 0.1356 & 0.056 & 0.134 & 0.182 & Candidate order preserved; avg. graph \(32.56\). \\
-    Fuzzy encoder probe & 0.202 & 0.0917 & 0.012 & 0.058 & 0.176 & Improves 8 queries, worsens 70, and leaves 422 unchanged relative to fuzzy retrieval. \\
+    Soft support & 0.202 & \rev{0.0976} & 0.056 & 0.134 & 0.182 & Candidate-stage reference. \\
+    Fuzzy retrieval & 0.202 & \rev{0.0976} & 0.056 & 0.134 & 0.182 & Candidate order preserved; avg. graph \(32.56\). \\
+    Fuzzy encoder probe & 0.202 & \rev{0.0537} & 0.012 & 0.058 & 0.176 & Improves 8 queries, worsens 70, and leaves 422 unchanged relative to fuzzy retrieval. \\
     \bottomrule
     \end{tabularx}
     \end{table}
     \FloatBarrier
 
-    The probe confirms that fuzzy scores are useful for selecting an evidence package, but the current weighted-message-passing formulation is not yet stable enough to replace the selected retrieval-stage design.
+    \rev{This probe does not support replacing the retrieval-stage design with the tested weighted-message-passing formulation. The separate structural and frozen-model comparisons in Section S13 characterize evidence selection more directly.}
 
     \section{Structure-Only Baseline Training Settings}
 
@@ -790,4 +793,6 @@
     \end{table}
     \FloatBarrier
 
+    \input{revision_calibration}
+    \input{revision_retention}
     \end{document}

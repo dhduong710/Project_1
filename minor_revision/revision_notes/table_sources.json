@@ -1,0 +1,39 @@
+{
+  "inputs_sha256": {
+    "results/revision_c2/cpu_complete.json": "2fb566dd60d8eae364d0a3e8ac668585db63c7cda8110c241b9703bb4327d381",
+    "results/revision_c2/e2e_stable/e2e_complete.json": "08bc640d3ed8f79e87eaa5ca6fc28e6ebd8e8f3484a0f12f29c219d9f744059f",
+    "results/revision_c2/e2e_stable/precision_complete.json": "5221513e98c143c564c026c2150bc724bc2ac4ef8db65ad93d86e0141ff3189e",
+    "results/revision_c3/gpu/gpu_complete.json": "8583b6a683d38fb5f7a12527514c66ede2e471fcdbfc1300d5da9f721d184923",
+    "results/revision_c2/candidate_metrics.csv": "b07598098639ddf78a02ab699e7becce0ec95bdd569e5cbf7f091228014b01a6",
+    "results/revision_c2/e2e_stable/e2e_metrics.csv": "0d6072634bd7256c5ae659319381c80d2db9693cca75755d70bc8d05bd6dced0",
+    "results/revision_c2/learned_weights.csv": "14f70cd7e2ed922bc908902f910d5f5b0d2249ef8adf774dc5119a329d82d953",
+    "results/revision_c2/exports/learning_vs_equal.csv": "3e117f8924c03ba6216de6cb1c83b137f3e88d10d0f3953669dfa42379ddd2e0",
+    "results/revision_c2/exports/transfer_matrix.csv": "9311abc782b554d03a927235a9ac7c590d513475122733c658547b6635c40ca8",
+    "results/revision_c2/exports/label_efficiency_summary.csv": "28541509d95bb0bab5c5cd84b9e80bd5ba0e8e1b802daf0fd47ac6127470fbcb",
+    "results/revision_c2/exports/sensitivity_summary.csv": "a1f16b210510ca7946bc30583e7d92297b8597675c16b8a2b518566a61f64d3f",
+    "results/revision_c2/exports/edge_calibration_selection.csv": "1ff0c5f76082f663a4aa02dfddcea3e3262797facbfb9e3f8d2ba25d0512d2a6",
+    "results/revision_c3/exports/seed_retention_summary.csv": "63e7f975584debd69c2497cc5c20b156fb9e5a86efb3d55d0199dc7a2bf98d1f",
+    "results/revision_c3/exports/seed_e2e_summary.csv": "5124131cff91ca3f6135b50d8372df5438dc89b9d61cc157fb80d9fb8c080cd2"
+  },
+  "tables": [
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/ablation.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/all_reachability.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/candidate_accuracy.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/candidate_adjusted.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/edge_accuracy.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/edge_adjusted.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/edge_validation.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/encoder.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/label_efficiency.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/learning_equal.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/native_calibration.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/other_retention.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/path_retention.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/selector_accuracy.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/sensitivity.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/transfer.tex",
+    "minor_revision/Supplementary Materal/Supplementary Materal/revision_tables/weights.tex",
+    "minor_revision/Main Manuscript/paper/revision_tables/calibration_main.tex",
+    "minor_revision/Main Manuscript/paper/revision_tables/retention_main.tex"
+  ]
+}

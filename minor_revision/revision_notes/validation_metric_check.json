@@ -1,0 +1,52 @@
+{
+  "raw": {
+    "source": "dataset/setting_a/23_noinj_source/valid_top20_raw.json",
+    "sha256": "3aa2e7bca558367f2c3cb8ad4dbabd8022f61353db29c8d49bf7778a6c51afe5",
+    "n": 500,
+    "gold": 0.202,
+    "mrr": 0.05380337664571411,
+    "hits1": 0.024,
+    "hits3": 0.046,
+    "hits10": 0.158
+  },
+  "ontology": {
+    "source": "dataset/setting_a/24_noinj_ontology/valid_top20_ontology_raw.json",
+    "sha256": "fbd0b10ff7b70c75df6f12a5183cde9542a69ba0e5ec30059c25ba3d33126441",
+    "n": 500,
+    "gold": 0.014,
+    "mrr": 0.003916666666666666,
+    "hits1": 0.002,
+    "hits3": 0.004,
+    "hits10": 0.012
+  },
+  "bcap": {
+    "source": "dataset/setting_a/26_n2_soft_support/valid_top20_soft_support_bcap.json",
+    "sha256": "af20fd160ccfd62b82aa667e7f97fac9b883d0eec1692ad0a6d8f4f1b4d91a12",
+    "n": 500,
+    "gold": 0.202,
+    "mrr": 0.054464494655671124,
+    "hits1": 0.022,
+    "hits3": 0.05,
+    "hits10": 0.158
+  },
+  "soft": {
+    "source": "dataset/setting_a/26_n2_soft_support/valid_top20_soft_support_b050.json",
+    "sha256": "67910b9d97b09a7cce9155c1a709a06b06848bedd438f0680fde5a9bd52f456e",
+    "n": 500,
+    "gold": 0.202,
+    "mrr": 0.09764372294372295,
+    "hits1": 0.056,
+    "hits3": 0.134,
+    "hits10": 0.182
+  },
+  "probe": {
+    "source": "dataset/setting_a/28_n2_fuzzy_encoder/valid_fuzzy_encoder_probe_v0.json",
+    "sha256": "131c87e1d18e953097bbc6f91c5cc5a5071c82a73f57d30a3fb98687ee3043fe",
+    "n": 500,
+    "gold": 0.202,
+    "mrr": 0.053707287157287155,
+    "hits1": 0.012,
+    "hits3": 0.058,
+    "hits10": 0.176
+  }
+}

@@ -1,0 +1,46 @@
+% Integrated revision: Comment 2 and Comment 3. Values come from current complete runs.
+\subsection{\rev{Automatic calibration and coefficient transfer}}
+\label{sec:calibration_results}
+\begin{revisionblock}
+To test dependence on manually assigned dataset-specific weights, we evaluate a common five-feature candidate scorer with equal weights, learned weights, and leave-one-dataset-out (LODO) coefficients. The features describe original rank, graph contact, degree, shared neighbors, and direct query contact. Learned weights minimize a regularized pairwise logistic objective on validation data, with query-group cross-validation for regularization. LODO excludes all target-dataset calibration labels and selects coefficients using the other four datasets. Candidate membership and the upstream retriever remain fixed. Online Resource 1, Supplementary Section S12, provides the feature definitions, fitting objective, native-formula search, transfer protocol, and full diagnostics.
+
+
+\par\noindent\begin{minipage}{\linewidth}
+
+\centering\small
+\captionof{table}{\textbf{Candidate calibration on the complete test splits.} MRR@20 is computed over all rows, with zero reciprocal rank for absent gold entities. Shared equal, learned, and LODO use the same features; comparison with the original soft-support formula also changes features. LODO is coefficient transfer without target calibration labels.}
+\label{tab:calibration_main}
+\setlength{\tabcolsep}{6pt}
+\input{revision_tables/calibration_main}
+
+\end{minipage}\par\medskip
+
+
+Table~\ref{tab:calibration_main} shows that shared learned calibration improves the candidate-MRR point estimate over the original formula on four datasets and matches it on PrimeKG. LODO coefficients yield higher point estimates than the original formula on all five datasets. This indicates that useful candidate ordering can be obtained without fitting target-specific support coefficients. The feature-matched equal-weight control is essential: it already improves four datasets relative to the original formula and has the highest point estimate on DRKG. Learned-minus-equal MRR is 0.01402 on Hetionet and 0.00754 on repoDB, but the exploratory query-cluster 95\% interval excludes zero only on repoDB, where it is [0.00040, 0.01518]. These results support transfer of the shared scoring representation rather than a universal advantage for learning its coefficients.
+
+We also select edge-score coefficients automatically from 12 predefined vectors per dataset while keeping candidate order and graph size fixed. Selection uses validation exact-answer accuracy, then adjusted MRR, with a fixed tie rule; a source-only macro-validation variant excludes target labels. The resulting adjusted MRR remains close to the original fuzzy selector, without a consistent exact-answer advantage. Candidate reranking likewise has mixed generation effects. Detailed accuracy tables, coefficient values, cross-dataset transfers, label-efficiency curves, and sensitivity analyses appear in Supplementary Section S12 and Tables S16--S24. These retrospective experiments assess coefficient transfer within existing graph pipelines, rather than zero-shot completion on unseen diseases or knowledge graphs.
+\end{revisionblock}
+
+\subsection{\rev{Information retention and alternative graph selection}}
+\label{sec:retention_results}
+\begin{revisionblock}
+We quantify compression relative to each retrieved source graph while fixing the candidate identities and order. Every compressed alternative selects the same number of unique triples as the original fuzzy graph for that query. The comparison includes random sampling, coverage-constrained random sampling, native-score top-$k$, strict coverage-first selection, degree, breadth-first selection, personalized PageRank, shortest paths, and relation-stratified selection. We separately measure candidate incidence, query--candidate reachability, labeled path retention, encoder representations, and generated answers. Full definitions and results are provided in Supplementary Section S13.
+
+
+\par\noindent\begin{minipage}{\linewidth}
+
+\centering\small
+\captionof{table}{\textbf{Three-hop reachability at matched unique-edge budgets.} Reachability is the per-row fraction of source-reachable candidates still reachable within three edges. $N$ counts eligible rows; absent source connectivity is excluded. Random is mean $\pm$ standard deviation over five seeds. Fuzzy candidate-incidence retention relative to the source is 1.0000 on every dataset.}
+\label{tab:retention_main}
+\setlength{\tabcolsep}{5pt}
+\input{revision_tables/retention_main}
+
+\end{minipage}\par\medskip
+
+
+Fuzzy retrieval retains all candidate incidence available in its source graphs. At the same unique-edge budgets, it preserves more three-hop reachability than uniform random selection on PharmKG, DRKG, and repoDB (Table~\ref{tab:retention_main}); PrimeKG and Hetionet are similar to random. Shortest-path selection preserves nearly all source connectivity, but sacrifices incidence coverage on Hetionet, DRKG, and repoDB. These results identify a trade-off between retaining some evidence for each candidate and retaining connected paths to the query, rather than establishing a single best selector.
+
+Graph size alone also overstates unique-information reduction when retrieved triples repeat. On PrimeKG, the mean source contains 59.932 edge occurrences but 38.094 unique triples; fuzzy retrieval retains 32.340 unique triples. Thus, 21.838 of the 27.592 removed occurrences are duplicates, while 5.754 are unique triples. The other four prepared test datasets contain no source duplicates. Supplementary Section S13 distinguishes these counts and reports exact length-two/three paths, relation distributions, budget curves, and eligible sample counts.
+
+The representation and generation comparisons further separate structural retention from downstream behavior. Fuzzy/source generated-answer agreement is 78.8\%, 80.0\%, 100\%, 100\%, and 80.8\% on PrimeKG, PharmKG, Hetionet, DRKG, and repoDB, respectively. Even complete answer agreement can coexist with changed query representations and lost paths. Exact-answer comparisons do not identify a universally superior selector; the full results and counterexamples are reported in Supplementary Tables S28--S29. Fuzzy retrieval is therefore best characterized as coverage-oriented compression with measured structural and downstream trade-offs, not lossless preservation of biomedical mechanisms.
+\end{revisionblock}
