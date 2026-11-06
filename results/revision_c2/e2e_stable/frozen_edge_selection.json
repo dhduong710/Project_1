@@ -1,0 +1,122 @@
+{
+  "primekg": {
+    "auto_trial": 1,
+    "auto_weights": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "lodo_trial": 2,
+    "lodo_weights": [
+      1,
+      0.35,
+      0.05,
+      0,
+      0.05
+    ],
+    "source_datasets": [
+      "pharmkg",
+      "hetionet",
+      "drkg",
+      "repodb"
+    ]
+  },
+  "pharmkg": {
+    "auto_trial": 3,
+    "auto_weights": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "lodo_trial": 2,
+    "lodo_weights": [
+      1,
+      0.35,
+      0.05,
+      0,
+      0.05
+    ],
+    "source_datasets": [
+      "primekg",
+      "hetionet",
+      "drkg",
+      "repodb"
+    ]
+  },
+  "hetionet": {
+    "auto_trial": 0,
+    "auto_weights": [
+      1.0,
+      0.35,
+      0.05,
+      0.8,
+      0.05
+    ],
+    "lodo_trial": 2,
+    "lodo_weights": [
+      1,
+      0.35,
+      0.05,
+      0,
+      0.05
+    ],
+    "source_datasets": [
+      "primekg",
+      "pharmkg",
+      "drkg",
+      "repodb"
+    ]
+  },
+  "drkg": {
+    "auto_trial": 0,
+    "auto_weights": [
+      1.0,
+      0.35,
+      0.05,
+      0.8,
+      0.05
+    ],
+    "lodo_trial": 2,
+    "lodo_weights": [
+      1,
+      0.35,
+      0.05,
+      0,
+      0.05
+    ],
+    "source_datasets": [
+      "primekg",
+      "pharmkg",
+      "hetionet",
+      "repodb"
+    ]
+  },
+  "repodb": {
+    "auto_trial": 2,
+    "auto_weights": [
+      1,
+      0.35,
+      0.05,
+      0,
+      0.05
+    ],
+    "lodo_trial": 3,
+    "lodo_weights": [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    "source_datasets": [
+      "primekg",
+      "pharmkg",
+      "hetionet",
+      "drkg"
+    ]
+  }
+}

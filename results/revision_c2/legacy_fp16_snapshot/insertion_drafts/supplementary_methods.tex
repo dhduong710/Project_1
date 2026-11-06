@@ -1,0 +1,61 @@
+% Standalone insertion draft: review and integrate into ESM_1.tex after results are final.
+% No uncompleted GPU result is asserted here.
+\subsection{Automatic coefficient calibration and transfer analysis}
+
+To investigate dependence on dataset-specific manual coefficients, we distinguish
+calibration of the original support formula from a complementary calibration
+baseline with shared feature definitions. The original formula retains its
+dataset-specific evidence features, while a fixed validation search selects the
+shortcut penalty, contradiction penalty, and rank-prior mixture from a declared
+grid of 224 configurations per dataset. Selection uses validation MRR@20 only;
+the selected configuration is frozen before test evaluation.
+
+The shared-feature baseline uses the original rank prior, source-subgraph contact,
+bounded log degree, bounded log shared-neighbor count, and a negative direct-contact
+indicator. These features are computed without reference to evaluation labels and
+use the same definitions and normalization constants across datasets. They are
+topological descriptors rather than annotations of therapeutic mechanism. An
+equal-weight baseline is included to separate effects of the shared features from
+effects of coefficient learning.
+
+For learned calibration, a linear candidate score is fitted using a pairwise
+logistic objective with L2 regularization. The primary formulation constrains
+coefficients to be nonnegative because feature signs are specified explicitly;
+an unconstrained counterpart is also evaluated. The regularization coefficient
+is selected by five-fold query-group cross-validation within the existing
+validation split, which serves as a calibration pool. Candidates known to be
+other positives for the same calibration-training query are excluded as negative
+pairs. Queries whose gold entity is absent from the fixed top-20 list cannot
+contribute a positive training pair, but remain in all evaluation denominators.
+
+We additionally perform leave-one-dataset-out coefficient transfer: the target
+dataset contributes no validation labels to fitting or hyperparameter selection.
+Coefficients are fitted on the other datasets, with equal total pair weight per
+source dataset, and regularization is selected using leave-one-source-dataset-out
+validation. The target graph, structural retriever, and prepared subgraphs remain
+available. This experiment therefore assesses transfer of calibration coefficients,
+not zero-shot completion on an unseen knowledge graph. Pairwise source-to-target
+transfer, feature ablation, calibration-label learning curves, and coefficient
+perturbation analyses provide complementary diagnostics.
+
+For fuzzy retrieval, a common edge feature set uses rank-band confidence,
+candidate incidence, query incidence, direct-contact penalties, and bounded
+degree information, without dataset-specific relation-family priorities.
+Automatic selection searches a fixed set of coefficient vectors using validation
+generated-answer accuracy, with adjusted MRR@20 as a secondary criterion. Candidate
+order and per-query edge budgets are held fixed. A source-only macro-validation
+criterion provides the corresponding leave-one-dataset-out edge-coefficient
+selection. All selected settings are recorded before test inference.
+The source-only restriction applies to this new coefficient-selection step;
+the original fuzzy candidate order and per-query budgets are inherited from the
+historical dataset-specific pipeline. Thus the complete graph-input pipeline is
+not claimed to be free of prior target-dataset calibration.
+
+End-to-end comparisons use one frozen checkpoint per dataset. Candidate-order
+interventions retain the full source graph, whereas edge-selection interventions
+retain the original fuzzy input candidate order. Exact generated-answer accuracy,
+invalid-output rate, and top-candidate-copy rate are reported separately from
+adjusted MRR@20. Paired query-cluster bootstrap intervals quantify uncertainty;
+multiple gold rows for the same query are resampled together. These analyses are
+retrospective checks on previously studied benchmarks, and their exploratory
+intervals are not adjusted for multiple comparisons.

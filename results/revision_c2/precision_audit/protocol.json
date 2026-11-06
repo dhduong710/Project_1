@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "datasets": [
+    "primekg",
+    "pharmkg",
+    "hetionet",
+    "drkg",
+    "repodb"
+  ],
+  "runner_sha256": "3eafd341d2f086cbb70b8de8292f42d52621675efd3316977bea9712dddb11f3",
+  "input_hashes_sha256": "12a43f5fa4654ac0e9ec0d8180552a6cac50c03c34188cee09006d95ff7c12e1",
+  "runs": {
+    "legacy_fp16": {
+      "protocol_e2e.json": "a511fdad470893453a9ba6516acbbf8542439cf0c17b1a5faa0c345c2a99f8f4",
+      "frozen_edge_selection.json": "2b81684c777f6e11eeadf0442a10c7cd7678dcc1f76e67e10aafda55ac4ab4d2"
+    },
+    "stable": {
+      "protocol_e2e.json": "a511fdad470893453a9ba6516acbbf8542439cf0c17b1a5faa0c345c2a99f8f4",
+      "frozen_edge_selection.json": "57e6e4036cdc55d6d73a72957890c31b0fc979b1c7a36102beb19b2157960535"
+    }
+  },
+  "scope": "actual encoder calls; FP16 and original checkpoint FP32, plus FP32-to-BF16 and FP32-to-FP16 casts; no clipping",
+  "checkpoint_sha256": {
+    "primekg": "05f808f23b2aee96717388afb2c0d6fd6fa99d7f236c532a31efd9d9a408f259",
+    "pharmkg": "e692d70b2caa8b9ac0508c768438f0f600a374e720ad07d32389d4142634e261",
+    "hetionet": "562a9f7fe244b6a571e14c8a2b97fa9f3d7a7d1289f8c50288f382c1824e00e5",
+    "drkg": "e1028cbb706789a11d04e8834cad1a331c1db71bf0076f17be824bab0b74f6b6",
+    "repodb": "3d385e838660372325ed67b0c692ee8a5baeb8d49eabfb2c904d24538b4e1fbd"
+  }
+}

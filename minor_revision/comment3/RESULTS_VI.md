@@ -73,7 +73,7 @@ Exact accuracy ở đây dùng matching chuẩn hóa chặt với candidate name
 
 FP16 graph encoder sinh nonfinite outputs ở 9 source cases của PrimeKG. FP32 hữu hạn ở toàn bộ 4.200 source/fuzzy cases đã audit, nhưng max projection 130.444,35 vẫn vượt miền FP16 (65.504). Vì vậy run chính dùng **encoder FP32 + LLM BF16**, kiểm tra finite trước/sau cast, không clipping và không loại mẫu.
 
-Không ghép các số E2E này trực tiếp vào bảng FP16 lịch sử hoặc Comment 2. CPU structural/candidate metrics không phụ thuộc lỗi precision này. Nếu dùng lại C2 GPU raw-graph contrasts để kết luận, cần audit/rerun riêng với precision nhất quán.
+Không ghép các số E2E này trực tiếp vào bảng FP16 lịch sử hoặc Comment 2 cũ. CPU structural/candidate metrics không phụ thuộc lỗi precision này. **Cập nhật 06/11/2026:** Comment 2 đã được audit và chạy lại đầy đủ với encoder FP32 + LLM BF16, gồm cả validation reselection. Kết quả sửa ở `../../results/revision_c2/e2e_stable/`; xem [bản giải thích sửa precision C2](../comment2/PRECISION_REPAIR_VI.md). Bản FP16 cũ vẫn được giữ riêng, không dùng làm bảng revision hiện hành.
 
 ## 7. Nên đưa vào revision như thế nào?
 

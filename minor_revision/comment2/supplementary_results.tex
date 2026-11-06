@@ -1,5 +1,5 @@
-% Completed-run insertion draft, 2026-11-05.
-% Source: results/revision_c2/{candidate_metrics.csv,e2e/e2e_metrics.csv,exports/}.
+% Precision-corrected insertion draft, 2026-11-06.
+% Source: results/revision_c2/{candidate_metrics.csv,e2e_stable/e2e_metrics.csv,exports/}.
 % Integrate with supplementary_methods.tex; historical tables use different metrics.
 \subsection{Results of automatic calibration and coefficient transfer}
 
@@ -8,6 +8,10 @@ The study includes 1,120 native validation configurations, 20 directed
 source--target transfers, 100 calibration-label subset runs, and 200 coefficient
 perturbation runs. Frozen-checkpoint inference evaluates 60 dataset--edge-vector
 combinations on validation and 55 dataset--variant combinations on test.
+All inference uses the corrected FP32 graph-encoder/BF16 LLM policy, with
+validation selections recomputed before test inference. Ten additional
+test diagnostics hold the previously selected edge coefficients fixed at the
+corrected precision; they do not participate in configuration selection.
 The same 2,100 validation rows and 2,100 test rows are reused across their
 respective variants; these are not independent new examples. Query-level caching
 avoids repeated generation for identical model inputs.
@@ -64,17 +68,7 @@ for performance on independent test sets.
 the full source graph and a fixed checkpoint within each dataset. Accuracy is
 separate from candidate MRR and adjusted MRR.}
 \label{tab:c2-generated-accuracy}
-\begin{tabular}{lrrrrr}
-\hline
-Dataset & Test rows & Original & Shared equal & Shared learned & Shared LODO \\
-\hline
-PrimeKG  & 500 & 0.0 & 0.0 & 0.0 & 0.0 \\
-PharmKG  & 500 & 0.0 & 0.2 & 0.2 & 0.2 \\
-Hetionet & 100 & 3.0 & 1.0 & 1.0 & 2.0 \\
-DRKG     & 500 & 1.4 & 0.8 & 2.0 & 1.8 \\
-repoDB   & 500 & 0.2 & 0.8 & 0.0 & 0.0 \\
-\hline
-\end{tabular}
+\input{../../results/revision_c2/exports/table_accuracy_compact.tex}
 \end{table}
 
 End-to-end outcomes are mixed (Table~\ref{tab:c2-generated-accuracy}).
@@ -94,29 +88,58 @@ the compressed-graph budget are fixed per query. Invalid outputs retain the
 explicit virtual-rank-one convention described in the protocol; these values
 must not be read as generated-answer accuracy.}
 \label{tab:c2-edge-calibration}
-\begin{tabular}{lrrrr}
-\hline
-Dataset & Original fuzzy & Shared fixed & Shared auto & Edge LODO \\
-\hline
-PrimeKG  & 0.074687 & 0.074687 & 0.074742 & 0.074687 \\
-PharmKG  & 0.020971 & 0.021290 & 0.021290 & 0.021290 \\
-Hetionet & 0.100087 & 0.100087 & 0.100087 & 0.100087 \\
-DRKG     & 0.046285 & 0.046285 & 0.046285 & 0.046285 \\
-repoDB   & 0.037776 & 0.037795 & 0.037795 & 0.038045 \\
-\hline
-\end{tabular}
+\input{../../results/revision_c2/exports/table_graph_compact.tex}
 \end{table}
 
 For edge calibration, the numbers of vectors tied at the best validation
-accuracy and adjusted MRR are 6/12, 12/12, 12/12, 12/12, and 8/12 for PrimeKG,
+accuracy and adjusted MRR are 6/12, 2/12, 12/12, 12/12, and 1/12 for PrimeKG,
 PharmKG, Hetionet, DRKG, and repoDB, respectively. The prespecified tie rule
 selects the earliest vector, rather than using test results to break ties.
-All four compressed-graph variants in Table~\ref{tab:c2-edge-calibration} have
-the same exact-answer accuracy within each dataset: 0.0\%, 0.2\%, 3.0\%, 1.4\%,
-and 0.4\%, respectively. Edge selection therefore changes some graph properties
-and adjusted ranks without establishing an exact-answer advantage. Equal metrics
+The four compressed-graph variants in Table~\ref{tab:c2-edge-calibration} have
+the same exact-answer accuracy on PrimeKG, PharmKG, Hetionet, and DRKG:
+0.0\%, 0.2\%, 3.0\%, and 1.4\%, respectively. On repoDB, original fuzzy,
+shared fixed, and shared auto yield 0.4\%, while the newly selected edge-LODO
+vector yields 0.2\%. Thus automatic edge calibration does not establish a
+uniform exact-answer advantage. Equal metrics
 under the tested vectors do not identify a unique optimum or prove equivalence
 for other graphs, budgets, or checkpoints.
+
+\paragraph{Precision correction and validation reselection.}
+The CPU candidate-calibration results remain unchanged. The repeated GPU
+validation search changes the selected automatic trial on PharmKG (0 to 3) and
+repoDB (0 to 2), while PrimeKG, Hetionet, and DRKG retain trials 1, 0, and 0.
+Source-only edge-LODO selections change on all five datasets: 0 to 2, 7 to 2,
+7 to 2, 7 to 2, and 1 to 3, respectively. Trial identifiers are zero-based and
+refer to the unchanged predefined search list. In particular, the old claim
+that all twelve vectors tie on PharmKG is superseded: only two tie for the best
+validation score at corrected precision. Even when exact test accuracy is
+unchanged, individual generated answers and adjusted ranks can change.
+
+Across the 23,100 test row--variant evaluations, 679 normalized generated
+answers change, and adjusted MRR changes in 15 of the 55 test summaries. These
+counts include both precision changes and adaptive graph reselection; they are
+not counts of independent new test examples. Exact accuracy changes in only
+one summary, repoDB edge-LODO. Holding its old selected coefficients fixed at
+stable precision retains 0.4\% accuracy, whereas the newly selected coefficients
+yield 0.2\%; this difference is therefore attributable to reselection within
+the stable-precision comparison.
+
+The encoder audit covers 10,765 distinct query/candidate-order/edge-multiset
+inputs from the legacy and corrected validation/test protocols. It finds 22
+nonfinite FP16 calls, all associated with PrimeKG. In each full-source PrimeKG
+test variant, nine rows have nonfinite FP16 encoder outputs. Casting finite
+FP32 encoder outputs to FP16 remains nonfinite in six rows of each such
+variant. All audited FP32 outputs and their BF16 casts are finite. The 22
+distinct calls include repeated query cases with different candidate orders;
+they must not be interpreted as 22 independent affected test examples.
+
+The updated workbook provides every legacy--stable variant comparison and
+separates changes at fixed graph inputs from changes following reselection.
+The fixed-old-coefficient diagnostic further decomposes adaptive-arm metric
+changes into a precision-policy term and a reselection term. Neither term
+isolates graph arithmetic from LLM arithmetic. Archived FP16 predictions are
+retained for audit and are not mixed with corrected outputs in the reported
+tables.
 
 All results above are retrospective analyses of existing benchmark splits.
 Bootstrap intervals are exploratory and are not adjusted for multiple

@@ -1,0 +1,12 @@
+{
+  "status": "complete",
+  "variant_rows": 115,
+  "test_variant_rows": 55,
+  "row_variant_pairs": 48300,
+  "all_cpu_artifacts_reused": true,
+  "audit_complete": true,
+  "diagnostic_decomposition_rows": 30,
+  "legacy_protocol_sha256": "a511fdad470893453a9ba6516acbbf8542439cf0c17b1a5faa0c345c2a99f8f4",
+  "stable_protocol_sha256": "51df7a20b0555de5e8c01daf1fb76aca535f4beaf8130f734bb4dcbf523c648d",
+  "caveat": "Changes combine FP32 graph and BF16 LLM precision; adaptive graph arms can also reflect validation reselection. No single-component causal attribution."
+}

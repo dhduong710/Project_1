@@ -1,0 +1,12 @@
+{
+  "entrypoint": "scripts/revision_c2/run_e2e_stable.py",
+  "bootstrap": 2000,
+  "seed": 20261105,
+  "edge_trials": 12,
+  "calibration_max_rows": 0,
+  "test_max_rows": 0,
+  "offline": true,
+  "model_path": "/home/anhlq/.cache/huggingface/hub/models--meta-llama--Llama-3.2-3B/snapshots/13afe5124825b4f3751f836b40dafda64c1ed062",
+  "c3_results": "results/revision_c3/gpu",
+  "note": "Actual full-run CLI/default values recorded during execution; the inherited legacy protocol does not serialize the bootstrap count."
+}

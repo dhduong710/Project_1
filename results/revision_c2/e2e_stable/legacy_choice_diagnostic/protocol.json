@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "role": "diagnostic old selections at stable precision; no new model selection",
+  "runner_sha256": "d71f81718cb1a55cf8c4d7b2301d96ee8c015bc5e4caed9d6117f39e365f34f2",
+  "stable_precision_sha256": "51df7a20b0555de5e8c01daf1fb76aca535f4beaf8130f734bb4dcbf523c648d",
+  "old_selection_sha256": "2b81684c777f6e11eeadf0442a10c7cd7678dcc1f76e67e10aafda55ac4ab4d2",
+  "datasets": [
+    "primekg",
+    "pharmkg",
+    "hetionet",
+    "drkg",
+    "repodb"
+  ]
+}

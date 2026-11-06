@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="490" viewBox="0 0 1000 490">
+<rect width="1000" height="490" fill="white"/>
+<g font-family="sans-serif" font-size="14" fill="#172b40">
+<text x="60" y="30" font-size="20">Comment 2 — candidate MRR@20 (test)</text>
+<line x1="60" y1="370.0" x2="960" y2="370.0" stroke="#e3e8ee"/>
+<text x="7" y="374.0">0.000</text>
+<line x1="60" y1="314.0" x2="960" y2="314.0" stroke="#e3e8ee"/>
+<text x="7" y="318.0">0.029</text>
+<line x1="60" y1="258.0" x2="960" y2="258.0" stroke="#e3e8ee"/>
+<text x="7" y="262.0">0.058</text>
+<line x1="60" y1="202.0" x2="960" y2="202.0" stroke="#e3e8ee"/>
+<text x="7" y="206.0">0.087</text>
+<line x1="60" y1="146.0" x2="960" y2="146.0" stroke="#e3e8ee"/>
+<text x="7" y="150.0">0.116</text>
+<line x1="60" y1="90.0" x2="960" y2="90.0" stroke="#e3e8ee"/>
+<text x="7" y="94.0">0.145</text>
+<rect x="85" y="128.02368658674405" width="26" height="241.97631341325595" fill="#687a90"><title>primekg original_soft: 0.125326</title></rect>
+<rect x="117" y="128.2902205908306" width="26" height="241.7097794091694" fill="#d69e36"><title>primekg shared_equal: 0.125188</title></rect>
+<rect x="149" y="128.02368658674405" width="26" height="241.97631341325595" fill="#147d92"><title>primekg shared_learned: 0.125326</title></rect>
+<rect x="181" y="126.52173913043475" width="26" height="243.47826086956525" fill="#844da5"><title>primekg shared_lodo: 0.126104</title></rect>
+<text x="85" y="398">primekg</text>
+<rect x="260" y="315.6313494849037" width="26" height="54.36865051509629" fill="#687a90"><title>pharmkg original_soft: 0.028159</title></rect>
+<rect x="292" y="308.44200419830656" width="26" height="61.55799580169345" fill="#d69e36"><title>pharmkg shared_equal: 0.031883</title></rect>
+<rect x="324" y="308.4556561229319" width="26" height="61.54434387706812" fill="#147d92"><title>pharmkg shared_learned: 0.031876</title></rect>
+<rect x="356" y="308.48491024712905" width="26" height="61.51508975287094" fill="#844da5"><title>pharmkg shared_lodo: 0.031860</title></rect>
+<text x="260" y="398">pharmkg</text>
+<rect x="435" y="185.72973722473935" width="26" height="184.27026277526065" fill="#687a90"><title>hetionet original_soft: 0.095439</title></rect>
+<rect x="467" y="174.47274548952126" width="26" height="195.52725451047874" fill="#d69e36"><title>hetionet shared_equal: 0.101269</title></rect>
+<rect x="499" y="147.41263880557568" width="26" height="222.58736119442432" fill="#147d92"><title>hetionet shared_learned: 0.115284</title></rect>
+<rect x="531" y="150.70397203488196" width="26" height="219.29602796511804" fill="#844da5"><title>hetionet shared_lodo: 0.113579</title></rect>
+<text x="435" y="398">hetionet</text>
+<rect x="610" y="280.11164972843073" width="26" height="89.88835027156925" fill="#687a90"><title>drkg original_soft: 0.046556</title></rect>
+<rect x="642" y="251.4007774939427" width="26" height="118.59922250605727" fill="#d69e36"><title>drkg shared_equal: 0.061426</title></rect>
+<rect x="674" y="253.19637132922716" width="26" height="116.80362867077284" fill="#147d92"><title>drkg shared_learned: 0.060496</title></rect>
+<rect x="706" y="256.83334540824717" width="26" height="113.16665459175285" fill="#844da5"><title>drkg shared_lodo: 0.058612</title></rect>
+<text x="610" y="398">drkg</text>
+<rect x="785" y="277.11700712637924" width="26" height="92.88299287362076" fill="#687a90"><title>repodb original_soft: 0.048107</title></rect>
+<rect x="817" y="259.2399902159788" width="26" height="110.7600097840212" fill="#d69e36"><title>repodb shared_equal: 0.057366</title></rect>
+<rect x="849" y="244.68996097536368" width="26" height="125.31003902463632" fill="#147d92"><title>repodb shared_learned: 0.064902</title></rect>
+<rect x="881" y="244.68996097536368" width="26" height="125.31003902463632" fill="#844da5"><title>repodb shared_lodo: 0.064902</title></rect>
+<text x="785" y="398">repodb</text>
+<rect x="65" y="430" width="16" height="16" fill="#687a90"/>
+<text x="88" y="443">original_soft</text>
+<rect x="295" y="430" width="16" height="16" fill="#d69e36"/>
+<text x="318" y="443">shared_equal</text>
+<rect x="525" y="430" width="16" height="16" fill="#147d92"/>
+<text x="548" y="443">shared_learned</text>
+<rect x="755" y="430" width="16" height="16" fill="#844da5"/>
+<text x="778" y="443">shared_lodo</text>
+<text x="60" y="475">Descriptive results; paired query-cluster confidence intervals are in the tables.</text></g></svg>

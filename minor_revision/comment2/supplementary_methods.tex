@@ -59,3 +59,31 @@ adjusted MRR@20. Paired query-cluster bootstrap intervals quantify uncertainty;
 multiple gold rows for the same query are resampled together. These analyses are
 retrospective checks on previously studied benchmarks, and their exploratory
 intervals are not adjusted for multiple comparisons.
+
+\paragraph{Numerical precision correction.}
+Following the nonfinite graph-output audit in the information-retention study,
+all Comment 2 inference is repeated with graph-encoder checkpoint weights loaded
+directly in FP32 and base/PEFT LLM weights loaded directly in BF16. Projected
+embeddings must remain finite both before and after the BF16 cast. No clipping,
+sample exclusion, or reuse of legacy FP16 predictions is permitted. Candidate
+rankings, shared-feature coefficients, and other CPU artifacts remain unchanged.
+Every validation edge-vector trial is reevaluated; automatic and source-only
+edge selections are frozen again before test inference, using the same search
+space, metric definitions, and tie rule.
+
+Identical stable predictions from the Comment 3 run can be reused only when the
+full checkpoint, model, precision, decoding, and code fingerprint matches, and
+the exact prompt, candidate ordering, and edge multiset match. This is inference
+memoization; validation selection does not access test performance. A separate
+audit compares FP16 encoding, original-checkpoint FP32 encoding, and casts to
+FP16/BF16 on the actual validation/test graph inputs of both runs. Old--new
+prediction comparisons identify changed graph inputs after reselection, since
+these cases cannot isolate precision effects at a fixed input. The precision
+policy changes both graph and LLM arithmetic, so differences are not attributed
+causally to either component alone.
+For the two adaptive graph arms, an additional diagnostic evaluates the old
+selected coefficients at stable precision. This permits an additive metric
+decomposition into the precision-policy effect at the fixed old choice and the
+effect of validation reselection under stable precision. These ten diagnostic
+dataset--variant combinations are evaluated after the main selections are
+frozen and do not participate in model selection.

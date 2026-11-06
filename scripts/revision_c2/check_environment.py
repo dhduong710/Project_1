@@ -36,6 +36,8 @@ def main():
             else:
                 info['gpu_name']=torch.cuda.get_device_name(0)
                 info['gpu_vram_gib']=torch.cuda.get_device_properties(0).total_memory/(1024**3)
+                info['bf16_supported']=torch.cuda.is_bf16_supported()
+                if not info['bf16_supported']:info['errors'].append('Stable C2 inference requires CUDA BF16 support')
         except Exception as e:info['errors'].append(repr(e))
     print(json.dumps(info,indent=2))
     raise SystemExit(bool(info['errors']))

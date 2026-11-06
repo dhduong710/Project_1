@@ -1,0 +1,8 @@
+{
+  "status": "complete",
+  "all_test_rows": true,
+  "metric_rows": 55,
+  "precision_protocol_sha256": "51df7a20b0555de5e8c01daf1fb76aca535f4beaf8130f734bb4dcbf523c648d",
+  "final_invocation_seconds": 859.22,
+  "note": "Invocation duration excludes previous interrupted invocations and C3 cache computation."
+}

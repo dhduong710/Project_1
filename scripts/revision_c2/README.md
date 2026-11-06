@@ -4,11 +4,27 @@ Mục tiêu: kiểm tra mức phụ thuộc vào trọng số thủ công theo d
 
 Bộ script không ghi đè dữ liệu, checkpoint, prediction hoặc manuscript gốc. Kết quả mặc định ở `results/revision_c2/`. Không cần train lại R-GCN hay Llama để chạy các thí nghiệm này.
 
-**Trạng thái 2026-11-05:** đã hoàn tất CPU và GPU trên đủ 5 dataset, toàn bộ validation/test; 55 hàng E2E, không phải smoke. `verify_outputs.py` đã pass đối chiếu hash, selections và metrics từ prediction. Bộ 19 unit tests đã pass. GPU thực hiện 10.522 lần generation cho input/model khác nhau; cache được tái sử dụng trong tổng 48.300 lượt đánh giá row/variant (25.200 validation + 23.100 test). Đây vẫn là 2.100 hàng validation và 2.100 hàng test, không phải 48.300 mẫu độc lập.
+**Cập nhật precision 2026-11-06:** đã thêm runner `run_e2e_stable.py` và chạy lại đầy đủ validation search/test bằng encoder FP32 + LLM BF16. Kiểm tra trạng thái cuối ở `e2e_stable/precision_complete.json`. Các kết quả CPU được tái dùng nguyên trạng; FP16 cũ ở `e2e/`, bản exports/draft cũ ở `legacy_fp16_snapshot/`. Bộ 27 tests logic đã pass. Protocol đầy đủ vẫn gồm 60 validation trials và 55 test summaries, tương ứng 25.200 validation + 23.100 test row–variant evaluations trên cùng 2.100 valid + 2.100 test rows.
+
+**Đã hoàn tất và verify pass:** thêm 10 fixed-old-choice GPU diagnostics, audit 10.765 encoder inputs khác nhau (FP32/BF16 đều finite), đối chiếu 115 validation/test variants và 10 C3 anchors. `verify_outputs.py` đã tính lại 48.300 predictions chính, kiểm tra diagnostic predictions/decomposition, CPU và FP16 archive không đổi, XLSX/SVG hợp lệ. Comment 3 cũng verify pass sau sửa. Bản diễn giải chi tiết: [PRECISION_REPAIR_VI.md](../../minor_revision/comment2/PRECISION_REPAIR_VI.md). Main GPU invocation mất 859,22 giây khi tái dùng cache C3 phù hợp; đây không phải thời gian inference sạch từ đầu. Numeric audit mất 69,52 giây.
 
 Đọc kết quả: [Excel](../../results/revision_c2/exports/comment2_results.xlsx), [báo cáo đầy đủ](../../results/revision_c2/exports/REPORT.md), [PDF phương pháp/kết quả](../../minor_revision/comment2/supplementary_preview.pdf), [dự thảo trả lời reviewer](../../minor_revision/comment2/response_comment2_draft.md). PDF là bản ghép riêng để duyệt; chưa thay thế manuscript/supplementary gốc.
 
 Kết luận cần giữ: learned/LODO có kết quả candidate khả quan, nhưng không luôn vượt equal weights và không bảo đảm tăng generated-answer accuracy. Edge search có nhiều ties. Toàn bộ kết quả thuận lợi, bất lợi và CI đều được giữ trong exports; không chọn cấu hình theo test.
+
+## 0. Bản sửa precision: phạm vi và truy vết
+
+Phát hiện Comment 3 cho thấy graph encoder FP16 có thể sinh nonfinite outputs; chỉ tính encoder FP32 rồi ép output về FP16 vẫn có thể overflow. Runner hiện tại load graph checkpoint trực tiếp FP32, base LLM/PEFT trực tiếp BF16, kiểm tra mọi floating parameter đúng dtype và kiểm tra finite trước/sau cast khi generate. Không clipping và không bỏ row.
+
+Phần CPU (candidate ranks, native grid, learned coefficients, CV/LODO, graph topology) không dùng FP16 và được giữ nguyên sau kiểm tra hash. **Toàn bộ GPU được chạy lại:** cả 12 vectors × 5 validation datasets, chọn lại auto/edge-LODO chỉ trên validation, freeze trước test, rồi đánh giá đủ 55 test variants. Không chỉ vá 9 mẫu PrimeKG hoặc giữ selection từ FP16 cũ.
+
+`run_e2e.py` cũ được giữ nguyên vì là nguồn scoring/loop đã freeze và dependency của Comment 3. Entrypoint mới là `run_e2e_stable.py`; wrapper `run.sh gpu|all` gọi entrypoint này mặc định. `common.py`, `run_cpu.py`, các file code C3 và graph/model core không đổi. Không chạy trực tiếp runner FP16 cũ cho số liệu revision mới.
+
+Kết quả mới ở `e2e_stable/`; `e2e/` giữ predictions FP16 cũ. Script mới từ chối ghi vào một thư mục legacy đã có protocol. `legacy_fp16_snapshot/` giữ exports và insertion drafts trước sửa, kèm hash dữ liệu cũ để kiểm tra không bị thay đổi. Exports mặc định luôn lấy `e2e_stable/`, không tự fallback sang FP16 nếu run mới chưa xong.
+
+Có thể dùng `--c3-results results/revision_c3/gpu` để tái dùng các predictions FP32/BF16 của C3 với **full model/precision/generation fingerprint và exact input key trùng nhau**. Không dùng cache FP16. Tái dùng prediction không dùng test scores để chọn trọng số; validation search vẫn chỉ chấm validation. Tham số donor là một phần protocol: khi resume run hiện tại phải giữ flag này. Nếu muốn generate độc lập hoàn toàn, bỏ flag và chọn `--out` mới.
+
+Audit riêng kiểm tra graph encoder FP16, FP32 và phép cast FP32→FP16/BF16 trên mọi input của các variants validation/test cũ và mới. Nó chỉ khử lặp các encoder calls giống hệt, giữ nguyên candidate order và số edge occurrences; các summary vẫn đếm đủ rows. So sánh precision không thể quy mọi khác biệt cho riêng overflow: đồng thời thay graph arithmetic và LLM arithmetic, còn auto/LODO có thể thay graph sau validation reselection.
 
 ## 1. Những gì được triển khai
 
@@ -48,7 +64,7 @@ nvidia-smi
 
 Nếu chạy từ môi trường Codex bị sandbox, CUDA có thể báo False dù GPU thật đang hoạt động. Chạy các lệnh GPU trong terminal server có quyền truy cập thiết bị. Không sửa driver chỉ vì sandbox không nhìn thấy GPU.
 
-Trong môi trường đã kiểm tra: RTX 4090 24GB, torch 2.3.1+cu118, DGL 2.4.0+cu118, transformers 4.44.2, PEFT 0.4.0, numpy 2.4.4. Script GPU dùng FP16, batch1 và checkpoint Llama-3.2-3B; không cần bitsandbytes quantization hay optimizer. Không cần cài lại môi trường hiện có.
+Trong môi trường đã kiểm tra: RTX 4090 24GB, torch 2.3.1+cu118, DGL 2.4.0+cu118, transformers 4.44.2, PEFT 0.4.0, numpy 2.4.4. Script GPU hiện dùng graph encoder FP32 + LLM BF16, batch1 và checkpoint Llama-3.2-3B; không cần bitsandbytes quantization hay optimizer. Không cần cài lại môi trường hiện có.
 
 ### A. Kiểm tra logic
 
@@ -73,6 +89,7 @@ Model đã có ở server, không cần download:
 ```bash
 bash scripts/revision_c2/run.sh gpu \
   --offline \
+  --c3-results results/revision_c3/gpu \
   --model-path /home/anhlq/.cache/huggingface/hub/models--meta-llama--Llama-3.2-3B/snapshots/13afe5124825b4f3751f836b40dafda64c1ed062
 ```
 
@@ -81,6 +98,7 @@ Lệnh trên giữ terminal cho đến khi xong và tự xuất Excel/CSV/LaTeX/
 ```bash
 bash scripts/revision_c2/launch_gpu.sh \
   --offline \
+  --c3-results results/revision_c3/gpu \
   --model-path /home/anhlq/.cache/huggingface/hub/models--meta-llama--Llama-3.2-3B/snapshots/13afe5124825b4f3751f836b40dafda64c1ed062
 ```
 
@@ -98,12 +116,12 @@ Không chạy thêm job vào cùng thư mục khi job hiện tại đang hoạt 
 ### D. Chạy ít hơn để kiểm tra môi trường
 
 ```bash
-.venv/bin/python scripts/revision_c2/run_e2e.py \
+.venv/bin/python scripts/revision_c2/run_e2e_stable.py \
   --datasets primekg hetionet \
   --edge-trials 2 --calibration-max-rows 4 --test-max-rows 4 \
   --bootstrap 100 --offline \
   --model-path /home/anhlq/.cache/huggingface/hub/models--meta-llama--Llama-3.2-3B/snapshots/13afe5124825b4f3751f836b40dafda64c1ed062 \
-  --out results/revision_c2/e2e_smoke_new
+  --out results/revision_c2/e2e_stable_smoke_new
 ```
 
 `--test-max-rows > 0` luôn đánh dấu **smoke_only**. Không đưa những số này vào bài.
@@ -111,11 +129,11 @@ Không chạy thêm job vào cùng thư mục khi job hiện tại đang hoạt 
 Nếu cần giảm thời gian calibration nhưng vẫn đánh giá toàn bộ test, chọn trước subset validation theo query, không dựa nhãn:
 
 ```bash
-.venv/bin/python scripts/revision_c2/run_e2e.py \
+.venv/bin/python scripts/revision_c2/run_e2e_stable.py \
   --datasets primekg hetionet --edge-trials 6 \
   --calibration-max-rows 64 --offline \
   --model-path /home/anhlq/.cache/huggingface/hub/models--meta-llama--Llama-3.2-3B/snapshots/13afe5124825b4f3751f836b40dafda64c1ed062 \
-  --out results/revision_c2/e2e_budget64
+  --out results/revision_c2/e2e_stable_budget64
 ```
 
 Không gọi thử nghiệm 2 dataset này là LODO-5 cho cạnh: edge LODO chỉ dùng các dataset trong lệnh. CPU `shared_lodo` vẫn dùng 5 dataset nếu phần CPU đã chạy đủ 5. Tham số `calibration-max-rows` là mục tiêu gần đúng vì giữ nguyên các nhóm query, có thể vượt vài dòng.
@@ -138,6 +156,26 @@ Không chọn seed có test score tốt nhất. Nếu chạy nhiều seed để 
 
 ## 3. Xuất và đọc file kết quả
 
+Sau khi stable GPU hoàn tất, chạy audit số học, đối chiếu cũ–mới/C3 và export:
+
+```bash
+# Đối chứng giữ lựa chọn cũ nhưng dùng precision mới; tái dùng cache stable
+.venv/bin/python scripts/revision_c2/evaluate_legacy_choices_stable.py \
+  --offline \
+  --model-path /home/anhlq/.cache/huggingface/hub/models--meta-llama--Llama-3.2-3B/snapshots/13afe5124825b4f3751f836b40dafda64c1ed062
+
+# Có dùng GPU nhưng chỉ chạy encoder; chạy sau khi inference đã kết thúc
+bash scripts/revision_c2/run.sh audit
+
+# Chỉ xuất lại Excel/CSV/Markdown/HTML/LaTeX; không inference
+bash scripts/revision_c2/run.sh export
+
+# Kiểm tra cả validation/test rescoring, lựa chọn mới, finite audit và cache provenance
+.venv/bin/python scripts/revision_c2/verify_outputs.py
+```
+
+`audit` cần cả run legacy và stable đủ 5 datasets, mặc định trên server này đã có. Với thư mục tùy chỉnh, dùng trực tiếp `audit_precision_c2.py --help` và `compare_precision.py --help` để truyền đường dẫn tương ứng. Bảng đối chiếu tách `changed_predictions` khỏi `changed_encoder_inputs`; graph input thay đổi do reselection không được gọi là tác động precision thuần túy.
+
 Xuất lại bất kỳ lúc nào, kể cả khi GPU còn chạy:
 
 ```bash
@@ -157,12 +195,22 @@ Xuất một thư mục E2E khác:
 ```bash
 .venv/bin/python scripts/revision_c2/export_results.py \
   --results results/revision_c2 \
-  --e2e-results results/revision_c2/e2e_budget64
+  --e2e-results results/revision_c2/e2e_stable_budget64
 ```
 
 | File | Nội dung |
 |---|---|
 | `exports/comment2_results.xlsx` | Workbook mở bằng Excel/LibreOffice, nhiều sheet cho tất cả thí nghiệm |
+| `precision_audit/summary.csv` | FP16/nonfinite và FP32→FP16 overflow, đối chứng FP32/BF16 trên mọi variant |
+| `precision_audit/*_nonfinite_cases.json` | Các row/query/gold cụ thể bị lỗi số học trong audit |
+| `precision_comparison/variant_changes.csv` | So predictions/metrics cũ–mới; ghi graph input có đổi không |
+| `precision_comparison/selection_changes.csv` | Auto/LODO trial và số ties trước/sau sửa |
+| `precision_comparison/nonfinite_strata.csv` | Prediction changes chia theo encoder FP16 có/không nonfinite |
+| `precision_comparison/c3_anchor_checks.csv` | Đối chiếu source/fuzzy với C3 ở cùng checkpoint/order/precision |
+| `precision_comparison/adaptive_decomposition.csv` | Tách tổng thay đổi thành precision ở lựa chọn cũ + reselection ở precision mới |
+| `e2e_stable/legacy_choice_diagnostic/metrics.csv` | 10 đối chứng GPU giữ auto/LODO coefficients cũ; không tham gia chọn model |
+| `e2e_stable/precision_protocol.json` | Precision policy và hash mọi dependency mới |
+| `e2e_stable/precision_complete.json` | Completion marker riêng cho corrected run |
 | `exports/REPORT.md` | Báo cáo tự sinh, phân biệt CPU/GPU/partial/smoke |
 | `exports/report.html` | Bảng và hình để xem trên browser |
 | `exports/candidate_mrr.svg` | Biểu đồ vector độc lập, có thể dùng để dựng hình supplementary |
@@ -185,12 +233,12 @@ Xuất một thư mục E2E khác:
 | `graph_weight_audit.csv` | Graph size, coverage, Jaccard, generic two-hop/relation retention |
 | `input_audit.json` | Alignment, native replay, số query độc lập và overlap query valid/test |
 | `protocol_cpu.json`, `input_hashes.json` | Protocol, phiên bản code, SHA256 inputs |
-| `e2e/edge_validation_search.json` | Kết quả validation của từng vector cạnh |
-| `e2e/frozen_edge_selection.json` | Trọng số cạnh chọn bằng validation và LODO; được ghi trước test |
-| `e2e/e2e_metrics.csv` | Exact match, invalid, top1-copy, adjusted RR; hai experimental arms riêng |
-| `e2e/predictions/...` | Output và score từng dòng |
-| `e2e/cache/*.jsonl` | Cache theo checkpoint/model/input/graph; tránh lặp generation |
-| `cpu_complete.json`, `e2e/e2e_complete.json` | Dấu hoàn tất; không suy ra hoàn tất từ việc chỉ có một CSV |
+| `e2e_stable/edge_validation_search.json` | Kết quả validation của từng vector cạnh |
+| `e2e_stable/frozen_edge_selection.json` | Trọng số cạnh chọn bằng validation và LODO; được ghi trước test |
+| `e2e_stable/e2e_metrics.csv` | Exact match, invalid, top1-copy, adjusted RR; hai experimental arms riêng |
+| `e2e_stable/predictions/...` | Output và score từng dòng |
+| `e2e_stable/cache/*.jsonl` | Cache theo checkpoint/model/input/graph; tránh lặp generation |
+| `cpu_complete.json`, `e2e_stable/e2e_complete.json` | Dấu hoàn tất; không suy ra hoàn tất từ việc chỉ có một CSV |
 
 Script export không cần pandas/openpyxl/Matplotlib: XLSX tạo theo OOXML, hình SVG độc lập. CPU và exporter cần numpy; GPU dùng thư viện đã có trong `.venv`.
 
@@ -287,8 +335,8 @@ Trong manuscript nên bổ sung một đoạn phương pháp automatic calibrati
 - `Protocol changed`: đổi `--out`/`RESULTS_DIR`; không xóa protocol để chạy đè rồi gọi là cùng thí nghiệm.
 - `Original soft-support replay failed`: xem input_audit, input version và feature alignment; không bỏ assert để chạy tiếp.
 - CUDA unavailable: kiểm tra `nvidia-smi` và Python đúng `.venv`; trong Codex cần quyền ngoài sandbox.
-- OOM: kiểm tra tiến trình GPU khác; script vốn batch1/FP16/3B. Không đổi sang 8B hoặc quantization giữa các rows của cùng run.
+- OOM: kiểm tra tiến trình GPU khác; script vốn batch1, encoder FP32 / LLM BF16 / model 3B. Không đổi sang 8B hoặc quantization giữa các rows của cùng run.
 - HF offline model missing: truyền `--model-path` tới thư mục snapshot thực có config/tokenizer/weights. Không sử dụng Instruct checkpoint thay base model chỉ vì tên gần giống.
 - Checkpoint thiếu file: từng dataset cần adapter weights/config, graph_model.bin và đúng entity embeddings. Không tự dùng checkpoint dataset khác.
-- Job GPU dừng: chạy lại cùng lệnh; cache đã flush mỗi query. Không tự đánh dấu complete khi chưa có `e2e_complete.json`.
+- Job GPU dừng: chạy lại cùng lệnh; cache đã flush mỗi query. Không tự đánh dấu complete khi chưa có cả `e2e_complete.json` và `precision_complete.json` với status complete.
 - Khi xem báo cáo giữa lúc chạy, E2E `not_complete` là đúng; exporter không tự điền metric còn thiếu.

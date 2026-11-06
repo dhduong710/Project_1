@@ -47,10 +47,17 @@ results/revision_c2/candidate_per_query.csv
 results/revision_c2/**/cache/
 results/revision_c2/**/predictions/
 results/revision_c2/e2e_smoke*/
+results/revision_c2/e2e_stable_smoke*/
+results/revision_c2/**/.inference.lock
+results/revision_c2/precision_audit/per_query/
+results/revision_c2/precision_comparison/per_query.jsonl.gz
 results/revision_c2/*.log
 results/revision_c2/*.pid
 results/revision_c2/gpu_log_path.txt
 results/revision_c2/.run.lock
+minor_revision/comment2/*.aux
+minor_revision/comment2/*.log
+minor_revision/comment2/*.out
 
 # Comment 3: keep summaries/reproducibility sources; omit bulky resumable intermediates.
 results/revision_c3/per_query/

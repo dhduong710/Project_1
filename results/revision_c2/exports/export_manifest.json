@@ -1,7 +1,8 @@
 {
   "cpu_status": "complete",
   "e2e_status": "complete",
-  "e2e_directory": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c2/e2e",
+  "e2e_directory": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c2/e2e_stable",
+  "precision": "graph encoder float32; LLM bfloat16",
   "files": [
     "REPORT.md",
     "candidate_mrr.svg",
@@ -15,9 +16,11 @@
     "learning_vs_equal.csv",
     "report.html",
     "sensitivity_summary.csv",
+    "table_accuracy_compact.tex",
     "table_candidate_main.csv",
     "table_candidate_main.tex",
     "table_e2e.tex",
+    "table_graph_compact.tex",
     "transfer_matrix.csv"
   ]
 }

@@ -1,6 +1,6 @@
 <!doctype html><meta charset="utf-8"><title>Comment 2 results</title><style>body{font:15px system-ui;margin:32px;color:#173047}table{border-collapse:collapse;margin:20px 0}td,th{border:1px solid #ccd6df;padding:7px;text-align:left}th{background:#edf4f7}img{max-width:100%}</style>
 <h1>Comment 2 — experiment results</h1>
-<p>CPU: complete; E2E: complete</p>
+<p>CPU: complete; E2E: complete; graph encoder float32; LLM bfloat16</p>
 <img src="candidate_mrr.svg" alt="Candidate MRR comparison">
 <h2>Candidate results</h2><table><tr><th>dataset</th><th>variant</th><th>gold_at20</th><th>mrr_at20</th><th>hits1</th><th>hits10</th><th>delta_mrr</th><th>ci95_low</th><th>ci95_high</th></tr>
 <tr><td>primekg</td><td>raw</td><td>0.240000</td><td>0.064563</td><td>0.024000</td><td>0.192000</td><td>-0.060763</td><td>-0.077806</td><td>-0.045526</td></tr>
@@ -40,29 +40,29 @@
 <tr><td>repodb</td><td>shared_lodo</td><td>0.214000</td><td>0.064902</td><td>0.018000</td><td>0.160000</td><td>0.016795</td><td>0.011522</td><td>0.022452</td></tr>
 </table>
 <h2>E2E results</h2><table><tr><th>dataset</th><th>arm</th><th>variant</th><th>n</th><th>exact_match</th><th>invalid</th><th>adjusted_rr</th></tr>
-<tr><td>primekg</td><td>candidate</td><td>raw</td><td>500</td><td>0.002000</td><td>0.020000</td><td>0.047636</td></tr>
-<tr><td>primekg</td><td>candidate</td><td>original_soft</td><td>500</td><td>0</td><td>0.020000</td><td>0.074676</td></tr>
-<tr><td>primekg</td><td>candidate</td><td>native_valid_grid</td><td>500</td><td>0</td><td>0.020000</td><td>0.074609</td></tr>
-<tr><td>primekg</td><td>candidate</td><td>shared_equal</td><td>500</td><td>0</td><td>0.020000</td><td>0.074686</td></tr>
-<tr><td>primekg</td><td>candidate</td><td>shared_learned</td><td>500</td><td>0</td><td>0.020000</td><td>0.074609</td></tr>
-<tr><td>primekg</td><td>candidate</td><td>shared_lodo</td><td>500</td><td>0</td><td>0.020000</td><td>0.074775</td></tr>
-<tr><td>primekg</td><td>graph</td><td>source_graph</td><td>500</td><td>0</td><td>0.020000</td><td>0.074676</td></tr>
+<tr><td>primekg</td><td>candidate</td><td>raw</td><td>500</td><td>0.002000</td><td>0.002000</td><td>0.047671</td></tr>
+<tr><td>primekg</td><td>candidate</td><td>original_soft</td><td>500</td><td>0</td><td>0.002000</td><td>0.074676</td></tr>
+<tr><td>primekg</td><td>candidate</td><td>native_valid_grid</td><td>500</td><td>0</td><td>0.002000</td><td>0.074609</td></tr>
+<tr><td>primekg</td><td>candidate</td><td>shared_equal</td><td>500</td><td>0</td><td>0.002000</td><td>0.074686</td></tr>
+<tr><td>primekg</td><td>candidate</td><td>shared_learned</td><td>500</td><td>0</td><td>0.002000</td><td>0.074609</td></tr>
+<tr><td>primekg</td><td>candidate</td><td>shared_lodo</td><td>500</td><td>0</td><td>0.002000</td><td>0.074775</td></tr>
+<tr><td>primekg</td><td>graph</td><td>source_graph</td><td>500</td><td>0</td><td>0.002000</td><td>0.074676</td></tr>
 <tr><td>primekg</td><td>graph</td><td>original_fuzzy</td><td>500</td><td>0</td><td>0.002000</td><td>0.074687</td></tr>
 <tr><td>primekg</td><td>graph</td><td>shared_fixed</td><td>500</td><td>0</td><td>0.002000</td><td>0.074687</td></tr>
-<tr><td>primekg</td><td>graph</td><td>shared_auto</td><td>500</td><td>0</td><td>0.002000</td><td>0.074742</td></tr>
-<tr><td>primekg</td><td>graph</td><td>shared_edge_lodo</td><td>500</td><td>0</td><td>0.002000</td><td>0.074687</td></tr>
-<tr><td>pharmkg</td><td>candidate</td><td>raw</td><td>500</td><td>0</td><td>0.490000</td><td>0.015575</td></tr>
-<tr><td>pharmkg</td><td>candidate</td><td>original_soft</td><td>500</td><td>0</td><td>0.610000</td><td>0.020587</td></tr>
-<tr><td>pharmkg</td><td>candidate</td><td>native_valid_grid</td><td>500</td><td>0</td><td>0.610000</td><td>0.020587</td></tr>
-<tr><td>pharmkg</td><td>candidate</td><td>shared_equal</td><td>500</td><td>0.002000</td><td>0.688000</td><td>0.022808</td></tr>
-<tr><td>pharmkg</td><td>candidate</td><td>shared_learned</td><td>500</td><td>0.002000</td><td>0.692000</td><td>0.022805</td></tr>
-<tr><td>pharmkg</td><td>candidate</td><td>shared_lodo</td><td>500</td><td>0.002000</td><td>0.690000</td><td>0.022793</td></tr>
-<tr><td>pharmkg</td><td>graph</td><td>source_graph</td><td>500</td><td>0</td><td>0.610000</td><td>0.020587</td></tr>
-<tr><td>pharmkg</td><td>graph</td><td>original_fuzzy</td><td>500</td><td>0.002000</td><td>0.588000</td><td>0.020971</td></tr>
-<tr><td>pharmkg</td><td>graph</td><td>shared_fixed</td><td>500</td><td>0.002000</td><td>0.574000</td><td>0.021290</td></tr>
-<tr><td>pharmkg</td><td>graph</td><td>shared_auto</td><td>500</td><td>0.002000</td><td>0.574000</td><td>0.021290</td></tr>
-<tr><td>pharmkg</td><td>graph</td><td>shared_edge_lodo</td><td>500</td><td>0.002000</td><td>0.578000</td><td>0.021290</td></tr>
-<tr><td>hetionet</td><td>candidate</td><td>raw</td><td>100</td><td>0.020000</td><td>0.020000</td><td>0.081690</td></tr>
+<tr><td>primekg</td><td>graph</td><td>shared_auto</td><td>500</td><td>0</td><td>0.002000</td><td>0.074676</td></tr>
+<tr><td>primekg</td><td>graph</td><td>shared_edge_lodo</td><td>500</td><td>0</td><td>0.002000</td><td>0.074676</td></tr>
+<tr><td>pharmkg</td><td>candidate</td><td>raw</td><td>500</td><td>0</td><td>0.478000</td><td>0.015575</td></tr>
+<tr><td>pharmkg</td><td>candidate</td><td>original_soft</td><td>500</td><td>0</td><td>0.626000</td><td>0.020700</td></tr>
+<tr><td>pharmkg</td><td>candidate</td><td>native_valid_grid</td><td>500</td><td>0</td><td>0.626000</td><td>0.020700</td></tr>
+<tr><td>pharmkg</td><td>candidate</td><td>shared_equal</td><td>500</td><td>0.002000</td><td>0.688000</td><td>0.022875</td></tr>
+<tr><td>pharmkg</td><td>candidate</td><td>shared_learned</td><td>500</td><td>0.002000</td><td>0.692000</td><td>0.022872</td></tr>
+<tr><td>pharmkg</td><td>candidate</td><td>shared_lodo</td><td>500</td><td>0.002000</td><td>0.696000</td><td>0.022859</td></tr>
+<tr><td>pharmkg</td><td>graph</td><td>source_graph</td><td>500</td><td>0</td><td>0.626000</td><td>0.020700</td></tr>
+<tr><td>pharmkg</td><td>graph</td><td>original_fuzzy</td><td>500</td><td>0.002000</td><td>0.590000</td><td>0.020971</td></tr>
+<tr><td>pharmkg</td><td>graph</td><td>shared_fixed</td><td>500</td><td>0.002000</td><td>0.588000</td><td>0.020956</td></tr>
+<tr><td>pharmkg</td><td>graph</td><td>shared_auto</td><td>500</td><td>0.002000</td><td>0.584000</td><td>0.021317</td></tr>
+<tr><td>pharmkg</td><td>graph</td><td>shared_edge_lodo</td><td>500</td><td>0.002000</td><td>0.592000</td><td>0.020969</td></tr>
+<tr><td>hetionet</td><td>candidate</td><td>raw</td><td>100</td><td>0.020000</td><td>0.020000</td><td>0.081921</td></tr>
 <tr><td>hetionet</td><td>candidate</td><td>original_soft</td><td>100</td><td>0.030000</td><td>0.020000</td><td>0.100087</td></tr>
 <tr><td>hetionet</td><td>candidate</td><td>native_valid_grid</td><td>100</td><td>0.030000</td><td>0.020000</td><td>0.100087</td></tr>
 <tr><td>hetionet</td><td>candidate</td><td>shared_equal</td><td>100</td><td>0.010000</td><td>0.040000</td><td>0.078342</td></tr>
@@ -93,7 +93,7 @@
 <tr><td>repodb</td><td>graph</td><td>source_graph</td><td>500</td><td>0.002000</td><td>0</td><td>0.036642</td></tr>
 <tr><td>repodb</td><td>graph</td><td>original_fuzzy</td><td>500</td><td>0.004000</td><td>0</td><td>0.037776</td></tr>
 <tr><td>repodb</td><td>graph</td><td>shared_fixed</td><td>500</td><td>0.004000</td><td>0</td><td>0.037795</td></tr>
-<tr><td>repodb</td><td>graph</td><td>shared_auto</td><td>500</td><td>0.004000</td><td>0</td><td>0.037795</td></tr>
-<tr><td>repodb</td><td>graph</td><td>shared_edge_lodo</td><td>500</td><td>0.004000</td><td>0</td><td>0.038045</td></tr>
+<tr><td>repodb</td><td>graph</td><td>shared_auto</td><td>500</td><td>0.004000</td><td>0</td><td>0.038159</td></tr>
+<tr><td>repodb</td><td>graph</td><td>shared_edge_lodo</td><td>500</td><td>0.002000</td><td>0</td><td>0.036653</td></tr>
 </table>
 <p>See REPORT.md for uncertainty, protocol and interpretation limits.</p>

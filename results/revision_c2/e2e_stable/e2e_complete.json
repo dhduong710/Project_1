@@ -1,0 +1,13 @@
+{
+  "status": "complete",
+  "datasets": [
+    "primekg",
+    "pharmkg",
+    "hetionet",
+    "drkg",
+    "repodb"
+  ],
+  "metric_rows": 55,
+  "all_test_rows": true,
+  "calibration_max_rows": 0
+}

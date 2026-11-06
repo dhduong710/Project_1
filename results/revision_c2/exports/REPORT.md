@@ -2,6 +2,12 @@
 
 CPU status: **complete**. E2E status: **complete**.
 
+Inference precision: **graph encoder float32; LLM bfloat16**. E2E directory: `/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c2/e2e_stable`.
+
+The corrected run repeats every validation trial and freezes new automatic/LODO selections before test inference. CPU ranking/calibration artifacts are unchanged. Archived FP16 results remain in e2e/ and legacy_fp16_snapshot/ for comparison only.
+
+Stable C3 cached predictions are reusable only when the full model/precision/generation fingerprint and exact prompt/candidate/graph key match. No legacy FP16 cache is imported. Precision deltas change both graph and LLM arithmetic; adaptive graph variants may additionally change inputs after validation reselection.
+
 Candidate MRR is not generated-answer accuracy. Native formula replay was checked against original soft-support ordering.
 
 Shared-equal vs shared-learned isolates coefficient learning on the same five topology features. Comparisons to original-soft ALSO change feature definitions.
@@ -81,29 +87,29 @@ These are retrospective checks on previously studied benchmark splits; no new pr
 
 | dataset | arm | variant | n | exact_match | invalid | top1_copy | adjusted_rr | exact_delta | exact_ci_low | exact_ci_high |
 |---|---|---|---|---|---|---|---|---|---|---|
-| primekg | candidate | raw | 500 | 0.002000 | 0.020000 | 0.038000 | 0.047636 | 0 | 0 | 0 |
-| primekg | candidate | original_soft | 500 | 0 | 0.020000 | 0.008000 | 0.074676 | -0.002000 | -0.006383 | 0 |
-| primekg | candidate | native_valid_grid | 500 | 0 | 0.020000 | 0.008000 | 0.074609 | -0.002000 | -0.006383 | 0 |
-| primekg | candidate | shared_equal | 500 | 0 | 0.020000 | 0.012000 | 0.074686 | -0.002000 | -0.006383 | 0 |
-| primekg | candidate | shared_learned | 500 | 0 | 0.020000 | 0.008000 | 0.074609 | -0.002000 | -0.006383 | 0 |
-| primekg | candidate | shared_lodo | 500 | 0 | 0.020000 | 0.016000 | 0.074775 | -0.002000 | -0.006383 | 0 |
-| primekg | graph | source_graph | 500 | 0 | 0.020000 | 0.008000 | 0.074676 | 0 | 0 | 0 |
+| primekg | candidate | raw | 500 | 0.002000 | 0.002000 | 0.044000 | 0.047671 | 0 | 0 | 0 |
+| primekg | candidate | original_soft | 500 | 0 | 0.002000 | 0.008000 | 0.074676 | -0.002000 | -0.006383 | 0 |
+| primekg | candidate | native_valid_grid | 500 | 0 | 0.002000 | 0.008000 | 0.074609 | -0.002000 | -0.006383 | 0 |
+| primekg | candidate | shared_equal | 500 | 0 | 0.002000 | 0.012000 | 0.074686 | -0.002000 | -0.006383 | 0 |
+| primekg | candidate | shared_learned | 500 | 0 | 0.002000 | 0.008000 | 0.074609 | -0.002000 | -0.006383 | 0 |
+| primekg | candidate | shared_lodo | 500 | 0 | 0.002000 | 0.016000 | 0.074775 | -0.002000 | -0.006383 | 0 |
+| primekg | graph | source_graph | 500 | 0 | 0.002000 | 0.008000 | 0.074676 | 0 | 0 | 0 |
 | primekg | graph | original_fuzzy | 500 | 0 | 0.002000 | 0.010000 | 0.074687 | 0 | 0 | 0 |
 | primekg | graph | shared_fixed | 500 | 0 | 0.002000 | 0.010000 | 0.074687 | 0 | 0 | 0 |
-| primekg | graph | shared_auto | 500 | 0 | 0.002000 | 0.010000 | 0.074742 | 0 | 0 | 0 |
-| primekg | graph | shared_edge_lodo | 500 | 0 | 0.002000 | 0.010000 | 0.074687 | 0 | 0 | 0 |
-| pharmkg | candidate | raw | 500 | 0 | 0.490000 | 0.510000 | 0.015575 | 0 | 0 | 0 |
-| pharmkg | candidate | original_soft | 500 | 0 | 0.610000 | 0.390000 | 0.020587 | 0 | 0 | 0 |
-| pharmkg | candidate | native_valid_grid | 500 | 0 | 0.610000 | 0.390000 | 0.020587 | 0 | 0 | 0 |
-| pharmkg | candidate | shared_equal | 500 | 0.002000 | 0.688000 | 0.312000 | 0.022808 | 0.002000 | 0 | 0.006303 |
-| pharmkg | candidate | shared_learned | 500 | 0.002000 | 0.692000 | 0.308000 | 0.022805 | 0.002000 | 0 | 0.006303 |
-| pharmkg | candidate | shared_lodo | 500 | 0.002000 | 0.690000 | 0.310000 | 0.022793 | 0.002000 | 0 | 0.006303 |
-| pharmkg | graph | source_graph | 500 | 0 | 0.610000 | 0.390000 | 0.020587 | 0 | 0 | 0 |
-| pharmkg | graph | original_fuzzy | 500 | 0.002000 | 0.588000 | 0.412000 | 0.020971 | 0.002000 | 0 | 0.006356 |
-| pharmkg | graph | shared_fixed | 500 | 0.002000 | 0.574000 | 0.426000 | 0.021290 | 0.002000 | 0 | 0.006356 |
-| pharmkg | graph | shared_auto | 500 | 0.002000 | 0.574000 | 0.426000 | 0.021290 | 0.002000 | 0 | 0.006356 |
-| pharmkg | graph | shared_edge_lodo | 500 | 0.002000 | 0.578000 | 0.422000 | 0.021290 | 0.002000 | 0 | 0.006356 |
-| hetionet | candidate | raw | 100 | 0.020000 | 0.020000 | 0.030000 | 0.081690 | 0 | 0 | 0 |
+| primekg | graph | shared_auto | 500 | 0 | 0.002000 | 0.010000 | 0.074676 | 0 | 0 | 0 |
+| primekg | graph | shared_edge_lodo | 500 | 0 | 0.002000 | 0.010000 | 0.074676 | 0 | 0 | 0 |
+| pharmkg | candidate | raw | 500 | 0 | 0.478000 | 0.522000 | 0.015575 | 0 | 0 | 0 |
+| pharmkg | candidate | original_soft | 500 | 0 | 0.626000 | 0.374000 | 0.020700 | 0 | 0 | 0 |
+| pharmkg | candidate | native_valid_grid | 500 | 0 | 0.626000 | 0.374000 | 0.020700 | 0 | 0 | 0 |
+| pharmkg | candidate | shared_equal | 500 | 0.002000 | 0.688000 | 0.312000 | 0.022875 | 0.002000 | 0 | 0.006303 |
+| pharmkg | candidate | shared_learned | 500 | 0.002000 | 0.692000 | 0.308000 | 0.022872 | 0.002000 | 0 | 0.006303 |
+| pharmkg | candidate | shared_lodo | 500 | 0.002000 | 0.696000 | 0.304000 | 0.022859 | 0.002000 | 0 | 0.006303 |
+| pharmkg | graph | source_graph | 500 | 0 | 0.626000 | 0.374000 | 0.020700 | 0 | 0 | 0 |
+| pharmkg | graph | original_fuzzy | 500 | 0.002000 | 0.590000 | 0.410000 | 0.020971 | 0.002000 | 0 | 0.006356 |
+| pharmkg | graph | shared_fixed | 500 | 0.002000 | 0.588000 | 0.412000 | 0.020956 | 0.002000 | 0 | 0.006356 |
+| pharmkg | graph | shared_auto | 500 | 0.002000 | 0.584000 | 0.416000 | 0.021317 | 0.002000 | 0 | 0.006356 |
+| pharmkg | graph | shared_edge_lodo | 500 | 0.002000 | 0.592000 | 0.408000 | 0.020969 | 0.002000 | 0 | 0.006356 |
+| hetionet | candidate | raw | 100 | 0.020000 | 0.020000 | 0.070000 | 0.081921 | 0 | 0 | 0 |
 | hetionet | candidate | original_soft | 100 | 0.030000 | 0.020000 | 0 | 0.100087 | 0.010000 | -0.021978 | 0.046302 |
 | hetionet | candidate | native_valid_grid | 100 | 0.030000 | 0.020000 | 0 | 0.100087 | 0.010000 | -0.021978 | 0.046302 |
 | hetionet | candidate | shared_equal | 100 | 0.010000 | 0.040000 | 0 | 0.078342 | -0.010000 | -0.033616 | 0 |
@@ -125,17 +131,17 @@ These are retrospective checks on previously studied benchmark splits; no new pr
 | drkg | graph | shared_fixed | 500 | 0.014000 | 0 | 0 | 0.046285 | 0 | 0 | 0 |
 | drkg | graph | shared_auto | 500 | 0.014000 | 0 | 0 | 0.046285 | 0 | 0 | 0 |
 | drkg | graph | shared_edge_lodo | 500 | 0.014000 | 0 | 0 | 0.046285 | 0 | 0 | 0 |
-| repodb | candidate | raw | 500 | 0.002000 | 0 | 0.078000 | 0.036642 | 0 | 0 | 0 |
-| repodb | candidate | original_soft | 500 | 0.002000 | 0 | 0.078000 | 0.036623 | 0 | 0 | 0 |
-| repodb | candidate | native_valid_grid | 500 | 0.002000 | 0 | 0.078000 | 0.036642 | 0 | 0 | 0 |
-| repodb | candidate | shared_equal | 500 | 0.008000 | 0 | 0.012000 | 0.046601 | 0.006000 | -0.002028 | 0.015386 |
-| repodb | candidate | shared_learned | 500 | 0 | 0 | 0.078000 | 0.043996 | -0.002000 | -0.006224 | 0 |
-| repodb | candidate | shared_lodo | 500 | 0 | 0 | 0.078000 | 0.043996 | -0.002000 | -0.006224 | 0 |
-| repodb | graph | source_graph | 500 | 0.002000 | 0 | 0.078000 | 0.036642 | 0 | 0 | 0 |
-| repodb | graph | original_fuzzy | 500 | 0.004000 | 0 | 0.028000 | 0.037776 | 0.002000 | 0 | 0.006237 |
-| repodb | graph | shared_fixed | 500 | 0.004000 | 0 | 0.028000 | 0.037795 | 0.002000 | 0 | 0.006237 |
-| repodb | graph | shared_auto | 500 | 0.004000 | 0 | 0.028000 | 0.037795 | 0.002000 | 0 | 0.006237 |
-| repodb | graph | shared_edge_lodo | 500 | 0.004000 | 0 | 0.028000 | 0.038045 | 0.002000 | 0 | 0.006237 |
+| repodb | candidate | raw | 500 | 0.002000 | 0 | 0.080000 | 0.036642 | 0 | 0 | 0 |
+| repodb | candidate | original_soft | 500 | 0.002000 | 0 | 0.080000 | 0.036623 | 0 | 0 | 0 |
+| repodb | candidate | native_valid_grid | 500 | 0.002000 | 0 | 0.080000 | 0.036642 | 0 | 0 | 0 |
+| repodb | candidate | shared_equal | 500 | 0.008000 | 0 | 0.016000 | 0.046601 | 0.006000 | -0.002028 | 0.015386 |
+| repodb | candidate | shared_learned | 500 | 0 | 0 | 0.080000 | 0.043996 | -0.002000 | -0.006224 | 0 |
+| repodb | candidate | shared_lodo | 500 | 0 | 0 | 0.080000 | 0.043996 | -0.002000 | -0.006224 | 0 |
+| repodb | graph | source_graph | 500 | 0.002000 | 0 | 0.080000 | 0.036642 | 0 | 0 | 0 |
+| repodb | graph | original_fuzzy | 500 | 0.004000 | 0 | 0.036000 | 0.037776 | 0.002000 | 0 | 0.006237 |
+| repodb | graph | shared_fixed | 500 | 0.004000 | 0 | 0.036000 | 0.037795 | 0.002000 | 0 | 0.006237 |
+| repodb | graph | shared_auto | 500 | 0.004000 | 0 | 0.036000 | 0.038159 | 0.002000 | 0 | 0.006237 |
+| repodb | graph | shared_edge_lodo | 500 | 0.002000 | 0 | 0.008000 | 0.036653 | 0 | 0 | 0 |
 
 ## Paired E2E comparisons (explicit references)
 
@@ -158,35 +164,35 @@ Candidate comparisons to shared_equal isolate coefficient learning. Graph compar
 | primekg | graph | shared_fixed | original_fuzzy | exact_match | 0 | 0 | 0 |
 | primekg | graph | shared_fixed | original_fuzzy | adjusted_rr | 0 | 0 | 0 |
 | primekg | graph | shared_auto | original_fuzzy | exact_match | 0 | 0 | 0 |
-| primekg | graph | shared_auto | original_fuzzy | adjusted_rr | 0.000056 | -0.000024 | 0.000203 |
+| primekg | graph | shared_auto | original_fuzzy | adjusted_rr | -0.000011 | -0.000034 | 0 |
 | primekg | graph | shared_edge_lodo | original_fuzzy | exact_match | 0 | 0 | 0 |
-| primekg | graph | shared_edge_lodo | original_fuzzy | adjusted_rr | 0 | 0 | 0 |
+| primekg | graph | shared_edge_lodo | original_fuzzy | adjusted_rr | -0.000011 | -0.000034 | 0 |
 | primekg | graph | shared_auto | shared_fixed | exact_match | 0 | 0 | 0 |
-| primekg | graph | shared_auto | shared_fixed | adjusted_rr | 0.000056 | -0.000024 | 0.000203 |
+| primekg | graph | shared_auto | shared_fixed | adjusted_rr | -0.000011 | -0.000034 | 0 |
 | primekg | graph | shared_edge_lodo | shared_fixed | exact_match | 0 | 0 | 0 |
-| primekg | graph | shared_edge_lodo | shared_fixed | adjusted_rr | 0 | 0 | 0 |
+| primekg | graph | shared_edge_lodo | shared_fixed | adjusted_rr | -0.000011 | -0.000034 | 0 |
 | pharmkg | candidate | native_valid_grid | original_soft | exact_match | 0 | 0 | 0 |
 | pharmkg | candidate | native_valid_grid | original_soft | adjusted_rr | 0 | 0 | 0 |
 | pharmkg | candidate | shared_equal | original_soft | exact_match | 0.002000 | 0 | 0.006303 |
-| pharmkg | candidate | shared_equal | original_soft | adjusted_rr | 0.002221 | -0.001438 | 0.006038 |
+| pharmkg | candidate | shared_equal | original_soft | adjusted_rr | 0.002175 | -0.001441 | 0.005972 |
 | pharmkg | candidate | shared_learned | original_soft | exact_match | 0.002000 | 0 | 0.006303 |
-| pharmkg | candidate | shared_learned | original_soft | adjusted_rr | 0.002218 | -0.001433 | 0.006029 |
+| pharmkg | candidate | shared_learned | original_soft | adjusted_rr | 0.002172 | -0.001421 | 0.005954 |
 | pharmkg | candidate | shared_lodo | original_soft | exact_match | 0.002000 | 0 | 0.006303 |
-| pharmkg | candidate | shared_lodo | original_soft | adjusted_rr | 0.002205 | -0.001447 | 0.006017 |
+| pharmkg | candidate | shared_lodo | original_soft | adjusted_rr | 0.002159 | -0.001449 | 0.005941 |
 | pharmkg | candidate | shared_learned | shared_equal | exact_match | 0 | 0 | 0 |
 | pharmkg | candidate | shared_learned | shared_equal | adjusted_rr | -0.000003 | -0.000055 | 0.000044 |
 | pharmkg | candidate | shared_lodo | shared_equal | exact_match | 0 | 0 | 0 |
 | pharmkg | candidate | shared_lodo | shared_equal | adjusted_rr | -0.000016 | -0.000071 | 0.000032 |
 | pharmkg | graph | shared_fixed | original_fuzzy | exact_match | 0 | 0 | 0 |
-| pharmkg | graph | shared_fixed | original_fuzzy | adjusted_rr | 0.000318 | -0.000044 | 0.001064 |
+| pharmkg | graph | shared_fixed | original_fuzzy | adjusted_rr | -0.000015 | -0.001000 | 0.001002 |
 | pharmkg | graph | shared_auto | original_fuzzy | exact_match | 0 | 0 | 0 |
-| pharmkg | graph | shared_auto | original_fuzzy | adjusted_rr | 0.000318 | -0.000044 | 0.001064 |
+| pharmkg | graph | shared_auto | original_fuzzy | adjusted_rr | 0.000346 | 0 | 0.001089 |
 | pharmkg | graph | shared_edge_lodo | original_fuzzy | exact_match | 0 | 0 | 0 |
-| pharmkg | graph | shared_edge_lodo | original_fuzzy | adjusted_rr | 0.000318 | -0.000044 | 0.001064 |
+| pharmkg | graph | shared_edge_lodo | original_fuzzy | adjusted_rr | -0.000002 | -0.000980 | 0.001012 |
 | pharmkg | graph | shared_auto | shared_fixed | exact_match | 0 | 0 | 0 |
-| pharmkg | graph | shared_auto | shared_fixed | adjusted_rr | 0 | 0 | 0 |
+| pharmkg | graph | shared_auto | shared_fixed | adjusted_rr | 0.000361 | 0 | 0.001089 |
 | pharmkg | graph | shared_edge_lodo | shared_fixed | exact_match | 0 | 0 | 0 |
-| pharmkg | graph | shared_edge_lodo | shared_fixed | adjusted_rr | 0 | 0 | 0 |
+| pharmkg | graph | shared_edge_lodo | shared_fixed | adjusted_rr | 0.000013 | 0 | 0.000041 |
 | hetionet | candidate | native_valid_grid | original_soft | exact_match | 0 | 0 | 0 |
 | hetionet | candidate | native_valid_grid | original_soft | adjusted_rr | 0 | 0 | 0 |
 | hetionet | candidate | shared_equal | original_soft | exact_match | -0.020000 | -0.051546 | 0 |
@@ -246,13 +252,132 @@ Candidate comparisons to shared_equal isolate coefficient learning. Graph compar
 | repodb | graph | shared_fixed | original_fuzzy | exact_match | 0 | 0 | 0 |
 | repodb | graph | shared_fixed | original_fuzzy | adjusted_rr | 0.000019 | 0 | 0.000050 |
 | repodb | graph | shared_auto | original_fuzzy | exact_match | 0 | 0 | 0 |
-| repodb | graph | shared_auto | original_fuzzy | adjusted_rr | 0.000019 | 0 | 0.000050 |
-| repodb | graph | shared_edge_lodo | original_fuzzy | exact_match | 0 | 0 | 0 |
-| repodb | graph | shared_edge_lodo | original_fuzzy | adjusted_rr | 0.000268 | 0.000046 | 0.000547 |
+| repodb | graph | shared_auto | original_fuzzy | adjusted_rr | 0.000383 | 0.000098 | 0.000740 |
+| repodb | graph | shared_edge_lodo | original_fuzzy | exact_match | -0.002000 | -0.006237 | 0 |
+| repodb | graph | shared_edge_lodo | original_fuzzy | adjusted_rr | -0.001123 | -0.004639 | 0.000798 |
 | repodb | graph | shared_auto | shared_fixed | exact_match | 0 | 0 | 0 |
-| repodb | graph | shared_auto | shared_fixed | adjusted_rr | 0 | 0 | 0 |
-| repodb | graph | shared_edge_lodo | shared_fixed | exact_match | 0 | 0 | 0 |
-| repodb | graph | shared_edge_lodo | shared_fixed | adjusted_rr | 0.000249 | 0.000026 | 0.000528 |
+| repodb | graph | shared_auto | shared_fixed | adjusted_rr | 0.000363 | 0.000075 | 0.000725 |
+| repodb | graph | shared_edge_lodo | shared_fixed | exact_match | -0.002000 | -0.006237 | 0 |
+| repodb | graph | shared_edge_lodo | shared_fixed | adjusted_rr | -0.001142 | -0.004675 | 0.000778 |
+
+## Precision repair: validation selections
+
+| dataset | auto_trial_legacy | auto_trial_stable | auto_trial_changed | lodo_trial_legacy | lodo_trial_stable | lodo_trial_changed | legacy_best_ties | stable_best_ties |
+|---|---|---|---|---|---|---|---|---|
+| primekg | 1 | 1 | False | 0 | 2 | True | 6 | 6 |
+| pharmkg | 0 | 3 | True | 7 | 2 | True | 12 | 2 |
+| hetionet | 0 | 0 | False | 7 | 2 | True | 12 | 12 |
+| drkg | 0 | 0 | False | 7 | 2 | True | 12 | 12 |
+| repodb | 0 | 2 | True | 1 | 3 | True | 8 | 1 |
+
+## Precision repair: test differences versus archived FP16
+
+| dataset | arm | variant | changed_predictions | changed_encoder_inputs | exact_match_legacy | exact_match_stable | adjusted_rr_delta | interpretation |
+|---|---|---|---|---|---|---|---|---|
+| primekg | candidate | raw | 23 | 0 | 0.002000 | 0.002000 | 0.000036 | same inputs, precision policy changed |
+| primekg | candidate | original_soft | 18 | 0 | 0 | 0 | 0 | same inputs, precision policy changed |
+| primekg | candidate | native_valid_grid | 22 | 0 | 0 | 0 | 0 | same inputs, precision policy changed |
+| primekg | candidate | shared_equal | 20 | 0 | 0 | 0 | 0 | same inputs, precision policy changed |
+| primekg | candidate | shared_learned | 12 | 0 | 0 | 0 | 0 | same inputs, precision policy changed |
+| primekg | candidate | shared_lodo | 14 | 0 | 0 | 0 | 0 | same inputs, precision policy changed |
+| primekg | graph | source_graph | 18 | 0 | 0 | 0 | 0 | same inputs, precision policy changed |
+| primekg | graph | original_fuzzy | 4 | 0 | 0 | 0 | 0 | same inputs, precision policy changed |
+| primekg | graph | shared_fixed | 4 | 0 | 0 | 0 | 0 | same inputs, precision policy changed |
+| primekg | graph | shared_auto | 12 | 0 | 0 | 0 | -0.000067 | same inputs, precision policy changed |
+| primekg | graph | shared_edge_lodo | 101 | 272 | 0 | 0 | -0.000011 | precision plus validation reselection |
+| pharmkg | candidate | raw | 33 | 0 | 0 | 0 | 0 | same inputs, precision policy changed |
+| pharmkg | candidate | original_soft | 27 | 0 | 0 | 0 | 0.000113 | same inputs, precision policy changed |
+| pharmkg | candidate | native_valid_grid | 27 | 0 | 0 | 0 | 0.000113 | same inputs, precision policy changed |
+| pharmkg | candidate | shared_equal | 9 | 0 | 0.002000 | 0.002000 | 0.000067 | same inputs, precision policy changed |
+| pharmkg | candidate | shared_learned | 10 | 0 | 0.002000 | 0.002000 | 0.000067 | same inputs, precision policy changed |
+| pharmkg | candidate | shared_lodo | 10 | 0 | 0.002000 | 0.002000 | 0.000067 | same inputs, precision policy changed |
+| pharmkg | graph | source_graph | 27 | 0 | 0 | 0 | 0.000113 | same inputs, precision policy changed |
+| pharmkg | graph | original_fuzzy | 5 | 0 | 0.002000 | 0.002000 | 0 | same inputs, precision policy changed |
+| pharmkg | graph | shared_fixed | 10 | 0 | 0.002000 | 0.002000 | -0.000333 | same inputs, precision policy changed |
+| pharmkg | graph | shared_auto | 13 | 351 | 0.002000 | 0.002000 | 0.000028 | precision plus validation reselection |
+| pharmkg | graph | shared_edge_lodo | 12 | 15 | 0.002000 | 0.002000 | -0.000321 | precision plus validation reselection |
+| hetionet | candidate | raw | 5 | 0 | 0.020000 | 0.020000 | 0.000231 | same inputs, precision policy changed |
+| hetionet | candidate | original_soft | 0 | 0 | 0.030000 | 0.030000 | 0 | same inputs, precision policy changed |
+| hetionet | candidate | native_valid_grid | 0 | 0 | 0.030000 | 0.030000 | 0 | same inputs, precision policy changed |
+| hetionet | candidate | shared_equal | 3 | 0 | 0.010000 | 0.010000 | 0 | same inputs, precision policy changed |
+| hetionet | candidate | shared_learned | 1 | 0 | 0.010000 | 0.010000 | 0 | same inputs, precision policy changed |
+| hetionet | candidate | shared_lodo | 11 | 0 | 0.020000 | 0.020000 | 0 | same inputs, precision policy changed |
+| hetionet | graph | source_graph | 0 | 0 | 0.030000 | 0.030000 | 0 | same inputs, precision policy changed |
+| hetionet | graph | original_fuzzy | 0 | 0 | 0.030000 | 0.030000 | 0 | same inputs, precision policy changed |
+| hetionet | graph | shared_fixed | 0 | 0 | 0.030000 | 0.030000 | 0 | same inputs, precision policy changed |
+| hetionet | graph | shared_auto | 0 | 0 | 0.030000 | 0.030000 | 0 | same inputs, precision policy changed |
+| hetionet | graph | shared_edge_lodo | 0 | 4 | 0.030000 | 0.030000 | 0 | precision plus validation reselection |
+| drkg | candidate | raw | 1 | 0 | 0.010000 | 0.010000 | 0 | same inputs, precision policy changed |
+| drkg | candidate | original_soft | 2 | 0 | 0.014000 | 0.014000 | 0 | same inputs, precision policy changed |
+| drkg | candidate | native_valid_grid | 1 | 0 | 0.014000 | 0.014000 | 0 | same inputs, precision policy changed |
+| drkg | candidate | shared_equal | 2 | 0 | 0.008000 | 0.008000 | 0 | same inputs, precision policy changed |
+| drkg | candidate | shared_learned | 1 | 0 | 0.020000 | 0.020000 | 0 | same inputs, precision policy changed |
+| drkg | candidate | shared_lodo | 1 | 0 | 0.018000 | 0.018000 | 0 | same inputs, precision policy changed |
+| drkg | graph | source_graph | 2 | 0 | 0.014000 | 0.014000 | 0 | same inputs, precision policy changed |
+| drkg | graph | original_fuzzy | 0 | 0 | 0.014000 | 0.014000 | 0 | same inputs, precision policy changed |
+| drkg | graph | shared_fixed | 0 | 0 | 0.014000 | 0.014000 | 0 | same inputs, precision policy changed |
+| drkg | graph | shared_auto | 0 | 0 | 0.014000 | 0.014000 | 0 | same inputs, precision policy changed |
+| drkg | graph | shared_edge_lodo | 0 | 126 | 0.014000 | 0.014000 | 0 | precision plus validation reselection |
+| repodb | candidate | raw | 7 | 0 | 0.002000 | 0.002000 | 0 | same inputs, precision policy changed |
+| repodb | candidate | original_soft | 7 | 0 | 0.002000 | 0.002000 | 0 | same inputs, precision policy changed |
+| repodb | candidate | native_valid_grid | 7 | 0 | 0.002000 | 0.002000 | 0 | same inputs, precision policy changed |
+| repodb | candidate | shared_equal | 6 | 0 | 0.008000 | 0.008000 | 0 | same inputs, precision policy changed |
+| repodb | candidate | shared_learned | 4 | 0 | 0 | 0 | 0 | same inputs, precision policy changed |
+| repodb | candidate | shared_lodo | 4 | 0 | 0 | 0 | 0 | same inputs, precision policy changed |
+| repodb | graph | source_graph | 7 | 0 | 0.002000 | 0.002000 | 0 | same inputs, precision policy changed |
+| repodb | graph | original_fuzzy | 5 | 0 | 0.004000 | 0.004000 | 0 | same inputs, precision policy changed |
+| repodb | graph | shared_fixed | 5 | 0 | 0.004000 | 0.004000 | 0 | same inputs, precision policy changed |
+| repodb | graph | shared_auto | 80 | 208 | 0.004000 | 0.004000 | 0.000363 | precision plus validation reselection |
+| repodb | graph | shared_edge_lodo | 86 | 500 | 0.004000 | 0.002000 | -0.001391 | precision plus validation reselection |
+
+## Encoder precision audit
+
+The workbook contains every legacy/repaired validation and test variant. FP32-to-FP16 overflow is reported separately from encoder FP16 overflow. All rows remain in evaluation denominators.
+
+| dataset | n | fp16_nonfinite | fp32_nonfinite | fp32_to_fp16_nonfinite | fp32_to_bf16_nonfinite | fp32_max_abs |
+|---|---|---|---|---|---|---|
+| primekg | 500 | 9 | 0 | 6 | 0 | 130444.351562 |
+| pharmkg | 500 | 0 | 0 | 0 | 0 | 3.586100 |
+| hetionet | 100 | 0 | 0 | 0 | 0 | 4.169904 |
+| drkg | 500 | 0 | 0 | 0 | 0 | 19.677286 |
+| repodb | 500 | 0 | 0 | 0 | 0 | 7.339898 |
+
+## Adaptive arms: fixed-old-choice precision versus reselection
+
+An additional stable inference diagnostic holds the old selected coefficients fixed. Total metric change is decomposed into the precision-policy change at that fixed choice and the effect of validation reselection under stable precision. Neither term isolates graph arithmetic from LLM arithmetic.
+
+| dataset | variant | metric | legacy_fp16 | legacy_choice_stable | new_choice_stable | precision_at_old_choice | reselection_at_stable_precision | total_change |
+|---|---|---|---|---|---|---|---|---|
+| primekg | shared_auto | exact_match | 0 | 0 | 0 | 0 | 0 | 0 |
+| primekg | shared_auto | adjusted_rr | 0.074742 | 0.074676 | 0.074676 | -0.000067 | 0 | -0.000067 |
+| primekg | shared_auto | invalid | 0.002000 | 0.002000 | 0.002000 | 0 | 0 | 0 |
+| primekg | shared_edge_lodo | exact_match | 0 | 0 | 0 | 0 | 0 | 0 |
+| primekg | shared_edge_lodo | adjusted_rr | 0.074687 | 0.074687 | 0.074676 | 0 | -0.000011 | -0.000011 |
+| primekg | shared_edge_lodo | invalid | 0.002000 | 0.002000 | 0.002000 | 0 | 0 | 0 |
+| pharmkg | shared_auto | exact_match | 0.002000 | 0.002000 | 0.002000 | 0 | 0 | 0 |
+| pharmkg | shared_auto | adjusted_rr | 0.021290 | 0.020956 | 0.021317 | -0.000333 | 0.000361 | 0.000028 |
+| pharmkg | shared_auto | invalid | 0.574000 | 0.588000 | 0.584000 | 0.014000 | -0.004000 | 0.010000 |
+| pharmkg | shared_edge_lodo | exact_match | 0.002000 | 0.002000 | 0.002000 | 0 | 0 | 0 |
+| pharmkg | shared_edge_lodo | adjusted_rr | 0.021290 | 0.020956 | 0.020969 | -0.000333 | 0.000013 | -0.000321 |
+| pharmkg | shared_edge_lodo | invalid | 0.578000 | 0.592000 | 0.592000 | 0.014000 | 0 | 0.014000 |
+| hetionet | shared_auto | exact_match | 0.030000 | 0.030000 | 0.030000 | 0 | 0 | 0 |
+| hetionet | shared_auto | adjusted_rr | 0.100087 | 0.100087 | 0.100087 | 0 | 0 | 0 |
+| hetionet | shared_auto | invalid | 0.020000 | 0.020000 | 0.020000 | 0 | 0 | 0 |
+| hetionet | shared_edge_lodo | exact_match | 0.030000 | 0.030000 | 0.030000 | 0 | 0 | 0 |
+| hetionet | shared_edge_lodo | adjusted_rr | 0.100087 | 0.100087 | 0.100087 | 0 | 0 | 0 |
+| hetionet | shared_edge_lodo | invalid | 0.020000 | 0.020000 | 0.020000 | 0 | 0 | 0 |
+| drkg | shared_auto | exact_match | 0.014000 | 0.014000 | 0.014000 | 0 | 0 | 0 |
+| drkg | shared_auto | adjusted_rr | 0.046285 | 0.046285 | 0.046285 | 0 | 0 | 0 |
+| drkg | shared_auto | invalid | 0 | 0 | 0 | 0 | 0 | 0 |
+| drkg | shared_edge_lodo | exact_match | 0.014000 | 0.014000 | 0.014000 | 0 | 0 | 0 |
+| drkg | shared_edge_lodo | adjusted_rr | 0.046285 | 0.046285 | 0.046285 | 0 | 0 | 0 |
+| drkg | shared_edge_lodo | invalid | 0 | 0 | 0 | 0 | 0 | 0 |
+| repodb | shared_auto | exact_match | 0.004000 | 0.004000 | 0.004000 | 0 | 0 | 0 |
+| repodb | shared_auto | adjusted_rr | 0.037795 | 0.037795 | 0.038159 | 0 | 0.000363 | 0.000363 |
+| repodb | shared_auto | invalid | 0 | 0 | 0 | 0 | 0 | 0 |
+| repodb | shared_edge_lodo | exact_match | 0.004000 | 0.004000 | 0.002000 | 0 | -0.002000 | -0.002000 |
+| repodb | shared_edge_lodo | adjusted_rr | 0.038045 | 0.038159 | 0.036653 | 0.000114 | -0.001506 | -0.001391 |
+| repodb | shared_edge_lodo | invalid | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## Interpretation constraints
 

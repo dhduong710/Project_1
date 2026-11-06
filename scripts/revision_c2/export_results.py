@@ -45,6 +45,15 @@ def latex(rows,columns):
         [' & '.join(tex_escape(fmt(r.get(c))) for c in columns)+r' \\' for r in rows]+[r'\hline',r'\end{tabular}'])
 
 
+def compact_latex(rows,columns,decimals):
+    lines=[r'\begin{tabular}{l'+'r'*(len(columns)-1)+'}',r'\hline',
+        ' & '.join(map(tex_escape,columns))+r' \\',r'\hline']
+    for row in rows:
+        values=[f'{row[c]:.{decimals}f}' if isinstance(row[c],float) else str(row[c]) for c in columns]
+        lines.append(' & '.join(map(tex_escape,values))+r' \\')
+    return '\n'.join(lines+[r'\hline',r'\end{tabular}'])
+
+
 def excel(path,tables):
     """Small standards-compliant XLSX with inline strings; no openpyxl needed."""
     ns='http://schemas.openxmlformats.org/spreadsheetml/2006/main'
@@ -183,13 +192,21 @@ def curve_chart(path,rows):
 
 
 def run(args):
-    root=Path(args.results).resolve();e2e=Path(args.e2e_results).resolve() if args.e2e_results else root/'e2e'
+    root=Path(args.results).resolve();e2e=Path(args.e2e_results).resolve() if args.e2e_results else root/'e2e_stable'
     out=root/'exports';out.mkdir(parents=True,exist_ok=True)
     files=['candidate_metrics','calibration_cv','native_validation_grid','learned_weights','label_efficiency','coefficient_sensitivity','graph_weight_audit']
     tables={f:load_csv(root/(f+'.csv')) for f in files}
     tables['e2e_metrics']=load_csv(e2e/'e2e_metrics.csv')
     cpu=read(root/'cpu_complete.json') if (root/'cpu_complete.json').exists() else {'status':'not_complete'}
     gpu=read(e2e/'e2e_complete.json') if (e2e/'e2e_complete.json').exists() else {'status':'not_complete'}
+    precision=read(e2e/'precision_protocol.json')['precision'] if (e2e/'precision_protocol.json').exists() else 'legacy FP16; superseded for revision use'
+    stable=(e2e/'precision_protocol.json').exists()
+    if stable:
+        stable_done=read(e2e/'precision_complete.json') if (e2e/'precision_complete.json').exists() else {'status':'not_complete'}
+        if stable_done['status']!='complete':gpu=dict(gpu,status=stable_done['status'])
+    for name in ['variant_changes','validation_changes','selection_changes','nonfinite_strata','c3_anchor_checks','adaptive_decomposition']:
+        tables['precision_'+name]=load_csv(root/'precision_comparison'/(name+'.csv'))
+    tables['precision_audit']=load_csv(root/'precision_audit/summary.csv')
     primary=[r for r in tables['candidate_metrics'] if r['split']=='test' and r['variant'] in
         ['raw','original_soft','native_fixed_b050','native_valid_grid','shared_equal','shared_learned','shared_lodo']]
     columns=['dataset','variant','gold_at20','mrr_at20','hits1','hits10','delta_mrr','ci95_low','ci95_high']
@@ -230,11 +247,31 @@ def run(args):
     (out/'table_candidate_main.tex').write_text(latex(primary,columns))
     chart(out/'candidate_mrr.svg',primary)
     if tables['label_efficiency_summary']:curve_chart(out/'label_efficiency.svg',tables['label_efficiency_summary'])
-    tables['run_status']=[dict(stage='CPU',status=cpu['status']),dict(stage='E2E',status=gpu['status'])]
+    tables['run_status']=[dict(stage='CPU',status=cpu['status'],precision='unchanged CPU'),dict(stage='E2E',status=gpu['status'],precision=precision)]
+    if gpu['status']=='complete':
+        lookup={(r['dataset'],r['arm'],r['variant']):r for r in tables['e2e_metrics']}
+        accuracy=[];graph=[]
+        display=dict(primekg='PrimeKG',pharmkg='PharmKG',hetionet='Hetionet',drkg='DRKG',repodb='repoDB')
+        for name in datasets:
+            variants=['original_soft','shared_equal','shared_learned','shared_lodo']
+            if all((name,'candidate',v) in lookup for v in variants):
+                accuracy.append(dict(Dataset=display[name],N=int(lookup[(name,'candidate','original_soft')]['n']),
+                    **{label:100*float(lookup[(name,'candidate',v)]['exact_match']) for v,label in zip(variants,['Original','Equal','Learned','LODO'])}))
+            variants=['original_fuzzy','shared_fixed','shared_auto','shared_edge_lodo']
+            if all((name,'graph',v) in lookup for v in variants):
+                graph.append(dict(Dataset=display[name],**{label:float(lookup[(name,'graph',v)]['adjusted_rr']) for v,label in zip(variants,['Fuzzy','Fixed','Auto','Edge LODO'])}))
+        (out/'table_accuracy_compact.tex').write_text(compact_latex(accuracy,['Dataset','N','Original','Equal','Learned','LODO'],1))
+        (out/'table_graph_compact.tex').write_text(compact_latex(graph,['Dataset','Fuzzy','Fixed','Auto','Edge LODO'],6))
+    else:
+        for stem in ['table_accuracy_compact','table_graph_compact']:
+            (out/(stem+'.tex')).write_text(r'\textit{Corrected GPU evaluation is not complete.}')
     excel(out/'comment2_results.xlsx',tables)
     notes=[
         '# Comment 2 — experiment report',
         f"CPU status: **{cpu['status']}**. E2E status: **{gpu['status']}**.",
+        f'Inference precision: **{precision}**. E2E directory: `{e2e}`.',
+        'The corrected run repeats every validation trial and freezes new automatic/LODO selections before test inference. CPU ranking/calibration artifacts are unchanged. Archived FP16 results remain in e2e/ and legacy_fp16_snapshot/ for comparison only.',
+        'Stable C3 cached predictions are reusable only when the full model/precision/generation fingerprint and exact prompt/candidate/graph key match. No legacy FP16 cache is imported. Precision deltas change both graph and LLM arithmetic; adaptive graph variants may additionally change inputs after validation reselection.',
         'Candidate MRR is not generated-answer accuracy. Native formula replay was checked against original soft-support ordering.',
         'Shared-equal vs shared-learned isolates coefficient learning on the same five topology features. Comparisons to original-soft ALSO change feature definitions.',
         'Shared-LODO excludes target validation labels. The target KG, its structural retriever, and its prepared subgraphs are still available; this is coefficient transfer, not zero-shot KG completion.',
@@ -257,6 +294,20 @@ def run(args):
                 'Candidate comparisons to shared_equal isolate coefficient learning. Graph comparisons to shared_fixed isolate automatic coefficient selection within the same edge selector. Exact-match deltas are fractions, not percentage points.',
                 markdown(tables['e2e_paired_contrasts'],['dataset','arm','variant','reference','metric','delta_mean','ci95_low','ci95_high'])])
     else:notes.append('Not run / no E2E results available. No GPU result is inferred from candidate metrics.')
+    if tables['precision_selection_changes']:
+        notes += ['## Precision repair: validation selections',markdown(tables['precision_selection_changes'],list(tables['precision_selection_changes'][0]))]
+    if tables['precision_variant_changes']:
+        notes += ['## Precision repair: test differences versus archived FP16',markdown([r for r in tables['precision_variant_changes'] if r['split']=='test'],
+            ['dataset','arm','variant','changed_predictions','changed_encoder_inputs','exact_match_legacy','exact_match_stable','adjusted_rr_delta','interpretation'])]
+    if tables['precision_audit']:
+        notes += ['## Encoder precision audit',
+            'The workbook contains every legacy/repaired validation and test variant. FP32-to-FP16 overflow is reported separately from encoder FP16 overflow. All rows remain in evaluation denominators.',
+            markdown([r for r in tables['precision_audit'] if r['run']=='stable' and r['arm']=='candidate' and r['variant']=='raw'],
+                ['dataset','n','fp16_nonfinite','fp32_nonfinite','fp32_to_fp16_nonfinite','fp32_to_bf16_nonfinite','fp32_max_abs'])]
+    if tables['precision_adaptive_decomposition']:
+        notes += ['## Adaptive arms: fixed-old-choice precision versus reselection',
+            'An additional stable inference diagnostic holds the old selected coefficients fixed. Total metric change is decomposed into the precision-policy change at that fixed choice and the effect of validation reselection under stable precision. Neither term isolates graph arithmetic from LLM arithmetic.',
+            markdown(tables['precision_adaptive_decomposition'],['dataset','variant','metric','legacy_fp16','legacy_choice_stable','new_choice_stable','precision_at_old_choice','reselection_at_stable_precision','total_change'])]
     notes += ['## Interpretation constraints',
         '- Frozen checkpoints isolate input calibration; they do not compare separately retrained end-to-end systems.',
         '- Topology-based two-hop retention ignores relation semantics/direction and is NOT mechanistic or clinical information retention.',
@@ -269,7 +320,7 @@ def run(args):
     report='\n\n'.join(notes)+'\n'
     (out/'REPORT.md').write_text(report,encoding='utf-8')
     html_parts=['<!doctype html><meta charset="utf-8"><title>Comment 2 results</title><style>body{font:15px system-ui;margin:32px;color:#173047}table{border-collapse:collapse;margin:20px 0}td,th{border:1px solid #ccd6df;padding:7px;text-align:left}th{background:#edf4f7}img{max-width:100%}</style>',
-        '<h1>Comment 2 — experiment results</h1>',f'<p>CPU: {cpu["status"]}; E2E: {gpu["status"]}</p>',
+        '<h1>Comment 2 — experiment results</h1>',f'<p>CPU: {cpu["status"]}; E2E: {gpu["status"]}; {html.escape(precision)}</p>',
         '<img src="candidate_mrr.svg" alt="Candidate MRR comparison">']
     for name,rows in [('Candidate results',primary),('E2E results',tables['e2e_metrics'])]:
         if not rows:continue
@@ -279,7 +330,7 @@ def run(args):
         html_parts.append('</table>')
     html_parts.append('<p>See REPORT.md for uncertainty, protocol and interpretation limits.</p>')
     (out/'report.html').write_text('\n'.join(html_parts))
-    write(out/'export_manifest.json',dict(cpu_status=cpu['status'],e2e_status=gpu['status'],e2e_directory=str(e2e),
+    write(out/'export_manifest.json',dict(cpu_status=cpu['status'],e2e_status=gpu['status'],e2e_directory=str(e2e),precision=precision,
         files=sorted(p.name for p in out.iterdir())))
     print(f'Exported {out}',flush=True)
 

@@ -1,0 +1,7 @@
+{
+  "status": "complete",
+  "summary_rows": 230,
+  "unique_encoder_calls": 10765,
+  "all_fp32_bf16_finite": true,
+  "seconds": 69.52
+}

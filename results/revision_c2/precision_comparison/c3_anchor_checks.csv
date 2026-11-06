@@ -1,0 +1,11 @@
+﻿dataset,c3_variant,c2_variant,n,prediction_mismatches
+primekg,source_raw,source_graph,500,0
+primekg,original_fuzzy,original_fuzzy,500,0
+pharmkg,source_raw,source_graph,500,0
+pharmkg,original_fuzzy,original_fuzzy,500,0
+hetionet,source_raw,source_graph,100,0
+hetionet,original_fuzzy,original_fuzzy,100,0
+drkg,source_raw,source_graph,500,0
+drkg,original_fuzzy,original_fuzzy,500,0
+repodb,source_raw,source_graph,500,0
+repodb,original_fuzzy,original_fuzzy,500,0

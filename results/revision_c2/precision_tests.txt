@@ -1,0 +1,32 @@
+test_cache_import_is_idempotent (test_precision_repair.PrecisionRepairTests.test_cache_import_is_idempotent) ... ok
+test_candidate_order_changes_audit_key (test_precision_repair.PrecisionRepairTests.test_candidate_order_changes_audit_key) ... ok
+test_conflicting_cache_is_rejected (test_precision_repair.PrecisionRepairTests.test_conflicting_cache_is_rejected) ... ok
+test_duplicate_occurrence_changes_audit_key (test_precision_repair.PrecisionRepairTests.test_duplicate_occurrence_changes_audit_key) ... ok
+test_duplicate_query_gold_is_rejected (test_precision_repair.PrecisionRepairTests.test_duplicate_query_gold_is_rejected) ... ok
+test_edge_order_does_not_change_audit_key (test_precision_repair.PrecisionRepairTests.test_edge_order_does_not_change_audit_key) ... ok
+test_legacy_directory_cannot_be_overwritten (test_precision_repair.PrecisionRepairTests.test_legacy_directory_cannot_be_overwritten) ... ok
+test_smoke_donor_rejected (test_precision_repair.PrecisionRepairTests.test_smoke_donor_rejected) ... ok
+test_absent_gold_zero (test_protocol.ProtocolTests.test_absent_gold_zero) ... ok
+test_alignment_rejects_duplicate_keys (test_protocol.ProtocolTests.test_alignment_rejects_duplicate_keys) ... ok
+test_constant_native_features_finite (test_protocol.ProtocolTests.test_constant_native_features_finite) ... ok
+test_coverage_is_measured_not_assumed (test_protocol.ProtocolTests.test_coverage_is_measured_not_assumed) ... ok
+test_duplicate_display_name_ambiguous (test_protocol.ProtocolTests.test_duplicate_display_name_ambiguous) ... ok
+test_e2e_absent_gold_even_if_output_matches (test_protocol.ProtocolTests.test_e2e_absent_gold_even_if_output_matches) ... ok
+test_e2e_promote_to_front (test_protocol.ProtocolTests.test_e2e_promote_to_front) ... ok
+test_empty_graph (test_protocol.ProtocolTests.test_empty_graph) ... ok
+test_feature_labels_are_not_inputs (test_protocol.ProtocolTests.test_feature_labels_are_not_inputs) ... ok
+test_group_cv_disjoint (test_protocol.ProtocolTests.test_group_cv_disjoint) ... ok
+test_learning_nonnegative_and_improves_signal (test_protocol.ProtocolTests.test_learning_nonnegative_and_improves_signal) ... ok
+test_missing_gold_learning_fallback (test_protocol.ProtocolTests.test_missing_gold_learning_fallback) ... ok
+test_no_substring_candidate_matching (test_protocol.ProtocolTests.test_no_substring_candidate_matching) ... ok
+test_paired_bootstrap_identical_zero (test_protocol.ProtocolTests.test_paired_bootstrap_identical_zero) ... ok
+test_reorder_prompt_alignment (test_protocol.ProtocolTests.test_reorder_prompt_alignment) ... ok
+test_same_query_known_positive_not_negative (test_protocol.ProtocolTests.test_same_query_known_positive_not_negative) ... ok
+test_selection_budget_membership_and_order (test_protocol.ProtocolTests.test_selection_budget_membership_and_order) ... ok
+test_ties_preserve_original_order (test_protocol.ProtocolTests.test_ties_preserve_original_order) ... ok
+test_validation_subset_keeps_query_groups (test_protocol.ProtocolTests.test_validation_subset_keeps_query_groups) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.023s
+
+OK

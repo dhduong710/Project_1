@@ -1,0 +1,102 @@
+[
+  {
+    "dataset": "primekg",
+    "model_fingerprint": "f24b652e024ddebd93d17dd933828c8b5bd74b3933eb37430965a99165a2cecd",
+    "initial_cache_records": 0,
+    "imported_from_c3": 9444,
+    "source_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c3/gpu/cache/primekg_f24b652e024ddebd.jsonl",
+    "source_sha256": "cb17401754db4e91f09206923c3eeb64a0f3e0fed9fd7a504696c15dda4edd60",
+    "new_generations": 1189,
+    "final_cache_records": 10633
+  },
+  {
+    "dataset": "pharmkg",
+    "model_fingerprint": "814b747bf5dc623ad1f272a333a02839979ce1609907a5476d154cb55bad5ead",
+    "initial_cache_records": 0,
+    "imported_from_c3": 6300,
+    "source_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c3/gpu/cache/pharmkg_814b747bf5dc623a.jsonl",
+    "source_sha256": "bf6f4af0a1333fc936592f2bdb85e7ab7bc7297a8594e24462cd70d4f96fc855",
+    "new_generations": 445,
+    "final_cache_records": 6745
+  },
+  {
+    "dataset": "hetionet",
+    "model_fingerprint": "bd5f6a3c3ca25cb855587e7cb9db5beb1ff4724511778fb036900fe9cbca3e3c",
+    "initial_cache_records": 0,
+    "imported_from_c3": 959,
+    "source_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c3/gpu/cache/hetionet_bd5f6a3c3ca25cb8.jsonl",
+    "source_sha256": "1b350283edad613a864941a51dc902d1cad93b0ec2f22e6def348f0983faccc8",
+    "new_generations": 84,
+    "final_cache_records": 1043
+  },
+  {
+    "dataset": "drkg",
+    "model_fingerprint": "db5c45e1d7790b95eca266eef0587d0250db02514fec1bf92dfd8f2587a29991",
+    "initial_cache_records": 0,
+    "imported_from_c3": 7206,
+    "source_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c3/gpu/cache/drkg_db5c45e1d7790b95.jsonl",
+    "source_sha256": "09cb1b3a33ca160cf9fdcd4c0f7c331d416fbf09cbca668be78562448826c33b",
+    "new_generations": 717,
+    "final_cache_records": 7923
+  },
+  {
+    "dataset": "repodb",
+    "model_fingerprint": "959b2a3c6716857fa0f3ef281822afe20f1cb1933b54e576765f4cf9de6b6ccf",
+    "initial_cache_records": 0,
+    "imported_from_c3": 6455,
+    "source_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c3/gpu/cache/repodb_959b2a3c6716857f.jsonl",
+    "source_sha256": "d073d1f50ee416b4ac458bc17a405560b746e8bd57f6d5ab300ab7ec3c74847f",
+    "new_generations": 665,
+    "final_cache_records": 7120
+  },
+  {
+    "dataset": "primekg",
+    "model_fingerprint": "f24b652e024ddebd93d17dd933828c8b5bd74b3933eb37430965a99165a2cecd",
+    "initial_cache_records": 10633,
+    "imported_from_c3": 0,
+    "source_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c3/gpu/cache/primekg_f24b652e024ddebd.jsonl",
+    "source_sha256": "cb17401754db4e91f09206923c3eeb64a0f3e0fed9fd7a504696c15dda4edd60",
+    "new_generations": 1630,
+    "final_cache_records": 12263
+  },
+  {
+    "dataset": "pharmkg",
+    "model_fingerprint": "814b747bf5dc623ad1f272a333a02839979ce1609907a5476d154cb55bad5ead",
+    "initial_cache_records": 6745,
+    "imported_from_c3": 0,
+    "source_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c3/gpu/cache/pharmkg_814b747bf5dc623a.jsonl",
+    "source_sha256": "bf6f4af0a1333fc936592f2bdb85e7ab7bc7297a8594e24462cd70d4f96fc855",
+    "new_generations": 692,
+    "final_cache_records": 7437
+  },
+  {
+    "dataset": "hetionet",
+    "model_fingerprint": "bd5f6a3c3ca25cb855587e7cb9db5beb1ff4724511778fb036900fe9cbca3e3c",
+    "initial_cache_records": 1043,
+    "imported_from_c3": 0,
+    "source_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c3/gpu/cache/hetionet_bd5f6a3c3ca25cb8.jsonl",
+    "source_sha256": "1b350283edad613a864941a51dc902d1cad93b0ec2f22e6def348f0983faccc8",
+    "new_generations": 163,
+    "final_cache_records": 1206
+  },
+  {
+    "dataset": "drkg",
+    "model_fingerprint": "db5c45e1d7790b95eca266eef0587d0250db02514fec1bf92dfd8f2587a29991",
+    "initial_cache_records": 7923,
+    "imported_from_c3": 0,
+    "source_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c3/gpu/cache/drkg_db5c45e1d7790b95.jsonl",
+    "source_sha256": "09cb1b3a33ca160cf9fdcd4c0f7c331d416fbf09cbca668be78562448826c33b",
+    "new_generations": 1314,
+    "final_cache_records": 9237
+  },
+  {
+    "dataset": "repodb",
+    "model_fingerprint": "959b2a3c6716857fa0f3ef281822afe20f1cb1933b54e576765f4cf9de6b6ccf",
+    "initial_cache_records": 7120,
+    "imported_from_c3": 0,
+    "source_cache": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c3/gpu/cache/repodb_959b2a3c6716857f.jsonl",
+    "source_sha256": "d073d1f50ee416b4ac458bc17a405560b746e8bd57f6d5ab300ab7ec3c74847f",
+    "new_generations": 634,
+    "final_cache_records": 7754
+  }
+]

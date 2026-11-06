@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "precision": "graph encoder float32; LLM bfloat16",
+  "load_policy": "original graph weights directly FP32; base and PEFT directly BF16; no FP16 round trip",
+  "finite_policy": "assert finite graph projection before and after BF16 cast; no clipping or sample exclusion",
+  "dependency_sha256": {
+    "scripts/revision_c2/run_e2e_stable.py": "c2e25f3401e529ac8ff5684b61d3a485ee0b93646b435b4ab3cd6d2bdb3a5403",
+    "scripts/revision_c2/run_e2e.py": "61f517c21e822db5abb64e759958ca12ac5adfd3ef5b4350b3c4c26495d47b8a",
+    "scripts/revision_c2/common.py": "3ee78ad2a2ce8572a65875cc13464c840787e9bbbccde8333401be0ad32419de",
+    "scripts/revision_c3/run_gpu.py": "f4632a52d50872da0fa3d8f83931d62c74499f08f00d80e4802e703cc595fb29",
+    "scripts/revision_c3/c3lib.py": "01647b0b044102ad662547fd42e88a01ea9bb5a12785d3e7d8f13ac8bf490760",
+    "model/gnn.py": "ffc7ae6e7dce7955191f2544668585feb8e6a8c32121b919410a6e8020581ab8",
+    "model/drkgc.py": "a63b09a6480dbf6914d5ba009db3e4b09b0712c028c42a82067011af72007c0a"
+  },
+  "cpu_protocol_sha256": "8fda68dc4227d63e19a77159682940f826d11139fc7d31d098838e561fc97903",
+  "c3_cache_directory": "/home/anhlq/Documents/2026-dhd/SoftFuse-KGC/results/revision_c3/gpu",
+  "c3_model_fingerprints": {
+    "primekg": "f24b652e024ddebd93d17dd933828c8b5bd74b3933eb37430965a99165a2cecd",
+    "pharmkg": "814b747bf5dc623ad1f272a333a02839979ce1609907a5476d154cb55bad5ead",
+    "hetionet": "bd5f6a3c3ca25cb855587e7cb9db5beb1ff4724511778fb036900fe9cbca3e3c",
+    "drkg": "db5c45e1d7790b95eca266eef0587d0250db02514fec1bf92dfd8f2587a29991",
+    "repodb": "959b2a3c6716857fa0f3ef281822afe20f1cb1933b54e576765f4cf9de6b6ccf"
+  },
+  "legacy_cache_reuse": false,
+  "search_policy": "rerun every validation trial; freeze new auto/LODO choices before test; unchanged scoring and tie rule"
+}

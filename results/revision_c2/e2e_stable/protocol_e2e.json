@@ -1,0 +1,116 @@
+{
+  "version": 1,
+  "datasets": [
+    "primekg",
+    "pharmkg",
+    "hetionet",
+    "drkg",
+    "repodb"
+  ],
+  "seed": 20261105,
+  "edge_trials": [
+    [
+      1.0,
+      0.35,
+      0.05,
+      0.8,
+      0.05
+    ],
+    [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    [
+      1,
+      0.35,
+      0.05,
+      0,
+      0.05
+    ],
+    [
+      1,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      0.35,
+      0.25,
+      0.8,
+      0
+    ],
+    [
+      1,
+      0.35,
+      0.05,
+      1.6,
+      0.05
+    ],
+    [
+      1.0,
+      0.266458127430354,
+      0.02983574799677453,
+      1.4901296862963505,
+      0.13834149477588017
+    ],
+    [
+      1.0,
+      0.11753376613678247,
+      0.008466168790582847,
+      0.10048555948841378,
+      0.14729311515734592
+    ],
+    [
+      1.0,
+      0.12706899609599442,
+      0.04622481545414164,
+      1.602688459246953,
+      0.16241064734389893
+    ],
+    [
+      1.0,
+      0.16589302328585884,
+      0.021509156604037127,
+      0.370598872362073,
+      0.05796060057139961
+    ],
+    [
+      1.0,
+      5.490915755501144,
+      0.25608645266645025,
+      9.006640543190185,
+      0.08093088025575375
+    ],
+    [
+      1.0,
+      0.5135988698645199,
+      0.18930372531243053,
+      1.4982854994574755,
+      0.031070662849531756
+    ]
+  ],
+  "calibration_max_rows": 0,
+  "test_max_rows": 0,
+  "smoke_only": false,
+  "candidate_variants": [
+    "raw",
+    "original_soft",
+    "native_valid_grid",
+    "shared_equal",
+    "shared_learned",
+    "shared_lodo"
+  ],
+  "checkpoint_policy": "one frozen raw-backbone checkpoint per dataset; no variant-specific fine-tuning",
+  "graph_policy": "original fuzzy candidate order fixed; each compressed graph uses original per-row edge budget",
+  "metric": "exact candidate-ID match primary; promote-to-front adjusted RR@20 secondary; invalid virtual rank1",
+  "selection": "validation exact accuracy, then adjusted MRR, then earlier predefined trial; source macro for LODO",
+  "cpu_protocol_sha256": "8fda68dc4227d63e19a77159682940f826d11139fc7d31d098838e561fc97903",
+  "cpu_models_sha256": "59568b604cdb10b519e585c50b58b2feeecda5d463a1aa7cb920ee6e61ac8aa6",
+  "code_sha256": "61f517c21e822db5abb64e759958ca12ac5adfd3ef5b4350b3c4c26495d47b8a",
+  "common_sha256": "3ee78ad2a2ce8572a65875cc13464c840787e9bbbccde8333401be0ad32419de"
+}

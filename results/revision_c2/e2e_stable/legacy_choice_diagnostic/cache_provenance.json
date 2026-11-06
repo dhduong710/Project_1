@@ -1,0 +1,27 @@
+[
+  {
+    "dataset": "primekg",
+    "model_fingerprint": "f24b652e024ddebd93d17dd933828c8b5bd74b3933eb37430965a99165a2cecd",
+    "new_generations": 0
+  },
+  {
+    "dataset": "pharmkg",
+    "model_fingerprint": "814b747bf5dc623ad1f272a333a02839979ce1609907a5476d154cb55bad5ead",
+    "new_generations": 2
+  },
+  {
+    "dataset": "hetionet",
+    "model_fingerprint": "bd5f6a3c3ca25cb855587e7cb9db5beb1ff4724511778fb036900fe9cbca3e3c",
+    "new_generations": 0
+  },
+  {
+    "dataset": "drkg",
+    "model_fingerprint": "db5c45e1d7790b95eca266eef0587d0250db02514fec1bf92dfd8f2587a29991",
+    "new_generations": 2
+  },
+  {
+    "dataset": "repodb",
+    "model_fingerprint": "959b2a3c6716857fa0f3ef281822afe20f1cb1933b54e576765f4cf9de6b6ccf",
+    "new_generations": 11
+  }
+]

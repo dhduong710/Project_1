@@ -1,0 +1,7 @@
+Verified 2026-11-06. Commands completed successfully:
+.venv/bin/python scripts/revision_c2/verify_outputs.py
+PASS: frozen code/input hashes; native replay; candidate recall/orders; validation selections; 55 complete E2E rows; prediction-derived metrics; XLSX/SVG structure.
+PASS: stable precision dependencies; archived FP16 and CPU unchanged; 48300 validation/test predictions rescored; FP32/BF16 finite audit; C3 anchor agreement; 10 old-choice diagnostics and additive decomposition.
+.venv/bin/python scripts/revision_c3/verify_outputs.py
+PASS: frozen code/inputs; 620 CPU summaries and 260400 row/variant records; strict budgets; 140 full GPU summaries; predictions/rescoring/aggregates; finite representation metrics; XLSX.
+Supplementary PDF compiled twice with no LaTeX warnings/overflow; three pages visually inspected in part.
