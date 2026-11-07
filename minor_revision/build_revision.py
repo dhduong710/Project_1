@@ -51,6 +51,6 @@ for source,name,out in [(BASE/'Main Manuscript/paper','sn-article','Manuscript_r
  shutil.copy2(build/(name+'.pdf'),BASE/out)
  # Canonical PDF beside edited source, as well as easy-to-find delivery PDFs.
  shutil.copy2(build/(name+'.pdf'),source/(name+'.pdf'))
- (BASE/'revision_notes'/f'{name}_build.log').write_text(log)
+ (BASE/'revision_notes'/f'{name}_build.log').write_text('\n'.join(line.rstrip() for line in log.splitlines())+'\n')
  manifest.append({'pdf':out,'sha256':hashlib.sha256((BASE/out).read_bytes()).hexdigest(),'build_directory':str(build),'checks':critical})
 (BASE/'revision_notes/build_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')

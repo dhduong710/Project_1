@@ -79,20 +79,13 @@ encoder more closely.
 
 Relation-frequency and node-incidence mass distributions are compared using
 base-2 Jensen--Shannon divergence. Rare-relation edge recall uses relations with
-source frequency at or below the per-query median. Explicit Gene annotations
-from DRKG/repoDB namespaces and unambiguous Hetionet metadata support an
-additional gene-intermediate path diagnostic; types are not inferred from
-gene-like names in PrimeKG or PharmKG. Gold-incident and gold-reachability
-statistics are computed only after selection and only when the gold is in the
-fixed candidate set and the relevant source denominator is nonzero.
+source frequency at or below the per-query median.
 
 Any retention with a zero source denominator is undefined, omitted from the
 mean, and accompanied by its eligible sample count. The reported means are
 averages of per-query-row ratios, not ratios of pooled path counts. Quantiles,
 complete-loss fractions, source-query-presence strata, and gold-coverage strata
-supplement the aggregate results. Twenty illustrative cases are selected
-post hoc by fixed low/median/high structural-retention strata; they are not chosen
-for favorable generated answers or asserted biological mechanisms.
+supplement the aggregate results.
 
 \paragraph{Frozen-model representation and answer evaluation.}
 The GPU study evaluates all 22 native-budget variants and six additional
@@ -184,7 +177,7 @@ retains no such witnesses in the eligible PharmKG and Hetionet rows. This does
 not mean that every row loses all connectivity: only 31 PharmKG rows have a
 length-three source witness, and shorter paths can remain. Conversely,
 original fuzzy retrieval retains more length-three witnesses than random on
-DRKG and repoDB. Table~\ref{tab:s27-other-retention} reports complementary structural diagnostics. The accompanying workbook also retains rank-band, gene-annotation, and gold-conditional results rather than collapsing them into one information-retention score.
+DRKG and repoDB. Table~\ref{tab:s27-other-retention} reports complementary structural diagnostics. Rank-band and conditional diagnostics remain available in the accompanying workbook.
 
 
 \par\noindent\begin{minipage}{\linewidth}
@@ -197,18 +190,11 @@ DRKG and repoDB. Table~\ref{tab:s27-other-retention} reports complementary struc
 \end{minipage}\par\medskip
 
 
-\paragraph{Source availability and annotated paths.}
+\paragraph{Source availability.}
 Fuzzy outputs contain the query node in 100\%, 96.8\%, 100\%, 84.8\%, and
 59.4\% of test rows on PrimeKG, PharmKG, Hetionet, DRKG, and repoDB,
 respectively. Conditional reachability retention must be interpreted with its
-source eligibility rather than as a fraction of every test row. The additional
-Gene-intermediate diagnostic pools length-two and length-three witnesses with
-explicitly annotated intermediate nodes: fuzzy retention is 1.0000 on the
-31 eligible Hetionet rows and 0.9366 on the 243 eligible DRKG rows. These small,
-annotation-dependent subsets do not establish general mechanism preservation.
-In particular, the Hetionet value does not contradict the loss of its separate
-length-three witness set. PrimeKG and PharmKG types are unavailable to this
-audit; repoDB has no eligible source Gene-intermediate witnesses.
+source eligibility rather than as a fraction of every test row.
 
 \paragraph{Budget feasibility and operating curves.}
 The native replay audit confirms that the original PrimeKG coverage-first
@@ -291,16 +277,6 @@ DRKG, respectively. The joint query/seed and paired query bootstrap tables
 are supplied alongside these point estimates; lack of a detected difference
 is not a demonstration of equivalence. These low counts limit conclusions
 about small downstream improvements.
-
-Adjusted MRR is intentionally kept separate from exact accuracy. It assigns
-credit based on the pre-existing candidate order after a predicted candidate
-is promoted to the front, with zero credit when the gold is absent from the
-candidate set. It can remain positive when no generated answer is correct.
-Under the strict normalized matching rule, 59.0\% of PharmKG fuzzy outputs
-do not match a listed candidate. This is an output-format/matching diagnostic,
-not evidence that those outputs are valid biological alternatives. The full
-workbook includes invalid-output and top-candidate-copy rates for every variant.
-
 
 \subsection{Budget--retention curves}
 Figures~\ref{fig:c3-duplicates}--\ref{fig:c3-budget-paths} summarize edge-count decomposition and strict-budget operating curves. The requested ratios apply to unique source triples. The original dataset-specific policy and the strict coverage control are distinguished throughout; neither preserved candidate ranking nor an unchanged generated answer certifies preservation of the source evidence.

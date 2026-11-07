@@ -1,5 +1,6 @@
 PASS PDF hash and clean layout/reference checks: Manuscript_revised_highlighted.pdf
 PASS PDF hash and clean layout/reference checks: Supplementary_revised_highlighted.pdf
+PASS Tables 4 and 5 are adjacent on the same page; Code availability uses SoftFuse-KGC
 PASS main Tables 3/4/5; supplementary S12/S13, Tables S16–S29 and Figs. S4–S6; six new bibliography entries highlighted
 PASS current result input hashes for all exported tables
 PASS manuscript module E2E table agrees with all 15 current stable metrics

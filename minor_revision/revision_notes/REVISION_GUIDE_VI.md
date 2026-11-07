@@ -1,6 +1,6 @@
 # Manuscript và supplementary đã tích hợp revision
 
-Bản sửa ngày 06-11-2026, dựa trên HEAD `ae70903` và các bộ kết quả C2/C3 đã hoàn tất. Không thay đổi runner, checkpoint hoặc kết quả thực nghiệm.
+Bản sửa đầu ngày 06-11-2026, tinh gọn ngày 07-11-2026 theo góp ý mới của tác giả, dựa trên các bộ kết quả C2/C3 đã hoàn tất. Không thay đổi runner, checkpoint hoặc kết quả thực nghiệm.
 
 ## File để đọc/gửi
 
@@ -27,7 +27,7 @@ Các kết quả hạn chế/không thuận lợi có ý nghĩa khoa học đư�
 - Fig. 2 và các giá trị validation tương ứng ở S1/S6/S9 được tính lại từ candidate IDs với absent-gold RR=0: raw 0.053803; ontology 0.003917; bcap 0.054464; soft 0.097644; encoder probe 0.053707. `validation_metric_check.json` ghi nguồn và hashes. Không thay đổi thứ tự ứng viên.
 - Công thức capped support được đồng bộ phép chia cap=2; mô tả invalid output và fixed-order edge-drop được chỉnh để tránh hiểu sai về accuracy/retention.
 - `table_sources.json` ghi hashes các nguồn CSV/markers; bảng được xuất bằng script để giảm lỗi chép số.
-- Đường dẫn Code availability đổi sang Project_1. Không sửa Response to Reviewers.docx, không commit/push.
+- Code availability dùng `https://github.com/dhduong710/SoftFuse-KGC`, là repo tác giả đã dọn để publish. Không đổi Git remote của bản làm việc. Không sửa Response to Reviewers.docx, không commit/push.
 
 ## Biên dịch lại
 
@@ -58,3 +58,11 @@ Các file nguồn bổ sung chính:
 - G-Retriever (NeurIPS 2024): https://proceedings.neurips.cc/paper_files/paper/2024/hash/efaf1c9726648c8ba363a5c927440529-Abstract-Conference.html.
 - GRAG (Findings NAACL 2025): https://aclanthology.org/2025.findings-naacl.232/.
 - SubgraphRAG (ICLR 2025): https://proceedings.iclr.cc/paper_files/paper/2025/hash/11e1900e680f5fe1893a8e27362dbe2c-Abstract-Conference.html.
+
+## Tinh gọn ngày 07-11-2026
+
+- Bôi vàng theo bản nộp gốc: câu/từ/ô số liệu sửa được đánh dấu riêng; đoạn thêm mới hoặc viết lại toàn bộ giữ nền vàng. Các câu mở đầu abstract/discussion và các ô E2E không đổi được trả về nền trắng.
+- Related Work chủ yếu mô tả các công trình liên quan; so sánh trực tiếp với SoftFuse-KGC còn hai câu.
+- Rút gọn 4.5/4.6, giữ thiết kế, kết quả chính, đối chứng equal weights và giới hạn diễn giải cần thiết. Table 5 đặt ngay dưới Table 4 trên cùng trang.
+- Supplementary lược diễn giải phụ về gene-annotation, case audit và output-format. Giữ nguyên toàn bộ bảng đối chứng, kết quả mất path, exact generation và các giới hạn trực tiếp liên quan đến comment 2/3. Các artifacts thực nghiệm không bị xoá hay sửa.
+- Kiểm tra lại số liệu từng cột sau thay đổi markup, dẫn chiếu, citation, vị trí hai bảng và PDF.
