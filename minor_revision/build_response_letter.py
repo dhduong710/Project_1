@@ -24,6 +24,8 @@ CONTENT = BASE / "revision_notes/response_content.json"
 OUTPUT = BASE / "Response to Reviewers_revised.docx"
 W = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
 NS = {"w": W}
+# Match response letter-phương: 1.25 lines, 2.5 pt before and after paragraphs.
+PARAGRAPH_SPACING = {"before": "50", "after": "50", "line": "300", "lineRule": "auto"}
 
 
 def tag(name):
@@ -41,7 +43,7 @@ def plain(node):
 def paragraph(text, bold=False, size=26):
     p = ET.Element(tag("p"))
     props = child(p, "pPr")
-    child(props, "spacing", before=0, after=0, line=240, lineRule="auto")
+    child(props, "spacing", **PARAGRAPH_SPACING)
     # Ragged-right prose avoids stretched spaces around numerical expressions.
     child(props, "jc", val="left")
     child(props, "widowControl")
@@ -119,8 +121,8 @@ with ZipFile(TEMPLATE) as archive:
             body.append(paragraph(text))
     body.append(copy.deepcopy(old_body.find("w:sectPr", NS)))
 
-    # Apply single spacing to copied template paragraphs as well as responses.
-    # Paragraph breaks supply the separation; no empty spacer paragraphs.
+    # Apply the sample's spacing to both copied paragraphs and new responses,
+    # without reintroducing empty spacers or pagination chains.
     for p in list(body.findall("w:p", NS)):
         if not plain(p).strip():
             body.remove(p)
@@ -132,7 +134,7 @@ with ZipFile(TEMPLATE) as archive:
         if spacing is None:
             spacing = child(props, "spacing")
         spacing.attrib.clear()
-        for key, value in {"before": "0", "after": "0", "line": "240", "lineRule": "auto"}.items():
+        for key, value in PARAGRAPH_SPACING.items():
             spacing.set(tag(key), value)
         # Do not chain a reviewer comment, response label and opening paragraph
         # into a single page-placement unit. Explicit false values also override
@@ -187,7 +189,7 @@ assert not parsed.findall(".//w:tbl", NS)
 for p in parsed.findall("w:body/w:p", NS):
     assert plain(p).strip(), "Unexpected empty spacer paragraph"
     spacing = p.find("w:pPr/w:spacing", NS)
-    assert all(spacing.get(tag(k)) == v for k, v in {"before": "0", "after": "0", "line": "240", "lineRule": "auto"}.items())
+    assert all(spacing.get(tag(k)) == v for k, v in PARAGRAPH_SPACING.items())
     for flag in ["keepNext", "keepLines", "pageBreakBefore", "snapToGrid"]:
         assert p.find("w:pPr/w:" + flag, NS).get(tag("val")) == "0"
 assert not parsed.findall(".//w:lastRenderedPageBreak", NS)
@@ -206,7 +208,7 @@ report = {
     "correction_values_for_audit_only": table,
     "letter_contains_tables": False,
     "response_alignment": "left",
-    "paragraph_spacing": "single line; zero before/after; no empty spacer paragraphs",
+    "paragraph_spacing": "sample-matched 1.25 lines; 2.5 pt before/after; no empty spacer paragraphs",
     "pagination": "keepNext/keepLines/pageBreakBefore/snapToGrid explicitly disabled; no manual or cached page breaks; widow control retained",
     "checks": "DOCX archive and all XML parts parse; six populated responses; original reviewer wording retained; correction example verified; no tables or Revisions labels",
 }
