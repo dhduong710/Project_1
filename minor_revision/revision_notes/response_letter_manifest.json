@@ -2,7 +2,7 @@
   "template_sha256": "ad431172b0e0248fb12f7e6cf90539bf0ae02506cf4efa0824ab0399dd04923e",
   "content_sha256": "97084df5ac32c8eb8b8599034cef050374722605f28b6c41b15f50b5414d4a6c",
   "metrics_sha256": "0d6072634bd7256c5ae659319381c80d2db9693cca75755d70bc8d05bd6dced0",
-  "output_sha256": "b4ec4279ea629a8512c713514f2926db0a7b6ffdad16fc7ce3754f7c5b9e5503",
+  "output_sha256": "6f3cab823f65e9df49307e99cc30fb1156b4754be4c7547ef6f956b5acdd6478",
   "original_table_source": "ae70903:minor_revision/Main Manuscript/paper/sn-article.tex",
   "comment_count": 6,
   "all_reviewer_comments_preserved": true,
@@ -47,5 +47,6 @@
   ],
   "letter_contains_tables": false,
   "response_alignment": "left",
+  "paragraph_spacing": "single line; zero before/after; no empty spacer paragraphs",
   "checks": "DOCX archive and all XML parts parse; six populated responses; original reviewer wording retained; correction example verified; no tables or Revisions labels"
 }

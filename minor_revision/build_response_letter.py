@@ -41,7 +41,7 @@ def plain(node):
 def paragraph(text, bold=False, size=26, keep=False):
     p = ET.Element(tag("p"))
     props = child(p, "pPr")
-    child(props, "spacing", before=0, after=100, line=300, lineRule="auto")
+    child(props, "spacing", before=0, after=0, line=240, lineRule="auto")
     # Ragged-right prose avoids stretched spaces around numerical expressions.
     child(props, "jc", val="left")
     child(props, "widowControl")
@@ -120,8 +120,23 @@ with ZipFile(TEMPLATE) as archive:
         body.append(paragraph("Author response:", bold=True, keep=True))
         for text in content["responses"][str(idx)]:
             body.append(paragraph(text))
-        body.append(paragraph("", size=10))
     body.append(copy.deepcopy(old_body.find("w:sectPr", NS)))
+
+    # Apply single spacing to copied template paragraphs as well as responses.
+    # Paragraph breaks supply the separation; no empty spacer paragraphs.
+    for p in list(body.findall("w:p", NS)):
+        if not plain(p).strip():
+            body.remove(p)
+            continue
+        props = p.find("w:pPr", NS)
+        if props is None:
+            props = ET.Element(tag("pPr")); p.insert(0, props)
+        spacing = props.find("w:spacing", NS)
+        if spacing is None:
+            spacing = child(props, "spacing")
+        spacing.attrib.clear()
+        for key, value in {"before": "0", "after": "0", "line": "240", "lineRule": "auto"}.items():
+            spacing.set(tag(key), value)
 
     serialized_body = ET.tostring(body, encoding="unicode")
     # The original document root already declares these namespaces. Keeping it
@@ -140,7 +155,7 @@ text_lines = []
 for node in body:
     if node.tag == tag("p"):
         text_lines.append(plain(node))
-review_text = "\n\n".join(text_lines).strip() + "\n"
+review_text = "\n".join(text_lines).strip() + "\n"
 (BASE / "revision_notes/response_letter_text.txt").write_text(review_text)
 
 with ZipFile(OUTPUT) as archive:
@@ -157,6 +172,10 @@ for group in comments:
 assert all(content["responses"][str(i)][0].startswith("We thank") for i in range(1, 7))
 assert "has been uploaded" not in review_text
 assert not parsed.findall(".//w:tbl", NS)
+for p in parsed.findall("w:body/w:p", NS):
+    assert plain(p).strip(), "Unexpected empty spacer paragraph"
+    spacing = p.find("w:pPr/w:spacing", NS)
+    assert all(spacing.get(tag(k)) == v for k, v in {"before": "0", "after": "0", "line": "240", "lineRule": "auto"}.items())
 assert all(term not in review_text for term in ["Revisions:", "published", "Table R1", "0.7737/0.9010"])
 assert table[1][1] == "0.0476 → 0.0477", "Check the numerical correction example"
 report = {
@@ -171,6 +190,7 @@ report = {
     "correction_values_for_audit_only": table,
     "letter_contains_tables": False,
     "response_alignment": "left",
+    "paragraph_spacing": "single line; zero before/after; no empty spacer paragraphs",
     "checks": "DOCX archive and all XML parts parse; six populated responses; original reviewer wording retained; correction example verified; no tables or Revisions labels",
 }
 (BASE / "revision_notes/response_letter_manifest.json").write_text(json.dumps(report, indent=2) + "\n")
