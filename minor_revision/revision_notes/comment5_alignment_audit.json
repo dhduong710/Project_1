@@ -1,0 +1,87 @@
+{
+  "audit": "Recomputed normalization, identifier probes, split, and capped graph using repository functions; exact artifact agreement",
+  "raw_rows": 10800,
+  "valid_identifier_rows": 10800,
+  "approved_pairs": 6677,
+  "failed_pairs_before_conflicts": 3281,
+  "conflicting_pairs": 21,
+  "failed_pairs_after_conflicts": 3260,
+  "mapping": {
+    "drkg_entity_map_found": true,
+    "drkg_num_entities": 13918,
+    "num_unique_compounds_repodb": 1571,
+    "num_unique_diseases_repodb": 2051,
+    "num_unique_approved_compounds": 1519,
+    "num_unique_approved_diseases": 1229,
+    "compound_exact_hits_in_drkg": 1130,
+    "compound_exact_hit_rate": 0.7192870782940802,
+    "approved_compound_exact_hits_in_drkg": 1106,
+    "approved_compound_exact_hit_rate": 0.728110599078341,
+    "disease_exact_umls_hits_in_drkg": 0,
+    "disease_any_exact_hits_in_drkg": 0,
+    "disease_any_exact_hit_rate": 0.0
+  },
+  "split": {
+    "requested_valid_size": 500,
+    "requested_test_size": 500,
+    "actual_train_size": 5677,
+    "actual_valid_size": 500,
+    "actual_test_size": 500,
+    "attempt_used": 0,
+    "coverage_policy": "valid/test drugs and diseases remain in train approved target relation"
+  },
+  "seed": 2028,
+  "coverage": {
+    "valid_missing_gold_compounds_in_train": [],
+    "valid_missing_query_diseases_in_train": [],
+    "test_missing_gold_compounds_in_train": [],
+    "test_missing_query_diseases_in_train": [],
+    "coverage_pass": true
+  },
+  "candidate_compounds": 1519,
+  "graph": {
+    "drkg_graph_found": true,
+    "num_kept_edges": 90804,
+    "kept_by_family": {
+      "target_approved": 5677,
+      "failed_diagnostic": 3222,
+      "compound_gene": 39017,
+      "gene_gene": 42888
+    },
+    "num_entities": 8818,
+    "num_relations": 63,
+    "num_train_compounds": 1519,
+    "num_all_task_compounds": 1571,
+    "num_all_task_diseases": 2051,
+    "num_touched_genes": 5196,
+    "caps": {
+      "max_failed_per_disease": 80,
+      "max_failed_per_compound": 80,
+      "max_compound_gene_per_compound": 80,
+      "max_gene_gene_per_gene": 40,
+      "max_gene_gene_total": 150000
+    }
+  },
+  "heldout_exact_target_edges_in_graph": 0,
+  "all_task_entities_retained": true,
+  "inputs_sha256": {
+    "dataset/setting_e_drkg/03_graph/entity2id.json": "8735795a273b26fde771ff3ee9c969bad057ed2189b92bfc31804c1493a74e62",
+    "dataset/setting_e_drkg/03_graph/train_enriched.tsv": "0fcca7a8726e4a9b6ae6c3a18f7b2e6adf62a931420e09f58bf0cd9f2762b8c4",
+    "dataset/setting_f_repodb/00_raw_inventory/repodb_best_table_raw.tsv": "f099d446b0f44bcac47ab7b81468849212bf91783b184997659b335d4cfba127",
+    "dataset/setting_f_repodb/01_task_spec/approved_pairs_unique.json": "c6a6e4afc36e0df52f63c461b528c0bfef0f4be9f6cb2420c967d7fef3c38f0b",
+    "dataset/setting_f_repodb/01_task_spec/failed_pairs_unique.json": "a2e505a191553340c9869b6262aff803560207701b2b110b107a4684717ac9fb",
+    "dataset/setting_f_repodb/01_task_spec/mapping_probe_drkg.json": "91a193a25c34b4b301877694f2f0c8d8be6c95ce10df1d8f4a16c49c5a03fb9d",
+    "dataset/setting_f_repodb/02_splits/candidate_universe_compound.json": "e186457d9a8b4676ea3ee1241988b8c5aca349eb6db02e7d3c5159b5c28a7486",
+    "dataset/setting_f_repodb/02_splits/test.tsv": "15c46f3dbe34ce9af70d01bd2c494e16343ccbae22d90d3969a907cbb48d5bf8",
+    "dataset/setting_f_repodb/02_splits/train.tsv": "0c24b4a5bd60c079c7e0ba5565cd4dfcd26434b708a6edfe33dedcd2c470f2de",
+    "dataset/setting_f_repodb/02_splits/valid.tsv": "4f08969d6571c7219589f2fe78a604c36bb28f95b1a90bc85e153c085897f9ba",
+    "dataset/setting_f_repodb/03_graph/entity2id.json": "1d9c72f9018eb09f692b80e65d305c4da985cb7186164e35a9ec24c9c0d383b0",
+    "dataset/setting_f_repodb/03_graph/graph_summary.json": "576a317b558dc31259b017def61dc3d5bb3e2e1da242582d1be51bba4d0a556e",
+    "dataset/setting_f_repodb/03_graph/relation2id.json": "ab138288d077fe14caab01f062aaf89d9f5532fe6743a1a3f23c38e043c8f249",
+    "dataset/setting_f_repodb/03_graph/train_enriched.tsv": "f6dcdf234ca5332bb8c211156c8c900d612032663d7506437870f53912b0eabd",
+    "scripts/week28/02_normalize_freeze_repodb_task.py": "de5e28be6c1d5b7e7372265c1bb75b7393486458e41bf8b57487f0ecb0daac78",
+    "scripts/week28/03_build_repodb_splits_graph.py": "a80d8e69b85277f9cb8777787df581f641620031314900f5d1eddcb32c054e03",
+    "scripts/week28/05_build_repodb_fograg_ready.py": "053a363e32f026147832779abc93a9bc99716484180a4fc10825a4a9cf31eb16",
+    "scripts/week28/06c_make_repodb_rgcn_raw_display_control.py": "efc1fcf9a7c153a59d18c2300aabacb1732a528b355ae40c71bbe6cda0bd3249"
+  }
+}

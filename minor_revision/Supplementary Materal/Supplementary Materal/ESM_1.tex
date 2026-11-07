@@ -11,6 +11,7 @@
     \usepackage{booktabs}
     \usepackage{array}
     \usepackage{tabularx}
+    \usepackage{longtable}
     \usepackage{amsmath,amssymb}
     \usepackage{caption}
     \usepackage{float}
@@ -156,21 +157,30 @@
     Weights and normalizers were fixed using validation data only. Candidate-stage settings were retained when they preserved \gold{} and improved or maintained \mrr{} while reducing shortcut exposure. For \mainequation{3}, \(\eta_s\) and \(\eta_b\) are saturation thresholds for shared-gene and bridge counts, and \(\nu_s,\nu_b,\nu_c,\nu_q\) distribute positive support across shared-gene, bridge, candidate-touch, and query-touch channels. For Hetionet and DRKG, \(\nu_s=0.70\), \(\nu_b=0.20\), \(\nu_c=0.05\), and \(\nu_q=0.05\).
 
     For \mainequation{6}, \(\eta_D\) is the \(95\)th percentile of nonzero compound-to-disease direct degrees when direct-degree statistics are used. This high-percentile normalizer penalizes generic direct-disease hubs without letting a single extreme hub define the scale. Otherwise, the direct edge flag alone is used. For \mainequation{8}, \(N_q\) is the identity map when \(\mu=0\); when \(\mu>0\), the min--max rule above is applied over the 20 candidates for the same query.
-    \clearpage
     \begin{revisionblock}The coefficients below describe the original support formulation. Section~\ref{sec:s12-calibration} adds automatic native-formula selection, shared-feature learned calibration, and coefficient transfer without target calibration labels.\end{revisionblock}
 
     \subsection{Frozen Assigned Values}
 
     Table~\ref{tab:s1_soft_support} reports the frozen feature instantiations, weights, and normalizers.
 
-    \begin{table}[H]
+    \begingroup\footnotesize
+    \begin{longtable}{L{0.12\textwidth} *{3}{L{\dimexpr0.293333\textwidth-2.666667\tabcolsep\relax}}}
     \caption{\textbf{Dataset-specific soft-support coefficients and feature instantiations.} These values instantiate \mainequation{2}, \mainequation{3}, \mainequation{5}, \mainequation{6}, \mainequation{7}, and \mainequation{8}.}
-    \label{tab:s1_soft_support}
-    \footnotesize
-    \begin{tabularx}{\textwidth}{L{0.12\textwidth} Y Y Y}
+    \label{tab:s1_soft_support}\\
     \toprule
     Dataset & Positive support instantiation & Penalty and rank-prior coefficients & Normalizers and inactive terms \\
     \midrule
+    \endfirsthead
+    \multicolumn{4}{l}{\small\textbf{Table S1} (continued)}\\
+    \toprule
+    Dataset & Positive support instantiation & Penalty and rank-prior coefficients & Normalizers and inactive terms \\
+    \midrule
+    \endhead
+    \midrule
+    \multicolumn{4}{r}{\footnotesize Continued on next page}\\
+    \endfoot
+    \bottomrule
+    \endlastfoot
     PrimeKG &
     In \mainequation{2}, \(E_i(q)\) is contact-based: \(E_i(q)=1\) when the candidate has positive evidence contact in the source subgraph and \(0\) otherwise. &
     In \mainequation{8}, \(\alpha_E=1.0\), \(\alpha_D=0.50\), \(\alpha_X=0.10\), and \(\mu=0\). In \mainequation{6}, \(D_i(q)\) is the direct candidate-query flag; in \mainequation{7}, \(X_i(q)\) uses contradiction-like evidence when available. &
@@ -196,9 +206,8 @@
     \(0.55\) approved direct, \(0.30\min(1,\mathrm{compound\ gene}/8)\), and \(0.15\min(1,\mathrm{gene\ bridge}/12)\). &
     In \mainequation{8}, \(\alpha_E=1.0\), \(\alpha_D=0\), \(\alpha_X=0.20\), and \(\mu=0.95\). The high rank-prior mixture reflects sparse query-specific mechanistic support in the local disease namespace. &
     The direct-degree feature in \mainequation{6} is computed but inactive because \(\alpha_D=0\). The candidate-density term in \mainequation{5} is inactive. In \mainequation{7}, the failed/diagnostic-like penalty is retained as \(X_i(q)\). \\
-    \bottomrule
-    \end{tabularx}
-    \end{table}
+    \end{longtable}
+    \endgroup
     \FloatBarrier
 
     \section{Fuzzy Edge-Scoring Feature and Weight Assignment}
@@ -787,11 +796,13 @@
     repoDB &
     Approved indication pairs form the target relation. Failed or suspended pairs are retained only as diagnostic evidence after conflict handling. The approved target split is \(5{,}677/500/500\). &
     Diseases are local UMLS nodes; mapped DrugBank compounds reuse DRKG-derived compound-gene and gene-gene evidence. The graph has \(90{,}804\) edges, \(8{,}818\) entities, and \(63\) relations. &
-    Coverage and schema checks pass. Validation and test exact-leak counts are \(0\); all train, validation, and test entities are mapped into the prepared graph. \\
+    Coverage and schema checks pass. Validation and test exact-leak counts are \(0\); \rev{all task entities have local graph IDs, which does not imply that each entity is aligned to DRKG (Section S11.1).} \\
     \bottomrule
     \end{tabularx}
     \end{table}
     \FloatBarrier
+
+    \input{revision_alignment}
 
     \input{revision_calibration}
     \input{revision_retention}

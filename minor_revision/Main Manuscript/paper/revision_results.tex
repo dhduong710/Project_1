@@ -5,7 +5,9 @@
 We test automatic calibration using a common five-feature candidate scorer with equal, learned, and leave-one-dataset-out (LODO) weights. The features describe original rank, graph contact, degree, shared neighbors, and direct query contact. Learned weights minimize a regularized pairwise logistic objective, with query-group cross-validation on validation data. LODO fits and selects coefficients using the other four datasets, excluding target calibration labels. Candidate membership and the upstream retriever remain fixed. Supplementary Section S12 provides the full fitting and transfer protocols.
 
 % Keep the two summary tables together, without intervening prose.
-\par\noindent\begin{minipage}{\linewidth}
+\end{revisionblock}
+\begin{tableorg}[!t]
+\begin{revisionblock}
 \par\noindent\begin{minipage}{\linewidth}
 
 \centering\small
@@ -24,7 +26,9 @@ We test automatic calibration using a common five-feature candidate scorer with 
 \input{revision_tables/retention_main}
 
 \end{minipage}\par\medskip
-\end{minipage}\par\medskip
+\end{revisionblock}
+\end{tableorg}
+\begin{revisionblock}
 
 Shared learned calibration improves candidate MRR over the original formula on four datasets and matches it on PrimeKG; LODO yields higher point estimates on all five (Table~\ref{tab:calibration_main}). Equal weights already improve four datasets, so comparison with the original formula combines feature changes and coefficient learning. Against equal weights, the learned-minus-equal gain is 0.00754 on repoDB, with exploratory query-cluster 95\% interval [0.00040, 0.01518]; the other four intervals include zero. The results support transferable scoring features without establishing a uniform advantage for learning their weights.
 

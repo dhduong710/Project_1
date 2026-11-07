@@ -17,18 +17,28 @@ for item in json.loads((BASE/'revision_notes/build_manifest.json').read_text()):
   source=(BASE/'Main Manuscript/paper/sn-article.tex').read_text()
   assert r'\url{https://github.com/dhduong710/SoftFuse-KGC}' in source
   assert 'Project_1' not in source
+  related=source.split(r'\section{Related Work}',1)[1].split(r'\section{Methods}',1)[0]
+  assert r'\softfuse' not in related and 'SoftFuse-KGC' not in related
+  for key in ['zhu2026spatialspectral','zhu2026fdmsgl']:
+   assert key in related and key in source.split(r'\section{Discussion}',1)[1]
   results=(BASE/'Main Manuscript/paper/revision_results.tex').read_text()
   gap=results.split(r'\input{revision_tables/calibration_main}',1)[1].split(r'\captionof{table}',1)[0]
   assert not re.search('[A-Za-z]{3}', re.sub(r'\\[A-Za-z]+|[{}]|linewidth|par|medskip|minipage|centering|small', '',gap)), 'Prose between Tables 4 and 5'
  else:
+  assert r'\newlabel{sec:repodb_alignment}{{S11.1}' in aux
   for i in range(16,30):assert re.search(r'\\newlabel\{tab:s'+str(i)+r'[^}]*\}\{\{S'+str(i)+r'\}',aux),i
   for n in ['S12','S13','S4','S5','S6']:assert '{{'+n+'}' in aux,n
  text=subprocess.check_output(['gs','-q','-dSAFER','-dBATCH','-dNOPAUSE','-sDEVICE=txtwrite','-sOutputFile=-',str(p)],text=True)
  assert not re.search(r'FP16|FP32|BF16|nonfinite|\?\?',text),p
 checks.append('PASS Tables 4 and 5 are adjacent on the same page; Code availability uses SoftFuse-KGC')
+checks.append('PASS Related Work omits SoftFuse-KGC; both requested references appear in Related Work and Discussion; S11.1 alignment section resolves')
 checks.append('PASS main Tables 3/4/5; supplementary S12/S13, Tables S16–S29 and Figs. S4–S6; six new bibliography entries highlighted')
 for source,h in json.loads((BASE/'revision_notes/table_sources.json').read_text())['inputs_sha256'].items():assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==h,source
 checks.append('PASS current result input hashes for all exported tables')
+alignment=json.loads((BASE/'revision_notes/comment5_alignment_audit.json').read_text())
+for source,h in alignment['inputs_sha256'].items():assert hashlib.sha256((ROOT/source).read_bytes()).hexdigest()==h,source
+assert alignment['graph']['num_kept_edges']==90804 and alignment['heldout_exact_target_edges_in_graph']==0
+checks.append('PASS repoDB audit input hashes: normalization, exact-ID mapping, coverage-safe split and all 90,804 graph edges reproduced')
 s=(BASE/'Main Manuscript/paper/sn-article.tex').read_text()
 rows=list(csv.DictReader((ROOT/'results/revision_c2/e2e_stable/e2e_metrics.csv').open(encoding='utf-8-sig')))
 for v in ['raw','original_soft','original_fuzzy']:

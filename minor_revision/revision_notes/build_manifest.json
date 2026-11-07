@@ -1,14 +1,14 @@
 [
   {
     "pdf": "Manuscript_revised_highlighted.pdf",
-    "sha256": "f72225de0d0be0b56dc22c24c8718bc0ea69a62ba1df1881d5a1e07ecf5e939a",
-    "build_directory": "/tmp/softfuse_paper_sj1to68f",
+    "sha256": "4ae488c19d3e8a51d32cd01a310ba2cf25af2fdefbd04da0a8d2b26818a05747",
+    "build_directory": "/tmp/softfuse_paper_xznoczy4",
     "checks": []
   },
   {
     "pdf": "Supplementary_revised_highlighted.pdf",
-    "sha256": "66e5c166e6c5785d7c84a662bcec9cd2f6a443faef252bb9b8ab779609b3cc05",
-    "build_directory": "/tmp/softfuse_paper_3ncuz55p",
+    "sha256": "8a6d182d5b2c98708af8f30dc78ffc786d95202994cf33e604d4b30ffc59e0e4",
+    "build_directory": "/tmp/softfuse_paper_xt7sdpdf",
     "checks": []
   }
 ]

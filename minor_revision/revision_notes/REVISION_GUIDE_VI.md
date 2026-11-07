@@ -4,8 +4,8 @@ Bản sửa đầu ngày 06-11-2026, tinh gọn ngày 07-11-2026 theo góp ý m�
 
 ## File để đọc/gửi
 
-- `minor_revision/Manuscript_revised_highlighted.pdf`: manuscript, 26 trang.
-- `minor_revision/Supplementary_revised_highlighted.pdf`: supplementary, 29 trang.
+- `minor_revision/Manuscript_revised_highlighted.pdf`: manuscript, 25 trang.
+- `minor_revision/Supplementary_revised_highlighted.pdf`: supplementary, 30 trang.
 - PDF tương ứng cũng nằm cạnh nguồn `sn-article.tex` và `ESM_1.tex` trong hai thư mục gốc.
 - Các đoạn/câu, ô số liệu, phần bổ sung và sáu tài liệu tham khảo mới được đánh dấu nền vàng. Với Fig. 2 được tính lại, caption được bôi vàng và file hình mới mang tên `Fig2_revised.pdf`.
 
@@ -66,3 +66,14 @@ Các file nguồn bổ sung chính:
 - Rút gọn 4.5/4.6, giữ thiết kế, kết quả chính, đối chứng equal weights và giới hạn diễn giải cần thiết. Table 5 đặt ngay dưới Table 4 trên cùng trang.
 - Supplementary lược diễn giải phụ về gene-annotation, case audit và output-format. Giữ nguyên toàn bộ bảng đối chứng, kết quả mất path, exact generation và các giới hạn trực tiếp liên quan đến comment 2/3. Các artifacts thực nghiệm không bị xoá hay sửa.
 - Kiểm tra lại số liệu từng cột sau thay đổi markup, dẫn chiếu, citation, vị trí hai bảng và PDF.
+
+## Hoàn thiện comment 4–6 và dàn trang ngày 07-11-2026
+
+- Đã bỏ toàn bộ phần nhắc trực tiếp SoftFuse-KGC trong Related Work. Hai công trình reviewer yêu cầu ở comment 6 đã có đủ citation; Discussion bổ sung cách học biểu diễn/trọng số theo từng nguồn, kết hợp mục tiêu ranking với ngân sách graph và giữ đường dẫn bằng chứng. Đây là hướng mở rộng, không phải thực nghiệm đã thực hiện.
+- Comment 4: thêm đoạn ngắn ở Section 4.2 phân biệt cải thiện thứ hạng trong danh sách cố định, độ bao phủ truy hồi và đánh giá generated answers. Response letter để lượt sau theo yêu cầu tác giả.
+- Comment 5: Section 4.1 làm rõ join theo ID DrugBank và dẫn tới S11.1 mới. Supplementary mô tả chuẩn hóa ID, nhãn và deduplication; xử lý 21 cặp mâu thuẫn; mapping compound 1.130/1.571 và approved compound 1.106/1.519; không thực hiện crosswalk UMLS–DRKG; giữ entity không match; xây graph/caps; chia tập và exact leakage checks. Table S15 phân biệt local graph-ID coverage với cross-resource alignment.
+- Đã đọc code `scripts/week28/02_normalize_freeze_repodb_task.py`, `03_build_repodb_splits_graph.py`, `05_build_repodb_fograg_ready.py`, `06c_make_repodb_rgcn_raw_display_control.py`. Audit tái dùng các hàm normalize/split/build trong bộ nhớ và xác nhận khớp artifacts, gồm toàn bộ 90.804 cạnh; không chạy main() của các script preparation và không ghi lại dataset.
+- Audit và hashes: `revision_notes/comment5_alignment_audit.json`. Có thể chạy lại bằng `.venv/bin/python minor_revision/audit_repodb_alignment.py` từ repo root. Verifier kiểm tra hashes của code và dữ liệu nguồn audit.
+- Manuscript dùng một float cho Table 4–5 để phần văn bản tiếp tục lấp trang 14, hai bảng vẫn liền nhau ở trang 15. Dùng `tableorg` của class Springer để tránh wrapper `threeparttable` làm sai độ rộng caption khi có hai bảng trong cùng float.
+- Supplementary bỏ ngắt trang cưỡng bức sau S1.2; Table S1 chuyển sang `longtable` có header tiếp nối trên trang 4–5. Bỏ ngắt trang trước S12 để nội dung chảy tiếp sau S11.1. Nội dung/số liệu Table S1 giữ nguyên.
+- Bản xuất cuối: manuscript 25 trang, supplementary 30 trang. Đã kiểm tra trực quan các trang sửa, build không có undefined reference hoặc overfull box, verifier pass, `git diff --check` pass. Bôi vàng tiếp tục theo bản nộp gốc: câu/từ sửa riêng, đoạn mới toàn bộ. Public URL vẫn SoftFuse-KGC; không sửa kết quả C2/C3, response DOCX, remote hoặc commit/push.
