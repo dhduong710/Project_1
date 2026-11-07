@@ -38,15 +38,13 @@ def plain(node):
     return "".join(n.text or "" for n in node.iter(tag("t")))
 
 
-def paragraph(text, bold=False, size=26, keep=False):
+def paragraph(text, bold=False, size=26):
     p = ET.Element(tag("p"))
     props = child(p, "pPr")
     child(props, "spacing", before=0, after=0, line=240, lineRule="auto")
     # Ragged-right prose avoids stretched spaces around numerical expressions.
     child(props, "jc", val="left")
     child(props, "widowControl")
-    if keep:
-        child(props, "keepNext")
     run = child(p, "r")
     rprops = child(run, "rPr")
     child(rprops, "rFonts", ascii="Times New Roman", hAnsi="Times New Roman", cs="Times New Roman")
@@ -112,12 +110,11 @@ with ZipFile(TEMPLATE) as archive:
             props = p.find("w:pPr", NS)
             if props is None:
                 props = ET.Element(tag("pPr")); p.insert(0, props)
-            child(props, "keepNext")
             for run in p.findall("w:r", NS):
                 for mark in run.findall("w:lastRenderedPageBreak", NS):
                     run.remove(mark)
             body.append(p)
-        body.append(paragraph("Author response:", bold=True, keep=True))
+        body.append(paragraph("Author response:", bold=True))
         for text in content["responses"][str(idx)]:
             body.append(paragraph(text))
     body.append(copy.deepcopy(old_body.find("w:sectPr", NS)))
@@ -137,6 +134,21 @@ with ZipFile(TEMPLATE) as archive:
         spacing.attrib.clear()
         for key, value in {"before": "0", "after": "0", "line": "240", "lineRule": "auto"}.items():
             spacing.set(tag(key), value)
+        # Do not chain a reviewer comment, response label and opening paragraph
+        # into a single page-placement unit. Explicit false values also override
+        # inherited styles when the file is opened in Word or WPS.
+        pagination = {"keepNext": "0", "keepLines": "0", "pageBreakBefore": "0", "widowControl": "1", "snapToGrid": "0"}
+        for name, value in pagination.items():
+            for existing in props.findall("w:" + name, NS):
+                props.remove(existing)
+            child(props, name, val=value)
+        # Keep paragraph properties in their OOXML schema order.
+        order = ["pStyle", "keepNext", "keepLines", "pageBreakBefore", "framePr", "widowControl", "numPr", "suppressLineNumbers", "pBdr", "shd", "tabs", "suppressAutoHyphens", "kinsoku", "wordWrap", "overflowPunct", "topLinePunct", "autoSpaceDE", "autoSpaceDN", "bidi", "adjustRightInd", "snapToGrid", "spacing", "ind", "contextualSpacing", "mirrorIndents", "suppressOverlap", "jc", "textDirection", "textAlignment", "textboxTightWrap", "outlineLvl", "divId", "cnfStyle", "rPr", "sectPr", "pPrChange"]
+        props[:] = sorted(props, key=lambda x: order.index(x.tag.split("}")[-1]) if x.tag.split("}")[-1] in order else len(order))
+        for run in p.findall(".//w:r", NS):
+            for mark in list(run):
+                if mark.tag == tag("lastRenderedPageBreak") or (mark.tag == tag("br") and mark.get(tag("type")) in {"page", "column"}):
+                    run.remove(mark)
 
     serialized_body = ET.tostring(body, encoding="unicode")
     # The original document root already declares these namespaces. Keeping it
@@ -176,6 +188,10 @@ for p in parsed.findall("w:body/w:p", NS):
     assert plain(p).strip(), "Unexpected empty spacer paragraph"
     spacing = p.find("w:pPr/w:spacing", NS)
     assert all(spacing.get(tag(k)) == v for k, v in {"before": "0", "after": "0", "line": "240", "lineRule": "auto"}.items())
+    for flag in ["keepNext", "keepLines", "pageBreakBefore", "snapToGrid"]:
+        assert p.find("w:pPr/w:" + flag, NS).get(tag("val")) == "0"
+assert not parsed.findall(".//w:lastRenderedPageBreak", NS)
+assert not any(br.get(tag("type")) in {"page", "column"} for br in parsed.findall(".//w:br", NS))
 assert all(term not in review_text for term in ["Revisions:", "published", "Table R1", "0.7737/0.9010"])
 assert table[1][1] == "0.0476 → 0.0477", "Check the numerical correction example"
 report = {
@@ -191,7 +207,9 @@ report = {
     "letter_contains_tables": False,
     "response_alignment": "left",
     "paragraph_spacing": "single line; zero before/after; no empty spacer paragraphs",
+    "pagination": "keepNext/keepLines/pageBreakBefore/snapToGrid explicitly disabled; no manual or cached page breaks; widow control retained",
     "checks": "DOCX archive and all XML parts parse; six populated responses; original reviewer wording retained; correction example verified; no tables or Revisions labels",
 }
 (BASE / "revision_notes/response_letter_manifest.json").write_text(json.dumps(report, indent=2) + "\n")
+(BASE / "Response to Reviewers_layout_fixed.docx").write_bytes(OUTPUT.read_bytes())
 print(f"Created {OUTPUT}: {report['word_count']} words, six responses, verified numerical correction example; no tables.")
