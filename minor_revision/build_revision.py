@@ -3,7 +3,7 @@
 from pathlib import Path
 import subprocess,tempfile,shutil,re,json,hashlib,sys
 BASE=Path(__file__).resolve().parent
-NEW_REFS={'zhu2026spatialspectral','zhu2026fdmsgl','dong2024connect','he2024gretriever','hu2025grag','li2025subgraphrag'}
+NEW_REFS={'zhu2026spatialspectral','zhu2026fdmsgl','yu2024rankrag','he2024gretriever','hu2025grag','li2025subgraphrag'}
 
 def run(cmd,cwd):
  p=subprocess.run(cmd,cwd=cwd,text=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)

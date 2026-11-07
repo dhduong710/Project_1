@@ -54,7 +54,7 @@ Các file nguồn bổ sung chính:
 
 - Spatial–spectral fusion (2026): https://pubmed.ncbi.nlm.nih.gov/42573507/ — DOI 10.1093/bioinformatics/btag553.
 - FD-MSGL (2026, early access): https://pubmed.ncbi.nlm.nih.gov/42048211/ — DOI 10.1109/JBHI.2026.3688381.
-- G-RAG (2024, arXiv): https://arxiv.org/abs/2405.18414.
+- RankRAG (NeurIPS 2024), thay G-RAG ở lượt soạn response letter: https://proceedings.neurips.cc/paper_files/paper/2024/hash/db93ccb6cf392f352570dd5af0a223d3-Abstract.html — DOI 10.52202/079017-3850.
 - G-Retriever (NeurIPS 2024): https://proceedings.neurips.cc/paper_files/paper/2024/hash/efaf1c9726648c8ba363a5c927440529-Abstract-Conference.html.
 - GRAG (Findings NAACL 2025): https://aclanthology.org/2025.findings-naacl.232/.
 - SubgraphRAG (ICLR 2025): https://proceedings.iclr.cc/paper_files/paper/2025/hash/11e1900e680f5fe1893a8e27362dbe2c-Abstract-Conference.html.
@@ -77,3 +77,13 @@ Các file nguồn bổ sung chính:
 - Manuscript dùng một float cho Table 4–5 để phần văn bản tiếp tục lấp trang 14, hai bảng vẫn liền nhau ở trang 15. Dùng `tableorg` của class Springer để tránh wrapper `threeparttable` làm sai độ rộng caption khi có hai bảng trong cùng float.
 - Supplementary bỏ ngắt trang cưỡng bức sau S1.2; Table S1 chuyển sang `longtable` có header tiếp nối trên trang 4–5. Bỏ ngắt trang trước S12 để nội dung chảy tiếp sau S11.1. Nội dung/số liệu Table S1 giữ nguyên.
 - Bản xuất cuối: manuscript 25 trang, supplementary 30 trang. Đã kiểm tra trực quan các trang sửa, build không có undefined reference hoặc overfull box, verifier pass, `git diff --check` pass. Bôi vàng tiếp tục theo bản nộp gốc: câu/từ sửa riêng, đoạn mới toàn bộ. Public URL vẫn SoftFuse-KGC; không sửa kết quả C2/C3, response DOCX, remote hoặc commit/push.
+
+## Response letter và thay citation 50 — 07-11-2026
+
+- Đã đọc `response letter-phương.docx` để tham khảo bố cục, rồi tạo `minor_revision/Response to Reviewers_revised.docx` từ template `Response to Reviewers.docx`. Giữ nguyên submission metadata và toàn bộ lời reviewer; không sửa hai file Word đầu vào. Không sử dụng các lập luận/kết quả của bài mẫu cho SoftFuse-KGC.
+- Thêm 6 ý sau “Overall, our revised manuscript has main changes as follows:” và đủ 6 Author response. Mỗi phản hồi bắt đầu bằng cảm ơn, giải thích/phân tích liên quan, kết quả và vị trí sửa. Tổng khoảng 1.897 từ, bao gồm toàn bộ reviewer comments và bảng số liệu.
+- C4 phân biệt fixed-coverage candidate ranking, adjusted E2E MRR và exact-answer accuracy; nêu cả 1/500 source và 0/500 soft/fuzzy PrimeKG. Khai báo 9/500 full-source PrimeKG cases gặp FP16 overflow; sửa bằng FP32 graph/BF16 LLM, giữ checkpoint/split và không loại mẫu, validation reselection trước test. Nói riêng việc thống nhất answer matching/adjusted-rank giữa các collector, không quy mọi số thay đổi cho FP16.
+- Table R1 liệt kê toàn bộ 15 giá trị Table3 trước→sau. Cột trước lấy trực tiếp từ source snapshot `ae70903`; cột sau từ stable CSV. Khai báo thêm validation candidate MRR Fig2/S1/S6/S9 được tính lại với absent-gold RR=0. S7 historical model/decoding diagnostics được phân biệt với current standardized comparisons; không nhận đã chạy lại mọi historical model.
+- Citation50 G-RAG arXiv được thay bằng RankRAG, NeurIPS37(2024),121156–121184,DOI10.52202/079017-3850. Câu RelatedWork sửa theo đúng phương pháp instruction-tuning cho context ranking và answer generation; không giữ mô tả GNN của G-RAG. Đã xác minh publisher proceedings. Sáu bibliography additions vẫn bôi vàng; thứ tự50 và citations45–46 không đổi.
+- Nguồn response chỉnh sửa được: `revision_notes/response_content.json`; script `python3 minor_revision/build_response_letter.py`; bản text rà soát `revision_notes/response_letter_text.txt`; metadata/hashes/bảng correction `revision_notes/response_letter_manifest.json`. Script dùng OOXML chuẩn, giữ styles của template, không cần python-docx.
+- Kiểm tra: toàn bộ XML/relationships trong DOCX hợp lệ; Pandoc đọc lại đủ6responses vàTableR1; reviewer comments và template gốc giữ nguyên; exact counts và9FP16cases khớpCSV; PDF verifier và `git diff --check` pass. Không có Word/LibreOffice renderer trên server, nên không xác nhận phân trang Word bằng render; PDF manuscript/supplementary biên dịch thành công25/30trang. Không chạy lại thực nghiệm, không sửa dữ liệu/results.

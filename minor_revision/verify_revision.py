@@ -17,6 +17,7 @@ for item in json.loads((BASE/'revision_notes/build_manifest.json').read_text()):
   source=(BASE/'Main Manuscript/paper/sn-article.tex').read_text()
   assert r'\url{https://github.com/dhduong710/SoftFuse-KGC}' in source
   assert 'Project_1' not in source
+  assert r'\bibcite{yu2024rankrag}{{50}' in aux and 'dong2024connect' not in aux
   related=source.split(r'\section{Related Work}',1)[1].split(r'\section{Methods}',1)[0]
   assert r'\softfuse' not in related and 'SoftFuse-KGC' not in related
   for key in ['zhu2026spatialspectral','zhu2026fdmsgl']:

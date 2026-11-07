@@ -1,0 +1,49 @@
+{
+  "template_sha256": "ad431172b0e0248fb12f7e6cf90539bf0ae02506cf4efa0824ab0399dd04923e",
+  "content_sha256": "1a0dfdea7e25e5cf4918db27c9e4f5de4887bdd3a86b4b8ca1cb37949d269179",
+  "metrics_sha256": "0d6072634bd7256c5ae659319381c80d2db9693cca75755d70bc8d05bd6dced0",
+  "output_sha256": "26a8af8c2e2a68c1869982ab63bade7f8c7e988afa7a666cd0119cdb20cd8d6f",
+  "original_table_source": "ae70903:minor_revision/Main Manuscript/paper/sn-article.tex",
+  "comment_count": 6,
+  "all_reviewer_comments_preserved": true,
+  "word_count": 1897,
+  "correction_table": [
+    [
+      "Dataset",
+      "Source",
+      "Soft support",
+      "Fuzzy retrieval"
+    ],
+    [
+      "PrimeKG",
+      "0.0476 \u2192 0.0477",
+      "0.0747 \u2192 0.0747",
+      "0.0747 \u2192 0.0747"
+    ],
+    [
+      "PharmKG",
+      "0.0156 \u2192 0.0156",
+      "0.0206 \u2192 0.0207",
+      "0.0210 \u2192 0.0210"
+    ],
+    [
+      "Hetionet",
+      "0.1045 \u2192 0.0819",
+      "0.1109 \u2192 0.1001",
+      "0.0991 \u2192 0.1001"
+    ],
+    [
+      "DRKG",
+      "0.0527 \u2192 0.0410",
+      "0.0514 \u2192 0.0463",
+      "0.0549 \u2192 0.0463"
+    ],
+    [
+      "repoDB",
+      "0.0487 \u2192 0.0366",
+      "0.0509 \u2192 0.0366",
+      "0.0529 \u2192 0.0378"
+    ]
+  ],
+  "checks": "DOCX archive and all XML parts parse; six populated responses; original reviewer wording retained; correction table derived from source artifacts"
+}
