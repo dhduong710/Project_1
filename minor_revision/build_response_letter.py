@@ -2,8 +2,9 @@
 """Fill the supplied response template without changing either source DOCX.
 
 Uses the standard library only. Reviewer wording, submission metadata and the
-template's Word styles are retained. Numerical corrections are read from the
-submitted-source snapshot and current result CSV, rather than entered by hand.
+template's Word styles are retained. Numerical corrections are checked against
+the submitted-source snapshot and current result CSV and recorded in the audit
+manifest; the letter itself uses a concise example rather than a table.
 """
 import copy
 import csv
@@ -41,7 +42,8 @@ def paragraph(text, bold=False, size=26, keep=False):
     p = ET.Element(tag("p"))
     props = child(p, "pPr")
     child(props, "spacing", before=0, after=100, line=300, lineRule="auto")
-    child(props, "jc", val="both")
+    # Ragged-right prose avoids stretched spaces around numerical expressions.
+    child(props, "jc", val="left")
     child(props, "widowControl")
     if keep:
         child(props, "keepNext")
@@ -54,40 +56,6 @@ def paragraph(text, bold=False, size=26, keep=False):
     child(rprops, "szCs", val=size)
     child(run, "t").text = text
     return p
-
-
-def correction_table(rows):
-    table = ET.Element(tag("tbl"))
-    props = child(table, "tblPr")
-    child(props, "tblW", w=9360, type="dxa")
-    borders = child(props, "tblBorders")
-    for edge in ["top", "left", "bottom", "right", "insideH", "insideV"]:
-        child(borders, edge, val="single", sz=4, color="B7B7B7")
-    child(props, "tblLayout", type="fixed")
-    margins = child(props, "tblCellMar")
-    for side in ["top", "left", "bottom", "right"]:
-        child(margins, side, w=90, type="dxa")
-    widths = [1200, 2720, 2720, 2720]
-    grid = child(table, "tblGrid")
-    for width in widths:
-        child(grid, "gridCol", w=width)
-    for i, values in enumerate(rows):
-        row = child(table, "tr")
-        props = child(row, "trPr")
-        child(props, "cantSplit")
-        if i == 0:
-            child(props, "tblHeader")
-        for width, value in zip(widths, values):
-            cell = child(row, "tc")
-            props = child(cell, "tcPr")
-            child(props, "tcW", w=width, type="dxa")
-            if i == 0:
-                child(props, "shd", fill="E8EEF5", val="clear")
-            p = paragraph(value, bold=i == 0, size=21, keep=i < len(rows) - 1)
-            p.find("w:pPr/w:jc", NS).set(tag("val"), "left")
-            p.find("w:pPr/w:spacing", NS).set(tag("line"), "240")
-            cell.append(p)
-    return table
 
 
 with ZipFile(TEMPLATE) as archive:
@@ -150,11 +118,8 @@ with ZipFile(TEMPLATE) as archive:
                     run.remove(mark)
             body.append(p)
         body.append(paragraph("Author response:", bold=True, keep=True))
-        for n, text in enumerate(content["responses"][str(idx)]):
+        for text in content["responses"][str(idx)]:
             body.append(paragraph(text))
-            if idx == 4 and n == 3:
-                body.append(paragraph("Table R1. Adjusted E2E MRR@20 in Table 3 (previous → revised).", bold=True, size=22, keep=True))
-                body.append(correction_table(table))
         body.append(paragraph("", size=10))
     body.append(copy.deepcopy(old_body.find("w:sectPr", NS)))
 
@@ -175,8 +140,6 @@ text_lines = []
 for node in body:
     if node.tag == tag("p"):
         text_lines.append(plain(node))
-    elif node.tag == tag("tbl"):
-        text_lines.extend(" | ".join(plain(c) for c in row.findall("w:tc", NS)) for row in node.findall("w:tr", NS))
 review_text = "\n\n".join(text_lines).strip() + "\n"
 (BASE / "revision_notes/response_letter_text.txt").write_text(review_text)
 
@@ -193,6 +156,9 @@ for group in comments:
         assert text in output_texts, "Reviewer wording changed"
 assert all(content["responses"][str(i)][0].startswith("We thank") for i in range(1, 7))
 assert "has been uploaded" not in review_text
+assert not parsed.findall(".//w:tbl", NS)
+assert all(term not in review_text for term in ["Revisions:", "published", "Table R1", "0.7737/0.9010"])
+assert table[1][1] == "0.0476 → 0.0477", "Check the numerical correction example"
 report = {
     "template_sha256": hashlib.sha256(TEMPLATE.read_bytes()).hexdigest(),
     "content_sha256": hashlib.sha256(CONTENT.read_bytes()).hexdigest(),
@@ -202,8 +168,10 @@ report = {
     "comment_count": 6,
     "all_reviewer_comments_preserved": True,
     "word_count": len(review_text.split()),
-    "correction_table": table,
-    "checks": "DOCX archive and all XML parts parse; six populated responses; original reviewer wording retained; correction table derived from source artifacts",
+    "correction_values_for_audit_only": table,
+    "letter_contains_tables": False,
+    "response_alignment": "left",
+    "checks": "DOCX archive and all XML parts parse; six populated responses; original reviewer wording retained; correction example verified; no tables or Revisions labels",
 }
 (BASE / "revision_notes/response_letter_manifest.json").write_text(json.dumps(report, indent=2) + "\n")
-print(f"Created {OUTPUT}: {report['word_count']} words, six responses, verified numerical correction table.")
+print(f"Created {OUTPUT}: {report['word_count']} words, six responses, verified numerical correction example; no tables.")
