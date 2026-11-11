@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Build both highlighted PDFs in fresh temporary directories; preserve source artifacts."""
 from pathlib import Path
-import subprocess,tempfile,shutil,re,json,hashlib,sys
+import subprocess,tempfile,shutil,re,json,hashlib,sys,argparse
 BASE=Path(__file__).resolve().parent
+parser=argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--manuscript-only',action='store_true',help='Rebuild only the manuscript; retain the supplementary PDF and its manifest entry.')
+args=parser.parse_args()
 NEW_REFS={'zhu2026spatialspectral','zhu2026fdmsgl','yu2024rankrag','he2024gretriever','hu2025grag','li2025subgraphrag'}
 
 def run(cmd,cwd):
@@ -19,7 +22,10 @@ shutil.copy2(figure_source/'Fig2_revised.tex',figure_dir/'Fig2_revised.tex')
 run(['pdflatex','-interaction=nonstopmode','-halt-on-error','Fig2_revised.tex'],figure_dir)
 shutil.copy2(figure_dir/'Fig2_revised.pdf',figure_source/'Fig2_revised.pdf')
 manifest=[]
+if args.manuscript_only and (BASE/'revision_notes/build_manifest.json').exists():
+ manifest=[x for x in json.loads((BASE/'revision_notes/build_manifest.json').read_text()) if not x['pdf'].startswith('Manuscript')]
 for source,name,out in [(BASE/'Main Manuscript/paper','sn-article','Manuscript_revised_highlighted.pdf'),(BASE/'Supplementary Materal/Supplementary Materal','ESM_1','Supplementary_revised_highlighted.pdf')]:
+ if args.manuscript_only and name!='sn-article':continue
  build=Path(tempfile.mkdtemp(prefix='softfuse_paper_'))
  for p in source.iterdir():
   if p.suffix in {'.tex','.bib','.bst','.cls','.sty','.png','.jpg','.pdf'} and p.name not in {name+'.pdf'}:shutil.copy2(p,build/p.name)
@@ -53,4 +59,4 @@ for source,name,out in [(BASE/'Main Manuscript/paper','sn-article','Manuscript_r
  shutil.copy2(build/(name+'.pdf'),source/(name+'.pdf'))
  (BASE/'revision_notes'/f'{name}_build.log').write_text('\n'.join(line.rstrip() for line in log.splitlines())+'\n')
  manifest.append({'pdf':out,'sha256':hashlib.sha256((BASE/out).read_bytes()).hexdigest(),'build_directory':str(build),'checks':critical})
-(BASE/'revision_notes/build_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+(BASE/'revision_notes/build_manifest.json').write_text(json.dumps(sorted(manifest,key=lambda x:x['pdf']),indent=2)+'\n')

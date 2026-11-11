@@ -4,8 +4,8 @@
 \pgfplotsset{compat=1.18}
 \begin{document}
 \begin{tikzpicture}
-\begin{groupplot}[group style={group size=2 by 1,horizontal sep=1.4cm},width=8cm,height=6cm,xmin=-.15,xmax=3.15,xtick={0,1,2,3},xticklabels={Backbone,Ontology,{bcap\\contrast},{Soft support\\b050}},xticklabel style={align=center,font=\small},ylabel={Score},ymin=0,grid=major,grid style={gray!20},legend style={font=\scriptsize,draw=none,fill=white},tick label style={font=\small},title style={font=\bfseries\small}]
-\nextgroupplot[title={(a) Candidate-ranking metrics},ymax=.205,legend columns=2,legend pos=north west]
+\begin{groupplot}[group style={group size=2 by 1,horizontal sep=1.4cm},width=8cm,height=6cm,xmin=-.15,xmax=3.15,xtick={0,1,2,3},xticklabels={Backbone,Ontology,{bcap\\contrast},{Soft support\\b050}},xticklabel style={align=center,font=\small},ylabel={Score},ymin=0,grid=major,grid style={gray!20},legend style={at={(0.5,-0.32)},anchor=north,font=\small,draw=none,fill=none,cells={anchor=west},column sep=6pt},tick label style={font=\small},title style={font=\bfseries\small}]
+\nextgroupplot[title={(a) Candidate-ranking metrics},ymax=.205,legend columns=2]
 \addplot[color=blue,mark=*,thick] coordinates {(0,0.05380338) (1,0.00391667) (2,0.05446449) (3,0.09764372)};
 \addlegendentry{MRR@20}
 \addplot[color=orange,mark=square*,thick] coordinates {(0,0.02400000) (1,0.00200000) (2,0.02200000) (3,0.05600000)};
@@ -14,7 +14,7 @@
 \addlegendentry{Hits@3}
 \addplot[color=red,mark=diamond*,thick] coordinates {(0,0.15800000) (1,0.01200000) (2,0.15800000) (3,0.18200000)};
 \addlegendentry{Hits@10}
-\nextgroupplot[title={(b) Shortcut exposure},ylabel={Rate},ymax=.6,legend pos=north west]
+\nextgroupplot[title={(b) Shortcut exposure},ylabel={Rate},ymax=.6,legend columns=1]
 \addplot[color=blue,mark=*,thick] coordinates {(0,.2408) (1,.5296) (2,.2452) (3,.0072)};
 \addlegendentry{Top-5 direct-link rate}
 \end{groupplot}
