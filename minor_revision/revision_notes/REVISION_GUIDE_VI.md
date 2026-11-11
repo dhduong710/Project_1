@@ -5,7 +5,7 @@ Bản sửa đầu ngày 06-11-2026, tinh gọn ngày 07-11-2026 theo góp ý m�
 ## File để đọc/gửi
 
 - `minor_revision/Manuscript_revised_highlighted.pdf`: manuscript, 25 trang.
-- `minor_revision/Supplementary_revised_highlighted.pdf`: supplementary, 30 trang.
+- `minor_revision/Supplementary_revised_highlighted.pdf`: supplementary, 28 trang.
 - PDF tương ứng cũng nằm cạnh nguồn `sn-article.tex` và `ESM_1.tex` trong hai thư mục gốc.
 - Các đoạn/câu, ô số liệu, phần bổ sung và sáu tài liệu tham khảo mới được đánh dấu nền vàng. Với Fig. 2 được tính lại, caption được bôi vàng và file hình mới mang tên `Fig2_revised.pdf`.
 
@@ -120,3 +120,13 @@ Ngày08-11-2026 tác giả xác nhận đã hết khoảngtrốngcuốitrang nh�
 - Fig. 2a/b legends chuyển lên trên axes, dưới panel titles; generator được sửa cùng figure nguồn. Caption viết lại để nối rõ hai panel với các metrics. Kiểm tra hình riêng và page8 PDF: không chồng legend/title/data/ticklabels. Tables4–5 vẫn liền nhau ở page15.
 - Sửa cả ba `caculated` thành `calculated`, câu dẫn E2E reciprocal rank, và `Project administration..` thành một dấu chấm; chỉ highlight từ/dấu sửa. Ngăn heading AI declaration đứng một mình cuối trang.
 - PDF chính 25 trang, bôi vàng theo thay đổi so với bản nộp gốc; nội dung khôi phục nguyên văn từ bản gốc không bôi vàng thừa. Rebuild bằng `--manuscript-only`; supplementary, response, experiments và số liệu không đổi. Verifier/reference/layout/metric-hash checks và `git diff --check` pass; kiểm tra trực quan abstract, Fig2, Results/table pair, limitations, conclusion và declarations.
+
+
+## Tinh gọn limitations và supplementary — 12-11-2026
+
+- Manuscript: gộp hai đoạn limitations thành một đoạn 95 từ, giữ giới hạn top-20, feature/budget định trước, phạm vi transfer, khác biệt semantics/alignment, path/case interpretation và retrospective evaluation. Main vẫn 25 trang.
+- Supplementary S7: bỏ đúng câu “The current standardized module ... earlier model-selection diagnostics.” theo yêu cầu tác giả.
+- S11.1: viết thành quy trình đã thực hiện (normalization → entity alignment → evidence graph → split/leakage control), không diễn đạt như báo cáo kiểm tra code. Giữ số liệu audit đã xác minh và phạm vi exact-ID alignment; không nhận đã thực hiện ontology mapping hoặc semantic leakage removal.
+- S12: mở đầu trực tiếp bằng thiết kế calibration, không nói chung chung supplements main-text. Chỗ cần đối chiếu chỉ rõ manuscript Table 4 hoặc Section 4.2. Văn bản giảm khoảng28%, S13 giảm khoảng44% (không tính table/figure blocks); giữ công thức, protocol chính, uncertainty và kết quả bất lợi trực tiếp liên quan.
+- Toàn bộ14bảng S16–S29 và3hình S4–S6, gồm caption và dữ liệu, giữ nguyên. Thêm khoảng cách0.8baselineskip trước mỗi block để tách đoạn văn với bảng/hình, bỏ clearpage trướcS13 để các sections chảy tiếp. Supplementary giảm30→28trang.
+- Rebuild cảhaiPDF bằng build_revision.py. So sánh table/figure bodies với HEAD trước lượt sửa khớp tuyệt đối; kiểm tra source/deliveryPDF, hash và sốliệu bằng verifier; kiểm tra trực quan S7/S11.1/S12/S13, bảng/hình và mainlimitations. Bôi vàng vẫn theo bản nộp gốc. Không sửaresponseletter, kết quảthực nghiệm hoặc Gitremote; khôngcommit/push.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.3.13)  11 NOV 2026 17:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2026.3.13)  11 NOV 2026 17:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1152,7 +1152,7 @@ Here is how much of TeX's memory you used:
  43952 multiletter control sequences out of 15000+600000
  512192 words of font info for 190 fonts, out of 8000000 for 9000
  24 hyphenation exceptions out of 8191
- 88i,15n,92p,2014b,1153s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 88i,15n,92p,2014b,1163s stack positions out of 5000i,500n,10000p,200000b,80000s
  </tmp/texfonts/pk/ljfour/jknappen/ec/tcrm1000.602pk> </tmp/texfonts/pk/ljfou
 r/jknappen/ec/tcrm0800.602pk></usr/share/texlive/texmf-dist/fonts/type1/public/
 amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
@@ -1180,7 +1180,7 @@ sfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
 cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmt
 t10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
 10.pfb>
-Output written on sn-article.pdf (25 pages, 649165 bytes).
+Output written on sn-article.pdf (25 pages, 648414 bytes).
 PDF statistics:
  917 PDF objects out of 1000 (max. 8388607)
  663 compressed objects within 7 object streams

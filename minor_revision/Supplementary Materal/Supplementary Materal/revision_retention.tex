@@ -1,136 +1,41 @@
-\clearpage
 \section{\rev{Information Retention and Alternative Subgraph Selection}}
 \label{sec:s13-retention}
 \begin{revisionblock}
 \subsection{Evaluation design and selection policies}
-
-We assess evidence compression at three separate levels: retained graph
-structure, the representations supplied by the frozen graph encoder, and
-generated answers. All comparisons fix the candidate identities and their
-ordering to the original fuzzy input. For repoDB this is the original
-raw/display-control ordering. Candidate ranking metrics are therefore invariant
-by construction and are not used as evidence of information retention.
+We assess compression through graph structure, frozen-encoder representations, and generated answers, fixing candidate identities and fuzzy input order (raw/display-control for repoDB). All variants reuse 2,100 validation and 2,100 test rows; unchanged candidate ranking is therefore a design constraint, not evidence of information retention.
 
 \paragraph{Source graphs and matched budgets.}
-We distinguish the multiset of retrieved edge occurrences from the set of unique
-directed, relation-labeled triples. Two uncompressed references retain either
-the full multiset or only unique triples. The original fuzzy graph is read
-directly from its archived artifact. For each query, all compressed alternatives
-select exactly the number of unique triples in that artifact from the same
-unique source-edge set. The empty-graph diagnostic removes local message
-passing while retaining frozen global entity embeddings. These uncompressed
-and empty references are not treated as matched-budget competitors.
+Uncompressed references retain either all retrieved edge occurrences or unique directed, relation-labeled triples. Compressed alternatives select from the same unique source triples and match the original fuzzy graph's unique-edge count per query. An empty-local-graph reference retains frozen global embeddings. These three references have different budgets from the compressed selectors.
 
-\paragraph{Alternative selection strategies.}
-The alternatives include uniform random sampling without replacement;
-random ordering followed by candidate/query coverage; top-$B$ native-score
-selection without coverage; native-score selection with a strict coverage-then-fill
-pass; endpoint-degree top-$B$; query-centered breadth-first ordering;
-query-personalized PageRank; terminal-personalized PageRank; shortest-path
-preservation; and relation-stratified selection. Native scores are recovered
-from archived features/scores, with exact triple and candidate alignment checks.
-The strict native-score coverage control is not claimed to reproduce every
-dataset-specific reservation pass of the original implementation.
+\paragraph{Selection strategies.}
+We compare uniform random sampling without replacement, random coverage-first selection, native-score top-$B$, strict native-score coverage-then-fill, endpoint-degree top-$B$, breadth-first ordering, query- and terminal-personalized PageRank, shortest paths, and relation-stratified selection. Native scores use the original features with aligned triples and candidates; the strict coverage control omits dataset-specific reservation passes.
 
-PageRank uses an unweighted undirected source graph, damping 0.85, and either
-the query alone or the query and present candidates as uniformly weighted
-teleportation nodes. Dangling mass returns to the teleportation distribution.
-Iteration stops at an L1 change below $10^{-10}$ or after 200 iterations.
-Edges are ranked by the sum of endpoint scores. The shortest-path selector
-considers candidates in their fixed order, adds one shortest path of length at
-most three if the complete path fits the remaining budget, and fills remaining
-slots by native score. Relation-stratified selection cycles over relation IDs,
-ranking edges within each stratum by native score. Stable source-index
-tie-breaking is used unless the explicitly seeded random ordering applies.
-No selector accesses the held-out gold label.
+PageRank uses an unweighted undirected graph, damping 0.85, and uniform teleportation to the query or to the query and present candidates; dangling mass returns to this distribution. Iteration stops at L1 change below $10^{-10}$ or 200 steps, and endpoint-score sums rank edges. Shortest-path selection visits candidates in fixed order, adds a complete path of at most three edges when it fits, and fills remaining slots by native score. Relation-stratified selection cycles through relation IDs using within-relation native scores. Nonrandom ties follow source order, and no selector uses held-out gold labels.
 
-Five random seeds are evaluated at the native budget. Additional strict-budget
-curves use 20\%, 35\%, 55\%, 75\%, and 90\% of unique source edges, with three
-seeds for random selection. The main CPU study contains 62 variants per
-dataset/split across all five datasets and both validation and test. A separate
-60-row native-implementation audit calls the original selector functions,
-reproduces the archived edge sets at their native budgets, and varies only the
-requested budget. It preserves and reports any budget excess caused by the
-original reservation passes rather than silently imposing a new policy.
+Matched-budget random selection uses five seeds. Strict-budget curves use 20\%, 35\%, 55\%, 75\%, and 90\% of unique source edges, with three random seeds. We also vary the original policy's requested budget while retaining its reservation rules, reporting any excess separately from strict-budget results.
 
-\paragraph{Structural retention definitions.}
-Candidate coverage measures incidence to at least one retained edge and is
-reported both absolutely and relative to source-covered candidates, including
-top-, middle-, and tail-rank bands. Query coverage, unique-node retention,
-relation-type retention, and direct query--candidate exposure are reported
-separately. For $k\in\{2,3\}$, let $C_{\leq k}(G_q)$ be candidates reachable from
-the query within $k$ edges in the source graph and let $P_k(G_q)$ be its
-edge-labeled simple path witnesses of exactly $k$ edges ending at a candidate.
-We compute
+\paragraph{Retention metrics.}
+Candidate coverage is incidence to at least one retained edge, measured absolutely and relative to source-covered candidates. For source graph $G_q$ and selected graph $S_q$, let $C_{\leq k}$ denote candidates reachable within $k$ edges and $P_k$ the edge-labeled simple paths of length $k$ ending at a candidate. For $k\in\{2,3\}$,
 \[
  R_{\mathrm{reach},k}(q)=
  \frac{|C_{\leq k}(S_q)|}{|C_{\leq k}(G_q)|},\qquad
  R_{\mathrm{path},k}(q)=
  \frac{|\{p\in P_k(G_q):E(p)\subseteq E(S_q)\}|}{|P_k(G_q)|}.
 \]
-The walks are traversable in either direction; exact edge identities, relation
-labels, and traversal signs are retained. Consequently these quantities measure
-structural connectivity, not necessarily directed biochemical pathways. Typed
-pattern retention measures whether each source relation/sign sequence of
-length two or three still has at least one witness. A separate audit measures
-retention of unique incoming edges within two predecessor steps of the query
-and candidates, matching the two message-passing layers of the actual directed
-encoder more closely.
+Paths allow traversal in either direction while retaining edge identities, relation labels, and traversal signs; they measure structural connectivity rather than biochemical mechanisms. Typed-pattern retention requires at least one surviving witness for each source relation/sign sequence. Incoming-context retention measures unique edges within two predecessor steps of the query and candidates, corresponding to the encoder's two directed message-passing layers.
 
-Relation-frequency and node-incidence mass distributions are compared using
-base-2 Jensen--Shannon divergence. Rare-relation edge recall uses relations with
-source frequency at or below the per-query median.
+Additional metrics cover query presence, nodes, relation types, direct query--candidate edges, and base-2 Jensen--Shannon divergence of relation and node-incidence distributions. Rare-relation recall uses source frequencies at or below the per-query median. Means average per-row ratios, excluding zero-denominator rows and reporting eligible counts.
 
-Any retention with a zero source denominator is undefined, omitted from the
-mean, and accompanied by its eligible sample count. The reported means are
-averages of per-query-row ratios, not ratios of pooled path counts. Quantiles,
-complete-loss fractions, source-query-presence strata, and gold-coverage strata
-supplement the aggregate results.
+\paragraph{Frozen-model evaluation and uncertainty.}
+We evaluate 22 primary variants and six strict-budget variants (native-score coverage, terminal PageRank, and random seed zero at 35\% and 75\%) on the complete test split. Within each dataset, checkpoint, prompt, candidate order, and deterministic decoding are fixed. Query/candidate adapter outputs are compared with both source references using cosine similarity and relative L2 change; answer evaluation follows Section~\ref{sec:s12-calibration}. Graphs with at most ten edge occurrences use global embeddings without local message passing.
 
-\paragraph{Frozen-model representation and answer evaluation.}
-The GPU study evaluates all 22 native-budget variants and six additional
-strict-budget variants (native-score coverage, terminal PageRank, and random
-seed zero at 35\% and 75\%) on the complete test split. The same frozen
-checkpoint, prompt, candidate order, and deterministic decoding settings apply
-to every selector within each dataset. We measure cosine similarity and
-relative L2 change of query/candidate adapter outputs against both source
-references. Generated-answer exact accuracy, invalid-output rate, top-candidate
-copying, normalized output agreement, and the explicitly standardized
-promote-to-front adjusted MRR are reported separately.
-
-The existing encoder falls back to global/global embeddings for graphs with at
-most ten edge occurrences; we explicitly report this condition at small
-budgets. \paragraph{Uncertainty and scope.}
-Paired query-cluster bootstrap intervals use 2,000 resamples so that rows sharing
-the same query remain together. Random-selector means additionally receive
-joint query-cluster/seed bootstrap intervals; seed standard deviations are
-reported separately. These are exploratory intervals without multiplicity
-adjustment. All methods, ratios, and seeds are declared before inference; no
-test-winning configuration is promoted to a new default. Retention is measured
-relative to retrieved source subgraphs and does not establish preservation of
-all KG facts, expert-validated mechanisms, or clinical utility.
+Exploratory 95\% intervals use 2,000 paired query-cluster bootstrap resamples, with joint query/seed resampling for random-selector means and no multiplicity adjustment. Seed standard deviations are reported separately. Configurations are fixed before inference, and test outcomes do not select a new default.
 
 \subsection{Structural retention results and compression trade-offs}
+\paragraph{Duplicate and unique-edge removal.}
+PrimeKG averages 59.932 source edge occurrences, 38.094 unique triples, and 32.340 retained fuzzy triples per test row. Of the 27.592-occurrence reduction, 21.838 (79.1\%) are duplicates and 5.754 are unique triples. The other four datasets contain no source duplicates in these inputs. Duplicate removal can still affect repeated encoder messages. Table~\ref{tab:s25-all-reachability} compares reachability across all selectors.
 
-The primary CPU study completed 620 dataset/split/variant summaries, with a
-further 60 summaries from the native-implementation budget audit. All native
-edge sets were reproduced exactly at their archived budgets on validation and
-test. Alternative selectors preserved candidate order and satisfied the matched
-unique-edge budgets. These summaries reuse 2,100 validation and 2,100 test rows;
-they are not independent new datasets or examples.
-
-\paragraph{Duplicate removal is distinct from unique-edge removal.}
-PrimeKG source graphs contain a mean of 59.932 edge occurrences but only 38.094
-unique triples per test row. The original fuzzy output retains 32.340 unique
-triples. Thus, the mean reduction of 27.592 occurrences consists of 21.838
-duplicate occurrences and 5.754 unique triples. Approximately 79.1\% of the
-aggregate count reduction is attributable to duplicate removal. The other four
-datasets have no such source duplicates in these prepared test inputs. This is
-a counting decomposition, not a claim that duplicates have no computational
-effect: the encoder can process repeated triples as repeated messages.
-
-
-\par\noindent\begin{minipage}{\linewidth}
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
 
 \centering\small\setlength{\tabcolsep}{4pt}
 \captionof{table}{Full matched-budget comparison of three-hop reachability retention. Random rows average all five seeds. Eligible row counts are 488, 500, 90, 386, and 297 for PrimeKG, PharmKG, Hetionet, DRKG, and repoDB. Candidate order and unique-edge count are fixed per query.}
@@ -139,29 +44,10 @@ effect: the encoder can process repeated triples as repeated messages.
 
 \end{minipage}\par\medskip
 
+\paragraph{Coverage and path preservation.}
+Fuzzy retrieval retains incident evidence for all source-covered candidates, but its reachability exceeds random selection only on PharmKG, DRKG, and repoDB. The exploratory random-minus-fuzzy intervals are $[-0.4829,-0.4337]$, $[-0.4433,-0.3353]$, and $[-0.4492,-0.3661]$, respectively; PrimeKG and Hetionet intervals include zero. Shortest-path selection preserves nearly all source connectivity but reduces candidate coverage to 0.8514 on Hetionet, 0.8199 on DRKG, and 0.8971 on repoDB. Thus, candidate incidence and query-connected paths favor different selection policies.
 
-\paragraph{Coverage does not imply path preservation.}
-Although original fuzzy retrieval preserves relative candidate coverage on all
-five datasets, its reachability retention varies substantially
-(Table~\ref{tab:s25-all-reachability}). Fuzzy retrieval preserves substantially more
-reachability than uniform random selection on PharmKG, DRKG, and repoDB, whereas
-the PrimeKG and Hetionet point estimates are similar to random. The joint
-query-cluster/seed bootstrap interval for random minus fuzzy reachability is
-$[-0.4829,-0.4337]$ on PharmKG. The corresponding intervals are
-$[-0.4433,-0.3353]$ on DRKG and $[-0.4492,-0.3661]$ on repoDB;
-the PrimeKG and Hetionet intervals include zero. These are exploratory,
-unadjusted intervals.
-
-The shortest-path baseline retains nearly all source-reachable candidates at
-the same edge count. This is partly aligned with its explicit selection
-objective and does not establish semantic superiority. It also trades away
-coverage of other candidates: relative candidate coverage is 0.8514 on
-Hetionet, 0.8199 on DRKG, and 0.8971 on repoDB, compared with 1.0000 for original
-fuzzy retrieval. Thus, preserving candidate incidence and preserving connected
-query--candidate paths are different selection goals.
-
-
-\par\noindent\begin{minipage}{\linewidth}
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
 
 \centering\small
 \captionof{table}{Exact edge-labeled path retention at length three. $N$ counts rows with at least one source path; zero-denominator rows are excluded. Random is mean $\pm$ seed standard deviation. Paths are structural witnesses, not validated therapeutic mechanisms.}
@@ -170,17 +56,9 @@ query--candidate paths are different selection goals.
 
 \end{minipage}\par\medskip
 
+Table~\ref{tab:s26-paths} shows losses hidden by candidate coverage: fuzzy retrieval retains no length-three paths in eligible PharmKG or Hetionet rows, although shorter paths can survive and only 31 PharmKG rows contain such source paths. It retains more length-three paths than random on DRKG and repoDB. Table~\ref{tab:s27-other-retention} provides complementary structural diagnostics.
 
-Length-three path retention exposes additional losses that are hidden by
-coverage alone (Table~\ref{tab:s26-paths}). Original fuzzy retrieval
-retains no such witnesses in the eligible PharmKG and Hetionet rows. This does
-not mean that every row loses all connectivity: only 31 PharmKG rows have a
-length-three source witness, and shorter paths can remain. Conversely,
-original fuzzy retrieval retains more length-three witnesses than random on
-DRKG and repoDB. Table~\ref{tab:s27-other-retention} reports complementary structural diagnostics. Rank-band and conditional diagnostics remain available in the accompanying workbook.
-
-
-\par\noindent\begin{minipage}{\linewidth}
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
 
 \centering\small\setlength{\tabcolsep}{4pt}
 \captionof{table}{Complementary retention diagnostics for original fuzzy retrieval. Nodes and relation types are retained fractions; relation JSD is base-2 Jensen--Shannon divergence (zero means identical distributions). Incoming-2 measures directed incoming context within two predecessor steps. Rare edges belong to relations with frequency at or below the source median.}
@@ -189,33 +67,13 @@ DRKG and repoDB. Table~\ref{tab:s27-other-retention} reports complementary struc
 
 \end{minipage}\par\medskip
 
-
-\paragraph{Source availability.}
-Fuzzy outputs contain the query node in 100\%, 96.8\%, 100\%, 84.8\%, and
-59.4\% of test rows on PrimeKG, PharmKG, Hetionet, DRKG, and repoDB,
-respectively. Conditional reachability retention must be interpreted with its
-source eligibility rather than as a fraction of every test row.
-
-\paragraph{Budget feasibility and operating curves.}
-The native replay audit confirms that the original PrimeKG coverage-first
-implementation can exceed a newly imposed small target. At a requested budget
-of 20\% of unique source edges, its mean requested/actual counts are
-7.576/15.662, and 99.8\% of test rows exceed the request. At 35\%, the counts are
-13.336/15.886 and the excess rate is 74.2\%. No excess occurs at the archived
-native budgets used in the matched comparison. We report these native-policy
-points separately from strict-budget controls. Operating curves must therefore
-identify the selector and distinguish requested budget from actual graph size.
-
+\paragraph{Budget feasibility.}
+The original PrimeKG coverage-first policy can exceed smaller requested budgets: at 20\% of unique source edges, mean requested/actual counts are 7.576/15.662, with excess in 99.8\% of test rows; at 35\%, they are 13.336/15.886 and 74.2\%. No excess occurs at the original budgets used for the matched comparison. Strict-budget curves therefore report a separate policy with enforced limits.
 
 \subsection{Frozen-model representation and generated-answer results}
+Tables~\ref{tab:s28-selector-accuracy} and~\ref{tab:s29-encoder} summarize accuracy, encoder changes, and answer agreement under fixed candidate order. The 28 variants per dataset use the same frozen checkpoint and matching rules from Section~\ref{sec:s12-calibration}.
 
-The completed GPU study comprises 28 variants on each of five datasets,
-yielding 140 summaries and 58,800 row--variant evaluations of the same 2,100
-test rows. Every comparison uses the same dataset-specific checkpoint and
-fixed candidate order. All methods use the same inference and exact-answer matching rules described in Section~\ref{sec:s12-calibration}.
-
-
-\par\noindent\begin{minipage}{\linewidth}
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
 
 \centering\small
 \captionof{table}{Exact generated-answer accuracy (\%) under the standardized matching
@@ -229,7 +87,7 @@ matched unique-edge budgets. The source multiset uses the original fuzzy input c
 
 
 
-\par\noindent\begin{minipage}{\linewidth}
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
 
 \centering\small
 \captionof{table}{Original fuzzy versus the uncompressed source: encoder output changes
@@ -242,46 +100,15 @@ separately.}
 
 \end{minipage}\par\medskip
 
+\paragraph{Structural loss and output agreement.}
+On Hetionet, fuzzy retrieval preserves candidate encoder outputs (cosine 1.0000; relative L2 0.0000) and generated answers, despite changed query outputs (cosine 0.9209; relative L2 0.3259) and complete loss of eligible length-three paths. DRKG also retains all answers despite representation changes. Output agreement therefore does not establish whole-graph preservation. Answer agreement falls to 78.8\%, 80.0\%, and 80.8\% on PrimeKG, PharmKG, and repoDB, respectively.
 
-\paragraph{Structural loss and output invariance are distinct.}
-On Hetionet, original fuzzy retrieval preserves the candidate encoder outputs
-(mean cosine 1.0000, relative L2 0.0000) and all generated answers relative to
-the source graph. Nevertheless, query outputs change (mean cosine 0.9209,
-relative L2 0.3259), and all eligible length-three path witnesses are lost.
-Thus even exact candidate-output agreement cannot be interpreted as whole-graph
-information preservation. Directed message passing, global embeddings, and
-which nodes are injected into the prompt all affect how a structural change
-propagates to generation.
-
-DRKG likewise has 100\% generated-answer agreement for fuzzy versus source,
-although mean query and candidate cosines are 0.9312 and 0.9867; their relative
-L2 changes are 0.3834 and 0.0526. On PrimeKG and PharmKG, answer agreement is only 78.8\% and
-80.0\%, respectively. Their candidate cosines are 0.9453 and 0.9991, while
-query cosines are lower at 0.8828 and 0.8718. These results show why candidate
-similarity alone is insufficient to characterize information supplied to the
-LLM.
-
-On repoDB, fuzzy/source answer agreement is 80.8\%, with query/candidate
-cosines of 0.9814/0.9806. Fuzzy generates 2/500 exact answers, compared with
-1/500 for source raw, 11/500 for native-score top-$k$, and 9/500 for the
-empty-local-graph reference. The latter retains frozen global embeddings;
-it is not a knowledge-free model. These counterexamples are reported without
-selecting a new method using test outcomes.
-
-\paragraph{Downstream differences do not establish a universal winner.}
-The exact-accuracy comparison does not show consistent superiority of fuzzy
-over all alternative selectors. Several differences correspond to only one
-correct answer in a 500-row test set. For example, fuzzy produces 0/500,
-1/500, 3/100, and 7/500 correct answers on PrimeKG, PharmKG, Hetionet, and
-DRKG, respectively. The joint query/seed and paired query bootstrap tables
-are supplied alongside these point estimates; lack of a detected difference
-is not a demonstration of equivalence. These low counts limit conclusions
-about small downstream improvements.
+No selector consistently dominates downstream accuracy. On repoDB, fuzzy retrieval produces 2/500 correct answers, compared with 1/500 for the uncompressed source, 11/500 for native-score top-$k$, and 9/500 for the empty-local-graph reference, which still uses global embeddings. Fuzzy retrieval yields 0/500, 1/500, 3/100, and 7/500 on PrimeKG, PharmKG, Hetionet, and DRKG. These low counts limit claims about small gains; a bootstrap interval including zero does not establish equivalence. Full paired comparisons are provided in the result workbook.
 
 \subsection{Budget--retention curves}
-Figures~\ref{fig:c3-duplicates}--\ref{fig:c3-budget-paths} summarize edge-count decomposition and strict-budget operating curves. The requested ratios apply to unique source triples. The original dataset-specific policy and the strict coverage control are distinguished throughout; neither preserved candidate ranking nor an unchanged generated answer certifies preservation of the source evidence.
+Figures~\ref{fig:c3-duplicates}--\ref{fig:c3-budget-paths} show duplicate removal and retention across strict budgets expressed as fractions of unique source triples. The strict coverage control is distinguished from the original dataset-specific policy.
 
-\par\noindent\begin{minipage}{\linewidth}
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
 
 \centering
 \includegraphics[width=.96\textwidth]{revision_figures/compression_decomposition.pdf}
@@ -294,7 +121,7 @@ rows; duplicate removal is separated from structural edge loss.}
 
 
 
-\par\noindent\begin{minipage}{\linewidth}
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
 
 \centering
 \includegraphics[width=.98\textwidth]{revision_figures/budget_reach3_retention.pdf}
@@ -309,7 +136,7 @@ separately in the audit tables.}
 
 
 
-\par\noindent\begin{minipage}{\linewidth}
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
 
 \centering
 \includegraphics[width=.98\textwidth]{revision_figures/budget_path3_retention.pdf}
@@ -319,6 +146,5 @@ eligible counts are provided in the accompanying tables.}
 \label{fig:c3-budget-paths}
 
 \end{minipage}\par\medskip
-
 
 \end{revisionblock}
