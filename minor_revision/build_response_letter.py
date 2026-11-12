@@ -79,7 +79,7 @@ with ZipFile(TEMPLATE) as archive:
         body.append(copy.deepcopy(p))
     for i, line in enumerate(content["summary"], 1):
         body.append(paragraph(f"{i}. {line}"))
-    body.append(paragraph("Changes in the revised manuscript and Supplementary Material are highlighted in yellow. Our point-by-point responses and revision locations are provided below; page numbers refer to the revised PDFs."))
+    body.append(paragraph("Changes in the revised manuscript and Supplementary Material are highlighted in yellow. Our point-by-point responses and revision locations are provided below."))
     for p in original_paras[10:13]:
         body.append(copy.deepcopy(p))
 

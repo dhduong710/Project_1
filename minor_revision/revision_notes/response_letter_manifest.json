@@ -1,8 +1,8 @@
 {
   "template_sha256": "ad431172b0e0248fb12f7e6cf90539bf0ae02506cf4efa0824ab0399dd04923e",
-  "content_sha256": "2b7aa6eea0a52b20ce3995e105c3f8db67b8ffc18f1ae5075e5fe7567e6e4481",
+  "content_sha256": "2b009b5a01aae721f047733210c09ce06dcfe970a4c4d2cf4f1f64070f45bf07",
   "metrics_sha256": "0d6072634bd7256c5ae659319381c80d2db9693cca75755d70bc8d05bd6dced0",
-  "output_sha256": "3b5fd3b8ae7e45f4ab6555b58a945b2732f4a7972dd8be91a8f798ad6c7002f1",
+  "output_sha256": "ef389a74b6cc6e209bc16d6a8302a1ed10c6a2091e60ccec52e62b5c0c1643e3",
   "original_table_source": "ae70903:minor_revision/Main Manuscript/paper/sn-article.tex",
   "reference_documents": {
     "basis": "Printed page numbers in the two author-finalized highlighted PDFs; verified against PDF text and final LaTeX labels on 2026-11-12.",
@@ -52,7 +52,7 @@
   },
   "comment_count": 6,
   "all_reviewer_comments_preserved": true,
-  "word_count": 1258,
+  "word_count": 1422,
   "correction_values_for_audit_only": [
     [
       "Dataset",

@@ -157,3 +157,10 @@ Tác giả xác nhận manuscript/supplementary đã chốt; lượt này chỉ 
 - C1 gọi Related Work, gọn phầnnovelty; C2–C3 rútprotocol/results, bỏduplicate vàexact/generatedanswer narrative; giữ equalcontrols, uncertainty, coverage/pathtradeoff. C4 nói rõfixedcandidatecoverage, ví dụPrimeMRR/graphsize, khôngWeagree/apology; khai báoFP16+scoringharmonization trong2câu, vẫngiữ9/500,unchangedcheckpoint/split/noexclusions vàvídụ.0476→.0477. Giữ disclosurevalidationMRRrecalculation vớiFig2/S1.1/TableS6/TableS13vàpages.
 - C5 mô tả cách chuẩn bị dữ liệu vàalignment đã làm, khôngcode-inspection narrative; C6 sửarequested vàbỏarchitectureclaim, mô tảđúngDiscussionđãchốt (khônggiữsourcegating đãbỏkhỏimain).
 - Giữformatmẫu: TimesNewRoman13pt, responsecăntrái,1.25dòng,2.5ptbefore/after,khôngemptyparagraph/keepNextchain/hardpagebreak. Reviewerwording vàtemplateinputs giữnguyên. DOCXZIP/allXML/paragraphsettings/Pandocreadback/numericalexample/pagehashchecks/diffcheckpass. Không cóWord/LibreOffice renderer nên kiểmtraWord bằngOOXML vàreadback, khôngclaimvisualpagination.
+
+
+## Cân đối độ dài response và làm rõ dẫn bảng — 12-11-2026
+
+Mainchanges4 bỏ “as detailed in our response to Comment4”; bỏ câu “page numbers refer to the revised PDFs” ởintro. Tất cảdẫnchiếu bảng nay ghi rõ manuscriptTable hoặcSupplementaryTable, vẫngiữsốtrangđãđốichiếu. Cácresponse mởrộngvừaphải thành103/162/165/185/145/101từ (C1–C6); tổng1422từkểcảreviewer/template. Bổsunggradedcues, query-groupCV/validation-onlyselection, repoDBCI, matched-budgetseeds/pathloss, scopefixedcandidate vàdiseasealignment/graphsplit; C6nốicácbiologicalsourcesvớihướngfusion. Khôngkhôiphục exact/generatedanswer,requested,codeauditnarrative hoặcWeagree/apology. FPdisclosuregiữ2câu.
+
+DOCXcanonical/layout_fixedđồngbộ; builder/content/text/manifestcậpnhật; reviewerwording,spacing1.25/2.5pt vàleftalignmentgiữ. ZIPXML/Pandocreadback/numeric/pagehash/table-originchecks/diffcheckpass. Main/suppPDF đãchốt khôngđổi.
