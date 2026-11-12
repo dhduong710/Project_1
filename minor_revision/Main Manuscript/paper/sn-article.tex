@@ -95,7 +95,7 @@ We address this retrieval--generation interface with \softfuse, an evidence-cali
 \item \rev{We formulate an inspectable soft-support reranker for a fixed top-20 biomedical candidate set, combining evidence contact with shortcut and contradiction penalties.}
 \item \rev{We develop a confidence-aware fuzzy retrieval module that combines rank-aware edge scoring with coverage-first selection to construct compact evidence graphs while preserving candidate order.}
 \item \rev{We evaluate the framework on five biomedical datasets, examining candidate ranking, end-to-end performance, and evidence-graph size across different graph structures and therapeutic relations.}
-\item \rev{We provide PrimeKG case studies spanning three diagnostic categories, including two detailed examples, and a web application for reproducible inspection of candidate support, rank changes, and selected evidence.}
+\item \rev{We provide PrimeKG case studies spanning three diagnostic categories, including two detailed examples of candidate reranking and evidence selection. We also provide a web application for reproducible inspection of candidate support, rank changes, and selected evidence.}
 \end{itemize}
 
 The remainder of this paper is organized as follows. Section~\ref{sec:related} reviews structure-based biomedical KGC, graph-augmented LLMs, and soft evidence modeling. Section~\ref{sec:methods} presents the \softfuse{} framework, including its graph-LLM backbone, soft support module, fuzzy retrieval module, and graph-adapter-enhanced generation. Section~\ref{sec:results} describes the study datasets and evaluation metrics before reporting the candidate-stage, end-to-end, case-study, and web-server results. Section~\ref{sec:discussion} discusses the findings and limitations. Section~\ref{sec:conclusion} concludes the paper and outlines future research directions.
@@ -556,7 +556,7 @@ The standalone results provide context for these changes. ComplEx achieves the h
 
 
 \begin{revisionblock}
-On PrimeKG, the candidate-ranking improvement is accompanied by an increase in E2E MRR@20 from 0.0477 to 0.0747 after soft support. Fuzzy retrieval preserves this value while reducing the average input from 59.93 to 32.34 edge occurrences, partly through duplicate removal (Section~\ref{sec:retention_results}). PharmKG shows a similar pattern: E2E MRR@20 increases from 0.0156 for the raw source to 0.0207 with soft support and 0.0210 with fuzzy retrieval, while the graph shrinks from 100 to 55 triples.
+On PrimeKG, the candidate-ranking improvement is accompanied by an increase in E2E MRR@20 from 0.0477 to 0.0747 after soft support. Fuzzy retrieval preserves this value while reducing the average input from 59.93 to 32.34 edge occurrences, partly through duplicate removal. PharmKG shows a similar pattern: E2E MRR@20 increases from 0.0156 for the raw source to 0.0207 with soft support and 0.0210 with fuzzy retrieval, while the graph shrinks from 100 to 55 triples.
 \end{revisionblock}
 
 
@@ -674,14 +674,14 @@ The case studies make these behaviors more interpretable, but they require caref
 
 
 \begin{revisionblock}
-The current study has several limitations. The fixed top-20 candidate set prevents recovery of drugs excluded by the upstream retriever. Although coefficients can be learned, the scoring features and graph budgets remain predefined, and transfer within prepared benchmarks does not establish generalization to unseen graphs or diseases. Differences in relation semantics and entity alignment also limit cross-dataset comparisons and the available mechanistic evidence. Retained paths are structural evidence rather than validated therapeutic mechanisms, and the qualitative case studies require domain-expert review. Finally, the retrospective evaluation and exploratory bootstrap intervals warrant further temporal and prospective assessment.
+The current study has several limitations. Soft support depends on the available evidence and cannot recover drugs outside the retrieved top-20 list. Fuzzy retrieval uses predefined scoring features and graph budgets, so preserving candidate coverage does not ensure preservation of query--candidate paths. Learned coefficients reduce manual tuning, but transfer within prepared benchmarks does not establish generalization to unseen graphs or diseases. Differences in relation semantics and entity alignment further constrain cross-dataset comparisons. The evaluation is retrospective, and the qualitative case studies require domain-expert review.
 \end{revisionblock}
 
 
 
 
 \begin{revisionblock}
-The spatial--spectral and frequency-domain models reviewed in Section~\ref{sec:related} suggest one way to address the reliance on predefined evidence features~\citep{zhu2026spatialspectral,zhu2026fdmsgl}. Learning molecular, interaction, and pathway representations jointly with fusion weights could enrich candidate scoring. These representations could also guide graph selection under an edge budget, with an explicit objective for retaining relevant paths. Such an extension would require consistent entity alignment and held-out evaluation, and goes beyond the linear calibration studied here.
+The spatial--spectral and frequency-domain models reviewed in Section~\ref{sec:related} suggest one way to address the reliance on predefined evidence features~\citep{zhu2026spatialspectral,zhu2026fdmsgl}. Learning molecular, interaction, and pathway representations jointly with fusion weights could enrich candidate scoring. These representations could also guide graph selection under an edge budget, with an explicit objective for retaining relevant paths. Such an extension would require consistent entity alignment and held-out evaluation.
 \end{revisionblock}
 
 % =========================================================

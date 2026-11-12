@@ -139,3 +139,10 @@ Ngày08-11-2026 tác giả xác nhận đã hết khoảngtrốngcuốitrang nh�
 - Tables4–5 vẫn cùngpage15; thêm một dòng trống bằng spacer có chiều cao12pt giữa hai minipage (khoảng cách glue thông thường bị mất trong bố cục hiện hành). Đã kiểm tra trực quan khoảng trống và số in đậm.
 - Bỏ câu cuốiS12 “Full configurations ... accompanying repository”; S13.3 bỏ “These low counts limit claims about small gains;” và câu “Full paired comparisons ... result workbook.” Giữ câu về bootstrap interval và các kết quả so sánh.
 - Main25trang/supp28trang; giữ yellowhighlights. Numeric table cells so với bản trước khớp sau khi bỏ boldmarkup; build/reference/layout/hash/metricchecks pass. Không thay kết quả thực nghiệm hoặc responseletter.
+
+
+## Contributions và thứ tự limitations — 12-11-2026
+
+Tách ý cuối contributions thành hai câu riêng: PrimeKG case studies và web application. Bỏ dẫn chiếu ngoặc Section4.6 trong4.4 và mệnh đề “and goes beyond the linear calibration studied here” cuốiDiscussion. Limitations một đoạn84từ, bắt đầu bằng giới hạn soft support và fuzzy retrieval, sau đó mới đến coefficient transfer, semantics/alignment và retrospective case-study evaluation. SupplementaryS12 bỏ câu “Automatic selection is reproducible but provides no uniform downstream gain.”, giữ các kết quả số ngay trước đó.
+
+HaiPDF25/28trang cậpnhật, bôi vàngtheobảnnộpgốc; visualcheckcontributions/limitations/S12, verifier/diffcheckpass. Tables/figures/results vàresponseletterkhôngđổi.
