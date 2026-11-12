@@ -130,3 +130,12 @@ Ngày08-11-2026 tác giả xác nhận đã hết khoảngtrốngcuốitrang nh�
 - S12: mở đầu trực tiếp bằng thiết kế calibration, không nói chung chung supplements main-text. Chỗ cần đối chiếu chỉ rõ manuscript Table 4 hoặc Section 4.2. Văn bản giảm khoảng28%, S13 giảm khoảng44% (không tính table/figure blocks); giữ công thức, protocol chính, uncertainty và kết quả bất lợi trực tiếp liên quan.
 - Toàn bộ14bảng S16–S29 và3hình S4–S6, gồm caption và dữ liệu, giữ nguyên. Thêm khoảng cách0.8baselineskip trước mỗi block để tách đoạn văn với bảng/hình, bỏ clearpage trướcS13 để các sections chảy tiếp. Supplementary giảm30→28trang.
 - Rebuild cảhaiPDF bằng build_revision.py. So sánh table/figure bodies với HEAD trước lượt sửa khớp tuyệt đối; kiểm tra source/deliveryPDF, hash và sốliệu bằng verifier; kiểm tra trực quan S7/S11.1/S12/S13, bảng/hình và mainlimitations. Bôi vàng vẫn theo bản nộp gốc. Không sửaresponseletter, kết quảthực nghiệm hoặc Gitremote; khôngcommit/push.
+
+
+## Câu Related Work và định dạng Tables 4–5 — 12-11-2026
+
+- Section2.1: tách câu mô tả spatial–spectral thành hai câu, lần lượt nói về wave propagation/spectral transforms và contrastive alignment; giữ citation và nội dung phương pháp.
+- Table4 in đậm MRR cao nhất theo từng dataset, bao gồm các giá trị bằng nhau ở độ chính xác hiển thị. Không so MRR với Gold@20. Table5 in đậm reachability cao nhất giữa Fuzzy/Random/Shortest paths; N và Shortest coverage là đại lượng khác nên không tham gia chọn cực đại. Caption nêu rõ quy tắc. Exporter hỗ trợ best_columns để rebuild giữ định dạng.
+- Tables4–5 vẫn cùngpage15; thêm một dòng trống bằng spacer có chiều cao12pt giữa hai minipage (khoảng cách glue thông thường bị mất trong bố cục hiện hành). Đã kiểm tra trực quan khoảng trống và số in đậm.
+- Bỏ câu cuốiS12 “Full configurations ... accompanying repository”; S13.3 bỏ “These low counts limit claims about small gains;” và câu “Full paired comparisons ... result workbook.” Giữ câu về bootstrap interval và các kết quả so sánh.
+- Main25trang/supp28trang; giữ yellowhighlights. Numeric table cells so với bản trước khớp sau khi bỏ boldmarkup; build/reference/layout/hash/metricchecks pass. Không thay kết quả thực nghiệm hoặc responseletter.

@@ -11,7 +11,16 @@ inputs={}
 def read(path):
  p=ROOT/path;inputs[path]=hashlib.sha256(p.read_bytes()).hexdigest()
  return list(csv.DictReader(p.open(encoding='utf-8-sig')))
-def table(name,headers,rows,out=OUT,align=None):
+def table(name,headers,rows,out=OUT,align=None,best_columns=None):
+ # Compare only like-for-like metrics within each dataset; include displayed ties.
+ if best_columns:
+  for row in rows:
+   values={i:float(row[i].strip('$').split(r'\pm',1)[0]) for i in best_columns}
+   best=max(values.values())
+   for i,value in values.items():
+    if value==best:
+     cell=row[i]
+     row[i]=(r'$\boldsymbol{'+cell[1:-1]+'}$') if cell.startswith('$') else (r'\textbf{'+cell+'}')
  text='\\begin{tabular}{'+(align or 'l'+'r'*(len(headers)-1))+'}\n\\toprule\n'+' & '.join(headers)+r' \\'+'\n\\midrule\n'
  text+='\n'.join(' & '.join(map(str,row))+r' \\' for row in rows)+'\n\\bottomrule\n\\end{tabular}\n'
  (out/(name+'.tex')).write_text(text)
@@ -26,7 +35,7 @@ for path in ['results/revision_c2/cpu_complete.json','results/revision_c2/e2e_st
 c=read('results/revision_c2/candidate_metrics.csv'); e=read('results/revision_c2/e2e_stable/e2e_metrics.csv')
 cv=lambda d,v:pick(c,dataset=d,variant=v,split='test')
 ev=lambda d,v:pick(e,dataset=d,variant=v,split='test')
-table('calibration_main',['Dataset','Gold@20','Original soft','Shared equal','Learned','LODO'],[[N[d],f(cv(d,'original_soft')['gold_at20'],3)]+[f(cv(d,v)['mrr_at20']) for v in ['original_soft','shared_equal','shared_learned','shared_lodo']] for d in D],MAIN)
+table('calibration_main',['Dataset','Gold@20','Original soft','Shared equal','Learned','LODO'],[[N[d],f(cv(d,'original_soft')['gold_at20'],3)]+[f(cv(d,v)['mrr_at20']) for v in ['original_soft','shared_equal','shared_learned','shared_lodo']] for d in D],MAIN,best_columns=(2,3,4,5))
 table('native_calibration',['Dataset','Original','Fixed native','Grid selected','Unconstrained'],[[N[d]]+[f(cv(d,v)['mrr_at20']) for v in ['original_soft','native_fixed_b050','native_valid_grid','shared_learned_unconstrained']] for d in D])
 w=read('results/revision_c2/learned_weights.csv'); fields=['rank_prior','source_contact','source_degree_log','shared_neighbor_log','negative_direct_contact']
 table('weights',['Dataset','Fit',r'$\lambda$',r'$w_1$',r'$w_2$',r'$w_3$',r'$w_4$',r'$w_5$'],[[N[d],lab,f(pick(w,dataset=d,variant=v)['l2'],3)]+[f(pick(w,dataset=d,variant=v)[k],4) for k in fields] for d in D for v,lab in [('shared_learned','Target'),('shared_lodo','LODO')]],align='llrrrrrr')
@@ -54,7 +63,7 @@ gv=lambda d,m:pick(g,dataset=d,method=m,budget='native',split='test')
 methods=[('original_fuzzy','Original fuzzy'),('native_topk','Native score top-$k$'),('native_coverage','Strict native coverage'),('degree_topk','Degree top-$k$'),('query_bfs','Query BFS'),('ppr_query','Query PPR'),('ppr_terminals','Terminal PPR'),('shortest_paths','Shortest paths'),('relation_diverse','Relation stratified'),('random','Random (5 seeds)'),('random_coverage','Random + coverage (5 seeds)')]
 # Actual method identifiers must match exports, fail loudly if upstream format changes.
 print('C3 method identifiers:',sorted({x['method'] for x in r}))
-table('retention_main',['Dataset','$N$','Fuzzy','Random','Shortest paths','Shortest coverage'],[[N[d],str(int(float(rv(d,'original_fuzzy')['reach3_retention_eligible']))),f(rv(d,'original_fuzzy')['reach3_retention'],4),pm(rv(d,'random')['reach3_retention'],rv(d,'random')['reach3_retention_seed_std'],4),f(rv(d,'shortest_paths')['reach3_retention'],4),f(rv(d,'shortest_paths')['candidate_coverage_retained'],4)] for d in D],MAIN)
+table('retention_main',['Dataset','$N$','Fuzzy','Random','Shortest paths','Shortest coverage'],[[N[d],str(int(float(rv(d,'original_fuzzy')['reach3_retention_eligible']))),f(rv(d,'original_fuzzy')['reach3_retention'],4),pm(rv(d,'random')['reach3_retention'],rv(d,'random')['reach3_retention_seed_std'],4),f(rv(d,'shortest_paths')['reach3_retention'],4),f(rv(d,'shortest_paths')['candidate_coverage_retained'],4)] for d in D],MAIN,best_columns=(2,3,4))
 table('all_reachability',['Selector']+[N[d] for d in D],[[label]+[f(rv(d,m)['reach3_retention'],4) for d in D] for m,label in methods])
 table('path_retention',['Dataset','$N$','Fuzzy','Random (5 seeds)','Shortest paths'],[[N[d],str(int(float(rv(d,'original_fuzzy')['path3_retention_eligible']))),f(rv(d,'original_fuzzy')['path3_retention'],4),pm(rv(d,'random')['path3_retention'],rv(d,'random')['path3_retention_seed_std'],4),f(rv(d,'shortest_paths')['path3_retention'],4)] for d in D])
 table('other_retention',['Dataset','Nodes','Relation types','Relation JSD','Incoming-2','Rare edges'],[[N[d]]+[f(rv(d,'original_fuzzy')[k],4) for k in ['node_retention','relation_retention','relation_jsd','incoming2_retention','rare_relation_edge_retention']] for d in D])

@@ -11,16 +11,16 @@ To assess the effect of coefficient choice on soft support, we compare equal, le
 \par\noindent\begin{minipage}{\linewidth}
 
 \centering\small
-\captionof{table}{\textbf{Candidate calibration on the complete test splits.} MRR@20 is computed over all rows, with zero reciprocal rank for absent gold entities. Shared equal, learned, and LODO use the same features; comparison with the original soft-support formula also changes features. LODO is coefficient transfer without target calibration labels.}
+\captionof{table}{\textbf{Candidate calibration on the complete test splits.} MRR@20 is computed over all rows, with zero reciprocal rank for absent gold entities. Shared equal, learned, and LODO use the same features; comparison with the original soft-support formula also changes features. LODO is coefficient transfer without target calibration labels. Bold marks the highest displayed MRR in each row, including ties.}
 \label{tab:calibration_main}
 \setlength{\tabcolsep}{6pt}
 \input{revision_tables/calibration_main}
 
-\end{minipage}\par\medskip
+\end{minipage}\par\noindent\rule{0pt}{12pt}\par
 \par\noindent\begin{minipage}{\linewidth}
 
 \centering\small
-\captionof{table}{\textbf{Three-hop reachability at matched unique-edge budgets.} Reachability is the per-row fraction of source-reachable candidates still reachable within three edges. $N$ counts evaluation rows with at least one source-reachable candidate. Random is mean $\pm$ standard deviation over five seeds. Fuzzy retrieval preserves incident evidence for every source-covered candidate (retention 1.0000 on all datasets).}
+\captionof{table}{\textbf{Three-hop reachability at matched unique-edge budgets.} Reachability is the per-row fraction of source-reachable candidates still reachable within three edges. $N$ counts evaluation rows with at least one source-reachable candidate. Random is mean $\pm$ standard deviation over five seeds. Fuzzy retrieval preserves incident evidence for every source-covered candidate (retention 1.0000 on all datasets). Bold marks the highest reachability in each row.}
 \label{tab:retention_main}
 \setlength{\tabcolsep}{5pt}
 \input{revision_tables/retention_main}
