@@ -21,6 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "minor_revision"
 TEMPLATE = BASE / "Response to Reviewers.docx"
 CONTENT = BASE / "revision_notes/response_content.json"
+PAGE_REFERENCES = BASE / "revision_notes/response_page_references.json"
 OUTPUT = BASE / "Response to Reviewers_revised.docx"
 W = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
 NS = {"w": W}
@@ -58,6 +59,12 @@ def paragraph(text, bold=False, size=26):
     return p
 
 
+# Page references must remain tied to the author-finalized PDFs.
+page_references = json.loads(PAGE_REFERENCES.read_text())
+for document in page_references["documents"]:
+    assert hashlib.sha256((BASE / document["pdf"]).read_bytes()).hexdigest() == document["sha256"], \
+        f"PDF changed; recheck response page references: {document['pdf']}"
+
 with ZipFile(TEMPLATE) as archive:
     original_xml = archive.read("word/document.xml")
     for _, (prefix, uri) in ET.iterparse(io.BytesIO(original_xml), events=["start-ns"]):
@@ -72,7 +79,7 @@ with ZipFile(TEMPLATE) as archive:
         body.append(copy.deepcopy(p))
     for i, line in enumerate(content["summary"], 1):
         body.append(paragraph(f"{i}. {line}"))
-    body.append(paragraph("Changes in the revised manuscript and Supplementary Material are highlighted in yellow. Our point-by-point responses and the locations of the revisions are provided below."))
+    body.append(paragraph("Changes in the revised manuscript and Supplementary Material are highlighted in yellow. Our point-by-point responses and revision locations are provided below; page numbers refer to the revised PDFs."))
     for p in original_paras[10:13]:
         body.append(copy.deepcopy(p))
 
@@ -202,6 +209,7 @@ report = {
     "metrics_sha256": hashlib.sha256(metrics_path.read_bytes()).hexdigest(),
     "output_sha256": hashlib.sha256(OUTPUT.read_bytes()).hexdigest(),
     "original_table_source": "ae70903:minor_revision/Main Manuscript/paper/sn-article.tex",
+    "reference_documents": page_references,
     "comment_count": 6,
     "all_reviewer_comments_preserved": True,
     "word_count": len(review_text.split()),

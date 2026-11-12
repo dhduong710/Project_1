@@ -146,3 +146,14 @@ Ngày08-11-2026 tác giả xác nhận đã hết khoảngtrốngcuốitrang nh�
 Tách ý cuối contributions thành hai câu riêng: PrimeKG case studies và web application. Bỏ dẫn chiếu ngoặc Section4.6 trong4.4 và mệnh đề “and goes beyond the linear calibration studied here” cuốiDiscussion. Limitations một đoạn84từ, bắt đầu bằng giới hạn soft support và fuzzy retrieval, sau đó mới đến coefficient transfer, semantics/alignment và retrospective case-study evaluation. SupplementaryS12 bỏ câu “Automatic selection is reproducible but provides no uniform downstream gain.”, giữ các kết quả số ngay trước đó.
 
 HaiPDF25/28trang cậpnhật, bôi vàngtheobảnnộpgốc; visualcheckcontributions/limitations/S12, verifier/diffcheckpass. Tables/figures/results vàresponseletterkhôngđổi.
+
+
+## Response letter đồng bộ với hai PDF đã chốt — 12-11-2026
+
+Tác giả xác nhận manuscript/supplementary đã chốt; lượt này chỉ sửa response letter và tài liệu hỗ trợ. Giữ nguyên byte-for-byte hai PDF25/28trang và nguồn LaTeX. Đã cập nhật `Response to Reviewers_revised.docx` (bản `layout_fixed` đồng bộ theo builder), `response_content.json`, text companion và manifest.
+
+- Summary đổi requested thành cách diễn đạt trung tính; đủ6responses tập trung thiết kế/kết quả/vị trí sửa. Tổng1258từ kểcảreviewer/template, so với1730từ trước. Từngresponse khoảng65–168từ.
+- Mọi dẫn chiếu manuscript/supplementary có sốtrang theo printedPDF: Section4.5p14/Table4p15,4.6/Table5p15,S11.1pp17–18,S12pp18–23,S13pp23–28; Reference45–46p23. Danh sách đầy đủ và PDFhashes lưu ở `response_page_references.json`; builder kiểm hash trước khi tạoWord để tránh tái dùng page references với PDFđãđổi.
+- C1 gọi Related Work, gọn phầnnovelty; C2–C3 rútprotocol/results, bỏduplicate vàexact/generatedanswer narrative; giữ equalcontrols, uncertainty, coverage/pathtradeoff. C4 nói rõfixedcandidatecoverage, ví dụPrimeMRR/graphsize, khôngWeagree/apology; khai báoFP16+scoringharmonization trong2câu, vẫngiữ9/500,unchangedcheckpoint/split/noexclusions vàvídụ.0476→.0477. Giữ disclosurevalidationMRRrecalculation vớiFig2/S1.1/TableS6/TableS13vàpages.
+- C5 mô tả cách chuẩn bị dữ liệu vàalignment đã làm, khôngcode-inspection narrative; C6 sửarequested vàbỏarchitectureclaim, mô tảđúngDiscussionđãchốt (khônggiữsourcegating đãbỏkhỏimain).
+- Giữformatmẫu: TimesNewRoman13pt, responsecăntrái,1.25dòng,2.5ptbefore/after,khôngemptyparagraph/keepNextchain/hardpagebreak. Reviewerwording vàtemplateinputs giữnguyên. DOCXZIP/allXML/paragraphsettings/Pandocreadback/numericalexample/pagehashchecks/diffcheckpass. Không cóWord/LibreOffice renderer nên kiểmtraWord bằngOOXML vàreadback, khôngclaimvisualpagination.

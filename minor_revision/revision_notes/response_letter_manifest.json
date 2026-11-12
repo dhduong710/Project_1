@@ -1,12 +1,58 @@
 {
   "template_sha256": "ad431172b0e0248fb12f7e6cf90539bf0ae02506cf4efa0824ab0399dd04923e",
-  "content_sha256": "97084df5ac32c8eb8b8599034cef050374722605f28b6c41b15f50b5414d4a6c",
+  "content_sha256": "2b7aa6eea0a52b20ce3995e105c3f8db67b8ffc18f1ae5075e5fe7567e6e4481",
   "metrics_sha256": "0d6072634bd7256c5ae659319381c80d2db9693cca75755d70bc8d05bd6dced0",
-  "output_sha256": "5645cd18df7e8797d56c34cc449ed753b71916b82f16ca616f5c424f33c8d22e",
+  "output_sha256": "3b5fd3b8ae7e45f4ab6555b58a945b2732f4a7972dd8be91a8f798ad6c7002f1",
   "original_table_source": "ae70903:minor_revision/Main Manuscript/paper/sn-article.tex",
+  "reference_documents": {
+    "basis": "Printed page numbers in the two author-finalized highlighted PDFs; verified against PDF text and final LaTeX labels on 2026-11-12.",
+    "documents": [
+      {
+        "pdf": "Manuscript_revised_highlighted.pdf",
+        "sha256": "80165e0f7b1511f9ec561b8e956d7446321221ce529ef9565997fe08f30aa612",
+        "pages": 25,
+        "locations": {
+          "Abstract": "1",
+          "Introduction contributions": "3",
+          "Related Work": "3\u20134",
+          "Section 2.1": "3\u20134",
+          "Section 2.3": "4",
+          "Fig. 2": "8",
+          "Section 4.1": "10\u201311",
+          "repoDB paragraph": "11",
+          "Section 4.2": "11\u201312",
+          "Table 3": "13",
+          "Section 4.5": "14",
+          "Table 4": "15",
+          "Section 4.6 and Table 5": "15",
+          "Section 5": "17\u201318",
+          "Section 5 final paragraph": "18",
+          "Section 6": "18\u201319",
+          "References 45\u201346": "23"
+        }
+      },
+      {
+        "pdf": "Supplementary_revised_highlighted.pdf",
+        "sha256": "dd90feee66a6746d2ce1d79ebb6c9c9b7f8cbeddd2d054021480b8bd6573d0af",
+        "pages": 28,
+        "locations": {
+          "Section S1.1": "3\u20134",
+          "Table S6": "11",
+          "Table S13": "15",
+          "Table S15": "17",
+          "Section S11.1": "17\u201318",
+          "Section S12": "18\u201323",
+          "Tables S16\u2013S24": "19\u201323",
+          "Section S13": "23\u201328",
+          "Tables S25\u2013S29": "25\u201326",
+          "Figs. S4\u2013S6": "27\u201328"
+        }
+      }
+    ]
+  },
   "comment_count": 6,
   "all_reviewer_comments_preserved": true,
-  "word_count": 1730,
+  "word_count": 1258,
   "correction_values_for_audit_only": [
     [
       "Dataset",

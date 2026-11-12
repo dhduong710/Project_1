@@ -1,0 +1,46 @@
+{
+  "basis": "Printed page numbers in the two author-finalized highlighted PDFs; verified against PDF text and final LaTeX labels on 2026-11-12.",
+  "documents": [
+    {
+      "pdf": "Manuscript_revised_highlighted.pdf",
+      "sha256": "80165e0f7b1511f9ec561b8e956d7446321221ce529ef9565997fe08f30aa612",
+      "pages": 25,
+      "locations": {
+        "Abstract": "1",
+        "Introduction contributions": "3",
+        "Related Work": "3–4",
+        "Section 2.1": "3–4",
+        "Section 2.3": "4",
+        "Fig. 2": "8",
+        "Section 4.1": "10–11",
+        "repoDB paragraph": "11",
+        "Section 4.2": "11–12",
+        "Table 3": "13",
+        "Section 4.5": "14",
+        "Table 4": "15",
+        "Section 4.6 and Table 5": "15",
+        "Section 5": "17–18",
+        "Section 5 final paragraph": "18",
+        "Section 6": "18–19",
+        "References 45–46": "23"
+      }
+    },
+    {
+      "pdf": "Supplementary_revised_highlighted.pdf",
+      "sha256": "dd90feee66a6746d2ce1d79ebb6c9c9b7f8cbeddd2d054021480b8bd6573d0af",
+      "pages": 28,
+      "locations": {
+        "Section S1.1": "3–4",
+        "Table S6": "11",
+        "Table S13": "15",
+        "Table S15": "17",
+        "Section S11.1": "17–18",
+        "Section S12": "18–23",
+        "Tables S16–S24": "19–23",
+        "Section S13": "23–28",
+        "Tables S25–S29": "25–26",
+        "Figs. S4–S6": "27–28"
+      }
+    }
+  ]
+}
