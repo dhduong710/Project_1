@@ -1,10 +1,8 @@
-% Revised 2026-11-11: integrated Results, prose table introductions, and adjacent Tables 4--5.
 \subsection{\rev{Automatic calibration and coefficient transfer}}
 \label{sec:calibration_results}
 \begin{revisionblock}
 To assess the effect of coefficient choice on soft support, we compare equal, learned, and leave-one-dataset-out (LODO) weights for a common five-feature scorer. Learned weights use target-dataset validation data with query-group cross-validation, whereas LODO weights use the other four datasets without target calibration labels. All settings preserve candidate membership. \tabref{tab:calibration_main} compares their candidate MRR on the complete test splits with that of the original soft-support formula.
 
-% Keep the two summary tables together, without intervening prose.
 \end{revisionblock}
 \begin{tableorg}[!t]
 \begin{revisionblock}
