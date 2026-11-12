@@ -1,0 +1,139 @@
+\section{\rev{Automatic Calibration and Coefficient Transfer}}
+\label{sec:s12-calibration}
+\begin{revisionblock}
+We compare coefficient-learning and transfer strategies using 2,100 validation rows for calibration and the same 2,100 test rows across variants (500 per dataset except 100 for Hetionet). Candidate membership remains fixed to the original top-20 lists, and test outcomes are excluded from coefficient selection.
+
+\subsection{Shared features and learned scoring}
+For candidate $c$ at original rank $r_c$ and query $q$, let $d(c)$ count incident source-edge occurrences and $N(c)$ denote its undirected neighbors. The shared feature vector is
+\[
+\begin{aligned}
+\mathbf{x}(c,q)=\bigg[&\frac{21-r_c}{20},\ \mathbb{I}[d(c)>0],\
+\min\!\left(1,\frac{\log(1+d(c))}{\log101}\right),\\
+&\min\!\left(1,\frac{\log(1+|N(c)\cap N(q)|)}{\log21}\right),\
+-\mathbb{I}[q\in N(c)]\bigg].
+\end{aligned}
+\]
+The features describe source-graph topology without gold labels, entity names, or dataset-specific relation mappings. Equal weighting assigns one to each signed feature. Learned scoring uses $s(c,q)=\mathbf{w}^{\top}\mathbf{x}(c,q)$ with
+\[
+\min_{\mathbf{w}\geq0}\ 
+\sum_{(q,c^+,c^-)\in\mathcal{P}} a_{q,+,-}
+\log\!\left(1+\exp[-\mathbf{w}^{\top}(\mathbf{x}(c^+,q)-\mathbf{x}(c^-,q))]\right)
++\frac{\lambda}{2}\|\mathbf{w}\|_2^2.
+\]
+Normalized pair weights balance recoverable positive rows and their negatives, with equal dataset weight in pooled transfer. Known alternative positives are excluded from negatives; absent-gold rows contribute no positive pairs but remain in metric denominators. We use 250 projected-gradient steps and five-fold query-group cross-validation over $\lambda\in\{0.001,0.01,0.1,1\}$. Selection maximizes mean validation MRR, preferring stronger regularization in ties; tied candidate scores retain original rank. Unconstrained fitting tests the nonnegativity constraint, and each feature ablation repeats fitting and regularization selection.
+
+\subsection{Original-formula calibration and transfer protocols}
+The original-formula grid retains the dataset-specific features from Sections S1--S2 and searches shortcut penalties $\{0,0.1,0.25,0.5,0.75,1,2\}$, contradiction penalties $\{0,0.1,0.2,0.5\}$, and rank-prior mixtures $\{0,0.25,0.5,0.75,0.8,0.9,0.95,1\}$. Among the 224 configurations per dataset, validation MRR selects the best, favoring larger rank-prior mixtures and then smaller penalties in ties. The fixed control uses $(0.5,0.1,0)$ throughout. Table~\ref{tab:s16-native} separates these coefficient changes from shared-feature learning.
+
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
+
+\centering\small
+\captionof{table}{Native-formula controls and unconstrained shared learning: test candidate MRR@20. The fixed native control shares coefficients but retains dataset-specific feature definitions. The unconstrained column uses the shared five-feature representation.}
+\label{tab:s16-native}
+\input{revision_tables/native_calibration}
+
+\end{minipage}\par\medskip
+
+LODO excludes all target calibration labels. Regularization is selected by leave-one-source-dataset-out validation on the other four datasets, macro-averaging their MRRs before refitting on pooled sources. Table~\ref{tab:s17-weights} reports the coefficients. The 20 directed transfers instead fit one dataset and evaluate each other dataset without target fitting. Because target graphs and prepared candidates remain available and query entities may occur in both splits, these experiments assess coefficient transfer rather than unseen-disease or zero-shot KGC.
+
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
+
+\centering\small
+\captionof{table}{Selected shared-feature coefficients. Target uses the target validation pool; LODO excludes its labels. Features $w_1$--$w_5$ correspond to the vector above, including the explicitly negative direct-contact feature.}
+\label{tab:s17-weights}
+\input{revision_tables/weights}
+
+\end{minipage}\par\medskip
+
+\subsection{Candidate-ranking results and uncertainty}
+Learned weights match the original formula on PrimeKG and improve candidate MRR on the other four datasets, but equal weights already improve four datasets (manuscript Table 4). Table~\ref{tab:s18-learning} therefore compares learned and transferred weights against the same features with equal weights. The learned-minus-equal interval excludes zero only on repoDB; LODO does not consistently outperform equal weights. Table~\ref{tab:s19-transfer} reports the directed transfers.
+
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
+
+\centering\small
+\captionof{table}{Candidate MRR differences relative to shared equal weights. Intervals use 2,000 paired query-cluster bootstrap resamples, keeping multiple gold rows for one query together. They are exploratory 95\% intervals without multiplicity correction.}
+\label{tab:s18-learning}
+\input{revision_tables/learning_equal}
+
+\end{minipage}\par\medskip
+
+
+
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
+
+\centering\small
+\captionof{table}{Directed transfer of learned candidate coefficients: test MRR@20. Rows identify the calibration source and columns the evaluation target. Diagonal entries are within-dataset fits; the 20 off-diagonal entries use no target calibration labels.}
+\label{tab:s19-transfer}
+\input{revision_tables/transfer}
+
+\end{minipage}\par\medskip
+
+\subsection{Calibration-label efficiency, ablation, and sensitivity}
+We fit on 10\%, 25\%, 50\%, and 100\% of validation query groups using five seeded orderings and nested regularization selection. Table~\ref{tab:s20-labels} reports test MRR and fitting variability across these 100 fits. PharmKG benefits from more calibration data, PrimeKG is unchanged, and Hetionet and repoDB are nonmonotonic. Table~\ref{tab:s21-ablation} reports the refitted feature ablations.
+
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
+
+\centering\small\setlength{\tabcolsep}{4pt}
+\captionof{table}{Calibration-label efficiency: test MRR mean $\pm$ standard deviation over five subset/CV seeds. The column percentage is the fraction of available validation query groups, not the fraction of test data.}
+\label{tab:s20-labels}
+\input{revision_tables/label_efficiency}
+
+\end{minipage}\par\medskip
+
+
+
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
+
+\centering\small\setlength{\tabcolsep}{4pt}
+\captionof{table}{Shared-feature ablation: test candidate MRR after refitting. ``No shared'' removes shared-neighbor count; ``No direct'' removes the signed direct-contact penalty. Each ablation repeats validation regularization selection.}
+\label{tab:s21-ablation}
+\input{revision_tables/ablation}
+
+\end{minipage}\par\medskip
+
+For sensitivity analysis, each coefficient is multiplied by $\exp(\epsilon)$, where $\epsilon\sim\mathcal{N}(0,\sigma^2)$ and $\sigma\in\{0.05,0.1,0.25,0.5\}$. Five seeds and two coefficient families yield 200 evaluations; zero coefficients remain zero and the rank-prior mixture is capped at one. Table~\ref{tab:s22-sensitivity} summarizes coefficient stability, distinct from the per-candidate score noise tested in Section S8.
+
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
+
+\centering\small\setlength{\tabcolsep}{4pt}
+\captionof{table}{Coefficient perturbation: test MRR mean $\pm$ standard deviation over five seeds, and the fraction with unchanged top-ranked candidate relative to the unperturbed family.}
+\label{tab:s22-sensitivity}
+\input{revision_tables/sensitivity}
+
+\end{minipage}\par\medskip
+
+\subsection{Frozen-model generation and automatic edge calibration}
+Candidate-order variants share the full source graph and frozen dataset-specific checkpoint. Edge-selection variants instead fix the fuzzy input order (raw/display-control for repoDB) and per-query budget. Table~\ref{tab:s23-generation} separates exact-answer accuracy from the adjusted MRR defined in manuscript Section 4.2. Invalid answers displace a present gold entity by one rank; absent gold entities receive zero credit. Matching uses the first answer line after the final ``Answer:'' prefix when present, trims surrounding whitespace, quotes and punctuation, collapses whitespace, and ignores case. Supplied display or canonical candidate names are accepted; ambiguous or substring-only matches are invalid. Sections S12--S13 and the main module comparison share this matching rule and deterministic decoder.
+
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
+
+\centering\small
+\captionof{table}{Candidate-order intervention with a full source graph. Panel A reports exact generated-answer accuracy (\%); Panel B reports adjusted MRR@20. All 500/500/100/500/500 test rows are included.}
+\label{tab:s23-generation}
+\textbf{A. Exact accuracy (\%)}\par\smallskip
+\input{revision_tables/candidate_accuracy}\par\medskip
+\textbf{B. Adjusted MRR@20}\par\smallskip
+\input{revision_tables/candidate_adjusted}
+
+\end{minipage}\par\medskip
+
+Candidate-ranking gains do not consistently improve generated answers. On repoDB, equal and learned weights yield 4/500 and 0/500 correct answers (difference $-0.8$ percentage points; exploratory 95\% interval $[-1.702,-0.190]$). On DRKG, they yield 0.8\% and 2.0\% accuracy (difference 1.2 points; interval $[0.000,2.469]$).
+
+The shared edge scorer uses candidate rank band, candidate/query incidence, a negative direct-contact indicator, and bounded endpoint degree. We compare 12 predefined vectors comprising fixed/equal controls and seeded default perturbations, without relation-family priorities. Selection maximizes full-validation exact accuracy, then adjusted MRR, then favors the earliest vector. Edge LODO uses macro-validation performance on the other datasets, while retaining the original candidate order and budgets. Table~\ref{tab:s24-edge} reports the selections and test results.
+
+\par\addvspace{0.8\baselineskip}\noindent\begin{minipage}{\linewidth}
+
+\centering\small
+\captionof{table}{Automatic edge calibration. A: selected zero-based trial IDs and number tied for best target validation accuracy and adjusted MRR. B--C: full-test results at fixed candidate order and per-query edge count.}
+\label{tab:s24-edge}
+\textbf{A. Validation selection}\par\smallskip
+\input{revision_tables/edge_validation}\par\medskip
+\textbf{B. Adjusted MRR@20}\par\smallskip
+\input{revision_tables/edge_adjusted}\par\medskip
+\textbf{C. Exact accuracy (\%)}\par\smallskip
+\input{revision_tables/edge_accuracy}
+
+\end{minipage}\par\medskip
+
+All 12 vectors tie on both validation metrics for Hetionet and DRKG. The four compressed arms also have identical test accuracy on the first four datasets, while repoDB edge LODO yields 0.2\% versus 0.4\% for the others.
+\end{revisionblock}

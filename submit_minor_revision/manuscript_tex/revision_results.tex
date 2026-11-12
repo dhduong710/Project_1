@@ -1,0 +1,46 @@
+% Revised 2026-11-11: integrated Results, prose table introductions, and adjacent Tables 4--5.
+\subsection{\rev{Automatic calibration and coefficient transfer}}
+\label{sec:calibration_results}
+\begin{revisionblock}
+To assess the effect of coefficient choice on soft support, we compare equal, learned, and leave-one-dataset-out (LODO) weights for a common five-feature scorer. Learned weights use target-dataset validation data with query-group cross-validation, whereas LODO weights use the other four datasets without target calibration labels. All settings preserve candidate membership. \tabref{tab:calibration_main} compares their candidate MRR on the complete test splits with that of the original soft-support formula.
+
+% Keep the two summary tables together, without intervening prose.
+\end{revisionblock}
+\begin{tableorg}[!t]
+\begin{revisionblock}
+\par\noindent\begin{minipage}{\linewidth}
+
+\centering\small
+\captionof{table}{\textbf{Candidate calibration on the complete test splits.} MRR@20 is computed over all rows, with zero reciprocal rank for absent gold entities. Shared equal, learned, and LODO use the same features; comparison with the original soft-support formula also changes features. LODO is coefficient transfer without target calibration labels. Bold marks the highest displayed MRR in each row, including ties.}
+\label{tab:calibration_main}
+\setlength{\tabcolsep}{6pt}
+\input{revision_tables/calibration_main}
+
+\end{minipage}\par\noindent\rule{0pt}{12pt}\par
+\par\noindent\begin{minipage}{\linewidth}
+
+\centering\small
+\captionof{table}{\textbf{Three-hop reachability at matched unique-edge budgets.} Reachability is the per-row fraction of source-reachable candidates still reachable within three edges. $N$ counts evaluation rows with at least one source-reachable candidate. Random is mean $\pm$ standard deviation over five seeds. Fuzzy retrieval preserves incident evidence for every source-covered candidate (retention 1.0000 on all datasets). Bold marks the highest reachability in each row.}
+\label{tab:retention_main}
+\setlength{\tabcolsep}{5pt}
+\input{revision_tables/retention_main}
+
+\end{minipage}\par\medskip
+\end{revisionblock}
+\end{tableorg}
+\begin{revisionblock}
+
+Learned weights improve candidate MRR over the original formula on four datasets and match it on PrimeKG, while LODO weights yield higher point estimates on all five. However, equal weights also improve four datasets, indicating that the shared feature set contributes to these gains. The learned-minus-equal comparison isolates the effect of learning the weights: the gain on repoDB is 0.00754, with an exploratory query-cluster 95\% interval of [0.00040, 0.01518], whereas the other four intervals include zero.
+
+To examine coefficient choice in fuzzy retrieval as well, we evaluate validation-based selection among 12 edge-scoring coefficient vectors while fixing candidate order and graph budget. Supplementary Section S12 and Tables S16--S24 report these results together with the fitting procedures, coefficient-transfer tests, sensitivity analyses, and downstream comparisons.
+\end{revisionblock}
+
+\subsection{\rev{Information retention and alternative graph selection}}
+\label{sec:retention_results}
+\begin{revisionblock}
+To examine which information is retained during graph compression, we compare fuzzy retrieval with alternative selectors using the same number of unique edges per query and the same candidate identities and order. The alternatives include random and coverage-constrained random sampling, native-score and degree selection, breadth-first search, personalized PageRank, shortest paths, and relation-stratified selection. \tabref{tab:retention_main} summarizes three-hop query--candidate reachability and candidate-incidence coverage for fuzzy retrieval and two representative controls.
+
+Fuzzy retrieval preserves incident evidence for every candidate covered by the source graph. It also retains more three-hop reachability than uniform random selection on PharmKG, DRKG, and repoDB, with similar values on PrimeKG and Hetionet. Shortest-path selection preserves nearly all source connectivity, but covers fewer candidates on Hetionet, DRKG, and repoDB. This contrast shows that retaining evidence for each candidate and preserving its paths to the query are distinct objectives.
+
+Supplementary Section S13, Tables S25--S29, and Figs.~S4--S6 provide the full selector comparison and analyses of labeled paths, encoder representations, downstream behavior, and graph budgets. They also separate reductions due to duplicate removal from losses of unique triples. Together, these results show that fuzzy retrieval preserves candidate coverage during compression, while path retention depends on graph topology.
+\end{revisionblock}
