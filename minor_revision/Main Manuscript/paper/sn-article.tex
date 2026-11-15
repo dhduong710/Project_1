@@ -23,7 +23,7 @@
 \usepackage{float}
 \input{revision_highlight}
 
-%\usepackage[margin=3cm]{geometry} %canh lề trên, dưới, trái, phải
+%\usepackage[margin=3cm]{geometry}
 
 \geometry{margin=2.2cm}
 \usepackage{setspace}
@@ -90,12 +90,13 @@ These retrieval constraints motivate a graded treatment of biomedical evidence. 
 
 We address this retrieval--generation interface with \softfuse, an evidence-calibration framework for \drkgc{}-style biomedical graph-augmented LLM completion. \softfuse{} contains two complementary modules. The soft support module reranks retrieved drug candidates using graded evidence contact, mechanism-oriented support, penalties for direct shortcuts, and contradiction cues. The confidence-aware fuzzy retrieval module selects a compact evidence subgraph using candidate rank bands, candidate and query incidence, relation-family priorities, local density, and penalty signals, while preserving the selected candidate order. \softfuse{} is not intended to replace the upstream structural candidate generator. Instead, it evaluates three distinct aspects that are often conflated in graph-LLM pipelines: gold-candidate recoverability, the ordering of recoverable candidates, and the compactness and auditability of the evidence supplied to the graph adapter.
 
-\rev{The contribution is the integration and evaluation of explicit biomedical evidence cues at the candidate--graph interface, building on established reranking and subgraph-selection principles.} The main contributions of this paper are as follows:
+The main contributions of this paper are as follows:
 \begin{itemize}
-\item \rev{We formulate an inspectable soft-support reranker for a fixed top-20 biomedical candidate set, combining evidence contact with shortcut and contradiction penalties.}
-\item \rev{We develop a confidence-aware fuzzy retrieval module that combines rank-aware edge scoring with coverage-first selection to construct compact evidence graphs while preserving candidate order.}
-\item \rev{We evaluate the framework on five biomedical datasets, examining candidate ranking, end-to-end performance, and evidence-graph size across different graph structures and therapeutic relations.}
-\item \rev{We provide PrimeKG case studies spanning three diagnostic categories, including two detailed examples of candidate reranking and evidence selection. We also provide a web application for reproducible inspection of candidate support, rank changes, and selected evidence.}
+\item A soft support reranking module for drug-focused biomedical KGC that converts heterogeneous graph signals into graded candidate support instead of applying a binary keep-or-discard rule.
+\item A confidence-aware fuzzy retrieval module that compresses query-specific evidence while preserving candidate coverage and the selected candidate order. The resulting graph-LLM inputs are smaller and easier to inspect.
+\item Evaluation of \softfuse{} on five biomedical datasets---PrimeKG, PharmKG, Hetionet, DRKG, and repoDB---covering candidate coverage, ranking quality, end-to-end LLM performance, graph size, shortcut exposure, and case-level auditability. \rev{Additional experiments examine automatic coefficient calibration, cross-dataset transfer, and information retention under alternative subgraph selectors.}
+\item PrimeKG case studies across three diagnostic categories, including two detailed examples illustrating candidate reranking and evidence selection.
+\item A web application for interactive, reproducible inspection of \softfuse{}, including candidate support scores, rank changes, and fuzzy-retrieved evidence subgraphs.
 \end{itemize}
 
 The remainder of this paper is organized as follows. Section~\ref{sec:related} reviews structure-based biomedical KGC, graph-augmented LLMs, and soft evidence modeling. Section~\ref{sec:methods} presents the \softfuse{} framework, including its graph-LLM backbone, soft support module, fuzzy retrieval module, and graph-adapter-enhanced generation. Section~\ref{sec:results} describes the study datasets and evaluation metrics before reporting the candidate-stage, end-to-end, case-study, and web-server results. Section~\ref{sec:discussion} discusses the findings and limitations. Section~\ref{sec:conclusion} concludes the paper and outlines future research directions.
@@ -248,7 +249,6 @@ S_i>S_j
 \end{equation}
 where $S_i=S_{\theta_d}(c_i,q)$ and $r^{(0)}_i=\mathrm{rank}_0(c_i)$. We denote the resulting candidate list by $C^{\mathrm{soft}}_q$.
 
-Online Resource 1 provides the feature-selection procedure, weight-assignment method, saturation constants, normalization choices, and validation-frozen coefficients for equations \eqref{eq:evidence_support}--\eqref{eq:soft_general}. Supplementary Section S1 describes the soft-support feature audit and coefficient assignment, Table S1 reports the dataset-specific instantiations, and Supplementary Section S6 summarizes the PrimeKG formula variants used as representative ablations.
 
 \figref{fig:soft} presents a validation-level view of this behavior on PrimeKG. Panel A compares candidate-ranking metrics for the raw backbone, ontology filtering, a contrastive support variant, and the selected soft support setting. Ontology filtering serves as the hard-filter control: candidates are retained only when they satisfy binary type, schema, or ontology-support conditions, while candidates without such support are discarded or demoted. This control is diagnostically useful but can be brittle in an incomplete BKG because missing ontology evidence is not equivalent to negative biomedical evidence. By contrast, the selected soft support setting retains all top-20 candidates and changes only their order. Panel B shows that this setting improves validation ranking while lowering the top-five direct-link rate. The comparison therefore supports the interpretation that the gain reflects graded evidence calibration rather than the promotion of shortcut-connected candidates.
 
@@ -311,7 +311,7 @@ S^{\mathrm{fuzzy}}_q =
 \end{equation}
 where $\tau_{d,q}$ is the dataset- and query-specific graph budget.
 
-Edge selection follows the implementation order of a coverage-then-fill procedure. \rev{First, the coverage pass retains a high-scoring available edge for each candidate that would otherwise lose all incident evidence. With the dataset-specific budgets used in the main experiments, the selected graph stays within the requested edge limit. At smaller budgets, however, the edges reserved for candidate coverage can exceed that limit; Supplementary Section S13 examines this case.} When the prepared graph contains informative query-touching or mechanistic relation families, optional query-coverage and relation-family reservation passes are applied next. The remaining slots are filled in descending order of $S_{\mathrm{edge}}(e,q)$ until the target size is reached. Fuzzy retrieval is therefore designed to produce a smaller, cleaner graph for the adapter and for human inspection, rather than to improve candidate MRR directly.
+Edge selection follows the implementation order of a coverage-then-fill procedure. \rev{First, the coverage pass retains a high-scoring available edge for each candidate that would otherwise lose all incident evidence. With the dataset-specific budgets used in the main experiments, the selected graph stays within the requested edge limit. At smaller budgets, however, the edges reserved for candidate coverage can exceed that limit.} When the prepared graph contains informative query-touching or mechanistic relation families, optional query-coverage and relation-family reservation passes are applied next. The remaining slots are filled in descending order of $S_{\mathrm{edge}}(e,q)$ until the target size is reached. Fuzzy retrieval is therefore designed to produce a smaller, cleaner graph for the adapter and for human inspection, rather than to improve candidate MRR directly.
 
 The fuzzy module preserves the order of its selected candidate list:
 \begin{equation}
@@ -320,7 +320,6 @@ C^{\mathrm{fuzzy}}_q=C^{\mathrm{in}}_q.
 \end{equation}
 Accordingly, candidate-stage changes are attributed to the input ranking, whereas graph-size reduction and evidence selection are attributed to fuzzy retrieval. \rev{Here, candidate coverage means retaining at least one incident edge for each candidate covered by the source subgraph. This condition alone does not preserve a path from the query to that candidate or establish a biological mechanism.}
 
-Online Resource 1 provides the feature-selection procedure, edge-weight assignment, rank-band definitions, relation-family priorities, top-candidate bonus settings, density normalizers, graph budgets, and coverage checks for equations \eqref{eq:band}--\eqref{eq:fuzzy_candidate}. Supplementary Section S2 describes the feature audit and edge-weight assignment, Table S2 reports the frozen edge-scoring weights, and Supplementary Section S3 and Table S3 report graph budgets and coverage checks.
 
 \figref{fig:fuzzy} summarizes the evidence-selection trade-off. Starting from the selected input package, the fuzzy variants show how much evidence can be removed while the candidate list remains fixed. The selected setting is therefore not chosen for a new candidate-ranking gain. Instead, it preserves Gold@20, candidate MRR, and candidate coverage while supplying a smaller graph to the adapter.
 
@@ -382,7 +381,7 @@ PrimeKG~\citep{chandak2023building} is the primary evaluation setting. We derive
 
 Hetionet~\citep{himmelstein2017systematic} uses the compound-treats-disease relation CtD, with the candidate universe restricted to compounds. Its evidence graph is much larger than the other prepared graphs and has a distinct topology and relation vocabulary, providing a test of robustness to graph scale and structure. For DRKG~\citep{drkg2020}, we use the DrugBank~\citep{wishart2018drugbank} relation \texttt{DRUGBANK::treats::Compound:Disease} as the target. The controlled evidence graph combines selected compound--gene target relations, disease--gene relations, gene--gene relations, and auxiliary compound--disease relations rather than using every raw DRKG edge.
 
-In repoDB~\citep{brown2017standard}, approved drug--indication pairs define positive target triples, whereas failed pairs are retained as diagnostic evidence. repoDB disease identifiers are UMLS~\citep{bodenreider2004unified} CUIs \rev{retained as local disease nodes.} The resulting graph combines approved target edges, failed-like diagnostic edges, and DRKG-derived compound--gene and gene--gene evidence. \rev{The DRKG evidence is linked to repoDB compounds through exact DrugBank identifiers, while unmatched compounds remain in the task. This partial alignment limits query-specific mechanistic paths, making repoDB useful for evaluating calibration with sparse evidence. Supplementary Section S11.1 describes normalization, identifier coverage, graph construction, and split checks.}
+In repoDB~\citep{brown2017standard}, approved drug--indication pairs define positive target triples, whereas failed pairs are retained as diagnostic evidence. repoDB disease identifiers are UMLS~\citep{bodenreider2004unified} CUIs \rev{retained as local disease nodes.} The resulting graph combines approved target edges, failed-like diagnostic edges, and DRKG-derived compound--gene and gene--gene evidence. \rev{The DRKG evidence is linked to repoDB compounds through exact DrugBank identifiers, while unmatched compounds remain in the task. This partial alignment limits query-specific mechanistic paths, making repoDB useful for evaluating calibration with sparse evidence.}
 
 Together, the five settings vary in target semantics, candidate-universe size, graph density, relation diversity, and availability of mechanism-oriented support. These differences allow the evaluation to distinguish improvements that transfer across datasets from effects that depend on a particular graph topology or evidence family.
 
@@ -450,7 +449,7 @@ The end-to-end reciprocal rank is \rev{calculated as follows}:
 \end{cases}
 \label{eq:e2e_rr}
 \end{equation}
-\rev{E2E MRR is the mean of these reciprocal ranks and thus reflects both the supplied candidate order and the generated answer. To keep the comparisons consistent, all module, calibration, and graph-selection experiments use the same deterministic generation and answer-matching protocol within each dataset. Supplementary Sections S12--S13 describe the downstream comparisons in detail.}
+\rev{E2E MRR is the mean of these reciprocal ranks and thus reflects both the supplied candidate order and the generated answer. To keep the comparisons consistent, all module, calibration, and graph-selection experiments use the same deterministic generation and answer-matching protocol within each dataset.}
 
 \subsection{Candidate stage comparison with structure baselines}
 
@@ -647,7 +646,6 @@ The remaining cases illustrate complementary behavior. Cortisone acetate remains
 
 %\subsection{Web application}
 %
-%We provide a public web application for interactive inspection of the \softfuse{} pipeline at \url{https://inosuke710-softfuse-kgc-demo.hf.space/}. It uses precomputed artifacts and allows users to select a dataset, split, disease or query case, and top-\(k\) value before viewing the Overview, Soft Support, and Fuzzy Retrieval tabs. Across tabs, the interface links a selected case to summary metrics, candidate-level support features, rank changes, and retained evidence edges. Users can therefore trace a reranking or graph-compression result to the final evidence package. Online Resource 1 provides screenshots and tab-level instructions under \textit{The Web Application}.
 
 % =========================================================
 % 5. Discussion
@@ -659,7 +657,7 @@ The remaining cases illustrate complementary behavior. Cortisone acetate remains
 The results support soft, confidence-aware evidence modeling for biomedical graph-augmented LLM completion. More specifically, they show that candidate ordering and graph-evidence selection are separate problems. Soft support can improve ranking when the available evidence differentiates candidates, whereas fuzzy retrieval can reduce graph size without changing the candidate list. This distinction matters in biomedical informatics because ranking performance, evidence efficiency, and interpretability all affect the usefulness of a graph-LLM pipeline.
 
 
-Evaluation across five datasets shows that the benefit of soft support depends on the evidence available for each query. \rev{The supplementary calibration study shows that learned and transferred weights offer alternatives to manual coefficient assignment, although their gains depend on the dataset and scoring features. For fuzzy retrieval, the graph-selection comparisons reveal a related dependence on the evidence objective: preserving an incident edge for each candidate does not necessarily preserve its paths to the query. Shortest-path selection retains more of this connectivity, whereas fuzzy retrieval maintains broader candidate coverage. These findings clarify the trade-offs involved in adapting the two modules to a particular dataset.}
+Evaluation across five datasets shows that the benefit of soft support depends on the evidence available for each query. \rev{The calibration study shows that learned and transferred weights offer alternatives to manual coefficient assignment, although their gains depend on the dataset and scoring features. For fuzzy retrieval, the graph-selection comparisons reveal a related dependence on the evidence objective: preserving an incident edge for each candidate does not necessarily preserve its paths to the query. Shortest-path selection retains more of this connectivity, whereas fuzzy retrieval maintains broader candidate coverage. These findings clarify the trade-offs involved in adapting the two modules to a particular dataset.}
 
 
 
@@ -710,9 +708,7 @@ Future work will pursue several directions. First, we will integrate stronger st
 Additional details are provided in the Supplementary Material. The opening \textit{The Web Application} section describes the public demo, screenshots, and tab-level usage notes. We provide a public web application for interactive inspection of the \softfuse{} pipeline at \url{https://inosuke710-softfuse-kgc-demo.hf.space/}. It uses precomputed artifacts and allows users to select a dataset, split, disease or query case, and top-\(k\) value before viewing the Overview, Soft Support, and Fuzzy Retrieval tabs. Across tabs, the interface links a selected case to summary metrics, candidate-level support features, rank changes, and retained evidence edges. Users can therefore trace a reranking or graph-compression result to the final evidence package. Sections S1--S3 report feature selection, weight assignment, frozen soft-support coefficients, fuzzy edge-scoring weights, and graph-budget checks. Sections S4--S6 provide the inference algorithm, graph-LLM settings, prompt and retrieval-rule templates, and PrimeKG formula variants. Sections S7--S9 report LLM comparisons, decoding checks, ablation, sensitivity, robustness, and the fuzzy encoder probe. Sections S10--S11 provide structure-only baseline training settings, dataset preprocessing, and leakage checks. \rev{Section S12 provides automatic calibration, coefficient transfer, sensitivity analyses, and downstream comparisons. Section S13 reports alternative subgraph selectors, information retention, and budget analyses.} Tables S1--S15 contain the corresponding configuration and diagnostic summaries. \rev{Tables S16--S24 summarize the calibration experiments, and Tables S25--S29 report the subgraph-selection comparisons. Figs. S1--S3 illustrate the web application, while Figs. S4--S6 present retention, budget, and representation analyses.}
 
 %We provide a public web application for interactive inspection of the \softfuse{} pipeline at \url{https://inosuke710-softfuse-kgc-demo.hf.space/}. It uses precomputed artifacts and allows users to select a dataset, split, disease or query case, and top-\(k\) value before viewing the Overview, Soft Support, and Fuzzy Retrieval tabs. Across tabs, the interface links a selected case to summary metrics, candidate-level support features, rank changes, and retained evidence edges. Users can therefore trace a reranking or graph-compression result to the final evidence package. 
-%Online Resource 1 provides screenshots and tab-level instructions under \textit{The Web Application}.
 
-%Online Resource 1 (ESM\_1.pdf). Supplementary methods, dataset-specific coefficients, retrieval budgets, implementation settings, model comparisons, ablation and robustness analyses, preprocessing and leakage checks, and screenshots and instructions for the \softfuse{} web application.
 
 %\bmhead{Statements and Declarations}\leavevmode\par
 \section*{Statements and Declarations}

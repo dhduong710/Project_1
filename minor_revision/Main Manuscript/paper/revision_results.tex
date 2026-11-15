@@ -1,10 +1,10 @@
-% Revised 2026-11-11: integrated Results, prose table introductions, and adjacent Tables 4--5.
+
 \subsection{\rev{Automatic calibration and coefficient transfer}}
 \label{sec:calibration_results}
 \begin{revisionblock}
 To assess the effect of coefficient choice on soft support, we compare equal, learned, and leave-one-dataset-out (LODO) weights for a common five-feature scorer. Learned weights use target-dataset validation data with query-group cross-validation, whereas LODO weights use the other four datasets without target calibration labels. All settings preserve candidate membership. \tabref{tab:calibration_main} compares their candidate MRR on the complete test splits with that of the original soft-support formula.
 
-% Keep the two summary tables together, without intervening prose.
+
 \end{revisionblock}
 \begin{tableorg}[!t]
 \begin{revisionblock}
@@ -32,7 +32,7 @@ To assess the effect of coefficient choice on soft support, we compare equal, le
 
 Learned weights improve candidate MRR over the original formula on four datasets and match it on PrimeKG, while LODO weights yield higher point estimates on all five. However, equal weights also improve four datasets, indicating that the shared feature set contributes to these gains. The learned-minus-equal comparison isolates the effect of learning the weights: the gain on repoDB is 0.00754, with an exploratory query-cluster 95\% interval of [0.00040, 0.01518], whereas the other four intervals include zero.
 
-To examine coefficient choice in fuzzy retrieval as well, we evaluate validation-based selection among 12 edge-scoring coefficient vectors while fixing candidate order and graph budget. Supplementary Section S12 and Tables S16--S24 report these results together with the fitting procedures, coefficient-transfer tests, sensitivity analyses, and downstream comparisons.
+To examine coefficient choice in fuzzy retrieval as well, we evaluate validation-based selection among 12 edge-scoring coefficient vectors while fixing candidate order and graph budget.
 \end{revisionblock}
 
 \subsection{\rev{Information retention and alternative graph selection}}
@@ -42,5 +42,5 @@ To examine which information is retained during graph compression, we compare fu
 
 Fuzzy retrieval preserves incident evidence for every candidate covered by the source graph. It also retains more three-hop reachability than uniform random selection on PharmKG, DRKG, and repoDB, with similar values on PrimeKG and Hetionet. Shortest-path selection preserves nearly all source connectivity, but covers fewer candidates on Hetionet, DRKG, and repoDB. This contrast shows that retaining evidence for each candidate and preserving its paths to the query are distinct objectives.
 
-Supplementary Section S13, Tables S25--S29, and Figs.~S4--S6 provide the full selector comparison and analyses of labeled paths, encoder representations, downstream behavior, and graph budgets. They also separate reductions due to duplicate removal from losses of unique triples. Together, these results show that fuzzy retrieval preserves candidate coverage during compression, while path retention depends on graph topology.
+Together, these results show that fuzzy retrieval preserves candidate coverage during compression, while path retention depends on graph topology.
 \end{revisionblock}
