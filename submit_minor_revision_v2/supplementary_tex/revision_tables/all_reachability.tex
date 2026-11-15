@@ -1,0 +1,17 @@
+\begin{tabular}{lrrrrr}
+\toprule
+Selector & PrimeKG & PharmKG & Hetionet & DRKG & repoDB \\
+\midrule
+Original fuzzy & 0.7737 & 0.9010 & 0.4835 & 0.8921 & 0.9546 \\
+Native score top-$k$ & 0.7805 & 0.5600 & 0.1455 & 0.0922 & 0.0000 \\
+Strict native coverage & 0.7737 & 0.9069 & 0.4835 & 0.6242 & 0.5634 \\
+Degree top-$k$ & 0.8408 & 0.5532 & 0.6251 & 0.5734 & 0.2591 \\
+Query BFS & 0.8328 & 0.6254 & 0.7047 & 0.8075 & 0.9164 \\
+Query PPR & 0.7868 & 0.6021 & 0.6814 & 0.7940 & 0.9005 \\
+Terminal PPR & 0.9111 & 0.5972 & 0.6251 & 0.7305 & 0.9112 \\
+Shortest paths & 0.9985 & 1.0000 & 1.0000 & 1.0000 & 1.0000 \\
+Relation stratified & 0.7694 & 0.8429 & 0.8479 & 0.6974 & 0.9399 \\
+Random (5 seeds) & 0.7760 & 0.4423 & 0.4848 & 0.5043 & 0.5465 \\
+Random + coverage (5 seeds) & 0.7816 & 0.7465 & 0.6068 & 0.7125 & 0.7700 \\
+\bottomrule
+\end{tabular}

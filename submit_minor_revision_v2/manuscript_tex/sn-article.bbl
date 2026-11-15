@@ -1,0 +1,1334 @@
+%% BioMed_Central_Bib_Style_v1.01
+
+\begin{thebibliography}{68}
+% BibTex style file: bmc-mathphys.bst (version 2.1), 2014-07-24
+\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi
+\ifx \binits  \undefined \def \binits#1{#1}\fi
+\ifx \bauthor  \undefined \def \bauthor#1{#1}\fi
+\ifx \batitle  \undefined \def \batitle#1{#1}\fi
+\ifx \bjtitle  \undefined \def \bjtitle#1{#1}\fi
+\ifx \bvolume  \undefined \def \bvolume#1{\textbf{#1}}\fi
+\ifx \byear  \undefined \def \byear#1{#1}\fi
+\ifx \bissue  \undefined \def \bissue#1{#1}\fi
+\ifx \bfpage  \undefined \def \bfpage#1{#1}\fi
+\ifx \blpage  \undefined \def \blpage #1{#1}\fi
+\ifx \burl  \undefined \def \burl#1{\textsf{#1}}\fi
+\ifx \doiurl  \undefined \def \doiurl#1{\url{https://doi.org/#1}}\fi
+\ifx \betal  \undefined \def \betal{\textit{et al.}}\fi
+\ifx \binstitute  \undefined \def \binstitute#1{#1}\fi
+\ifx \binstitutionaled  \undefined \def \binstitutionaled#1{#1}\fi
+\ifx \bctitle  \undefined \def \bctitle#1{#1}\fi
+\ifx \beditor  \undefined \def \beditor#1{#1}\fi
+\ifx \bpublisher  \undefined \def \bpublisher#1{#1}\fi
+\ifx \bbtitle  \undefined \def \bbtitle#1{#1}\fi
+\ifx \bedition  \undefined \def \bedition#1{#1}\fi
+\ifx \bseriesno  \undefined \def \bseriesno#1{#1}\fi
+\ifx \blocation  \undefined \def \blocation#1{#1}\fi
+\ifx \bsertitle  \undefined \def \bsertitle#1{#1}\fi
+\ifx \bsnm \undefined \def \bsnm#1{#1}\fi
+\ifx \bsuffix \undefined \def \bsuffix#1{#1}\fi
+\ifx \bparticle \undefined \def \bparticle#1{#1}\fi
+\ifx \barticle \undefined \def \barticle#1{#1}\fi
+\bibcommenthead
+\ifx \bconfdate \undefined \def \bconfdate #1{#1}\fi
+\ifx \botherref \undefined \def \botherref #1{#1}\fi
+\ifx \url \undefined \def \url#1{\textsf{#1}}\fi
+\ifx \bchapter \undefined \def \bchapter#1{#1}\fi
+\ifx \bbook \undefined \def \bbook#1{#1}\fi
+\ifx \bcomment \undefined \def \bcomment#1{#1}\fi
+\ifx \oauthor \undefined \def \oauthor#1{#1}\fi
+\ifx \citeauthoryear \undefined \def \citeauthoryear#1{#1}\fi
+\ifx \endbibitem  \undefined \def \endbibitem {}\fi
+\ifx \bconflocation  \undefined \def \bconflocation#1{#1}\fi
+\ifx \arxivurl  \undefined \def \arxivurl#1{\textsf{#1}}\fi
+\csname PreBibitemsHook\endcsname
+
+%%% 1
+\bibitem[\protect\citeauthoryear{Nickel et~al.}{2015}]{nickel2015review}
+\begin{barticle}
+\bauthor{\bsnm{Nickel}, \binits{M.}},
+\bauthor{\bsnm{Murphy}, \binits{K.}},
+\bauthor{\bsnm{Tresp}, \binits{V.}},
+\bauthor{\bsnm{Gabrilovich}, \binits{E.}}:
+\batitle{A review of relational machine learning for knowledge graphs}.
+\bjtitle{Proceedings of the IEEE}
+\bvolume{104}(\bissue{1}),
+\bfpage{11}--\blpage{33}
+(\byear{2015})
+\doiurl{10.1109/JPROC.2015.2483592}
+\end{barticle}
+\endbibitem
+
+%%% 2
+\bibitem[\protect\citeauthoryear{Ji et~al.}{2021}]{ji2021survey}
+\begin{barticle}
+\bauthor{\bsnm{Ji}, \binits{S.}},
+\bauthor{\bsnm{Pan}, \binits{S.}},
+\bauthor{\bsnm{Cambria}, \binits{E.}},
+\bauthor{\bsnm{Marttinen}, \binits{P.}},
+\bauthor{\bsnm{Yu}, \binits{P.S.}}:
+\batitle{A survey on knowledge graphs: Representation, acquisition, and
+  applications}.
+\bjtitle{IEEE transactions on neural networks and learning systems}
+\bvolume{33}(\bissue{2}),
+\bfpage{494}--\blpage{514}
+(\byear{2021})
+\doiurl{10.1109/TNNLS.2021.3070843}
+\end{barticle}
+\endbibitem
+
+%%% 3
+\bibitem[\protect\citeauthoryear{Hogan et~al.}{2021}]{hogan2021knowledge}
+\begin{barticle}
+\bauthor{\bsnm{Hogan}, \binits{A.}},
+\bauthor{\bsnm{Blomqvist}, \binits{E.}},
+\bauthor{\bsnm{Cochez}, \binits{M.}},
+\bauthor{\bsnm{d{'}Amato}, \binits{C.}},
+\bauthor{\bsnm{Melo}, \binits{G.}},
+\bauthor{\bsnm{Gutierrez}, \binits{C.}},
+\bauthor{\bsnm{Kirrane}, \binits{S.}},
+\bauthor{\bsnm{Gayo}, \binits{J.E.L.}},
+\bauthor{\bsnm{Navigli}, \binits{R.}},
+\bauthor{\bsnm{Neumaier}, \binits{S.}}, \betal:
+\batitle{Knowledge graphs}.
+\bjtitle{ACM Computing Surveys (Csur)}
+\bvolume{54}(\bissue{4}),
+\bfpage{1}--\blpage{37}
+(\byear{2021})
+\doiurl{10.1145/3447772}
+\end{barticle}
+\endbibitem
+
+%%% 4
+\bibitem[\protect\citeauthoryear{Himmelstein
+  et~al.}{2017}]{himmelstein2017systematic}
+\begin{botherref}
+\oauthor{\bsnm{Himmelstein}, \binits{D.S.}},
+\oauthor{\bsnm{Lizee}, \binits{A.}},
+\oauthor{\bsnm{Hessler}, \binits{C.}},
+\oauthor{\bsnm{Brueggeman}, \binits{L.}},
+\oauthor{\bsnm{Chen}, \binits{S.L.}},
+\oauthor{\bsnm{Hadley}, \binits{D.}},
+\oauthor{\bsnm{Green}, \binits{A.}},
+\oauthor{\bsnm{Khankhanian}, \binits{P.}},
+\oauthor{\bsnm{Baranzini}, \binits{S.E.}}:
+Systematic integration of biomedical knowledge prioritizes drugs for
+  repurposing.
+elife
+\textbf{6}
+(2017)
+\doiurl{10.7554/eLife.26726}
+\end{botherref}
+\endbibitem
+
+%%% 5
+\bibitem[\protect\citeauthoryear{Chandak et~al.}{2023}]{chandak2023building}
+\begin{botherref}
+\oauthor{\bsnm{Chandak}, \binits{P.}},
+\oauthor{\bsnm{Huang}, \binits{K.}},
+\oauthor{\bsnm{Zitnik}, \binits{M.}}:
+Building a knowledge graph to enable precision medicine.
+Scientific data
+\textbf{10}(1)
+(2023)
+\doiurl{10.1038/s41597-023-01960-3}
+\end{botherref}
+\endbibitem
+
+%%% 6
+\bibitem[\protect\citeauthoryear{Zheng et~al.}{2021}]{zheng2021pharmkg}
+\begin{botherref}
+\oauthor{\bsnm{Zheng}, \binits{S.}},
+\oauthor{\bsnm{Rao}, \binits{J.}},
+\oauthor{\bsnm{Song}, \binits{Y.}},
+\oauthor{\bsnm{Zhang}, \binits{J.}},
+\oauthor{\bsnm{Xiao}, \binits{X.}},
+\oauthor{\bsnm{Fang}, \binits{E.F.}},
+\oauthor{\bsnm{Yang}, \binits{Y.}},
+\oauthor{\bsnm{Niu}, \binits{Z.}}:
+{PharmKG}: a dedicated knowledge graph benchmark for biomedical data mining.
+Briefings in bioinformatics
+\textbf{22}(4)
+(2021)
+\doiurl{10.1093/bib/bbaa344}
+\end{botherref}
+\endbibitem
+
+%%% 7
+\bibitem[\protect\citeauthoryear{Ioannidis et~al.}{2020}]{drkg2020}
+\begin{botherref}
+\oauthor{\bsnm{Ioannidis}, \binits{V.N.}},
+\oauthor{\bsnm{Song}, \binits{X.}},
+\oauthor{\bsnm{Manchanda}, \binits{S.}},
+\oauthor{\bsnm{Li}, \binits{M.}},
+\oauthor{\bsnm{Pan}, \binits{X.}},
+\oauthor{\bsnm{Zheng}, \binits{D.}},
+\oauthor{\bsnm{Ning}, \binits{X.}},
+\oauthor{\bsnm{Zeng}, \binits{X.}},
+\oauthor{\bsnm{Karypis}, \binits{G.}}:
+{DRKG} - Drug Repurposing Knowledge Graph for {COVID-19}
+(2020).
+\url{https://github.com/gnn4dr/DRKG}
+\end{botherref}
+\endbibitem
+
+%%% 8
+\bibitem[\protect\citeauthoryear{Brown and Patel}{2017}]{brown2017standard}
+\begin{botherref}
+\oauthor{\bsnm{Brown}, \binits{A.S.}},
+\oauthor{\bsnm{Patel}, \binits{C.J.}}:
+A standard database for drug repositioning.
+Scientific data
+\textbf{4}(1)
+(2017)
+\doiurl{10.1038/sdata.2017.29}
+\end{botherref}
+\endbibitem
+
+%%% 9
+\bibitem[\protect\citeauthoryear{Bodenreider}{2004}]{bodenreider2004unified}
+\begin{barticle}
+\bauthor{\bsnm{Bodenreider}, \binits{O.}}:
+\batitle{The unified medical language system ({UMLS}): integrating biomedical
+  terminology}.
+\bjtitle{Nucleic acids research}
+\bvolume{32}(\bissue{suppl\_1}),
+\bfpage{267}--\blpage{270}
+(\byear{2004})
+\doiurl{10.1093/nar/gkh061}
+\end{barticle}
+\endbibitem
+
+%%% 10
+\bibitem[\protect\citeauthoryear{Pi{\~n}ero et~al.}{2020}]{pinero2020disgenet}
+\begin{barticle}
+\bauthor{\bsnm{Pi{\~n}ero}, \binits{J.}},
+\bauthor{\bsnm{Ram{\'\i}rez-Anguita}, \binits{J.M.}},
+\bauthor{\bsnm{Sa{\"u}ch-Pitarch}, \binits{J.}},
+\bauthor{\bsnm{Ronzano}, \binits{F.}},
+\bauthor{\bsnm{Centeno}, \binits{E.}},
+\bauthor{\bsnm{Sanz}, \binits{F.}},
+\bauthor{\bsnm{Furlong}, \binits{L.I.}}:
+\batitle{The {DisGeNET} knowledge platform for disease genomics: 2019 update}.
+\bjtitle{Nucleic acids research}
+\bvolume{48}(\bissue{D1}),
+\bfpage{845}--\blpage{855}
+(\byear{2020})
+\doiurl{10.1093/nar/gkz1021}
+\end{barticle}
+\endbibitem
+
+%%% 11
+\bibitem[\protect\citeauthoryear{{The UniProt
+  Consortium}}{2017}]{uniprot2018uniprot}
+\begin{barticle}
+\bauthor{\bsnm{{The UniProt Consortium}}}:
+\batitle{{UniProt}: the universal protein knowledgebase}.
+\bjtitle{Nucleic Acids Research}
+\bvolume{45}(\bissue{D1}),
+\bfpage{158}--\blpage{169}
+(\byear{2017})
+\doiurl{10.1093/nar/gkw1099}
+\end{barticle}
+\endbibitem
+
+%%% 12
+\bibitem[\protect\citeauthoryear{Amberger et~al.}{2019}]{amberger2019omim}
+\begin{barticle}
+\bauthor{\bsnm{Amberger}, \binits{J.S.}},
+\bauthor{\bsnm{Bocchini}, \binits{C.A.}},
+\bauthor{\bsnm{Scott}, \binits{A.F.}},
+\bauthor{\bsnm{Hamosh}, \binits{A.}}:
+\batitle{{OMIM.org}: leveraging knowledge across phenotype--gene
+  relationships}.
+\bjtitle{Nucleic acids research}
+\bvolume{47}(\bissue{D1}),
+\bfpage{1038}--\blpage{1043}
+(\byear{2019})
+\doiurl{10.1093/nar/gky1151}
+\end{barticle}
+\endbibitem
+
+%%% 13
+\bibitem[\protect\citeauthoryear{Wishart et~al.}{2018}]{wishart2018drugbank}
+\begin{barticle}
+\bauthor{\bsnm{Wishart}, \binits{D.S.}},
+\bauthor{\bsnm{Feunang}, \binits{Y.D.}},
+\bauthor{\bsnm{Guo}, \binits{A.C.}},
+\bauthor{\bsnm{Lo}, \binits{E.J.}},
+\bauthor{\bsnm{Marcu}, \binits{A.}},
+\bauthor{\bsnm{Grant}, \binits{J.R.}},
+\bauthor{\bsnm{Sajed}, \binits{T.}},
+\bauthor{\bsnm{Johnson}, \binits{D.}},
+\bauthor{\bsnm{Li}, \binits{C.}},
+\bauthor{\bsnm{Sayeeda}, \binits{Z.}}, \betal:
+\batitle{{DrugBank} 5.0: a major update to the {DrugBank} database for 2018}.
+\bjtitle{Nucleic acids research}
+\bvolume{46}(\bissue{D1}),
+\bfpage{1074}--\blpage{1082}
+(\byear{2018})
+\doiurl{10.1093/nar/gkx1037}
+\end{barticle}
+\endbibitem
+
+%%% 14
+\bibitem[\protect\citeauthoryear{Kuhn et~al.}{2014}]{kuhn2014stitch}
+\begin{barticle}
+\bauthor{\bsnm{Kuhn}, \binits{M.}},
+\bauthor{\bsnm{Szklarczyk}, \binits{D.}},
+\bauthor{\bsnm{Pletscher-Frankild}, \binits{S.}},
+\bauthor{\bsnm{Blicher}, \binits{T.H.}},
+\bauthor{\bsnm{Mering}, \binits{C.}},
+\bauthor{\bsnm{Jensen}, \binits{L.J.}},
+\bauthor{\bsnm{Bork}, \binits{P.}}:
+\batitle{{STITCH} 4: integration of protein--chemical interactions with user
+  data}.
+\bjtitle{Nucleic acids research}
+\bvolume{42}(\bissue{D1}),
+\bfpage{401}--\blpage{407}
+(\byear{2014})
+\doiurl{10.1093/nar/gkt1207}
+\end{barticle}
+\endbibitem
+
+%%% 15
+\bibitem[\protect\citeauthoryear{Szklarczyk
+  et~al.}{2021}]{szklarczyk2021string}
+\begin{barticle}
+\bauthor{\bsnm{Szklarczyk}, \binits{D.}},
+\bauthor{\bsnm{Gable}, \binits{A.L.}},
+\bauthor{\bsnm{Nastou}, \binits{K.C.}},
+\bauthor{\bsnm{Lyon}, \binits{D.}},
+\bauthor{\bsnm{Kirsch}, \binits{R.}},
+\bauthor{\bsnm{Pyysalo}, \binits{S.}},
+\bauthor{\bsnm{Doncheva}, \binits{N.T.}},
+\bauthor{\bsnm{Legeay}, \binits{M.}},
+\bauthor{\bsnm{Fang}, \binits{T.}},
+\bauthor{\bsnm{Bork}, \binits{P.}}, \betal:
+\batitle{The {STRING} database in 2021: customizable protein--protein networks,
+  and functional characterization of user-uploaded gene/measurement sets}.
+\bjtitle{Nucleic acids research}
+\bvolume{49}(\bissue{D1}),
+\bfpage{605}--\blpage{612}
+(\byear{2021})
+\doiurl{10.1093/nar/gkaa1074}
+\end{barticle}
+\endbibitem
+
+%%% 16
+\bibitem[\protect\citeauthoryear{Wang et~al.}{2017}]{wang2017knowledge}
+\begin{barticle}
+\bauthor{\bsnm{Wang}, \binits{Q.}},
+\bauthor{\bsnm{Mao}, \binits{Z.}},
+\bauthor{\bsnm{Wang}, \binits{B.}},
+\bauthor{\bsnm{Guo}, \binits{L.}}:
+\batitle{Knowledge graph embedding: A survey of approaches and applications}.
+\bjtitle{IEEE transactions on knowledge and data engineering}
+\bvolume{29}(\bissue{12}),
+\bfpage{2724}--\blpage{2743}
+(\byear{2017})
+\doiurl{10.1109/TKDE.2017.2754499}
+\end{barticle}
+\endbibitem
+
+%%% 17
+\bibitem[\protect\citeauthoryear{Bordes et~al.}{2013}]{bordes2013translating}
+\begin{botherref}
+\oauthor{\bsnm{Bordes}, \binits{A.}},
+\oauthor{\bsnm{Usunier}, \binits{N.}},
+\oauthor{\bsnm{Garcia-Duran}, \binits{A.}},
+\oauthor{\bsnm{Weston}, \binits{J.}},
+\oauthor{\bsnm{Yakhnenko}, \binits{O.}}:
+Translating embeddings for modeling multi-relational data.
+Advances in neural information processing systems
+\textbf{26}
+(2013)
+\end{botherref}
+\endbibitem
+
+%%% 18
+\bibitem[\protect\citeauthoryear{Yang et~al.}{2015}]{yang2014embedding}
+\begin{botherref}
+\oauthor{\bsnm{Yang}, \binits{B.}},
+\oauthor{\bsnm{Yih}, \binits{W.-t.}},
+\oauthor{\bsnm{He}, \binits{X.}},
+\oauthor{\bsnm{Gao}, \binits{J.}},
+\oauthor{\bsnm{Deng}, \binits{L.}}:
+Embedding entities and relations for learning and inference in knowledge bases.
+International Conference on Learning Representations
+(2015)
+\end{botherref}
+\endbibitem
+
+%%% 19
+\bibitem[\protect\citeauthoryear{Trouillon et~al.}{2016}]{trouillon2016complex}
+\begin{bchapter}
+\bauthor{\bsnm{Trouillon}, \binits{T.}},
+\bauthor{\bsnm{Welbl}, \binits{J.}},
+\bauthor{\bsnm{Riedel}, \binits{S.}},
+\bauthor{\bsnm{Gaussier}, \binits{{\'E}.}},
+\bauthor{\bsnm{Bouchard}, \binits{G.}}:
+\bctitle{Complex embeddings for simple link prediction}.
+In: \bbtitle{International Conference on Machine Learning},
+pp. \bfpage{2071}--\blpage{2080}
+(\byear{2016}).
+\bcomment{PMLR}
+\end{bchapter}
+\endbibitem
+
+%%% 20
+\bibitem[\protect\citeauthoryear{Sun et~al.}{2019}]{sunrotate}
+\begin{bchapter}
+\bauthor{\bsnm{Sun}, \binits{Z.}},
+\bauthor{\bsnm{Deng}, \binits{Z.-H.}},
+\bauthor{\bsnm{Nie}, \binits{J.-Y.}},
+\bauthor{\bsnm{Tang}, \binits{J.}}:
+\bctitle{{RotatE}: Knowledge graph embedding by relational rotation in complex
+  space}.
+In: \bbtitle{International Conference on Learning Representations}
+(\byear{2019})
+\end{bchapter}
+\endbibitem
+
+%%% 21
+\bibitem[\protect\citeauthoryear{Schlichtkrull
+  et~al.}{2018}]{schlichtkrull2018modeling}
+\begin{bchapter}
+\bauthor{\bsnm{Schlichtkrull}, \binits{M.}},
+\bauthor{\bsnm{Kipf}, \binits{T.N.}},
+\bauthor{\bsnm{Bloem}, \binits{P.}},
+\bauthor{\bsnm{Berg}, \binits{R.}},
+\bauthor{\bsnm{Titov}, \binits{I.}},
+\bauthor{\bsnm{Welling}, \binits{M.}}:
+\bctitle{Modeling relational data with graph convolutional networks}.
+In: \bbtitle{European Semantic Web Conference},
+pp. \bfpage{593}--\blpage{607}
+(\byear{2018}).
+\doiurl{10.1007/978-3-319-93417-4_38} .
+\bcomment{Springer}
+\end{bchapter}
+\endbibitem
+
+%%% 22
+\bibitem[\protect\citeauthoryear{Vashishth et~al.}{2020}]{vashishthcomposition}
+\begin{bchapter}
+\bauthor{\bsnm{Vashishth}, \binits{S.}},
+\bauthor{\bsnm{Sanyal}, \binits{S.}},
+\bauthor{\bsnm{Nitin}, \binits{V.}},
+\bauthor{\bsnm{Talukdar}, \binits{P.}}:
+\bctitle{Composition-based multi-relational graph convolutional networks}.
+In: \bbtitle{International Conference on Learning Representations}
+(\byear{2020})
+\end{bchapter}
+\endbibitem
+
+%%% 23
+\bibitem[\protect\citeauthoryear{Sheikh et~al.}{2020}]{sheikh2021knowledge}
+\begin{bchapter}
+\bauthor{\bsnm{Sheikh}, \binits{N.}},
+\bauthor{\bsnm{Qin}, \binits{X.}},
+\bauthor{\bsnm{Reinwald}, \binits{B.}},
+\bauthor{\bsnm{Miksovic}, \binits{C.}},
+\bauthor{\bsnm{Gschwind}, \binits{T.}},
+\bauthor{\bsnm{Scotton}, \binits{P.}}:
+\bctitle{Knowledge graph embedding using graph convolutional networks with
+  relation-aware attention}.
+In: \bbtitle{Proceedings of the 2nd International Workshop on Deep Learning on
+  Graphs: Methods and Applications ({KDD-DLG})}
+(\byear{2020})
+\end{bchapter}
+\endbibitem
+
+%%% 24
+\bibitem[\protect\citeauthoryear{Yang et~al.}{2017}]{yang2017differentiable}
+\begin{botherref}
+\oauthor{\bsnm{Yang}, \binits{F.}},
+\oauthor{\bsnm{Yang}, \binits{Z.}},
+\oauthor{\bsnm{Cohen}, \binits{W.W.}}:
+Differentiable learning of logical rules for knowledge base reasoning.
+Advances in neural information processing systems
+\textbf{30}
+(2017)
+\end{botherref}
+\endbibitem
+
+%%% 25
+\bibitem[\protect\citeauthoryear{Meilicke et~al.}{2019}]{meilicke2019anytime}
+\begin{bchapter}
+\bauthor{\bsnm{Meilicke}, \binits{C.}},
+\bauthor{\bsnm{Chekol}, \binits{M.W.}},
+\bauthor{\bsnm{Ruffinelli}, \binits{D.}},
+\bauthor{\bsnm{Stuckenschmidt}, \binits{H.}}:
+\bctitle{Anytime bottom-up rule learning for knowledge graph completion.}
+In: \bbtitle{IJCAI},
+vol. \bseriesno{2019},
+pp. \bfpage{3137}--\blpage{3143}
+(\byear{2019}).
+\doiurl{10.24963/ijcai.2019/435}
+\end{bchapter}
+\endbibitem
+
+%%% 26
+\bibitem[\protect\citeauthoryear{Cheng et~al.}{2023}]{cheng2023neural}
+\begin{bchapter}
+\bauthor{\bsnm{Cheng}, \binits{K.}},
+\bauthor{\bsnm{Amed}, \binits{N.K.}},
+\bauthor{\bsnm{Sun}, \binits{Y.}}:
+\bctitle{Neural compositional rule learning for knowledge graph reasoning}.
+In: \bbtitle{International Conference on Learning Representations (ICLR)}
+(\byear{2023})
+\end{bchapter}
+\endbibitem
+
+%%% 27
+\bibitem[\protect\citeauthoryear{Devlin et~al.}{2019}]{devlin2019bert}
+\begin{bchapter}
+\bauthor{\bsnm{Devlin}, \binits{J.}},
+\bauthor{\bsnm{Chang}, \binits{M.-W.}},
+\bauthor{\bsnm{Lee}, \binits{K.}},
+\bauthor{\bsnm{Toutanova}, \binits{K.}}:
+\bctitle{{BERT}: Pre-training of deep bidirectional transformers for language
+  understanding}.
+In: \bbtitle{Proceedings of the 2019 Conference of the North American Chapter
+  of the Association for Computational Linguistics: Human Language
+  Technologies, Volume 1 (long and Short Papers)},
+pp. \bfpage{4171}--\blpage{4186}
+(\byear{2019}).
+\doiurl{10.18653/v1/N19-1423}
+\end{bchapter}
+\endbibitem
+
+%%% 28
+\bibitem[\protect\citeauthoryear{Gu et~al.}{2021}]{gu2021domain}
+\begin{barticle}
+\bauthor{\bsnm{Gu}, \binits{Y.}},
+\bauthor{\bsnm{Tinn}, \binits{R.}},
+\bauthor{\bsnm{Cheng}, \binits{H.}},
+\bauthor{\bsnm{Lucas}, \binits{M.}},
+\bauthor{\bsnm{Usuyama}, \binits{N.}},
+\bauthor{\bsnm{Liu}, \binits{X.}},
+\bauthor{\bsnm{Naumann}, \binits{T.}},
+\bauthor{\bsnm{Gao}, \binits{J.}},
+\bauthor{\bsnm{Poon}, \binits{H.}}:
+\batitle{Domain-specific language model pretraining for biomedical natural
+  language processing}.
+\bjtitle{ACM Transactions on Computing for Healthcare (HEALTH)}
+\bvolume{3}(\bissue{1}),
+\bfpage{1}--\blpage{23}
+(\byear{2021})
+\doiurl{10.1145/3458754}
+\end{barticle}
+\endbibitem
+
+%%% 29
+\bibitem[\protect\citeauthoryear{Luo et~al.}{2022}]{luo2022biogpt}
+\begin{botherref}
+\oauthor{\bsnm{Luo}, \binits{R.}},
+\oauthor{\bsnm{Sun}, \binits{L.}},
+\oauthor{\bsnm{Xia}, \binits{Y.}},
+\oauthor{\bsnm{Qin}, \binits{T.}},
+\oauthor{\bsnm{Zhang}, \binits{S.}},
+\oauthor{\bsnm{Poon}, \binits{H.}},
+\oauthor{\bsnm{Liu}, \binits{T.-Y.}}:
+{BioGPT}: generative pre-trained transformer for biomedical text generation and
+  mining.
+Briefings in bioinformatics
+\textbf{23}(6)
+(2022)
+\doiurl{10.1093/bib/bbac409}
+\end{botherref}
+\endbibitem
+
+%%% 30
+\bibitem[\protect\citeauthoryear{Wang et~al.}{2022}]{wang2022simkgc}
+\begin{bchapter}
+\bauthor{\bsnm{Wang}, \binits{L.}},
+\bauthor{\bsnm{Zhao}, \binits{W.}},
+\bauthor{\bsnm{Wei}, \binits{Z.}},
+\bauthor{\bsnm{Liu}, \binits{J.}}:
+\bctitle{{SimKGC}: Simple contrastive knowledge graph completion with
+  pre-trained language models}.
+In: \bbtitle{Proceedings of the 60th Annual Meeting of the Association for
+  Computational Linguistics (volume 1: Long Papers)},
+pp. \bfpage{4281}--\blpage{4294}
+(\byear{2022}).
+\doiurl{10.18653/v1/2022.acl-long.295}
+\end{bchapter}
+\endbibitem
+
+%%% 31
+\bibitem[\protect\citeauthoryear{Wei et~al.}{2026}]{wei2026kicgptv2}
+\begin{barticle}
+\bauthor{\bsnm{Wei}, \binits{Y.}},
+\bauthor{\bsnm{Huang}, \binits{Q.}},
+\bauthor{\bsnm{Kwok}, \binits{J.T.Y.}},
+\bauthor{\bsnm{Zhang}, \binits{Y.}}:
+\batitle{{KICGPTv2}: Large language model with knowledge in context for
+  knowledge graph completion}.
+\bjtitle{IEEE Transactions on Knowledge and Data Engineering}
+\bvolume{38}(\bissue{7}),
+\bfpage{4464}--\blpage{4476}
+(\byear{2026})
+\doiurl{10.1109/TKDE.2026.3674507}
+\end{barticle}
+\endbibitem
+
+%%% 32
+\bibitem[\protect\citeauthoryear{Zhang et~al.}{2024}]{zhang2024making}
+\begin{bchapter}
+\bauthor{\bsnm{Zhang}, \binits{Y.}},
+\bauthor{\bsnm{Chen}, \binits{Z.}},
+\bauthor{\bsnm{Guo}, \binits{L.}},
+\bauthor{\bsnm{Xu}, \binits{Y.}},
+\bauthor{\bsnm{Zhang}, \binits{W.}},
+\bauthor{\bsnm{Chen}, \binits{H.}}:
+\bctitle{Making large language models perform better in knowledge graph
+  completion}.
+In: \bbtitle{Proceedings of the 32nd ACM International Conference on
+  Multimedia},
+pp. \bfpage{233}--\blpage{242}
+(\byear{2024}).
+\doiurl{10.1145/3664647.3681327}
+\end{bchapter}
+\endbibitem
+
+%%% 33
+\bibitem[\protect\citeauthoryear{Liu et~al.}{2024}]{liu2024finetuning}
+\begin{bchapter}
+\bauthor{\bsnm{Liu}, \binits{Y.}},
+\bauthor{\bsnm{Tian}, \binits{X.}},
+\bauthor{\bsnm{Sun}, \binits{Z.}},
+\bauthor{\bsnm{Hu}, \binits{W.}}:
+\bctitle{Finetuning generative large language models with discrimination
+  instructions for knowledge graph completion}.
+In: \bbtitle{International Semantic Web Conference},
+pp. \bfpage{199}--\blpage{217}
+(\byear{2024}).
+\doiurl{10.1007/978-3-031-77844-5_11} .
+\bcomment{Springer}
+\end{bchapter}
+\endbibitem
+
+%%% 34
+\bibitem[\protect\citeauthoryear{Wang et~al.}{2024}]{wang2024kc}
+\begin{bchapter}
+\bauthor{\bsnm{Wang}, \binits{Y.}},
+\bauthor{\bsnm{Hu}, \binits{M.}},
+\bauthor{\bsnm{Huang}, \binits{Z.}},
+\bauthor{\bsnm{Li}, \binits{D.}},
+\bauthor{\bsnm{Yang}, \binits{D.}},
+\bauthor{\bsnm{Lu}, \binits{X.}}:
+\bctitle{{KC-GenRe}: A knowledge-constrained generative re-ranking method based
+  on large language models for knowledge graph completion}.
+In: \bbtitle{Proceedings of the 2024 Joint International Conference on
+  Computational Linguistics, Language Resources and Evaluation (LREC-COLING
+  2024)},
+pp. \bfpage{9668}--\blpage{9680}
+(\byear{2024}).
+\doiurl{10.63317/2i6ru3r3vfh6}
+\end{bchapter}
+\endbibitem
+
+%%% 35
+\bibitem[\protect\citeauthoryear{Xiao et~al.}{2025}]{xiao2025drkgc}
+\begin{bchapter}
+\bauthor{\bsnm{Xiao}, \binits{Y.}},
+\bauthor{\bsnm{Zhang}, \binits{S.}},
+\bauthor{\bsnm{Dai}, \binits{Y.}},
+\bauthor{\bsnm{Zhou}, \binits{H.}},
+\bauthor{\bsnm{Hou}, \binits{J.}},
+\bauthor{\bsnm{Ding}, \binits{J.}},
+\bauthor{\bsnm{Zhang}, \binits{R.}}:
+\bctitle{{DrKGC}: Dynamic subgraph retrieval-augmented {LLM}s for knowledge
+  graph completion across general and biomedical domains}.
+In: \bbtitle{Findings of the Association for Computational Linguistics: EMNLP
+  2025},
+pp. \bfpage{16432}--\blpage{16445}.
+\bpublisher{Association for Computational Linguistics},
+\blocation{Suzhou, China}
+(\byear{2025}).
+\doiurl{10.18653/v1/2025.findings-emnlp.892}
+\end{bchapter}
+\endbibitem
+
+%%% 36
+\bibitem[\protect\citeauthoryear{Hu et~al.}{2022}]{hulora}
+\begin{bchapter}
+\bauthor{\bsnm{Hu}, \binits{E.J.}},
+\bauthor{\bsnm{Shen}, \binits{Y.}},
+\bauthor{\bsnm{Wallis}, \binits{P.}},
+\bauthor{\bsnm{Allen-Zhu}, \binits{Z.}},
+\bauthor{\bsnm{Li}, \binits{Y.}},
+\bauthor{\bsnm{Wang}, \binits{S.}},
+\bauthor{\bsnm{Wang}, \binits{L.}},
+\bauthor{\bsnm{Chen}, \binits{W.}}:
+\bctitle{{LoRA}: Low-rank adaptation of large language models}.
+In: \bbtitle{International Conference on Learning Representations}
+(\byear{2022})
+\end{bchapter}
+\endbibitem
+
+%%% 37
+\bibitem[\protect\citeauthoryear{Zadeh}{1965}]{zadeh1965fuzzy}
+\begin{barticle}
+\bauthor{\bsnm{Zadeh}, \binits{L.A.}}:
+\batitle{Fuzzy sets}.
+\bjtitle{Information and control}
+\bvolume{8}(\bissue{3}),
+\bfpage{338}--\blpage{353}
+(\byear{1965})
+\doiurl{10.1016/S0019-9958(65)90241-X}
+\end{barticle}
+\endbibitem
+
+%%% 38
+\bibitem[\protect\citeauthoryear{Dubois and Prade}{1980}]{prade1980fuzzy}
+\begin{bbook}
+\bauthor{\bsnm{Dubois}, \binits{D.}},
+\bauthor{\bsnm{Prade}, \binits{H.}}:
+\bbtitle{Fuzzy Sets and Systems: Theory and Applications}.
+\bsertitle{Mathematics in Science and Engineering},
+vol. \bseriesno{144}.
+\bpublisher{Academic Press},
+\blocation{New York}
+(\byear{1980})
+\end{bbook}
+\endbibitem
+
+%%% 39
+\bibitem[\protect\citeauthoryear{H{\'a}jek}{1998}]{hajek2001metamathematics}
+\begin{bbook}
+\bauthor{\bsnm{H{\'a}jek}, \binits{P.}}:
+\bbtitle{Metamathematics of Fuzzy Logic}.
+\bsertitle{Trends in Logic},
+vol. \bseriesno{4}.
+\bpublisher{Springer},
+\blocation{Dordrecht}
+(\byear{1998}).
+\doiurl{10.1007/978-94-011-5300-3}
+\end{bbook}
+\endbibitem
+
+%%% 40
+\bibitem[\protect\citeauthoryear{Straccia}{2006}]{straccia2006fuzzy}
+\begin{bchapter}
+\bauthor{\bsnm{Straccia}, \binits{U.}}:
+\bctitle{A fuzzy description logic for the semantic web}.
+In: \bbtitle{Fuzzy Logic and the Semantic Web}.
+\bsertitle{Capturing Intelligence},
+vol. \bseriesno{1},
+pp. \bfpage{73}--\blpage{90}.
+\bpublisher{Elsevier}
+(\byear{2006}).
+\doiurl{10.1016/S1574-9576(06)80006-7}
+\end{bchapter}
+\endbibitem
+
+%%% 41
+\bibitem[\protect\citeauthoryear{Lukasiewicz and
+  Straccia}{2008}]{lukasiewicz2008managing}
+\begin{barticle}
+\bauthor{\bsnm{Lukasiewicz}, \binits{T.}},
+\bauthor{\bsnm{Straccia}, \binits{U.}}:
+\batitle{Managing uncertainty and vagueness in description logics for the
+  semantic web}.
+\bjtitle{Journal of Web Semantics}
+\bvolume{6}(\bissue{4}),
+\bfpage{291}--\blpage{308}
+(\byear{2008})
+\doiurl{10.1016/j.websem.2008.04.001}
+\end{barticle}
+\endbibitem
+
+%%% 42
+\bibitem[\protect\citeauthoryear{Sadegh et~al.}{2020}]{sadegh2020exploring}
+\begin{botherref}
+\oauthor{\bsnm{Sadegh}, \binits{S.}},
+\oauthor{\bsnm{Matschinske}, \binits{J.}},
+\oauthor{\bsnm{Blumenthal}, \binits{D.B.}},
+\oauthor{\bsnm{Galindez}, \binits{G.}},
+\oauthor{\bsnm{Kacprowski}, \binits{T.}},
+\oauthor{\bsnm{List}, \binits{M.}},
+\oauthor{\bsnm{Nasirigerdeh}, \binits{R.}},
+\oauthor{\bsnm{Oubounyt}, \binits{M.}},
+\oauthor{\bsnm{Pichlmair}, \binits{A.}},
+\oauthor{\bsnm{Rose}, \binits{T.D.}}, et al.:
+Exploring the {SARS-CoV-2} virus-host-drug interactome for drug repurposing.
+Nature communications
+\textbf{11}(1)
+(2020)
+\doiurl{10.1038/s41467-020-17189-2}
+\end{botherref}
+\endbibitem
+
+%%% 43
+\bibitem[\protect\citeauthoryear{Ashburn and Thor}{2004}]{ashburn2004drug}
+\begin{barticle}
+\bauthor{\bsnm{Ashburn}, \binits{T.T.}},
+\bauthor{\bsnm{Thor}, \binits{K.B.}}:
+\batitle{Drug repositioning: identifying and developing new uses for existing
+  drugs}.
+\bjtitle{Nature reviews Drug discovery}
+\bvolume{3}(\bissue{8}),
+\bfpage{673}--\blpage{683}
+(\byear{2004})
+\doiurl{10.1038/nrd1468}
+\end{barticle}
+\endbibitem
+
+%%% 44
+\bibitem[\protect\citeauthoryear{Pushpakom et~al.}{2019}]{pushpakom2019drug}
+\begin{barticle}
+\bauthor{\bsnm{Pushpakom}, \binits{S.}},
+\bauthor{\bsnm{Iorio}, \binits{F.}},
+\bauthor{\bsnm{Eyers}, \binits{P.A.}},
+\bauthor{\bsnm{Escott}, \binits{K.J.}},
+\bauthor{\bsnm{Hopper}, \binits{S.}},
+\bauthor{\bsnm{Wells}, \binits{A.}},
+\bauthor{\bsnm{Doig}, \binits{A.}},
+\bauthor{\bsnm{Guilliams}, \binits{T.}},
+\bauthor{\bsnm{Latimer}, \binits{J.}},
+\bauthor{\bsnm{McNamee}, \binits{C.}}, \betal:
+\batitle{Drug repurposing: progress, challenges and recommendations}.
+\bjtitle{Nature reviews Drug discovery}
+\bvolume{18}(\bissue{1}),
+\bfpage{41}--\blpage{58}
+(\byear{2019})
+\doiurl{10.1038/nrd.2018.168}
+\end{barticle}
+\endbibitem
+
+%%% 45
+\bibitem[\protect\citeauthoryear{Zhu et~al.}{2026a}]{zhu2026spatialspectral}
+\begin{revisionblock}
+\begin{botherref}
+\oauthor{\bsnm{Zhu}, \binits{X.}},
+\oauthor{\bsnm{Wang}, \binits{L.}},
+\oauthor{\bsnm{Tang}, \binits{R.}},
+\oauthor{\bsnm{Huang}, \binits{Z.-A.}},
+\oauthor{\bsnm{Huang}, \binits{Y.-A.}},
+\oauthor{\bsnm{Tan}, \binits{F.}},
+\oauthor{\bsnm{Hu}, \binits{L.}},
+\oauthor{\bsnm{You}, \binits{Z.}},
+\oauthor{\bsnm{Hu}, \binits{P.}}:
+Spatial-spectral fusion enables drug repositioning by capturing indirect and
+  long-range associations in biological networks.
+Bioinformatics
+\textbf{42}(8)
+(2026)
+\doiurl{10.1093/bioinformatics/btag553} .
+Article btag553
+\end{botherref}
+\endbibitem
+
+%%% 46
+\end{revisionblock}
+\bibitem[\protect\citeauthoryear{Zhu et~al.}{2026b}]{zhu2026fdmsgl}
+\begin{revisionblock}
+\begin{barticle}
+\bauthor{\bsnm{Zhu}, \binits{X.}},
+\bauthor{\bsnm{Deng}, \binits{X.}},
+\bauthor{\bsnm{Zhang}, \binits{Z.}},
+\bauthor{\bsnm{Qi}, \binits{Y.}},
+\bauthor{\bsnm{Yin}, \binits{H.}},
+\bauthor{\bsnm{Long}, \binits{X.}},
+\bauthor{\bsnm{Huang}, \binits{Y.-A.}},
+\bauthor{\bsnm{Herget}, \binits{T.}},
+\bauthor{\bsnm{Tan}, \binits{F.}},
+\bauthor{\bsnm{Hu}, \binits{L.}},
+\bauthor{\bsnm{You}, \binits{Z.}},
+\bauthor{\bsnm{Hu}, \binits{P.}}:
+\batitle{{FD-MSGL}: Drug repositioning via frequency-domain multi-source
+  synergistic graph learning}.
+\bjtitle{IEEE Journal of Biomedical and Health Informatics}
+(\byear{2026})
+\doiurl{10.1109/JBHI.2026.3688381} .
+\bcomment{Early access}
+\end{barticle}
+\endbibitem
+
+%%% 47
+\end{revisionblock}
+\bibitem[\protect\citeauthoryear{Xiao et~al.}{2024}]{xiao2024fuselinker}
+\begin{botherref}
+\oauthor{\bsnm{Xiao}, \binits{Y.}},
+\oauthor{\bsnm{Zhang}, \binits{S.}},
+\oauthor{\bsnm{Zhou}, \binits{H.}},
+\oauthor{\bsnm{Li}, \binits{M.}},
+\oauthor{\bsnm{Yang}, \binits{H.}},
+\oauthor{\bsnm{Zhang}, \binits{R.}}:
+{FuseLinker}: Leveraging {LLM}'s pre-trained text embeddings and domain
+  knowledge to enhance {GNN}-based link prediction on biomedical knowledge
+  graphs.
+Journal of biomedical informatics
+\textbf{158}
+(2024)
+\doiurl{10.1016/j.jbi.2024.104730}
+\end{botherref}
+\endbibitem
+
+%%% 48
+\bibitem[\protect\citeauthoryear{Lewis et~al.}{2020}]{lewis2020retrieval}
+\begin{barticle}
+\bauthor{\bsnm{Lewis}, \binits{P.}},
+\bauthor{\bsnm{Perez}, \binits{E.}},
+\bauthor{\bsnm{Piktus}, \binits{A.}},
+\bauthor{\bsnm{Petroni}, \binits{F.}},
+\bauthor{\bsnm{Karpukhin}, \binits{V.}},
+\bauthor{\bsnm{Goyal}, \binits{N.}},
+\bauthor{\bsnm{K{\"u}ttler}, \binits{H.}},
+\bauthor{\bsnm{Lewis}, \binits{M.}},
+\bauthor{\bsnm{Yih}, \binits{W.-t.}},
+\bauthor{\bsnm{Rockt{\"a}schel}, \binits{T.}}, \betal:
+\batitle{Retrieval-augmented generation for knowledge-intensive {NLP} tasks}.
+\bjtitle{Advances in neural information processing systems}
+\bvolume{33},
+\bfpage{9459}--\blpage{9474}
+(\byear{2020})
+\end{barticle}
+\endbibitem
+
+%%% 49
+\bibitem[\protect\citeauthoryear{Pan et~al.}{2024}]{pan2024unifying}
+\begin{barticle}
+\bauthor{\bsnm{Pan}, \binits{S.}},
+\bauthor{\bsnm{Luo}, \binits{L.}},
+\bauthor{\bsnm{Wang}, \binits{Y.}},
+\bauthor{\bsnm{Chen}, \binits{C.}},
+\bauthor{\bsnm{Wang}, \binits{J.}},
+\bauthor{\bsnm{Wu}, \binits{X.}}:
+\batitle{Unifying large language models and knowledge graphs: A roadmap}.
+\bjtitle{IEEE Transactions on Knowledge and Data Engineering}
+\bvolume{36}(\bissue{7}),
+\bfpage{3580}--\blpage{3599}
+(\byear{2024})
+\doiurl{10.1109/TKDE.2024.3352100}
+\end{barticle}
+\endbibitem
+
+%%% 50
+\bibitem[\protect\citeauthoryear{Yu et~al.}{2024}]{yu2024rankrag}
+\begin{revisionblock}
+\begin{bchapter}
+\bauthor{\bsnm{Yu}, \binits{Y.}},
+\bauthor{\bsnm{Ping}, \binits{W.}},
+\bauthor{\bsnm{Liu}, \binits{Z.}},
+\bauthor{\bsnm{Wang}, \binits{B.}},
+\bauthor{\bsnm{You}, \binits{J.}},
+\bauthor{\bsnm{Zhang}, \binits{C.}},
+\bauthor{\bsnm{Shoeybi}, \binits{M.}},
+\bauthor{\bsnm{Catanzaro}, \binits{B.}}:
+\bctitle{{RankRAG}: Unifying context ranking with retrieval-augmented
+  generation in {LLMs}}.
+In: \bbtitle{Advances in Neural Information Processing Systems},
+vol. \bseriesno{37},
+pp. \bfpage{121156}--\blpage{121184}
+(\byear{2024}).
+\doiurl{10.52202/079017-3850}
+\end{bchapter}
+\endbibitem
+
+%%% 51
+\end{revisionblock}
+\bibitem[\protect\citeauthoryear{He et~al.}{2024}]{he2024gretriever}
+\begin{revisionblock}
+\begin{bchapter}
+\bauthor{\bsnm{He}, \binits{X.}},
+\bauthor{\bsnm{Tian}, \binits{Y.}},
+\bauthor{\bsnm{Sun}, \binits{Y.}},
+\bauthor{\bsnm{Chawla}, \binits{N.V.}},
+\bauthor{\bsnm{Laurent}, \binits{T.}},
+\bauthor{\bsnm{LeCun}, \binits{Y.}},
+\bauthor{\bsnm{Bresson}, \binits{X.}},
+\bauthor{\bsnm{Hooi}, \binits{B.}}:
+\bctitle{{G-Retriever}: Retrieval-augmented generation for textual graph
+  understanding and question answering}.
+In: \bbtitle{Advances in Neural Information Processing Systems},
+vol. \bseriesno{37},
+pp. \bfpage{132876}--\blpage{132907}
+(\byear{2024}).
+\doiurl{10.52202/079017-4224}
+\end{bchapter}
+\endbibitem
+
+%%% 52
+\end{revisionblock}
+\bibitem[\protect\citeauthoryear{Hu et~al.}{2025}]{hu2025grag}
+\begin{revisionblock}
+\begin{bchapter}
+\bauthor{\bsnm{Hu}, \binits{Y.}},
+\bauthor{\bsnm{Lei}, \binits{Z.}},
+\bauthor{\bsnm{Zhang}, \binits{Z.}},
+\bauthor{\bsnm{Pan}, \binits{B.}},
+\bauthor{\bsnm{Ling}, \binits{C.}},
+\bauthor{\bsnm{Zhao}, \binits{L.}}:
+\bctitle{{GRAG}: Graph retrieval-augmented generation}.
+In: \bbtitle{Findings of the Association for Computational Linguistics: NAACL
+  2025},
+pp. \bfpage{4145}--\blpage{4157}.
+\bpublisher{Association for Computational Linguistics},
+\blocation{Albuquerque, New Mexico}
+(\byear{2025}).
+\doiurl{10.18653/v1/2025.findings-naacl.232}
+\end{bchapter}
+\endbibitem
+
+%%% 53
+\end{revisionblock}
+\bibitem[\protect\citeauthoryear{Li et~al.}{2025}]{li2025subgraphrag}
+\begin{revisionblock}
+\begin{bchapter}
+\bauthor{\bsnm{Li}, \binits{M.}},
+\bauthor{\bsnm{Miao}, \binits{S.}},
+\bauthor{\bsnm{Li}, \binits{P.}}:
+\bctitle{Simple is effective: The roles of graphs and large language models in
+  knowledge-graph-based retrieval-augmented generation}.
+In: \bbtitle{International Conference on Learning Representations}
+(\byear{2025}).
+\burl{https://openreview.net/forum?id=JvkuZZ04O7}
+\end{bchapter}
+\endbibitem
+
+%%% 54
+\end{revisionblock}
+\bibitem[\protect\citeauthoryear{Lan et~al.}{2020}]{lan2020complexfkg}
+\begin{barticle}
+\bauthor{\bsnm{Lan}, \binits{L.T.H.}},
+\bauthor{\bsnm{Tuan}, \binits{T.M.}},
+\bauthor{\bsnm{Ngan}, \binits{T.T.}},
+\bauthor{\bsnm{Son}, \binits{L.H.}},
+\bauthor{\bsnm{Giang}, \binits{N.L.}},
+\bauthor{\bsnm{Ngoc}, \binits{V.T.N.}},
+\bauthor{\bsnm{Pham}, \binits{H.V.}}:
+\batitle{A new complex fuzzy inference system with fuzzy knowledge graph and
+  extensions in decision making}.
+\bjtitle{IEEE Access}
+\bvolume{8},
+\bfpage{164899}--\blpage{164921}
+(\byear{2020})
+\doiurl{10.1109/ACCESS.2020.3021097}
+\end{barticle}
+\endbibitem
+
+%%% 55
+\bibitem[\protect\citeauthoryear{Pham
+  et~al.}{2022}]{pham2022picturefuzzyclinical}
+\begin{botherref}
+\oauthor{\bsnm{Pham}, \binits{H.V.}},
+\oauthor{\bsnm{Moore}, \binits{P.}},
+\oauthor{\bsnm{Cuong}, \binits{B.C.}}:
+Applied picture fuzzy sets with knowledge reasoning and linguistics in clinical
+  decision support system.
+Neuroscience Informatics
+\textbf{2}(4)
+(2022)
+\doiurl{10.1016/j.neuri.2022.100109}
+\end{botherref}
+\endbibitem
+
+%%% 56
+\bibitem[\protect\citeauthoryear{Khan et~al.}{2026}]{khan2026novel}
+\begin{barticle}
+\bauthor{\bsnm{Khan}, \binits{W.A.}},
+\bauthor{\bsnm{Junaid}, \binits{M.}},
+\bauthor{\bsnm{Ghazal}, \binits{T.M.}},
+\bauthor{\bsnm{Nguyen}, \binits{T.T.}},
+\bauthor{\bsnm{Pham}, \binits{M.H.}},
+\bauthor{\bsnm{Tong}, \binits{T.M.N.}},
+\bauthor{\bsnm{Pham}, \binits{H.V.}}:
+\batitle{Novel concepts of {q-Rung} picture fuzzy directed hypergraphs with
+  application in intelligent and emotion-aware healthcare decision-making}.
+\bjtitle{Results in Engineering}
+(\byear{2026})
+\doiurl{10.1016/j.rineng.2026.111816} .
+\bcomment{In press}
+\end{barticle}
+\endbibitem
+
+%%% 57
+\bibitem[\protect\citeauthoryear{Sweetenham et~al.}{1993}]{sweetenham1993pacet}
+\begin{barticle}
+\bauthor{\bsnm{Sweetenham}, \binits{J.W.}},
+\bauthor{\bsnm{McKendrick}, \binits{J.J.}},
+\bauthor{\bsnm{Mead}, \binits{G.M.}},
+\bauthor{\bsnm{Whitehouse}, \binits{J.M.}}:
+\batitle{Prednisolone, cytosine arabinoside, lomustine ({CCNU}), etoposide and
+  thioguanine ({PACET}) combination chemotherapy for relapsed or refractory
+  non-{Hodgkin} lymphoma}.
+\bjtitle{Eur J Cancer}
+\bvolume{29A}(\bissue{2}),
+\bfpage{190}--\blpage{192}
+(\byear{1993})
+\doiurl{10.1016/0959-8049(93)90171-B}
+\end{barticle}
+\endbibitem
+
+%%% 58
+\bibitem[\protect\citeauthoryear{Bagley~Jr
+  et~al.}{1972}]{bagley1972lymphosarcoma}
+\begin{barticle}
+\bauthor{\bsnm{Bagley~Jr}, \binits{C.M.}},
+\bauthor{\bsnm{DeVita~Jr}, \binits{V.T.}},
+\bauthor{\bsnm{Berard}, \binits{C.W.}},
+\bauthor{\bsnm{Canellos}, \binits{G.P.}}:
+\batitle{Advanced lymphosarcoma: intensive cyclical combination chemotherapy
+  with cyclophosphamide, vincristine, and prednisone}.
+\bjtitle{Ann Intern Med}
+\bvolume{76}(\bissue{2}),
+\bfpage{227}--\blpage{234}
+(\byear{1972})
+\doiurl{10.7326/0003-4819-76-2-227}
+\end{barticle}
+\endbibitem
+
+%%% 59
+\bibitem[\protect\citeauthoryear{McLaughlin et~al.}{1994}]{mclaughlin1994fnd}
+\begin{barticle}
+\bauthor{\bsnm{McLaughlin}, \binits{P.}},
+\bauthor{\bsnm{Hagemeister}, \binits{F.B.}},
+\bauthor{\bsnm{Swan~Jr}, \binits{F.}},
+\bauthor{\bsnm{Cabanillas}, \binits{F.}},
+\bauthor{\bsnm{Pate}, \binits{O.}},
+\bauthor{\bsnm{Romaguera}, \binits{J.E.}},
+\bauthor{\bsnm{Rodriguez}, \binits{M.A.}},
+\bauthor{\bsnm{Redman}, \binits{J.R.}},
+\bauthor{\bsnm{Keating}, \binits{M.}}:
+\batitle{Phase {I} study of the combination of fludarabine, mitoxantrone, and
+  dexamethasone in low-grade lymphoma}.
+\bjtitle{J Clin Oncol}
+\bvolume{12}(\bissue{3}),
+\bfpage{575}--\blpage{579}
+(\byear{1994})
+\doiurl{10.1200/JCO.1994.12.3.575}
+\end{barticle}
+\endbibitem
+
+%%% 60
+\bibitem[\protect\citeauthoryear{Fisher et~al.}{1993}]{fisher1993chop}
+\begin{barticle}
+\bauthor{\bsnm{Fisher}, \binits{R.I.}},
+\bauthor{\bsnm{Gaynor}, \binits{E.R.}},
+\bauthor{\bsnm{Dahlberg}, \binits{S.}},
+\bauthor{\bsnm{Oken}, \binits{M.M.}},
+\bauthor{\bsnm{Grogan}, \binits{T.M.}},
+\bauthor{\bsnm{Mize}, \binits{E.M.}},
+\bauthor{\bsnm{Glick}, \binits{J.H.}},
+\bauthor{\bsnm{Coltman~Jr}, \binits{C.A.}},
+\bauthor{\bsnm{Miller}, \binits{T.P.}}:
+\batitle{Comparison of a standard regimen ({CHOP}) with three intensive
+  chemotherapy regimens for advanced non-{Hodgkin}'s lymphoma}.
+\bjtitle{N Engl J Med}
+\bvolume{328}(\bissue{14}),
+\bfpage{1002}--\blpage{1006}
+(\byear{1993})
+\doiurl{10.1056/NEJM199304083281404}
+\end{barticle}
+\endbibitem
+
+%%% 61
+\bibitem[\protect\citeauthoryear{Bayer et~al.}{1992}]{bayer1992bleomycin}
+\begin{barticle}
+\bauthor{\bsnm{Bayer}, \binits{R.A.}},
+\bauthor{\bsnm{Gaynor}, \binits{E.R.}},
+\bauthor{\bsnm{Fisher}, \binits{R.I.}}:
+\batitle{Bleomycin in non-{Hodgkin}'s lymphoma}.
+\bjtitle{Semin Oncol}
+\bvolume{19}(\bissue{2 Suppl 5}),
+\bfpage{46}--\blpage{525253}
+(\byear{1992})
+\end{barticle}
+\endbibitem
+
+%%% 62
+\bibitem[\protect\citeauthoryear{Fraenkel et~al.}{2021}]{fraenkel20212021}
+\begin{barticle}
+\bauthor{\bsnm{Fraenkel}, \binits{L.}},
+\bauthor{\bsnm{Bathon}, \binits{J.M.}},
+\bauthor{\bsnm{England}, \binits{B.R.}},
+\bauthor{\bsnm{St~Clair}, \binits{E.W.}},
+\bauthor{\bsnm{Arayssi}, \binits{T.}},
+\bauthor{\bsnm{Carandang}, \binits{K.}},
+\bauthor{\bsnm{Deane}, \binits{K.D.}},
+\bauthor{\bsnm{Genovese}, \binits{M.}},
+\bauthor{\bsnm{Huston}, \binits{K.K.}},
+\bauthor{\bsnm{Kerr}, \binits{G.}},
+\bauthor{\bsnm{Kremer}, \binits{J.}},
+\bauthor{\bsnm{Nakamura}, \binits{M.C.}},
+\bauthor{\bsnm{Russell}, \binits{L.A.}},
+\bauthor{\bsnm{Singh}, \binits{J.A.}},
+\bauthor{\bsnm{Smith}, \binits{B.J.}},
+\bauthor{\bsnm{Sparks}, \binits{J.A.}},
+\bauthor{\bsnm{Venkatachalam}, \binits{S.}},
+\bauthor{\bsnm{Weinblatt}, \binits{M.E.}},
+\bauthor{\bsnm{Al-Gibbawi}, \binits{M.}},
+\bauthor{\bsnm{Baker}, \binits{J.F.}},
+\bauthor{\bsnm{Barbour}, \binits{K.E.}},
+\bauthor{\bsnm{Barton}, \binits{J.L.}},
+\bauthor{\bsnm{Cappelli}, \binits{L.}},
+\bauthor{\bsnm{Chamseddine}, \binits{F.}},
+\bauthor{\bsnm{George}, \binits{M.}},
+\bauthor{\bsnm{Johnson}, \binits{S.R.}},
+\bauthor{\bsnm{Kahale}, \binits{L.}},
+\bauthor{\bsnm{Karam}, \binits{B.S.}},
+\bauthor{\bsnm{Khamis}, \binits{A.M.}},
+\bauthor{\bsnm{Navarro-Mill{\'a}n}, \binits{I.}},
+\bauthor{\bsnm{Mirza}, \binits{R.}},
+\bauthor{\bsnm{Schwab}, \binits{P.}},
+\bauthor{\bsnm{Singh}, \binits{N.}},
+\bauthor{\bsnm{Turgunbaev}, \binits{M.}},
+\bauthor{\bsnm{Turner}, \binits{A.S.}},
+\bauthor{\bsnm{Yaacoub}, \binits{S.}},
+\bauthor{\bsnm{Akl}, \binits{E.A.}}:
+\batitle{2021 {American College of Rheumatology} guideline for the treatment of
+  rheumatoid arthritis}.
+\bjtitle{Arthritis Care Res (Hoboken)}
+\bvolume{73}(\bissue{7}),
+\bfpage{924}--\blpage{939}
+(\byear{2021})
+\doiurl{10.1002/acr.24596}
+\end{barticle}
+\endbibitem
+
+%%% 63
+\bibitem[\protect\citeauthoryear{Jick et~al.}{1965}]{jick1965dexamethasone}
+\begin{barticle}
+\bauthor{\bsnm{Jick}, \binits{H.}},
+\bauthor{\bsnm{Pinals}, \binits{R.S.}},
+\bauthor{\bsnm{Ullian}, \binits{R.}},
+\bauthor{\bsnm{Slone}, \binits{D.}},
+\bauthor{\bsnm{Muench}, \binits{H.}}:
+\batitle{Dexamethasone and dexamethasone-aspirin in the treatment of chronic
+  rheumatoid arthritis. a controlled trial}.
+\bjtitle{Lancet}
+\bvolume{2}(\bissue{7424}),
+\bfpage{1203}--\blpage{1205}
+(\byear{1965})
+\doiurl{10.1016/s0140-6736(65)90632-x}
+\end{barticle}
+\endbibitem
+
+%%% 64
+\bibitem[\protect\citeauthoryear{Blyth et~al.}{1994}]{blyth1994rheumatoidknee}
+\begin{barticle}
+\bauthor{\bsnm{Blyth}, \binits{T.}},
+\bauthor{\bsnm{Hunter}, \binits{J.A.}},
+\bauthor{\bsnm{Stirling}, \binits{A.}}:
+\batitle{Pain relief in the rheumatoid knee after steroid injection. a
+  single-blind comparison of hydrocortisone succinate, and triamcinolone
+  acetonide or hexacetonide}.
+\bjtitle{Br J Rheumatol}
+\bvolume{33}(\bissue{5}),
+\bfpage{461}--\blpage{463}
+(\byear{1994})
+\doiurl{10.1093/rheumatology/33.5.461}
+\end{barticle}
+\endbibitem
+
+%%% 65
+\bibitem[\protect\citeauthoryear{Boers et~al.}{2022}]{boers2022gloria}
+\begin{barticle}
+\bauthor{\bsnm{Boers}, \binits{M.}},
+\bauthor{\bsnm{Hartman}, \binits{L.}},
+\bauthor{\bsnm{Opris-Belinski}, \binits{D.}},
+\bauthor{\bsnm{Bos}, \binits{R.}},
+\bauthor{\bsnm{Kok}, \binits{M.R.}},
+\bauthor{\bsnm{Silva}, \binits{J.A.P.}},
+\bauthor{\bsnm{Griep}, \binits{E.N.}},
+\bauthor{\bsnm{Klaasen}, \binits{R.}},
+\bauthor{\bsnm{Allaart}, \binits{C.F.}},
+\bauthor{\bsnm{Baudoin}, \binits{P.}},
+\bauthor{\bsnm{Raterman}, \binits{H.G.}},
+\bauthor{\bsnm{Szekanecz}, \binits{Z.}},
+\bauthor{\bsnm{Buttgereit}, \binits{F.}},
+\bauthor{\bsnm{Masaryk}, \binits{P.}},
+\bauthor{\bsnm{Klausch}, \binits{L.T.}},
+\bauthor{\bsnm{Paolino}, \binits{S.}},
+\bauthor{\bsnm{Schilder}, \binits{A.M.}},
+\bauthor{\bsnm{Lems}, \binits{W.F.}},
+\bauthor{\bsnm{Cutolo}, \binits{M.}},
+\bauthor{\bsnm{{{GLORIA Trial Consortium}}}}:
+\batitle{Low dose, add-on prednisolone in patients with rheumatoid arthritis
+  aged 65+: the pragmatic randomised, double-blind placebo-controlled {GLORIA}
+  trial}.
+\bjtitle{Ann Rheum Dis}
+\bvolume{81}(\bissue{7}),
+\bfpage{925}--\blpage{936}
+(\byear{2022})
+\doiurl{10.1136/annrheumdis-2021-221957}
+\end{barticle}
+\endbibitem
+
+%%% 66
+\bibitem[\protect\citeauthoryear{Buttgereit
+  et~al.}{2008}]{buttgereit2008capra1}
+\begin{barticle}
+\bauthor{\bsnm{Buttgereit}, \binits{F.}},
+\bauthor{\bsnm{Doering}, \binits{G.}},
+\bauthor{\bsnm{Schaeffler}, \binits{A.}},
+\bauthor{\bsnm{Witte}, \binits{S.}},
+\bauthor{\bsnm{Sierakowski}, \binits{S.}},
+\bauthor{\bsnm{Gromnica-Ihle}, \binits{E.}},
+\bauthor{\bsnm{Jeka}, \binits{S.}},
+\bauthor{\bsnm{Krueger}, \binits{K.}},
+\bauthor{\bsnm{Szechinski}, \binits{J.}},
+\bauthor{\bsnm{Alten}, \binits{R.}}:
+\batitle{Efficacy of modified-release versus standard prednisone to reduce
+  duration of morning stiffness of the joints in rheumatoid arthritis
+  ({CAPRA-1}): a double-blind, randomised controlled trial}.
+\bjtitle{Lancet}
+\bvolume{371}(\bissue{9608}),
+\bfpage{205}--\blpage{214}
+(\byear{2008})
+\doiurl{10.1016/S0140-6736(08)60132-4}
+\end{barticle}
+\endbibitem
+
+%%% 67
+\bibitem[\protect\citeauthoryear{Weinblatt
+  et~al.}{1994}]{weinblatt1994methotrexate}
+\begin{barticle}
+\bauthor{\bsnm{Weinblatt}, \binits{M.E.}},
+\bauthor{\bsnm{Kaplan}, \binits{H.}},
+\bauthor{\bsnm{Germain}, \binits{B.F.}},
+\bauthor{\bsnm{Block}, \binits{S.}},
+\bauthor{\bsnm{Solomon}, \binits{S.D.}},
+\bauthor{\bsnm{Merriman}, \binits{R.C.}},
+\bauthor{\bsnm{Wolfe}, \binits{F.}},
+\bauthor{\bsnm{Wall}, \binits{B.}},
+\bauthor{\bsnm{Anderson}, \binits{L.}},
+\bauthor{\bsnm{Gall}, \binits{E.}}, \betal:
+\batitle{Methotrexate in rheumatoid arthritis. a five-year prospective
+  multicenter study}.
+\bjtitle{Arthritis \& Rheumatism: Official Journal of the American College of
+  Rheumatology}
+\bvolume{37}(\bissue{10}),
+\bfpage{1492}--\blpage{1498}
+(\byear{1994})
+\doiurl{10.1002/art.1780371013}
+\end{barticle}
+\endbibitem
+
+%%% 68
+\bibitem[\protect\citeauthoryear{van Dongen et~al.}{2007}]{van2007efficacy}
+\begin{barticle}
+\bauthor{\bsnm{Dongen}, \binits{H.}},
+\bauthor{\bsnm{Aken}, \binits{J.}},
+\bauthor{\bsnm{Lard}, \binits{L.R.}},
+\bauthor{\bsnm{Visser}, \binits{K.}},
+\bauthor{\bsnm{Ronday}, \binits{H.K.}},
+\bauthor{\bsnm{Hulsmans}, \binits{H.M.}},
+\bauthor{\bsnm{Speyer}, \binits{I.}},
+\bauthor{\bsnm{Westedt}, \binits{M.-L.}},
+\bauthor{\bsnm{Peeters}, \binits{A.J.}},
+\bauthor{\bsnm{Allaart}, \binits{C.F.}}, \betal:
+\batitle{Efficacy of methotrexate treatment in patients with probable
+  rheumatoid arthritis: a double-blind, randomized, placebo-controlled trial}.
+\bjtitle{Arthritis \& Rheumatism}
+\bvolume{56}(\bissue{5}),
+\bfpage{1424}--\blpage{1432}
+(\byear{2007})
+\doiurl{10.1002/art.22525}
+\end{barticle}
+\endbibitem
+
+\end{thebibliography}
