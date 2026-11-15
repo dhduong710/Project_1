@@ -3,7 +3,7 @@
   "documents": [
     {
       "pdf": "Manuscript_revised_highlighted.pdf",
-      "sha256": "96a9c6ed7ddba5a8c75e645090333ddddf0e3d29164f3308b3c7cfda80aee084",
+      "sha256": "13ab080a860a071a9b3ce9b6e184fcf567806ee49cb41a6da25da73f629c2538",
       "pages": 25,
       "locations": {
         "Abstract": "1",
@@ -45,5 +45,5 @@
     }
   ],
   "response_file": "Response_to_Reviewers.docx",
-  "response_sha256": "74438ba6ce6e28d4f0ac0e5c10e21cf3e844d8f22cb0924b733feb4c0525bc6e"
+  "response_sha256": "f36d84227adf85a8d41b2723d72391cccfe41fbf418e661ef78823221e03f224"
 }
